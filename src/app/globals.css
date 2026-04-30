@@ -1,0 +1,125 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --navy: #1a2744;
+  --gold: #c9a227;
+  --cream: #faf8f3;
+  --background: #ffffff;
+  --foreground: #1a2744;
+}
+
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-body), system-ui, sans-serif;
+}
+
+/* Diagonal clip-paths */
+.clip-diagonal {
+  clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+}
+.clip-diagonal-reverse {
+  clip-path: polygon(0 10%, 100% 0, 100% 100%, 0 100%);
+}
+.clip-diagonal-bottom {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 92%);
+}
+
+/* Editorial gold underline */
+.gold-underline {
+  position: relative;
+  display: inline-block;
+}
+.gold-underline::after {
+  content: "";
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background: var(--gold);
+}
+
+/* Subtle textures */
+.texture-cream {
+  background-color: #faf8f3;
+  background-image:
+    radial-gradient(circle at 1px 1px, rgba(26, 39, 68, 0.04) 1px, transparent 0);
+  background-size: 24px 24px;
+}
+
+.texture-navy {
+  background-color: #1a2744;
+  background-image:
+    linear-gradient(135deg, rgba(201, 162, 39, 0.04) 0%, transparent 50%),
+    radial-gradient(circle at 25% 35%, rgba(201, 162, 39, 0.08) 0%, transparent 50%);
+}
+
+.diagonal-pattern {
+  background-image: repeating-linear-gradient(
+    45deg,
+    rgba(26, 39, 68, 0.025),
+    rgba(26, 39, 68, 0.025) 1px,
+    transparent 1px,
+    transparent 14px
+  );
+}
+
+/* Hero gradient overlay */
+.hero-overlay {
+  background: linear-gradient(
+    180deg,
+    rgba(17, 27, 47, 0.55) 0%,
+    rgba(17, 27, 47, 0.7) 60%,
+    rgba(17, 27, 47, 0.95) 100%
+  );
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #faf8f3;
+}
+::-webkit-scrollbar-thumb {
+  background: #1a2744;
+  border-radius: 0;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #c9a227;
+}
+
+::selection {
+  background: #c9a227;
+  color: #1a2744;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.ba-handle {
+  cursor: ew-resize;
+  touch-action: none;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
