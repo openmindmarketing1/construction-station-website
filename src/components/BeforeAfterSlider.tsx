@@ -1,8 +1,15 @@
 "use client";
 
 import { useRef, useState, useEffect } from "react";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { PROJECTS } from "@/lib/constants";
+
+const AFTER_IMAGES = [
+  "/images/services/kitchen/kitchen-02.jpg",
+  "/images/services/bathroom/bathroom-01.jpg",
+  "/images/services/room-additions/room-addition-01.jpg",
+];
 
 type Project = {
   title: string;
@@ -11,7 +18,13 @@ type Project = {
   description: string;
 };
 
-function Slider({ project, index }: { project: Project; index: number }) {
+function Slider({
+  project,
+  index,
+}: {
+  project: Project;
+  index: number;
+}) {
   const [pos, setPos] = useState(50);
   const [dragging, setDragging] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
@@ -41,6 +54,8 @@ function Slider({ project, index }: { project: Project; index: number }) {
       window.removeEventListener("touchend", onUp);
     };
   }, [dragging]);
+
+  const afterImage = AFTER_IMAGES[index];
 
   return (
     <motion.div
@@ -77,27 +92,31 @@ function Slider({ project, index }: { project: Project; index: number }) {
           if (e.touches[0]) updateFromClientX(e.touches[0].clientX);
         }}
       >
-        {/* AFTER (back layer) — gold/cream tones */}
-        <div
-          className="absolute inset-0"
-          style={{
-            background:
-              "linear-gradient(135deg, #faf8f3 0%, #e8dcb4 40%, #c9a227 100%)",
-          }}
-        >
-          <div
-            className="absolute inset-0 opacity-40"
-            style={{
-              backgroundImage:
-                "radial-gradient(circle at 30% 40%, rgba(255,255,255,0.6) 0%, transparent 50%), radial-gradient(circle at 70% 70%, rgba(168,131,32,0.4) 0%, transparent 60%)",
-            }}
-          />
-          <div className="absolute inset-0 flex items-end p-6 md:p-8">
+        {/* AFTER (back layer) — real project photo */}
+        <div className="absolute inset-0">
+          {afterImage ? (
+            <Image
+              src={afterImage}
+              alt={`${project.title} — after`}
+              fill
+              className="object-cover"
+              sizes="(max-width: 1280px) 100vw, 1280px"
+            />
+          ) : (
+            <div
+              style={{
+                background:
+                  "linear-gradient(135deg, #faf8f3 0%, #e8dcb4 40%, #c9a227 100%)",
+              }}
+              className="absolute inset-0"
+            />
+          )}
+          <div className="absolute inset-0 flex items-end p-6 md:p-8 bg-gradient-to-t from-navy-dark/60 to-transparent">
             <div>
-              <div className="text-navy/60 text-xs tracking-[0.4em] uppercase mb-1">
+              <div className="text-white/80 text-xs tracking-[0.4em] uppercase mb-1">
                 After
               </div>
-              <div className="font-display text-navy-dark text-3xl md:text-4xl">
+              <div className="font-display text-white text-3xl md:text-4xl drop-shadow-lg">
                 Reborn.
               </div>
             </div>

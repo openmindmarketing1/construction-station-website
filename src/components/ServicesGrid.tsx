@@ -1,17 +1,18 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { SERVICES } from "@/lib/constants";
 
-const cardGradients = [
-  "from-navy via-navy-light to-navy-dark",
-  "from-navy-dark via-navy to-navy-light",
-  "from-[#1e2f50] via-navy to-navy-dark",
-  "from-navy via-[#243256] to-[#162039]",
-  "from-[#111b2f] via-navy to-[#1e2f50]",
-  "from-[#243256] via-navy to-navy-dark",
-];
+const SERVICE_IMAGES: Record<string, string> = {
+  "kitchen-remodeling": "/images/services/kitchen/kitchen-01.jpg",
+  "bathroom-remodeling": "/images/services/bathroom/bathroom-01.jpg",
+  "adus": "/images/services/adu/adu-01.jpg",
+  "room-additions": "/images/services/room-additions/room-addition-01.jpg",
+  "windows-doors": "/images/services/windows-doors/windows-01.jpg",
+  "outdoor-living": "/images/services/outdoor-living/outdoor-01.jpg",
+};
 
 export default function ServicesGrid() {
   const [featured, ...rest] = SERVICES;
@@ -61,12 +62,18 @@ export default function ServicesGrid() {
               href={`/services/${featured.slug}`}
               className="group block relative overflow-hidden h-full min-h-[500px] lg:min-h-[700px]"
             >
-              <div
-                className={`absolute inset-0 bg-gradient-to-br ${cardGradients[0]} transition-transform duration-700 group-hover:scale-105`}
+              {/* Real photo background */}
+              <Image
+                src={SERVICE_IMAGES[featured.slug]}
+                alt={featured.name}
+                fill
+                className="object-cover transition-transform duration-700 group-hover:scale-105"
+                sizes="(max-width: 1024px) 100vw, 33vw"
+                priority
               />
-              {/* Decorative editorial pattern */}
+              {/* Overlays */}
               <div
-                className="absolute inset-0 opacity-30 transition-opacity duration-500 group-hover:opacity-50"
+                className="absolute inset-0 opacity-30 transition-opacity duration-500 group-hover:opacity-50 pointer-events-none"
                 style={{
                   backgroundImage:
                     "radial-gradient(ellipse at 70% 20%, rgba(201,162,39,0.4) 0%, transparent 50%), radial-gradient(ellipse at 20% 80%, rgba(201,162,39,0.15) 0%, transparent 60%)",
@@ -74,7 +81,7 @@ export default function ServicesGrid() {
               />
               {/* Vertical gold rule */}
               <div className="absolute left-8 top-0 w-px h-20 bg-gold" />
-              <div className="absolute inset-0 bg-gradient-to-t from-navy-dark/95 via-navy-dark/30 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-navy-dark/95 via-navy-dark/40 to-navy-dark/20" />
               {/* Gold border on hover */}
               <div className="absolute inset-3 border border-gold opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
@@ -118,19 +125,22 @@ export default function ServicesGrid() {
                 href={`/services/${s.slug}`}
                 className="group block relative overflow-hidden h-[300px] lg:h-[340px]"
               >
-                <div
-                  className={`absolute inset-0 bg-gradient-to-br ${
-                    cardGradients[(i + 1) % cardGradients.length]
-                  } transition-transform duration-700 group-hover:scale-105`}
+                {/* Real photo background */}
+                <Image
+                  src={SERVICE_IMAGES[s.slug]}
+                  alt={s.name}
+                  fill
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 />
                 <div
-                  className="absolute inset-0 opacity-20 group-hover:opacity-40 transition-opacity duration-500"
+                  className="absolute inset-0 opacity-20 group-hover:opacity-40 transition-opacity duration-500 pointer-events-none"
                   style={{
                     backgroundImage:
                       "radial-gradient(ellipse at 80% 30%, rgba(201,162,39,0.5) 0%, transparent 55%)",
                   }}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-navy-dark/90 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-navy-dark/90 to-navy-dark/20" />
                 <div className="absolute inset-3 border border-gold opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
                 <div className="relative h-full flex flex-col justify-between p-6 lg:p-7 z-10">
@@ -158,6 +168,55 @@ export default function ServicesGrid() {
             </motion.div>
           ))}
         </div>
+
+        {/* Flooring — sister company external card */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="mt-5"
+        >
+          <a
+            href="https://www.carpet-station.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group block relative overflow-hidden h-[200px] lg:h-[220px]"
+          >
+            <Image
+              src="/images/showroom/showroom-01.jpg"
+              alt="Flooring showroom — Carpet Station Tile & Wood"
+              fill
+              className="object-cover transition-transform duration-700 group-hover:scale-105"
+              sizes="100vw"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-navy-dark/90 via-navy-dark/70 to-navy-dark/40" />
+            <div className="absolute inset-3 border border-gold/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+            <div className="relative h-full flex flex-col justify-center p-8 lg:p-12 z-10">
+              <div className="flex items-start justify-between">
+                <div>
+                  <div className="text-gold text-xs tracking-[0.4em] uppercase mb-2">
+                    07 — Sister Company
+                  </div>
+                  <h3 className="font-display text-white text-3xl lg:text-4xl leading-tight mb-2">
+                    Flooring
+                  </h3>
+                  <p className="text-white/75 text-sm max-w-xl leading-relaxed">
+                    Visit our sister company{" "}
+                    <span className="text-gold">Carpet Station Tile & Wood</span>{" "}
+                    for our complete flooring showroom, including the Roomvo
+                    virtual room visualizer.
+                  </p>
+                </div>
+                <div className="hidden md:flex flex-col items-center gap-2 text-gold">
+                  <span className="text-xs uppercase tracking-[0.3em]">carpet-station.com</span>
+                  <span className="group-hover:translate-x-1 transition-transform text-2xl">→</span>
+                </div>
+              </div>
+            </div>
+          </a>
+        </motion.div>
       </div>
     </section>
   );

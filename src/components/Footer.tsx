@@ -76,6 +76,17 @@ export default function Footer() {
                   </Link>
                 </li>
               ))}
+              <li className="pt-3 border-t border-white/10 mt-1">
+                <a
+                  href="https://www.carpet-station.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white/70 hover:text-gold text-sm transition-colors flex items-center gap-1.5"
+                >
+                  Flooring Services
+                  <span className="text-gold/60 text-xs">→ carpet-station.com</span>
+                </a>
+              </li>
             </ul>
           </div>
 
