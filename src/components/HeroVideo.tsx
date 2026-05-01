@@ -7,18 +7,6 @@ import { CS } from "@/lib/constants";
 export default function HeroVideo() {
   return (
     <section className="relative h-[100dvh] w-full overflow-hidden bg-navy-dark">
-      {/* Video background with fallback gradient */}
-      <video
-        autoPlay
-        muted
-        loop
-        playsInline
-        poster=""
-        className="absolute inset-0 w-full h-full object-cover"
-      >
-        <source src="/video/hero-placeholder.mp4" type="video/mp4" />
-      </video>
-
       {/* Fallback editorial background — visible if no video loads */}
       <div className="absolute inset-0 bg-navy-dark">
         <div
@@ -36,6 +24,17 @@ export default function HeroVideo() {
           }}
         />
       </div>
+
+      {/* Video background */}
+      <video
+        autoPlay
+        muted
+        loop
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover"
+      >
+        <source src="/video/hero-placeholder.mp4" type="video/mp4" />
+      </video>
 
       {/* Gradient overlay */}
       <div className="absolute inset-0 hero-overlay" />

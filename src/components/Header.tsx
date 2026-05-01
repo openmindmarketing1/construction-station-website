@@ -39,9 +39,9 @@ export default function Header() {
               <Image
                 src="/images/logo/cs-logo.png"
                 alt="Construction Station"
-                width={160}
-                height={44}
-                className={`h-10 w-auto transition-all duration-300 ${
+                width={220}
+                height={60}
+                className={`w-44 sm:w-48 h-auto transition-all duration-300 ${
                   isLight ? "" : "brightness-0 invert"
                 }`}
                 priority
@@ -202,9 +202,9 @@ export default function Header() {
                 <Image
                   src="/images/logo/cs-logo.png"
                   alt="Construction Station"
-                  width={160}
-                  height={44}
-                  className="h-10 w-auto brightness-0 invert"
+                  width={220}
+                  height={60}
+                  className="w-44 sm:w-48 h-auto brightness-0 invert"
                   priority
                 />
               </Link>
