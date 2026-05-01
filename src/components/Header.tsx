@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { CS, SERVICES } from "@/lib/constants";
@@ -34,36 +35,17 @@ export default function Header() {
         <div className="max-w-7xl mx-auto px-5 lg:px-10">
           <div className="flex items-center justify-between h-20">
             {/* Logo */}
-            <Link href="/" className="flex items-center gap-3 group">
-              <div
-                className={`w-11 h-11 flex items-center justify-center border-2 ${
-                  isLight ? "border-navy" : "border-gold"
-                } transition-colors`}
-              >
-                <span
-                  className={`font-display text-2xl ${
-                    isLight ? "text-navy" : "text-gold"
-                  }`}
-                >
-                  CS
-                </span>
-              </div>
-              <div className="hidden sm:block">
-                <div
-                  className={`font-display text-lg leading-none ${
-                    isLight ? "text-navy" : "text-white"
-                  }`}
-                >
-                  Construction
-                </div>
-                <div
-                  className={`font-body text-[10px] tracking-[0.3em] uppercase ${
-                    isLight ? "text-navy/70" : "text-gold"
-                  }`}
-                >
-                  Station · est. 2008
-                </div>
-              </div>
+            <Link href="/" className="flex items-center group">
+              <Image
+                src="/images/logo/cs-logo.png"
+                alt="Construction Station"
+                width={160}
+                height={44}
+                className={`h-10 w-auto transition-all duration-300 ${
+                  isLight ? "" : "brightness-0 invert"
+                }`}
+                priority
+              />
             </Link>
 
             {/* Desktop Nav */}
@@ -137,6 +119,14 @@ export default function Header() {
                 About
               </Link>
               <Link
+                href="/blog"
+                className={`font-body text-sm tracking-wide ${
+                  isLight ? "text-navy" : "text-white"
+                } hover:text-gold transition-colors`}
+              >
+                Blog
+              </Link>
+              <Link
                 href="/contact"
                 className={`font-body text-sm tracking-wide ${
                   isLight ? "text-navy" : "text-white"
@@ -208,19 +198,16 @@ export default function Header() {
             className="fixed inset-0 z-[60] bg-navy texture-navy lg:hidden"
           >
             <div className="flex items-center justify-between px-5 h-20">
-              <div className="flex items-center gap-3">
-                <div className="w-11 h-11 flex items-center justify-center border-2 border-gold">
-                  <span className="font-display text-2xl text-gold">CS</span>
-                </div>
-                <div>
-                  <div className="font-display text-lg leading-none text-white">
-                    Construction
-                  </div>
-                  <div className="font-body text-[10px] tracking-[0.3em] uppercase text-gold">
-                    Station · est. 2008
-                  </div>
-                </div>
-              </div>
+              <Link href="/" onClick={() => setOpen(false)}>
+                <Image
+                  src="/images/logo/cs-logo.png"
+                  alt="Construction Station"
+                  width={160}
+                  height={44}
+                  className="h-10 w-auto brightness-0 invert"
+                  priority
+                />
+              </Link>
               <button
                 aria-label="Close menu"
                 onClick={() => setOpen(false)}
@@ -267,6 +254,36 @@ export default function Header() {
                     className="block py-3 border-b border-white/10 font-display text-2xl text-white hover:text-gold transition-colors"
                   >
                     {s.name}
+                  </Link>
+                </motion.div>
+              ))}
+
+              <motion.div
+                variants={{
+                  hidden: { opacity: 0, x: -20 },
+                  show: { opacity: 1, x: 0 },
+                }}
+                className="text-gold text-xs tracking-[0.3em] uppercase mt-8 mb-3"
+              >
+                Explore
+              </motion.div>
+              {[
+                { href: "/blog", label: "Blog & Guides" },
+                { href: "/contact", label: "Contact Us" },
+              ].map(({ href, label }) => (
+                <motion.div
+                  key={href}
+                  variants={{
+                    hidden: { opacity: 0, x: -20 },
+                    show: { opacity: 1, x: 0 },
+                  }}
+                >
+                  <Link
+                    href={href}
+                    onClick={() => setOpen(false)}
+                    className="block py-3 border-b border-white/10 font-display text-2xl text-white hover:text-gold transition-colors"
+                  >
+                    {label}
                   </Link>
                 </motion.div>
               ))}

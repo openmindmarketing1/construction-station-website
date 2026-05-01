@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { CS, SERVICES, HOURS } from "@/lib/constants";
 import { CITIES } from "@/config/cities";
 
@@ -12,18 +13,14 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Brand */}
           <div>
-            <div className="flex items-center gap-3 mb-5">
-              <div className="w-12 h-12 flex items-center justify-center border-2 border-gold">
-                <span className="font-display text-2xl text-gold">CS</span>
-              </div>
-              <div>
-                <div className="font-display text-xl leading-none text-white">
-                  Construction
-                </div>
-                <div className="font-body text-[10px] tracking-[0.3em] uppercase text-gold mt-1">
-                  Station
-                </div>
-              </div>
+            <div className="mb-5">
+              <Image
+                src="/images/logo/cs-logo.png"
+                alt="Construction Station"
+                width={160}
+                height={44}
+                className="h-10 w-auto brightness-0 invert"
+              />
             </div>
             <p className="text-white/70 text-sm leading-relaxed mb-6">
               Premium kitchen, bathroom, and home renovation in the Inland
