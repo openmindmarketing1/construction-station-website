@@ -7,7 +7,7 @@ export const CS = {
   address: "Inland Empire, CA",
   license: "#1108879",
   founded: 2008,
-  bbb: "Listed",
+  bbb: "A+",
   pixel: "1236703801875418",
   supabaseUrl: process.env.NEXT_PUBLIC_SUPABASE_URL ?? "",
   supabaseAnonKey: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ?? "",
@@ -157,7 +157,7 @@ export const TRUST_STATS = [
   { value: "Hundreds", label: "Projects Completed" },
   { value: "5★", label: "Average Rating" },
   { value: "#1108879", label: "Licensed" },
-  { value: "BBB", label: "Listed" },
+  { value: "A+", label: "BBB Rated" },
   { value: "0%", label: "Financing Available" },
 ];
 

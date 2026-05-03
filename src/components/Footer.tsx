@@ -155,9 +155,9 @@ export default function Footer() {
             </div>
           </div>
           <div>
-            <div className="text-gold font-display text-2xl">BBB</div>
+            <div className="text-gold font-display text-2xl">BBB {CS.bbb}</div>
             <div className="text-white/50 text-xs uppercase tracking-wider mt-1">
-              Listed
+              Accredited
             </div>
           </div>
           <div>
