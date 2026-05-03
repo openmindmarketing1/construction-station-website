@@ -17,7 +17,7 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://constructionstatio
 // Google Business Profile CID: 8346061725681242502
 // Write-review URL: replace placeid with the value from GBP → Get more reviews → Share review form
 const GOOGLE_MAPS_URL = "https://www.google.com/maps?cid=8346061725681242502";
-const GOOGLE_REVIEW_URL = "https://www.google.com/maps?cid=8346061725681242502";
+const GOOGLE_REVIEW_URL = "https://g.page/r/CYbRtpDrKtNzEAE/review";
 
 function Stars({ count = 5 }: { count?: number }) {
   return (

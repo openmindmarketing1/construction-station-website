@@ -9,7 +9,7 @@ const nextConfig = {
         // https://search.google.com/local/writereview?placeid=YOUR_PLACE_ID
         // (Get Place ID from Google Business Profile → Get more reviews → Share review form)
         source: "/review",
-        destination: "https://www.google.com/maps?cid=8346061725681242502",
+        destination: "https://g.page/r/CYbRtpDrKtNzEAE/review",
         permanent: false,
       },
     ];
