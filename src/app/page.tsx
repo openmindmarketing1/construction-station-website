@@ -6,7 +6,7 @@ import WhyChooseUs from "@/components/WhyChooseUs";
 import ServiceAreaSection from "@/components/ServiceAreaSection";
 import CtaSection from "@/components/CtaSection";
 import JsonLd from "@/components/JsonLd";
-import { CS, HOURS } from "@/lib/constants";
+import { CS } from "@/lib/constants";
 import { CITIES } from "@/config/cities";
 
 const SITE_URL =
@@ -24,8 +24,10 @@ export default function Home() {
     priceRange: "$$$",
     address: {
       "@type": "PostalAddress",
-      addressLocality: "Inland Empire",
+      streetAddress: "33145 Yucaipa Blvd",
+      addressLocality: "Yucaipa",
       addressRegion: "CA",
+      postalCode: "92399",
       addressCountry: "US",
     },
     geo: {
@@ -37,20 +39,28 @@ export default function Home() {
       "@type": "City",
       name: `${c.name}, ${c.state}`,
     })),
-    openingHoursSpecification: HOURS.filter((h) => h.time !== "Closed").map(
-      (h) => ({
+    openingHoursSpecification: [
+      {
         "@type": "OpeningHoursSpecification",
-        dayOfWeek: h.day,
-        opens: h.time.split(" – ")[0],
-        closes: h.time.split(" – ")[1],
-      })
-    ),
+        dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        opens: "07:00",
+        closes: "18:00",
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: "Saturday",
+        opens: "08:00",
+        closes: "16:00",
+      },
+    ],
     aggregateRating: {
       "@type": "AggregateRating",
       ratingValue: "5.0",
       reviewCount: "17",
     },
-    sameAs: [],
+    sameAs: [
+      "https://www.google.com/maps?cid=8346061725681242502",
+    ],
     foundingDate: String(CS.founded),
     identifier: CS.license,
   };

@@ -65,7 +65,7 @@ const FAQS = [
   },
   {
     q: "Do you offer financing?",
-    a: "Yes. We partner with Hearth and GreenSky to offer 0% promotional financing (12–18 months) and longer-term plans up to 144 months. Pre-qualification is a soft credit pull — it won&apos;t affect your score.",
+    a: "Yes. We partner with Enhancify to offer flexible financing — 0% promotional periods and longer-term plans up to 144 months. Apply at constructionstation.com/financing — pre-qualification is a soft credit pull that won&apos;t affect your score.",
   },
   {
     q: "Do you handle the design?",
@@ -79,6 +79,16 @@ const FAQS = [
 
 const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL ?? "https://constructionstation.com";
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: FAQS.map((faq) => ({
+    "@type": "Question",
+    name: faq.q,
+    acceptedAnswer: { "@type": "Answer", text: faq.a },
+  })),
+};
 
 export default function KitchenRemodelingPage() {
   const serviceSchema = {
@@ -106,6 +116,7 @@ export default function KitchenRemodelingPage() {
   return (
     <>
       <JsonLd data={serviceSchema} />
+      <JsonLd data={faqSchema} />
 
       <ServiceHero
         eyebrow="Service · Kitchens"

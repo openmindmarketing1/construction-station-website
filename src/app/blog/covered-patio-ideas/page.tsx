@@ -1,9 +1,12 @@
 import type { Metadata } from "next";
 import BlogPostLayout from "@/components/BlogPostLayout";
+import JsonLd from "@/components/JsonLd";
 import { POSTS } from "@/lib/blog";
 
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://constructionstation.com";
+
 export const metadata: Metadata = {
-  title: "Extend Your Living Space With These Covered Patio Ideas",
+  title: { absolute: "Covered Patio Ideas for Your Home | Construction Station" },
   description:
     "From tarp covers and wood pergolas to modern aluminum patio covers and A-frames — discover covered patio ideas that turn your outdoor space into a year-round retreat.",
   alternates: { canonical: "/blog/covered-patio-ideas" },
@@ -14,9 +17,29 @@ const related = POSTS.filter((p) =>
   ["choosing-best-home-improvement-company", "inland-empire-kitchen-remodel-costs", "flooring-inland-empire"].includes(p.slug)
 );
 
+const blogSchema = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  headline: post.title,
+  description: post.excerpt,
+  datePublished: post.date,
+  dateModified: post.date,
+  image: `${SITE_URL}${post.image}`,
+  url: `${SITE_URL}/blog/${post.slug}`,
+  author: { "@type": "Organization", name: "Construction Station", url: SITE_URL },
+  publisher: {
+    "@type": "Organization",
+    name: "Construction Station",
+    url: SITE_URL,
+    logo: { "@type": "ImageObject", url: `${SITE_URL}/images/logo/cs-logo.png` },
+  },
+};
+
 export default function Page() {
   return (
-    <BlogPostLayout post={post} related={related}>
+    <>
+      <JsonLd data={blogSchema} />
+      <BlogPostLayout post={post} related={related}>
       <p className="text-navy/80 text-lg leading-[1.8] mb-6">
         Is your outdoor area feeling a bit bland? A patio cover can turn your outdoor space into a
         delightful extension of your home — a cozy nook for morning coffee or a spacious area for
@@ -111,6 +134,7 @@ export default function Page() {
         <li>Complete satisfaction guarantee</li>
         <li>No-pressure sales approach</li>
       </ul>
-    </BlogPostLayout>
+      </BlogPostLayout>
+    </>
   );
 }

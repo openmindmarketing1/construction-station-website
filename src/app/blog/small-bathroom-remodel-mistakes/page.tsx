@@ -1,9 +1,12 @@
 import type { Metadata } from "next";
 import BlogPostLayout from "@/components/BlogPostLayout";
+import JsonLd from "@/components/JsonLd";
 import { POSTS } from "@/lib/blog";
 
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://constructionstation.com";
+
 export const metadata: Metadata = {
-  title: "7 Small Bathroom Remodel Mistakes (And How to Fix Them)",
+  title: { absolute: "7 Bathroom Remodel Mistakes to Avoid | Construction Station" },
   description:
     "Small bathrooms are deceptively tricky. Learn the 7 most common mistakes Inland Empire homeowners make — skipping space planning, oversized fixtures, bad ventilation, and more.",
   alternates: { canonical: "/blog/small-bathroom-remodel-mistakes" },
@@ -14,9 +17,29 @@ const related = POSTS.filter((p) =>
   ["bathroom-remodeling-ideas-2026", "inland-empire-kitchen-remodel-costs", "choosing-best-home-improvement-company"].includes(p.slug)
 );
 
+const blogSchema = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  headline: post.title,
+  description: post.excerpt,
+  datePublished: post.date,
+  dateModified: post.date,
+  image: `${SITE_URL}${post.image}`,
+  url: `${SITE_URL}/blog/${post.slug}`,
+  author: { "@type": "Organization", name: "Construction Station", url: SITE_URL },
+  publisher: {
+    "@type": "Organization",
+    name: "Construction Station",
+    url: SITE_URL,
+    logo: { "@type": "ImageObject", url: `${SITE_URL}/images/logo/cs-logo.png` },
+  },
+};
+
 export default function Page() {
   return (
-    <BlogPostLayout post={post} related={related}>
+    <>
+      <JsonLd data={blogSchema} />
+      <BlogPostLayout post={post} related={related}>
       <p className="text-navy/80 text-lg leading-[1.8] mb-6">
         A small bathroom shouldn&rsquo;t mean small results — unless you make these common mistakes.
         At Construction Station, we&rsquo;ve helped many families in the Inland Empire remodel their
@@ -165,6 +188,7 @@ export default function Page() {
         <li>All necessary permits pulled and inspections coordinated</li>
         <li>One-year installation guarantee on all remodeling work</li>
       </ul>
-    </BlogPostLayout>
+      </BlogPostLayout>
+    </>
   );
 }

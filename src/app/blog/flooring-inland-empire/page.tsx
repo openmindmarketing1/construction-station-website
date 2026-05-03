@@ -1,9 +1,12 @@
 import type { Metadata } from "next";
 import BlogPostLayout from "@/components/BlogPostLayout";
+import JsonLd from "@/components/JsonLd";
 import { POSTS } from "@/lib/blog";
 
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://constructionstation.com";
+
 export const metadata: Metadata = {
-  title: "Looking for Flooring in the Inland Empire? 10 Things to Know",
+  title: { absolute: "Flooring Guide for the Inland Empire | Construction Station" },
   description:
     "Shopping for new flooring can feel overwhelming. Here's your insider guide to choosing the right material, installer, and budget for your Inland Empire home.",
   alternates: { canonical: "/blog/flooring-inland-empire" },
@@ -13,6 +16,24 @@ const post = POSTS.find((p) => p.slug === "flooring-inland-empire")!;
 const related = POSTS.filter((p) =>
   ["flooring-tips-inland-empire", "flooring-trends-2025", "choosing-best-home-improvement-company"].includes(p.slug)
 );
+
+const blogSchema = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  headline: post.title,
+  description: post.excerpt,
+  datePublished: post.date,
+  dateModified: post.date,
+  image: `${SITE_URL}${post.image}`,
+  url: `${SITE_URL}/blog/${post.slug}`,
+  author: { "@type": "Organization", name: "Construction Station", url: SITE_URL },
+  publisher: {
+    "@type": "Organization",
+    name: "Construction Station",
+    url: SITE_URL,
+    logo: { "@type": "ImageObject", url: `${SITE_URL}/images/logo/cs-logo.png` },
+  },
+};
 
 function FlooringNote() {
   return (
@@ -36,7 +57,9 @@ function FlooringNote() {
 
 export default function Page() {
   return (
-    <BlogPostLayout post={post} related={related}>
+    <>
+      <JsonLd data={blogSchema} />
+      <BlogPostLayout post={post} related={related}>
       <p className="text-navy/80 text-lg leading-[1.8] mb-6">
         Shopping for new flooring can feel overwhelming — but it doesn&rsquo;t have to be. The floors
         beneath your feet set the tone for every room, affect your home&rsquo;s value, and need to
@@ -139,6 +162,7 @@ export default function Page() {
       </ul>
 
       <FlooringNote />
-    </BlogPostLayout>
+      </BlogPostLayout>
+    </>
   );
 }

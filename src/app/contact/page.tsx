@@ -24,6 +24,7 @@ export default function ContactPage() {
     address: "",
     service_requested: "",
     notes: "",
+    honeypot: "",
   });
 
   function update<K extends keyof typeof form>(k: K, v: string) {
@@ -36,10 +37,14 @@ export default function ContactPage() {
       setError("Name and phone are required.");
       return;
     }
+    if (form.honeypot) {
+      setSubmitted(true);
+      return;
+    }
     setSubmitting(true);
     setError(null);
     try {
-      await fetch(CS.leadsApiUrl, {
+      const res = await fetch(CS.leadsApiUrl, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -54,6 +59,7 @@ export default function ContactPage() {
           images: imageUrls,
         }),
       });
+      if (!res.ok) throw new Error(`Request failed: ${res.status}`);
       setSubmitted(true);
     } catch {
       setError(
@@ -119,6 +125,7 @@ export default function ContactPage() {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                       <Field
                         label="Full Name"
+                        id="full_name"
                         required
                         value={form.full_name}
                         onChange={(v) => update("full_name", v)}
@@ -126,6 +133,7 @@ export default function ContactPage() {
                       />
                       <Field
                         label="Phone"
+                        id="phone"
                         required
                         type="tel"
                         value={form.phone}
@@ -134,6 +142,7 @@ export default function ContactPage() {
                       />
                       <Field
                         label="Email"
+                        id="email"
                         type="email"
                         value={form.email}
                         onChange={(v) => update("email", v)}
@@ -141,6 +150,7 @@ export default function ContactPage() {
                       />
                       <Field
                         label="Address"
+                        id="address"
                         value={form.address}
                         onChange={(v) => update("address", v)}
                         placeholder="City or full address"
@@ -186,6 +196,18 @@ export default function ContactPage() {
                       </label>
                       <ImageUpload onChange={setImageUrls} />
                     </div>
+
+                    {/* Honeypot — hidden from humans, traps bots */}
+                    <input
+                      type="text"
+                      name="website"
+                      tabIndex={-1}
+                      autoComplete="off"
+                      value={form.honeypot}
+                      onChange={(e) => update("honeypot", e.target.value)}
+                      className="sr-only"
+                      aria-hidden="true"
+                    />
 
                     {error && (
                       <div className="bg-red-50 border border-red-300 text-red-800 px-4 py-3 text-sm">
@@ -343,6 +365,7 @@ export default function ContactPage() {
 
 function Field({
   label,
+  id,
   value,
   onChange,
   type = "text",
@@ -350,6 +373,7 @@ function Field({
   placeholder,
 }: {
   label: string;
+  id: string;
   value: string;
   onChange: (v: string) => void;
   type?: string;
@@ -358,10 +382,11 @@ function Field({
 }) {
   return (
     <div>
-      <label className="block text-xs uppercase tracking-wider text-navy/70 mb-2">
+      <label htmlFor={id} className="block text-xs uppercase tracking-wider text-navy/70 mb-2">
         {label} {required && <span className="text-gold">*</span>}
       </label>
       <input
+        id={id}
         type={type}
         required={required}
         value={value}

@@ -66,7 +66,7 @@ export default function Footer() {
               Services
             </div>
             <ul className="space-y-3 mt-8">
-              {SERVICES.map((s) => (
+              {SERVICES.filter((s) => s.hasPage).map((s) => (
                 <li key={s.slug}>
                   <Link
                     href={`/services/${s.slug}`}

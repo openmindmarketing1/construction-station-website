@@ -1,9 +1,12 @@
 import type { Metadata } from "next";
 import BlogPostLayout from "@/components/BlogPostLayout";
+import JsonLd from "@/components/JsonLd";
 import { POSTS } from "@/lib/blog";
 
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://constructionstation.com";
+
 export const metadata: Metadata = {
-  title: "Inland Empire Kitchen Remodel: Costs, Value & Smart Saves",
+  title: { absolute: "Inland Empire Kitchen Remodel Costs | Construction Station" },
   description:
     "Kitchen remodels in the Inland Empire range from $20,000 to $120,000+. Learn what drives costs, what adds the most value, and where to save without sacrificing quality.",
   alternates: { canonical: "/blog/inland-empire-kitchen-remodel-costs" },
@@ -14,9 +17,29 @@ const related = POSTS.filter((p) =>
   ["small-bathroom-remodel-mistakes", "bathroom-remodeling-ideas-2026", "choosing-best-home-improvement-company"].includes(p.slug)
 );
 
+const blogSchema = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  headline: post.title,
+  description: post.excerpt,
+  datePublished: post.date,
+  dateModified: post.date,
+  image: `${SITE_URL}${post.image}`,
+  url: `${SITE_URL}/blog/${post.slug}`,
+  author: { "@type": "Organization", name: "Construction Station", url: SITE_URL },
+  publisher: {
+    "@type": "Organization",
+    name: "Construction Station",
+    url: SITE_URL,
+    logo: { "@type": "ImageObject", url: `${SITE_URL}/images/logo/cs-logo.png` },
+  },
+};
+
 export default function Page() {
   return (
-    <BlogPostLayout post={post} related={related}>
+    <>
+      <JsonLd data={blogSchema} />
+      <BlogPostLayout post={post} related={related}>
       <p className="text-navy/80 text-lg leading-[1.8] mb-6">
         The kitchen is where mornings start with coffee, kids do homework at the counter, and friends
         always seem to gather for taco night. The good news is a kitchen remodel in the Inland Empire
@@ -143,6 +166,7 @@ export default function Page() {
         <li>Expert installation by local professionals who take pride in their work</li>
         <li>Honest, no-pressure guidance from a team that genuinely cares about your home</li>
       </ul>
-    </BlogPostLayout>
+      </BlogPostLayout>
+    </>
   );
 }

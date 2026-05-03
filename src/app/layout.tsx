@@ -49,12 +49,14 @@ export const metadata: Metadata = {
     title: "Construction Station | Residential & Commercial Construction in the Inland Empire",
     description:
       "Licensed kitchen, bath, and home renovation contractor serving the Inland Empire since 2008. Free design session — book your consultation today.",
+    images: [{ url: `${SITE_URL}/og.jpg`, width: 1200, height: 630, alt: "Construction Station — Inland Empire Contractor" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Construction Station | Residential & Commercial Construction",
     description:
       "Award-winning kitchen and bathroom remodeling in the Inland Empire. Licensed, bonded, insured.",
+    images: [`${SITE_URL}/og.jpg`],
   },
   robots: { index: true, follow: true },
 };

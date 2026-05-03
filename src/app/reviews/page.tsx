@@ -1,12 +1,11 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import JsonLd from "@/components/JsonLd";
 import TrustBar from "@/components/TrustBar";
 import CtaSection from "@/components/CtaSection";
 import { CS } from "@/lib/constants";
 
 export const metadata: Metadata = {
-  title: "Customer Reviews | Construction Station",
+  title: "Customer Reviews",
   description:
     "See what Inland Empire homeowners say about Construction Station. 5.0 stars on Google. Licensed contractor serving Redlands, Yucaipa, Riverside, and surrounding cities since 2008.",
   alternates: { canonical: "/reviews" },

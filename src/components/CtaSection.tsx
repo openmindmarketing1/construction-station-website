@@ -28,7 +28,7 @@ export default function CtaSection({
     setSubmitting(true);
     setError(null);
     try {
-      await fetch(CS.leadsApiUrl, {
+      const res = await fetch(CS.leadsApiUrl, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -38,6 +38,7 @@ export default function CtaSection({
           source: "homepage_cta",
         }),
       });
+      if (!res.ok) throw new Error(`Request failed: ${res.status}`);
       setSubmitted(true);
     } catch {
       setError("Something went wrong. Please call us at " + CS.phone);
@@ -119,10 +120,11 @@ export default function CtaSection({
                 {!submitted ? (
                   <form onSubmit={onSubmit} className="space-y-4">
                     <div>
-                      <label className="block text-xs uppercase tracking-wider text-navy/70 mb-2">
+                      <label htmlFor="cta-name" className="block text-xs uppercase tracking-wider text-navy/70 mb-2">
                         Full Name
                       </label>
                       <input
+                        id="cta-name"
                         required
                         value={name}
                         onChange={(e) => setName(e.target.value)}
@@ -131,10 +133,11 @@ export default function CtaSection({
                       />
                     </div>
                     <div>
-                      <label className="block text-xs uppercase tracking-wider text-navy/70 mb-2">
+                      <label htmlFor="cta-phone" className="block text-xs uppercase tracking-wider text-navy/70 mb-2">
                         Phone
                       </label>
                       <input
+                        id="cta-phone"
                         required
                         type="tel"
                         value={phone}

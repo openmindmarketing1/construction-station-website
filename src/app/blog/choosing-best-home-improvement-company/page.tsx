@@ -1,9 +1,12 @@
 import type { Metadata } from "next";
 import BlogPostLayout from "@/components/BlogPostLayout";
+import JsonLd from "@/components/JsonLd";
 import { POSTS } from "@/lib/blog";
 
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://constructionstation.com";
+
 export const metadata: Metadata = {
-  title: "Top 5 Tips for Choosing the Best Home Improvement Company",
+  title: { absolute: "Choosing a Home Improvement Company | Construction Station" },
   description:
     "The right contractor makes all the difference. Learn how to vet licenses, read reviews, compare estimates, and choose a home improvement company you can actually trust in the Inland Empire.",
   alternates: { canonical: "/blog/choosing-best-home-improvement-company" },
@@ -14,9 +17,29 @@ const related = POSTS.filter((p) =>
   ["inland-empire-kitchen-remodel-costs", "small-bathroom-remodel-mistakes", "flooring-tips-inland-empire"].includes(p.slug)
 );
 
+const blogSchema = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  headline: post.title,
+  description: post.excerpt,
+  datePublished: post.date,
+  dateModified: post.date,
+  image: `${SITE_URL}${post.image}`,
+  url: `${SITE_URL}/blog/${post.slug}`,
+  author: { "@type": "Organization", name: "Construction Station", url: SITE_URL },
+  publisher: {
+    "@type": "Organization",
+    name: "Construction Station",
+    url: SITE_URL,
+    logo: { "@type": "ImageObject", url: `${SITE_URL}/images/logo/cs-logo.png` },
+  },
+};
+
 export default function Page() {
   return (
-    <BlogPostLayout post={post} related={related}>
+    <>
+      <JsonLd data={blogSchema} />
+      <BlogPostLayout post={post} related={related}>
       <p className="text-navy/80 text-lg leading-[1.8] mb-6">
         When it comes to home improvement, the right contractor can make all the difference. Whether
         you&rsquo;re installing new flooring, remodeling your kitchen or bathroom, or adding a patio
@@ -122,6 +145,7 @@ export default function Page() {
         <li>Furniture moving &amp; removal included</li>
         <li>Post-installation follow-ups</li>
       </ul>
-    </BlogPostLayout>
+      </BlogPostLayout>
+    </>
   );
 }

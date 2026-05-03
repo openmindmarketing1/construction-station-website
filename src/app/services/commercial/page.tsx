@@ -83,6 +83,16 @@ const FAQS = [
   },
 ];
 
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: FAQS.map((faq) => ({
+    "@type": "Question",
+    name: faq.q,
+    acceptedAnswer: { "@type": "Answer", text: faq.a },
+  })),
+};
+
 const COMMERCIAL_PHOTOS = [
   "/images/services/commercial/commercial-01.jpg",
   "/images/services/commercial/commercial-02.jpg",
@@ -120,6 +130,7 @@ export default function CommercialPage() {
   return (
     <>
       <JsonLd data={serviceSchema} />
+      <JsonLd data={faqSchema} />
 
       <ServiceHero
         eyebrow="Service · Commercial"
@@ -568,7 +579,7 @@ export default function CommercialPage() {
                 desc: "Walk-in showers, soaking tubs, heated floors",
               },
               {
-                href: "/services/adus",
+                href: "/contact",
                 name: "ADUs",
                 desc: "Turnkey accessory dwelling units",
               },

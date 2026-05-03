@@ -24,7 +24,7 @@ export default function Header() {
   }, [open]);
 
   const isLight = scrolled;
-  const residential = SERVICES.filter((s) => s.category === "residential");
+  const residential = SERVICES.filter((s) => s.category === "residential" && s.hasPage);
 
   return (
     <>

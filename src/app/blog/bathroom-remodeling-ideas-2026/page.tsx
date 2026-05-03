@@ -3,8 +3,10 @@ import BlogPostLayout from "@/components/BlogPostLayout";
 import JsonLd from "@/components/JsonLd";
 import { POSTS } from "@/lib/blog";
 
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://constructionstation.com";
+
 export const metadata: Metadata = {
-  title: "Bathroom Remodeling Ideas for Inland Empire Homeowners 2026",
+  title: { absolute: "Bathroom Remodel Ideas 2026 | Construction Station" },
   description:
     "Walk-in showers, statement vanities, heated floors, and spa-inspired suites — the top bathroom trends Inland Empire homeowners are embracing in 2026, plus cost ranges and a full FAQ.",
   alternates: { canonical: "/blog/bathroom-remodeling-ideas-2026" },
@@ -14,6 +16,24 @@ const post = POSTS.find((p) => p.slug === "bathroom-remodeling-ideas-2026")!;
 const related = POSTS.filter((p) =>
   ["small-bathroom-remodel-mistakes", "inland-empire-kitchen-remodel-costs", "flooring-tips-inland-empire"].includes(p.slug)
 );
+
+const blogSchema = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  headline: post.title,
+  description: post.excerpt,
+  datePublished: post.date,
+  dateModified: post.date,
+  image: `${SITE_URL}${post.image}`,
+  url: `${SITE_URL}/blog/${post.slug}`,
+  author: { "@type": "Organization", name: "Construction Station", url: SITE_URL },
+  publisher: {
+    "@type": "Organization",
+    name: "Construction Station",
+    url: SITE_URL,
+    logo: { "@type": "ImageObject", url: `${SITE_URL}/images/logo/cs-logo.png` },
+  },
+};
 
 const faqSchema = {
   "@context": "https://schema.org",
@@ -40,7 +60,7 @@ const faqSchema = {
       name: "What flooring brands does Construction Station carry?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "We carry Anderson Tuftex, Shaw Floors, Mannington, Mohawk, American Olean, Armstrong Flooring, Bruce Flooring, and more. Visit our Yucaipa showroom to see samples in person.",
+        text: "We carry Anderson Tuftex, Shaw Floors, Mannington, Mohawk, American Olean, Armstrong Flooring, Bruce Flooring, and more. Visit Carpet Station, our sister company at carpet-station.com, for flooring samples.",
       },
     },
     {
@@ -65,6 +85,7 @@ const faqSchema = {
 export default function Page() {
   return (
     <>
+      <JsonLd data={blogSchema} />
       <JsonLd data={faqSchema} />
       <BlogPostLayout post={post} related={related}>
         <p className="text-navy/80 text-lg leading-[1.8] mb-6">
@@ -201,7 +222,7 @@ export default function Page() {
             },
             {
               q: "What flooring brands does Construction Station carry?",
-              a: "We carry Anderson Tuftex, Shaw Floors, Mannington, Mohawk, American Olean, Armstrong Flooring, Bruce Flooring, and more. Visit our Yucaipa showroom to see samples in person.",
+              a: "We carry Anderson Tuftex, Shaw Floors, Mannington, Mohawk, American Olean, Armstrong Flooring, Bruce Flooring, and more. Visit Carpet Station, our sister company at carpet-station.com, for flooring samples.",
             },
             {
               q: "Can you remodel a bathroom without moving the plumbing?",

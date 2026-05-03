@@ -1,13 +1,11 @@
 import type { Metadata } from "next";
 import Script from "next/script";
-import Link from "next/link";
-import { motion } from "framer-motion";
 import { CS } from "@/lib/constants";
 import JsonLd from "@/components/JsonLd";
 import TrustBar from "@/components/TrustBar";
 
 export const metadata: Metadata = {
-  title: "Financing | Construction Station",
+  title: "Home Improvement Financing",
   description:
     "Flexible financing for your kitchen, bathroom, or home renovation project. Apply in minutes with multiple lender options from $1,000 to $100,000+. Serving the Inland Empire since 2008.",
   alternates: { canonical: "/financing" },
@@ -205,7 +203,7 @@ export default function FinancingPage() {
             </h2>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {SELLING_POINTS.map((pt, i) => (
+            {SELLING_POINTS.map((pt) => (
               <div
                 key={pt.title}
                 className="border border-navy/10 p-8 hover:border-gold transition-colors group"

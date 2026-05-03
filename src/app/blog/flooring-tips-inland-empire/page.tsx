@@ -1,9 +1,12 @@
 import type { Metadata } from "next";
 import BlogPostLayout from "@/components/BlogPostLayout";
+import JsonLd from "@/components/JsonLd";
 import { POSTS } from "@/lib/blog";
 
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://constructionstation.com";
+
 export const metadata: Metadata = {
-  title: "10 Flooring Tips for Inland Empire Homeowners in 2026",
+  title: { absolute: "Flooring Tips for Inland Empire Homes | Construction Station" },
   description:
     "Our climate, lifestyle, and water quality all affect which flooring performs long-term. The 10 most important things to know before investing in new floors in the Inland Empire.",
   alternates: { canonical: "/blog/flooring-tips-inland-empire" },
@@ -13,6 +16,24 @@ const post = POSTS.find((p) => p.slug === "flooring-tips-inland-empire")!;
 const related = POSTS.filter((p) =>
   ["flooring-inland-empire", "flooring-trends-2025", "choosing-best-home-improvement-company"].includes(p.slug)
 );
+
+const blogSchema = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  headline: post.title,
+  description: post.excerpt,
+  datePublished: post.date,
+  dateModified: post.date,
+  image: `${SITE_URL}${post.image}`,
+  url: `${SITE_URL}/blog/${post.slug}`,
+  author: { "@type": "Organization", name: "Construction Station", url: SITE_URL },
+  publisher: {
+    "@type": "Organization",
+    name: "Construction Station",
+    url: SITE_URL,
+    logo: { "@type": "ImageObject", url: `${SITE_URL}/images/logo/cs-logo.png` },
+  },
+};
 
 function FlooringNote() {
   return (
@@ -36,7 +57,9 @@ function FlooringNote() {
 
 export default function Page() {
   return (
-    <BlogPostLayout post={post} related={related}>
+    <>
+      <JsonLd data={blogSchema} />
+      <BlogPostLayout post={post} related={related}>
       <p className="text-navy/80 text-lg leading-[1.8] mb-6">
         New floors can completely transform your living space, but only if you make the right choices
         from the start. At Construction Station, we&rsquo;ve helped Inland Empire homeowners create
@@ -173,6 +196,7 @@ export default function Page() {
       </ol>
 
       <FlooringNote />
-    </BlogPostLayout>
+      </BlogPostLayout>
+    </>
   );
 }

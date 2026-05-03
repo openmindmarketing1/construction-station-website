@@ -1,9 +1,12 @@
 import type { Metadata } from "next";
 import BlogPostLayout from "@/components/BlogPostLayout";
+import JsonLd from "@/components/JsonLd";
 import { POSTS } from "@/lib/blog";
 
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://constructionstation.com";
+
 export const metadata: Metadata = {
-  title: "Elevate Your Yucaipa Home — Flooring Trend Ideas for 2025",
+  title: { absolute: "2025 Flooring Trends | Inland Empire | Construction Station" },
   description:
     "Statement patterns, earthy tones, eco-friendly materials, and smart heated floors — discover the 2025 flooring trends transforming Inland Empire homes.",
   alternates: { canonical: "/blog/flooring-trends-2025" },
@@ -13,6 +16,24 @@ const post = POSTS.find((p) => p.slug === "flooring-trends-2025")!;
 const related = POSTS.filter((p) =>
   ["flooring-tips-inland-empire", "flooring-inland-empire", "covered-patio-ideas"].includes(p.slug)
 );
+
+const blogSchema = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  headline: post.title,
+  description: post.excerpt,
+  datePublished: post.date,
+  dateModified: post.date,
+  image: `${SITE_URL}${post.image}`,
+  url: `${SITE_URL}/blog/${post.slug}`,
+  author: { "@type": "Organization", name: "Construction Station", url: SITE_URL },
+  publisher: {
+    "@type": "Organization",
+    name: "Construction Station",
+    url: SITE_URL,
+    logo: { "@type": "ImageObject", url: `${SITE_URL}/images/logo/cs-logo.png` },
+  },
+};
 
 function FlooringNote() {
   return (
@@ -36,7 +57,9 @@ function FlooringNote() {
 
 export default function Page() {
   return (
-    <BlogPostLayout post={post} related={related}>
+    <>
+      <JsonLd data={blogSchema} />
+      <BlogPostLayout post={post} related={related}>
       <p className="text-navy/80 text-lg leading-[1.8] mb-6">
         As we step into 2025, homeowners in Yucaipa are looking for ways to refresh their living
         spaces with stylish, functional, and eco-friendly flooring options. While 2024 saw a surge in
@@ -126,6 +149,7 @@ export default function Page() {
       </ul>
 
       <FlooringNote />
-    </BlogPostLayout>
+      </BlogPostLayout>
+    </>
   );
 }
