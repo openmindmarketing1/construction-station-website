@@ -28,4 +28,7 @@ export const CITIES: City[] = [
   { name: "Colton", state: "CA", slug: "colton", county: "San Bernardino", description: "Reliable remodeling contractor in Colton", population: "54,000" },
   { name: "Moreno Valley", state: "CA", slug: "moreno-valley", county: "Riverside", description: "Affordable quality remodeling in Moreno Valley", population: "210,000" },
   { name: "Corona", state: "CA", slug: "corona", county: "Riverside", description: "Award-winning kitchen remodels in Corona, CA", population: "168,000" },
+  { name: "Beaumont", state: "CA", slug: "beaumont", county: "Riverside", description: "Home remodeling and construction in Beaumont", population: "55,000" },
+  { name: "Calimesa", state: "CA", slug: "calimesa", county: "Riverside", description: "Kitchen, bath, and home renovation in Calimesa", population: "13,000" },
+  { name: "Banning", state: "CA", slug: "banning", county: "Riverside", description: "Trusted remodeling contractor in Banning, CA", population: "32,000" },
 ];

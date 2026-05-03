@@ -57,8 +57,8 @@ export default function ReviewsSection() {
             <div className="flex flex-col">
               <Stars />
               <div className="text-white/70 text-sm mt-2">
-                <span className="text-gold font-display text-2xl">4.9</span>
-                <span className="ml-2">avg · 127 Google Reviews</span>
+                <span className="text-gold font-display text-2xl">5.0</span>
+                <span className="ml-2">avg · 17 Google Reviews</span>
               </div>
             </div>
             <div className="hidden md:flex items-center gap-2 bg-white/5 border border-white/10 px-4 py-2">

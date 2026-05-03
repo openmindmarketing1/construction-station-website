@@ -3,7 +3,6 @@ import TrustBar from "@/components/TrustBar";
 import ServicesGrid from "@/components/ServicesGrid";
 import BeforeAfterSlider from "@/components/BeforeAfterSlider";
 import WhyChooseUs from "@/components/WhyChooseUs";
-import ReviewsSection from "@/components/ReviewsSection";
 import ServiceAreaSection from "@/components/ServiceAreaSection";
 import CtaSection from "@/components/CtaSection";
 import JsonLd from "@/components/JsonLd";
@@ -48,8 +47,8 @@ export default function Home() {
     ),
     aggregateRating: {
       "@type": "AggregateRating",
-      ratingValue: "4.9",
-      reviewCount: "127",
+      ratingValue: "5.0",
+      reviewCount: "17",
     },
     sameAs: [],
     foundingDate: String(CS.founded),
@@ -64,7 +63,6 @@ export default function Home() {
       <ServicesGrid />
       <BeforeAfterSlider />
       <WhyChooseUs />
-      <ReviewsSection />
       <ServiceAreaSection />
       <CtaSection
         heading="Ready to transform your home?"

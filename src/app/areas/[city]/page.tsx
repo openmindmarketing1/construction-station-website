@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import ServiceHero from "@/components/ServiceHero";
-import ReviewsSection from "@/components/ReviewsSection";
 import CtaSection from "@/components/CtaSection";
 import TrustBar from "@/components/TrustBar";
 import JsonLd from "@/components/JsonLd";
@@ -58,8 +57,8 @@ export default function CityPage({ params }: { params: { city: string } }) {
     },
     aggregateRating: {
       "@type": "AggregateRating",
-      ratingValue: "4.9",
-      reviewCount: "127",
+      ratingValue: "5.0",
+      reviewCount: "17",
     },
     identifier: CS.license,
     foundingDate: String(CS.founded),
@@ -152,8 +151,6 @@ export default function CityPage({ params }: { params: { city: string } }) {
           </div>
         </div>
       </section>
-
-      <ReviewsSection />
 
       <CtaSection
         heading={`Build something great in ${city.name}.`}

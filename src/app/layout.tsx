@@ -46,13 +46,13 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: SITE_URL,
     siteName: "Construction Station",
-    title: "Construction Station | Premium Remodeling in the Inland Empire",
+    title: "Construction Station | Residential & Commercial Construction in the Inland Empire",
     description:
       "Licensed kitchen, bath, and home renovation contractor serving the Inland Empire since 2008. Free design session — book your consultation today.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Construction Station | Premium Remodeling",
+    title: "Construction Station | Residential & Commercial Construction",
     description:
       "Award-winning kitchen and bathroom remodeling in the Inland Empire. Licensed, bonded, insured.",
   },

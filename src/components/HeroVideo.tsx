@@ -47,16 +47,6 @@ export default function HeroVideo() {
         </div>
       </div>
 
-      {/* Editorial vertical caption left */}
-      <div className="hidden lg:block absolute left-10 top-1/2 -translate-y-1/2 z-10">
-        <div
-          className="text-white/40 text-[11px] tracking-[0.5em] uppercase"
-          style={{ writingMode: "vertical-rl", transform: "rotate(180deg)" }}
-        >
-          Volume One — Issue 18 — Craft &amp; Renovation
-        </div>
-      </div>
-
       {/* Content */}
       <div className="relative z-10 h-full flex items-center">
         <div className="max-w-7xl mx-auto px-6 lg:px-10 w-full pt-20">
@@ -139,7 +129,7 @@ export default function HeroVideo() {
                     </svg>
                   ))}
                 </div>
-                <span>4.9 / 5 — 127 Google Reviews</span>
+                <span>5.0 / 5 — 17 Google Reviews</span>
               </div>
             </motion.div>
           </div>
