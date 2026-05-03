@@ -5,9 +5,15 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { PROJECTS } from "@/lib/constants";
 
+const BEFORE_IMAGES = [
+  "/images/before-after/kitchen-before.jpg",
+  "/images/before-after/bathroom-before.jpg",
+  null,
+];
+
 const AFTER_IMAGES = [
-  "/images/services/kitchen/kitchen-02.jpg",
-  "/images/services/bathroom/bathroom-01.jpg",
+  "/images/before-after/kitchen-after.jpg",
+  "/images/before-after/bathroom-after.jpg",
   "/images/services/room-additions/room-addition-01.jpg",
 ];
 
@@ -55,6 +61,7 @@ function Slider({
     };
   }, [dragging]);
 
+  const beforeImage = BEFORE_IMAGES[index];
   const afterImage = AFTER_IMAGES[index];
 
   return (
@@ -123,28 +130,34 @@ function Slider({
           </div>
         </div>
 
-        {/* BEFORE (front layer, clipped) — desaturated cool tones */}
+        {/* BEFORE (front layer, clipped) */}
         <div
           className="absolute inset-0"
-          style={{
-            clipPath: `inset(0 ${100 - pos}% 0 0)`,
-            background:
-              "linear-gradient(135deg, #2a3144 0%, #4a5060 50%, #6b7080 100%)",
-          }}
+          style={{ clipPath: `inset(0 ${100 - pos}% 0 0)` }}
         >
-          <div
-            className="absolute inset-0 opacity-30"
-            style={{
-              backgroundImage:
-                "repeating-linear-gradient(45deg, rgba(0,0,0,0.2) 0 1px, transparent 1px 6px)",
-            }}
-          />
-          <div className="absolute inset-0 flex items-end p-6 md:p-8">
+          {beforeImage ? (
+            <Image
+              src={beforeImage}
+              alt={`${project.title} — before`}
+              fill
+              className="object-cover grayscale"
+              sizes="(max-width: 1280px) 100vw, 1280px"
+            />
+          ) : (
+            <div
+              style={{
+                background:
+                  "linear-gradient(135deg, #2a3144 0%, #4a5060 50%, #6b7080 100%)",
+              }}
+              className="absolute inset-0"
+            />
+          )}
+          <div className="absolute inset-0 flex items-end p-6 md:p-8 bg-gradient-to-t from-navy-dark/60 to-transparent">
             <div>
               <div className="text-white/70 text-xs tracking-[0.4em] uppercase mb-1">
                 Before
               </div>
-              <div className="font-display text-white text-3xl md:text-4xl">
+              <div className="font-display text-white text-3xl md:text-4xl drop-shadow-lg">
                 Dated.
               </div>
             </div>
