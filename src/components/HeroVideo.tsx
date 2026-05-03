@@ -33,7 +33,7 @@ export default function HeroVideo() {
         playsInline
         className="absolute inset-0 w-full h-full object-cover"
       >
-        <source src="/video/hero-placeholder.mp4" type="video/mp4" />
+        <source src="/video/hero.mp4" type="video/mp4" />
       </video>
 
       {/* Gradient overlay */}
@@ -145,22 +145,51 @@ export default function HeroVideo() {
         </div>
       </div>
 
-      {/* Scroll indicator */}
-      <motion.div
+      {/* Explore / skip-to-content button */}
+      <motion.button
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.4, duration: 0.8 }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2"
+        onClick={() =>
+          document
+            .getElementById("content")
+            ?.scrollIntoView({ behavior: "smooth" })
+        }
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 group cursor-pointer bg-transparent border-0 p-0"
+        aria-label="Skip to content"
       >
-        <div className="text-white/60 text-[10px] tracking-[0.4em] uppercase">
-          Scroll
-        </div>
         <motion.div
           animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 1.6, repeat: Infinity }}
-          className="w-px h-10 bg-gradient-to-b from-gold to-transparent"
-        />
-      </motion.div>
+          transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
+          className="flex flex-col items-center gap-1"
+        >
+          <svg
+            className="w-6 h-6 text-gold/80 group-hover:text-gold transition-colors"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <polyline points="6 9 12 15 18 9" />
+          </svg>
+          <svg
+            className="w-6 h-6 text-gold/40 group-hover:text-gold/70 transition-colors -mt-2"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <polyline points="6 9 12 15 18 9" />
+          </svg>
+        </motion.div>
+        <div className="text-white/60 group-hover:text-white/90 text-[10px] tracking-[0.4em] uppercase transition-colors">
+          Explore
+        </div>
+      </motion.button>
     </section>
   );
 }

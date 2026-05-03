@@ -41,7 +41,7 @@ export default function Header() {
                 alt="Construction Station"
                 width={220}
                 height={60}
-                className={`w-44 sm:w-48 h-auto transition-all duration-300 ${
+                className={`w-[120px] sm:w-[180px] h-auto transition-all duration-300 ${
                   isLight ? "" : "brightness-0 invert"
                 }`}
                 priority
@@ -204,7 +204,7 @@ export default function Header() {
                   alt="Construction Station"
                   width={220}
                   height={60}
-                  className="w-44 sm:w-48 h-auto brightness-0 invert"
+                  className="w-[120px] sm:w-[180px] h-auto brightness-0 invert"
                   priority
                 />
               </Link>

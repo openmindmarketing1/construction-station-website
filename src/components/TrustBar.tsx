@@ -10,6 +10,7 @@ export default function TrustBar() {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 0.6 }}
+      id="content"
       className="bg-navy texture-navy py-8 md:py-10"
     >
       <div className="max-w-7xl mx-auto px-5 lg:px-10">
