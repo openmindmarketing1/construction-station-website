@@ -154,7 +154,7 @@ export const REVIEWS = [
 
 export const TRUST_STATS = [
   { value: "18", label: "Years Experience" },
-  { value: "500+", label: "Projects Completed" },
+  { value: "Hundreds", label: "Projects Completed" },
   { value: "5★", label: "Average Rating" },
   { value: "#1108879", label: "Licensed" },
   { value: "A+", label: "BBB Rated" },
