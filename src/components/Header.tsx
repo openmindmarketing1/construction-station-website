@@ -158,6 +158,14 @@ export default function Header() {
                 About
               </Link>
               <Link
+                href="/reviews"
+                className={`font-body text-sm tracking-wide ${
+                  isLight ? "text-navy" : "text-white"
+                } hover:text-gold transition-colors`}
+              >
+                Reviews
+              </Link>
+              <Link
                 href="/financing"
                 className={`font-body text-sm tracking-wide ${
                   isLight ? "text-navy" : "text-white"
@@ -384,6 +392,7 @@ export default function Header() {
                 Explore
               </motion.div>
               {[
+                { href: "/reviews", label: "Reviews" },
                 { href: "/financing", label: "Financing" },
                 { href: "/blog", label: "Blog & Guides" },
                 { href: "/contact", label: "Contact Us" },

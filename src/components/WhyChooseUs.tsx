@@ -18,8 +18,8 @@ const ITEMS = [
   {
     n: "03",
     title: "Licensed & Insured",
-    body: "California State License #1108879. Bonded, fully insured, and BBB A+ accredited. We pull every permit, follow every code, and stand behind every weld and seam.",
-    pull: "BBB A+ · License #1108879",
+    body: "California State License #1108879. Bonded and fully insured. We pull every permit, follow every code, and stand behind every weld and seam.",
+    pull: "Licensed & Insured · #1108879",
   },
   {
     n: "04",

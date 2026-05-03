@@ -282,7 +282,7 @@ export default function ContactPage() {
                     <div className="text-gold text-xs uppercase tracking-wider mb-1">
                       BBB
                     </div>
-                    <div className="text-white">{CS.bbb} Accredited</div>
+                    <div className="text-white">Listed</div>
                   </div>
                 </div>
               </div>

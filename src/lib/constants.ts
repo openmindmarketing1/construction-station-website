@@ -3,11 +3,11 @@ export const CS = {
   tagline: "Building Dreams Across the Inland Empire",
   phone: "909-797-6333",
   phoneHref: "tel:9097976333",
-  email: "info@constructionstation.com",
+  email: "sales@constructionstation.com",
   address: "Inland Empire, CA",
   license: "#1108879",
   founded: 2008,
-  bbb: "A+",
+  bbb: "Listed",
   pixel: "1236703801875418",
   supabaseUrl: process.env.NEXT_PUBLIC_SUPABASE_URL ?? "",
   supabaseAnonKey: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ?? "",
@@ -157,7 +157,7 @@ export const TRUST_STATS = [
   { value: "Hundreds", label: "Projects Completed" },
   { value: "5★", label: "Average Rating" },
   { value: "#1108879", label: "Licensed" },
-  { value: "A+", label: "BBB Rated" },
+  { value: "BBB", label: "Listed" },
   { value: "0%", label: "Financing Available" },
 ];
 
