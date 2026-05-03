@@ -69,7 +69,7 @@ export default function HeroVideo() {
             >
               <span className="w-10 h-px bg-gold" />
               <span className="text-gold text-xs uppercase tracking-[0.4em]">
-                Premium Remodeling
+                Residential &amp; Commercial Construction
               </span>
             </motion.div>
 
@@ -92,8 +92,8 @@ export default function HeroVideo() {
               transition={{ duration: 0.7, delay: 0.45 }}
               className="text-gold/90 font-body text-base md:text-lg tracking-wide mb-10 max-w-xl"
             >
-              Since 2008 · Licensed #{CS.license.replace("#", "")} · 5-Star
-              Rated · 500+ Projects Delivered.
+              Serving Inland Empire Homeowners &amp; Businesses Since 2008 ·
+              Licensed {CS.license} · 5-Star Rated · 500+ Projects Delivered.
             </motion.p>
 
             <motion.div

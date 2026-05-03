@@ -22,10 +22,13 @@ export default function Footer() {
                 className="h-10 w-auto brightness-0 invert"
               />
             </div>
+            <p className="text-white/50 text-[11px] uppercase tracking-[0.25em] mb-2">
+              Residential &amp; Commercial Construction
+            </p>
             <p className="text-white/70 text-sm leading-relaxed mb-6">
-              Premium kitchen, bathroom, and home renovation in the Inland
-              Empire since {CS.founded}. Family-run craftsmanship, no
-              subcontracted shortcuts.
+              Full-service residential and commercial construction across the
+              Inland Empire since {CS.founded}. Licensed {CS.license} ·
+              Family-run craftsmanship, no subcontracted shortcuts.
             </p>
             <div className="flex gap-3">
               <a

@@ -19,6 +19,7 @@ export const SERVICES = [
   {
     name: "Kitchen Remodeling",
     slug: "kitchen-remodeling",
+    category: "residential" as const,
     icon: "🍳",
     description: "Transform your kitchen into the heart of your home.",
     long: "Custom cabinetry, quartz and granite countertops, expert tile work, and luxury appliance integration.",
@@ -26,6 +27,7 @@ export const SERVICES = [
   {
     name: "Bathroom Remodeling",
     slug: "bathroom-remodeling",
+    category: "residential" as const,
     icon: "🚿",
     description: "Luxurious bathroom renovations for every budget.",
     long: "Walk-in showers, freestanding tubs, heated floors, and master-suite bathrooms designed around you.",
@@ -33,6 +35,7 @@ export const SERVICES = [
   {
     name: "ADUs",
     slug: "adus",
+    category: "residential" as const,
     icon: "🏠",
     description: "Accessory Dwelling Units that add value to your property.",
     long: "Detached and attached ADUs from permits to keys — turnkey backyard homes built to California code.",
@@ -40,6 +43,7 @@ export const SERVICES = [
   {
     name: "Room Additions",
     slug: "room-additions",
+    category: "residential" as const,
     icon: "🏗️",
     description: "Expand your living space with expert room additions.",
     long: "Bedrooms, family rooms, home offices, and second-story additions matched to your existing home.",
@@ -47,6 +51,7 @@ export const SERVICES = [
   {
     name: "Windows & Doors",
     slug: "windows-doors",
+    category: "residential" as const,
     icon: "🪟",
     description: "Energy-efficient windows and doors installed right.",
     long: "Premium dual-pane windows, sliding patio doors, and entry doors that lower bills and boost curb appeal.",
@@ -54,9 +59,51 @@ export const SERVICES = [
   {
     name: "Outdoor Living",
     slug: "outdoor-living",
+    category: "residential" as const,
     icon: "🌿",
     description: "Patios, pergolas, and outdoor kitchens built to impress.",
     long: "Covered patios, pergolas, fire features, and outdoor kitchens that turn yards into year-round retreats.",
+  },
+  {
+    name: "Commercial Construction",
+    slug: "commercial",
+    category: "commercial" as const,
+    icon: "🏢",
+    description: "Tenant improvements, buildouts, and commercial renovations.",
+    long: "Full-service commercial construction for Inland Empire businesses — tenant improvements, office renovations, retail buildouts, and ADA compliance.",
+  },
+];
+
+export const COMMERCIAL_SERVICES = [
+  {
+    name: "Tenant Improvements",
+    anchor: "tenant-improvements",
+    icon: "🏢",
+    description: "Transform leased space into a functional, code-compliant business.",
+  },
+  {
+    name: "Commercial Buildouts",
+    anchor: "buildouts",
+    icon: "🔨",
+    description: "Ground-up commercial interior construction for new spaces.",
+  },
+  {
+    name: "Office Renovations",
+    anchor: "office-renovations",
+    icon: "💼",
+    description: "Modern office upgrades that improve workflow and first impressions.",
+  },
+  {
+    name: "Retail Space Construction",
+    anchor: "retail",
+    icon: "🏪",
+    description: "Custom retail environments designed to drive customer engagement.",
+  },
+  {
+    name: "ADA Compliance",
+    anchor: "ada-compliance",
+    icon: "♿",
+    description: "ADA upgrades and accessibility improvements for commercial properties.",
   },
 ];
 

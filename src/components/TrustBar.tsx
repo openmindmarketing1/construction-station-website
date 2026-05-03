@@ -14,6 +14,9 @@ export default function TrustBar() {
       className="bg-navy texture-navy py-8 md:py-10"
     >
       <div className="max-w-7xl mx-auto px-5 lg:px-10">
+        <div className="text-center mb-4 text-white/40 text-[10px] uppercase tracking-[0.35em]">
+          Residential &amp; Commercial Construction · Inland Empire
+        </div>
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 divide-y md:divide-y-0 md:divide-x divide-white/10">
           {TRUST_STATS.map((s, i) => (
             <motion.div
