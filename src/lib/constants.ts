@@ -76,34 +76,28 @@ export const SERVICES = [
 
 export const COMMERCIAL_SERVICES = [
   {
-    name: "Tenant Improvements",
+    name: "TI Buildouts",
     anchor: "tenant-improvements",
     icon: "🏢",
-    description: "Transform leased space into a functional, code-compliant business.",
+    description: "Tenant improvements for office, medical, retail, and more.",
   },
   {
-    name: "Commercial Buildouts",
-    anchor: "buildouts",
-    icon: "🔨",
-    description: "Ground-up commercial interior construction for new spaces.",
+    name: "Restaurant & Retail",
+    anchor: "restaurant-retail",
+    icon: "🍽️",
+    description: "Restaurant and retail construction from shell to open.",
+  },
+  {
+    name: "Commercial Flooring",
+    anchor: "commercial-flooring",
+    icon: "🪵",
+    description: "Polished concrete, LVT, carpet tile, and epoxy flooring systems.",
   },
   {
     name: "Office Renovations",
     anchor: "office-renovations",
     icon: "💼",
     description: "Modern office upgrades that improve workflow and first impressions.",
-  },
-  {
-    name: "Retail Space Construction",
-    anchor: "retail",
-    icon: "🏪",
-    description: "Custom retail environments designed to drive customer engagement.",
-  },
-  {
-    name: "ADA Compliance",
-    anchor: "ada-compliance",
-    icon: "♿",
-    description: "ADA upgrades and accessibility improvements for commercial properties.",
   },
 ];
 

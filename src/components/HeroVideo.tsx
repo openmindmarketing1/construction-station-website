@@ -92,8 +92,9 @@ export default function HeroVideo() {
               transition={{ duration: 0.7, delay: 0.45 }}
               className="text-gold/90 font-body text-base md:text-lg tracking-wide mb-10 max-w-xl"
             >
-              Serving Inland Empire Homeowners &amp; Businesses Since 2008 ·
-              Licensed {CS.license} · 5-Star Rated · 500+ Projects Delivered.
+              Residential &amp; Commercial Construction Serving the Inland
+              Empire Since 2008 · Licensed {CS.license} · 5-Star Rated ·
+              500+ Projects Delivered.
             </motion.p>
 
             <motion.div

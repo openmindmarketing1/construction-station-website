@@ -11,7 +11,7 @@ import { CS } from "@/lib/constants";
 export const metadata: Metadata = {
   title: "Commercial Construction in the Inland Empire | Construction Station",
   description:
-    "Commercial construction, tenant improvements, office buildouts, retail construction, and ADA compliance for Inland Empire businesses. Licensed CA #1108879. Call 909-797-6333.",
+    "Tenant improvements, restaurant & retail buildouts, commercial flooring, and office renovations for Inland Empire businesses. Licensed CA #1108879. Call 909-797-6333.",
   alternates: { canonical: "/services/commercial" },
 };
 
@@ -38,7 +38,7 @@ const STEPS = [
     number: "04",
     title: "Construction",
     description:
-      "Our W-2 crew executes framing, electrical, plumbing, HVAC rough-in, drywall, finishes, and fixture installation on a published schedule.",
+      "Our W-2 crew executes framing, electrical, plumbing, HVAC rough-in, drywall, finishes, and flooring on a published schedule.",
   },
   {
     number: "05",
@@ -50,36 +50,36 @@ const STEPS = [
 
 const FAQS = [
   {
-    q: "How long does a commercial tenant improvement take?",
-    a: "Timeline depends on scope and permit complexity. A cosmetic TI (flooring, paint, lighting) can finish in 2–4 weeks. A full buildout with new plumbing, HVAC, and electrical typically runs 8–16 weeks from permit approval. We provide a written milestone schedule before breaking ground.",
+    q: "What types of commercial projects do you handle?",
+    a: "We handle the full range of commercial interior construction: tenant improvements (TIs), restaurant and retail buildouts, office renovations, commercial flooring installations, and ADA compliance upgrades. We work for tenants, landlords, property managers, franchisees, and owner-operators across San Bernardino and Riverside counties. Project sizes range from a $30,000 suite refresh to $500,000+ full buildouts.",
   },
   {
-    q: "Do you work with both landlords and tenants?",
-    a: "Yes. We work directly with tenants building out their space, landlords improving vacant suites, and property management companies maintaining their portfolios. We can also coordinate with your leasing agent on allowance documentation and landlord-approval submissions.",
+    q: "Do you do tenant improvements?",
+    a: "Yes — TIs are a core part of our commercial business. We execute tenant improvements for office tenants, medical and dental practices, fitness studios, salons, urgent care clinics, and specialty retail. Our scope covers everything from demising walls and MEP rough-ins to suspended ceilings, flooring, millwork, and final finishes. We produce permit-ready drawings in-house and handle all city submittals, plan check responses, and inspections.",
   },
   {
-    q: "What permits are required for a commercial renovation?",
-    a: "Most commercial projects require building, electrical, plumbing, and mechanical permits. ADA upgrades may require a separate accessibility permit. We handle the entire permitting process — drawings, submittals, plan check responses, and inspections — under our contractor's license.",
+    q: "Can you build out a restaurant space?",
+    a: "Absolutely. Restaurant construction is one of our specialties. We handle grease interceptor installation, Type I hood rough-ins, fire suppression systems, walk-in cooler/freezer blocking, commercial kitchen MEP rough-ins, tile work rated for food service environments, bar construction, and dining room finishes. We understand that restaurant opening dates are tied to marketing spend and lease obligations — we build schedules around your opening date and protect them.",
+  },
+  {
+    q: "Do you handle commercial flooring?",
+    a: "Yes. We install the full range of commercial flooring systems: polished and stained concrete, large-format porcelain tile, luxury vinyl tile (LVT) and plank, carpet tile, rubber flooring for gyms and healthcare, epoxy and urethane coatings for industrial and commercial kitchens, and hardwood. We also handle subfloor prep, moisture mitigation, and transitions between flooring types — all to commercial specification standards.",
   },
   {
     q: "Are you licensed for commercial work in California?",
-    a: `Yes. Construction Station holds California Contractor's License ${CS.license}, which covers both residential and commercial construction. We are fully bonded and insured for commercial projects of all sizes.`,
+    a: `Yes. Construction Station holds California Contractor's License ${CS.license}, which covers both residential and commercial construction statewide. We carry commercial general liability insurance at the limits most landlords and property managers require, and we are fully bonded. We can provide certificates of insurance and additional insured endorsements for your landlord or property management company.`,
   },
   {
-    q: "Do you handle ADA compliance upgrades?",
-    a: "Absolutely. We perform ADA path-of-travel assessments, accessible restroom conversions, parking lot accessibility upgrades, ramp construction, door hardware replacement, and signage — all to current California Building Code Title 24 standards.",
+    q: "How long does a commercial tenant improvement take?",
+    a: "Timeline depends on scope and permit complexity. A cosmetic TI — flooring, paint, lighting — can finish in 2–4 weeks. A full buildout with new plumbing, HVAC, and electrical typically runs 8–16 weeks from permit approval. We provide a written milestone schedule before breaking ground and track it daily.",
   },
   {
     q: "Can you work nights or weekends to minimize business disruption?",
-    a: "Yes. For occupied buildings or businesses that cannot shut down, we offer phased construction and off-hours scheduling. We've completed numerous projects in occupied office buildings and retail centers with zero business interruption.",
+    a: "Yes. For occupied buildings and businesses that can't shut down, we offer phased construction and off-hours scheduling. We've completed projects in occupied office buildings, active retail centers, and operating restaurants with zero business interruption. Temporary dust walls, daily cleanup, and maintained egress paths are standard on every occupied-space project.",
   },
   {
-    q: "What is your minimum commercial project size?",
-    a: "We take on projects starting at $25,000. Most of our commercial work ranges from $50,000 for a suite refresh to $500,000+ for a full ground-up buildout. We'll give you a straight answer on whether your project is a fit after a 30-minute site walk.",
-  },
-  {
-    q: "Do you offer design-build commercial services?",
-    a: "Yes. We can deliver a full design-build package — space planning, permit drawings, engineering, and construction under one contract. This eliminates the coordination gap between architect and contractor and typically saves 10–15% on total project cost.",
+    q: "Do you handle ADA compliance upgrades?",
+    a: "Yes. We perform path-of-travel assessments and all required ADA remediation: accessible parking striping, entry door hardware and threshold corrections, accessible restroom conversions, grab bars, service counter lowering, and interior route clearances. Triggered ADA upgrades — improvements required when you pull a permit for other work — are identified in our permitting review so there are no surprise scope additions mid-project.",
   },
 ];
 
@@ -108,7 +108,7 @@ export default function CommercialPage() {
     },
     areaServed: { "@type": "Place", name: "Inland Empire, California" },
     description:
-      "Full-service commercial construction — tenant improvements, office buildouts, retail construction, and ADA compliance. Licensed California contractor since 2008.",
+      "Full-service commercial construction — tenant improvements, restaurant & retail buildouts, commercial flooring, office renovations, and ADA compliance. Licensed CA contractor since 2008.",
     offers: {
       "@type": "Offer",
       price: "0",
@@ -125,7 +125,7 @@ export default function CommercialPage() {
         eyebrow="Service · Commercial"
         title="Commercial Construction in the Inland Empire"
         italicWord="Inland Empire"
-        subtitle="Tenant improvements, office buildouts, retail construction, and ADA compliance for businesses across San Bernardino and Riverside counties. The same crew and standards that define our residential work — applied to every commercial project."
+        subtitle="Tenant improvements, restaurant & retail buildouts, commercial flooring, and office renovations for businesses across San Bernardino and Riverside counties. Licensed CA #1108879 · Bonded & Insured."
       />
 
       {/* Trust signals bar */}
@@ -154,6 +154,8 @@ export default function CommercialPage() {
       {/* Main article */}
       <article className="bg-white py-20 lg:py-24">
         <div className="max-w-4xl mx-auto px-5 lg:px-10">
+
+          {/* Overview */}
           <div className="grid grid-cols-12 gap-6 mb-16 items-start">
             <div className="col-span-12 md:col-span-3">
               <div className="text-gold text-xs tracking-[0.3em] uppercase">
@@ -165,22 +167,22 @@ export default function CommercialPage() {
               <p className="text-navy/85 text-lg leading-[1.7] mb-6">
                 Construction Station has been serving commercial clients across
                 the Inland Empire since 2008. The same licensed crew, the same
-                permitting rigor, and the same no-subcontractor-revolving-door
+                permitting discipline, and the no-subcontractor-revolving-door
                 approach we apply to residential work comes standard on every
                 commercial project — from a 500 sq ft suite refresh in Redlands
-                to a 10,000 sq ft retail buildout in Rancho Cucamonga.
+                to a 12,000 sq ft restaurant buildout in Rancho Cucamonga.
               </p>
               <p className="text-navy/75 leading-[1.8] mb-5">
                 Commercial construction demands a different discipline than
                 residential. Deadlines tie directly to lease commencement dates,
-                city permit timelines are less predictable, and mistakes that
-                delay a Certificate of Occupancy carry real financial
-                consequences. We&rsquo;ve built our commercial practice around
-                eliminating those risks — with in-house permit expediting,
+                permit timelines are less predictable, and a delayed Certificate
+                of Occupancy carries real financial consequences for your
+                business. We&rsquo;ve built our commercial practice around
+                eliminating those risks — with in-house permit drawings,
                 published milestone schedules, and a single project manager
                 accountable from groundbreak to CO.
               </p>
-              <p className="text-navy/75 leading-[1.8] mb-5">
+              <p className="text-navy/75 leading-[1.8]">
                 We hold California Contractor&rsquo;s License{" "}
                 <strong className="text-navy">{CS.license}</strong>, are fully
                 bonded and insured, and carry the commercial general liability
@@ -197,7 +199,9 @@ export default function CommercialPage() {
               <div
                 key={src}
                 className={`relative overflow-hidden ${
-                  i === 0 ? "col-span-2 md:col-span-2 aspect-[16/9]" : "aspect-square"
+                  i === 0
+                    ? "col-span-2 md:col-span-2 aspect-[16/9]"
+                    : "aspect-square"
                 }`}
               >
                 <Image
@@ -211,168 +215,232 @@ export default function CommercialPage() {
             ))}
           </div>
 
-          {/* Tenant Improvements */}
+          {/* 01 — Tenant Improvements / TI Buildouts */}
           <div id="tenant-improvements" className="scroll-mt-24 mb-16">
             <div className="grid grid-cols-12 gap-6 items-start">
               <div className="col-span-12 md:col-span-3">
-                <div className="text-gold text-xs tracking-[0.3em] uppercase">
-                  01
-                </div>
+                <div className="text-gold text-xs tracking-[0.3em] uppercase">01</div>
                 <div className="font-display text-navy text-2xl mt-2 leading-tight">
-                  Tenant Improvements
+                  Tenant Improvements<br />& TI Buildouts
                 </div>
                 <div className="hidden md:block w-12 h-px bg-gold mt-3" />
               </div>
               <div className="col-span-12 md:col-span-9">
                 <p className="text-navy/75 leading-[1.8] mb-4">
-                  Tenant improvements — TIs in commercial real estate shorthand —
-                  are the buildout of leased space to suit a specific occupant.
-                  We execute TIs for office tenants, medical and dental practices,
-                  fitness studios, restaurants, and specialty retail across San
-                  Bernardino and Riverside counties.
+                  Tenant improvements — TIs in commercial real estate shorthand
+                  — are the buildout of leased space to suit a specific
+                  occupant. We execute TIs for office tenants, medical and
+                  dental practices, fitness studios, salons, urgent care
+                  clinics, and specialty retail across San Bernardino and
+                  Riverside counties. Whether your landlord is providing a
+                  bare shell, a vanilla box, or warm grey shell, we scope and
+                  build from wherever the space starts.
                 </p>
                 <p className="text-navy/75 leading-[1.8] mb-4">
-                  Our TI scope typically includes: demising wall framing, interior
-                  partition layout, electrical panel upgrades and branch circuit
-                  work, plumbing rough-in for break rooms and restrooms, HVAC
-                  zoning and ductwork, suspended ceiling systems, flooring
-                  (LVP, carpet tile, polished concrete), and all finish work
-                  through final cleaning.
+                  Our TI scope typically includes: demising wall framing,
+                  interior partition layout, electrical panel upgrades and
+                  branch circuit work, plumbing rough-in for break rooms and
+                  restrooms, HVAC zoning and ductwork, suspended ceiling
+                  systems, flooring (LVT, carpet tile, polished concrete), and
+                  all finish work through final cleaning. We coordinate directly
+                  with the landlord&rsquo;s property manager on building
+                  standards, shared system connections, and move-in logistics.
+                </p>
+                <p className="text-navy/75 leading-[1.8] mb-4">
+                  For medical and dental TIs, we have experience with the
+                  specific requirements of healthcare environments: plumbing
+                  rough-ins for dental operatories and sterilization rooms,
+                  medical gas blocking and support structures, infection
+                  control during construction, and finishes that meet
+                  healthcare hygiene standards. We&rsquo;ve built out dental
+                  offices, chiropractic clinics, physical therapy suites, and
+                  urgent care centers across the Inland Empire.
                 </p>
                 <p className="text-navy/75 leading-[1.8]">
                   We produce permit-ready architectural drawings in-house,
                   coordinate with structural and MEP engineers when required,
                   and manage all city plan check interactions. Most TI projects
-                  in the Inland Empire reach permit approval within 3–6 weeks of
-                  submittal — we track every plan check comment so there are no
-                  surprises.
+                  in Inland Empire jurisdictions reach permit approval within
+                  3–6 weeks of submittal. We track every plan check comment in
+                  real time so there are no surprises at your lease
+                  commencement date.
                 </p>
               </div>
             </div>
           </div>
 
-          {/* Office Buildouts & Renovations */}
+          {/* 02 — Restaurant & Retail Construction */}
+          <div id="restaurant-retail" className="scroll-mt-24 mb-16">
+            <div className="grid grid-cols-12 gap-6 items-start">
+              <div className="col-span-12 md:col-span-3">
+                <div className="text-gold text-xs tracking-[0.3em] uppercase">02</div>
+                <div className="font-display text-navy text-2xl mt-2 leading-tight">
+                  Restaurant &amp; Retail Construction
+                </div>
+                <div className="hidden md:block w-12 h-px bg-gold mt-3" />
+              </div>
+              <div className="col-span-12 md:col-span-9">
+                <p className="text-navy/75 leading-[1.8] mb-4">
+                  Restaurant and retail construction are the most schedule-
+                  sensitive commercial projects we build — opening dates are
+                  tied to marketing spend, franchise obligations, and lease
+                  commencement. We understand what&rsquo;s at stake and build
+                  our project schedules backward from your opening day. Our
+                  commercial team has completed restaurant buildouts ranging
+                  from fast-casual quick-service concepts to full-service
+                  dining rooms and bar programs throughout the Inland Empire.
+                </p>
+                <p className="text-navy/75 leading-[1.8] mb-4">
+                  Restaurant construction scope includes: grease interceptor
+                  installation and sanitary sewer tie-in, Type I commercial
+                  hood rough-in and fire suppression system coordination,
+                  walk-in cooler and freezer blocking and electrical, commercial
+                  kitchen MEP rough-ins (gas, 3-phase electrical, floor drains,
+                  hand sinks), food service-grade tile flooring with proper
+                  slope and coved bases, bar construction including plumbing
+                  and undercounter equipment rough-ins, and dining room and
+                  restroom finishes to health department and building code
+                  requirements.
+                </p>
+                <p className="text-navy/75 leading-[1.8] mb-4">
+                  For retail, we construct storefront systems, display fixture
+                  blocking and backing, specialty lighting layouts, POS
+                  infrastructure, fitting rooms, backroom and stockroom
+                  buildouts, and all front-of-house finishes. We work from
+                  brand standard documentation and prototype drawings for
+                  franchise operators, replicating the concept across multiple
+                  Inland Empire locations when needed.
+                </p>
+                <p className="text-navy/75 leading-[1.8]">
+                  Health department coordination is part of our standard
+                  restaurant buildout process. We prepare the kitchen layout
+                  documentation required for health department pre-approval,
+                  schedule the necessary inspections, and deliver a facility
+                  that passes its health inspection on the first attempt. For
+                  existing restaurant renovations, we plan and sequence the
+                  work to minimize or eliminate downtime for your operation.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* 03 — Commercial Flooring */}
+          <div id="commercial-flooring" className="scroll-mt-24 mb-16">
+            <div className="grid grid-cols-12 gap-6 items-start">
+              <div className="col-span-12 md:col-span-3">
+                <div className="text-gold text-xs tracking-[0.3em] uppercase">03</div>
+                <div className="font-display text-navy text-2xl mt-2 leading-tight">
+                  Commercial Flooring
+                </div>
+                <div className="hidden md:block w-12 h-px bg-gold mt-3" />
+              </div>
+              <div className="col-span-12 md:col-span-9">
+                <p className="text-navy/75 leading-[1.8] mb-4">
+                  Commercial flooring is one of the highest-impact elements of
+                  any business environment — it affects first impressions,
+                  employee productivity, maintenance costs, and acoustic
+                  comfort. We install the full range of commercial flooring
+                  systems for offices, retail spaces, restaurants, healthcare
+                  facilities, gyms, and industrial environments across the
+                  Inland Empire. Unlike residential flooring work, commercial
+                  installations require attention to load ratings, slip
+                  resistance ratings, seamless transitions across large spans,
+                  and compliance with ADA surface requirements.
+                </p>
+                <p className="text-navy/75 leading-[1.8] mb-4">
+                  Our commercial flooring systems include: polished and
+                  decorative concrete (grind-and-seal, densified, stained,
+                  and full mechanical polish to any specified sheen level),
+                  large-format porcelain and ceramic tile for retail, restaurant,
+                  and lobby environments, luxury vinyl tile (LVT) and luxury
+                  vinyl plank (LVP) including glue-down and floating systems
+                  for commercial-grade use, carpet tile for open-plan offices
+                  and hospitality, rubber flooring for gyms, weight rooms, and
+                  healthcare, and epoxy and urethane resin systems for
+                  commercial kitchens, warehouses, and food service environments.
+                </p>
+                <p className="text-navy/75 leading-[1.8] mb-4">
+                  Subfloor preparation is where commercial flooring installations
+                  succeed or fail. We perform self-leveling underlayment pours,
+                  moisture vapor barrier installation, concrete grinding and
+                  patching, and plywood subfloor replacement as needed before
+                  any finish flooring goes down. Our flatness tolerances meet
+                  manufacturer warranty requirements for every flooring type
+                  we install.
+                </p>
+                <p className="text-navy/75 leading-[1.8]">
+                  For occupied commercial spaces, we schedule flooring work
+                  in phases or sections to keep your business operating during
+                  the installation. We use commercial-grade adhesives and
+                  coatings with low-VOC options for occupied environments,
+                  and we coordinate with your operations team on curing and
+                  traffic timelines before returning areas to use.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* 04 — Office Renovations */}
           <div id="office-renovations" className="scroll-mt-24 mb-16">
             <div className="grid grid-cols-12 gap-6 items-start">
               <div className="col-span-12 md:col-span-3">
-                <div className="text-gold text-xs tracking-[0.3em] uppercase">
-                  02
-                </div>
+                <div className="text-gold text-xs tracking-[0.3em] uppercase">04</div>
                 <div className="font-display text-navy text-2xl mt-2 leading-tight">
-                  Office Buildouts &amp; Renovations
+                  Office Renovations
                 </div>
                 <div className="hidden md:block w-12 h-px bg-gold mt-3" />
               </div>
               <div className="col-span-12 md:col-span-9">
                 <p className="text-navy/75 leading-[1.8] mb-4">
-                  A well-designed office communicates credibility before a single
+                  A well-built office communicates credibility before a single
                   word is spoken. We build and renovate professional offices for
-                  law firms, financial services, insurance agencies, medical
-                  groups, and corporate headquarters throughout the Inland Empire.
+                  law firms, financial advisors, insurance agencies, real estate
+                  brokerages, medical groups, and corporate headquarters
+                  throughout the Inland Empire. Whether you&rsquo;re moving
+                  into a new suite and need a full buildout, or refreshing an
+                  existing space to attract and retain employees in a post-
+                  pandemic hybrid environment, we deliver offices that function
+                  as well as they look.
                 </p>
                 <p className="text-navy/75 leading-[1.8] mb-4">
-                  Office buildout work includes: open-plan workstation layouts,
-                  private office construction, executive suite finishes,
-                  conference room millwork, integrated AV and data infrastructure,
-                  specialty lighting, glass partition systems, and reception area
-                  design. We also handle full office renovations — gutting and
-                  rebuilding dated space while the business operates in a
-                  phased construction sequence.
+                  Office renovation scope includes: open-plan workstation
+                  layouts with power and data infrastructure, private office
+                  and conference room construction, executive suite finishes,
+                  custom millwork and built-in cabinetry for reception and
+                  credenzas, glass partition systems and frameless glass
+                  doors, integrated AV rough-ins and display mounting
+                  structures, specialty lighting (layered ambient, task, and
+                  accent systems), break room and kitchenette buildout, and
+                  accessible restroom upgrades. We handle full gut renovations
+                  — taking dated office space down to studs and rebuilding
+                  completely — as well as targeted refreshes: new flooring,
+                  paint, lighting, and millwork in an occupied suite.
+                </p>
+                <p className="text-navy/75 leading-[1.8] mb-4">
+                  For occupied renovations, we work in phases, schedule
+                  disruptive work during evenings and weekends, and maintain
+                  functional access to all active areas throughout
+                  construction. Temporary dust walls with negative air
+                  pressure and daily cleanup are standard practice on every
+                  occupied office project.
                 </p>
                 <p className="text-navy/75 leading-[1.8]">
-                  For occupied renovations, we schedule noisy and disruptive
-                  work during off-hours, maintain safe egress paths at all times,
-                  and use temporary dust walls to keep active office areas clean
-                  and functional throughout construction.
+                  We also handle office furniture decommission and
+                  reinstallation coordination — working with your furniture
+                  dealer to sequence the construction and furniture scopes
+                  so your team moves back into a fully operational office
+                  on day one, not a construction site with furniture stacked
+                  in the hallway.
                 </p>
               </div>
             </div>
           </div>
 
-          {/* Commercial Buildouts */}
-          <div id="buildouts" className="scroll-mt-24 mb-16">
-            <div className="grid grid-cols-12 gap-6 items-start">
-              <div className="col-span-12 md:col-span-3">
-                <div className="text-gold text-xs tracking-[0.3em] uppercase">
-                  03
-                </div>
-                <div className="font-display text-navy text-2xl mt-2 leading-tight">
-                  Commercial Buildouts
-                </div>
-                <div className="hidden md:block w-12 h-px bg-gold mt-3" />
-              </div>
-              <div className="col-span-12 md:col-span-9">
-                <p className="text-navy/75 leading-[1.8] mb-4">
-                  Ground-up commercial buildouts — taking a shell or grey-shell
-                  space to fully finished and occupiable — are the most complex
-                  commercial projects we deliver. We&rsquo;ve completed buildouts
-                  for restaurants, urgent care clinics, veterinary practices,
-                  specialty retail, and industrial office suites across the region.
-                </p>
-                <p className="text-navy/75 leading-[1.8] mb-4">
-                  A full buildout involves every trade: structural rough framing,
-                  MEP systems (mechanical, electrical, plumbing), fire sprinkler
-                  coordination, insulation, drywall, flooring, millwork,
-                  storefront glazing, exterior signage blocking, restroom build-out,
-                  and all finish work. We self-perform the majority of this scope
-                  rather than cascading it to unvetted subcontractors.
-                </p>
-                <p className="text-navy/75 leading-[1.8]">
-                  Before breaking ground, we provide a detailed construction
-                  schedule with milestone dates tied to your lease commencement.
-                  Our project managers track schedule daily and report deviations
-                  before they become delays.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          {/* Retail */}
-          <div id="retail" className="scroll-mt-24 mb-16">
-            <div className="grid grid-cols-12 gap-6 items-start">
-              <div className="col-span-12 md:col-span-3">
-                <div className="text-gold text-xs tracking-[0.3em] uppercase">
-                  04
-                </div>
-                <div className="font-display text-navy text-2xl mt-2 leading-tight">
-                  Retail Space Construction
-                </div>
-                <div className="hidden md:block w-12 h-px bg-gold mt-3" />
-              </div>
-              <div className="col-span-12 md:col-span-9">
-                <p className="text-navy/75 leading-[1.8] mb-4">
-                  Retail construction requires precision on aesthetics and brand
-                  standards alongside the structural and systems requirements of
-                  any commercial build. We construct and renovate retail spaces
-                  for local and regional retailers, franchise operators, and
-                  national brands entering Inland Empire markets.
-                </p>
-                <p className="text-navy/75 leading-[1.8] mb-4">
-                  Retail scope includes: storefront and entry systems, display
-                  fixture blocking and backing, specialty lighting layouts,
-                  POS infrastructure, fitting room construction, backroom
-                  and stockroom buildout, break room and restroom facilities,
-                  and exterior curb appeal improvements. We work from brand
-                  standards documentation and prototype drawings, replicating
-                  the experience across multiple locations if needed.
-                </p>
-                <p className="text-navy/75 leading-[1.8]">
-                  We understand that retail construction has an immovable opening
-                  date tied to marketing spend and lease obligations. Our
-                  commercial team prioritizes schedule reliability above all
-                  else for retail clients.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          {/* ADA Compliance */}
+          {/* 05 — ADA Compliance */}
           <div id="ada-compliance" className="scroll-mt-24 mb-8">
             <div className="grid grid-cols-12 gap-6 items-start">
               <div className="col-span-12 md:col-span-3">
-                <div className="text-gold text-xs tracking-[0.3em] uppercase">
-                  05
-                </div>
+                <div className="text-gold text-xs tracking-[0.3em] uppercase">05</div>
                 <div className="font-display text-navy text-2xl mt-2 leading-tight">
                   ADA Compliance
                 </div>
@@ -381,27 +449,38 @@ export default function CommercialPage() {
               <div className="col-span-12 md:col-span-9">
                 <p className="text-navy/75 leading-[1.8] mb-4">
                   California&rsquo;s access compliance requirements under
-                  Title 24 and the ADA are among the most stringent in the
-                  country — and non-compliance exposes property owners and
-                  tenants to significant litigation risk. We perform ADA
-                  assessments and remediation construction for commercial
-                  properties throughout the Inland Empire.
+                  Title 24 and the federal ADA are among the most stringent
+                  in the country — and non-compliance exposes property owners
+                  and business tenants to significant litigation risk from
+                  serial ADA plaintiffs who specifically target Inland Empire
+                  commercial properties. A proactive ADA assessment and
+                  remediation program is far less expensive than defending
+                  a demand letter. We perform assessments and all required
+                  remediation construction for commercial properties
+                  throughout San Bernardino and Riverside counties.
                 </p>
                 <p className="text-navy/75 leading-[1.8] mb-4">
-                  Our ADA scope covers: accessible parking stall striping and
-                  van-accessible spaces, path-of-travel from parking to
-                  entrance, accessible entry door hardware and thresholds,
-                  restroom conversions (turning radius, grab bars, fixtures,
-                  signage), service counter lowering, and interior route
-                  clearances. We document all work with photographs and
-                  as-built drawings for your compliance records.
+                  Our ADA scope covers: accessible parking stall striping
+                  and van-accessible spaces with proper signage, path-of-
+                  travel from parking to entrance including curb ramp
+                  construction and slope corrections, accessible entry door
+                  hardware and threshold corrections, restroom conversions
+                  to meet turning radius, grab bar, fixture height, and
+                  signage requirements, service counter lowering, and
+                  interior route clearance corrections. We document all work
+                  with photographs and as-built drawings for your compliance
+                  records — documentation that is critical evidence if
+                  you ever face an access complaint.
                 </p>
                 <p className="text-navy/75 leading-[1.8]">
-                  Triggered ADA upgrades — improvements required when you
-                  pull a permit for other work — are part of our standard
-                  permitting review. We identify the required path-of-travel
-                  work upfront so there are no surprise scope additions after
-                  construction starts.
+                  Triggered ADA upgrades — path-of-travel improvements
+                  required by California law when you pull a permit for
+                  any other alteration — are identified in our permitting
+                  review before construction starts, with a cost estimate
+                  included in your project budget. We never surface surprise
+                  ADA scope mid-project. If you&rsquo;re planning a TI,
+                  remodel, or any permitted commercial work, ask us to
+                  include a path-of-travel review in your site walk.
                 </p>
               </div>
             </div>
@@ -411,7 +490,7 @@ export default function CommercialPage() {
 
       <ProcessSteps steps={STEPS} />
 
-      {/* Commercial trust section */}
+      {/* Why choose us */}
       <section className="bg-cream py-16 lg:py-20">
         <div className="max-w-5xl mx-auto px-5 lg:px-10">
           <div className="text-center mb-12">
@@ -455,17 +534,10 @@ export default function CommercialPage() {
                 body: "We routinely build in occupied buildings with active businesses. Off-hours scheduling, dust control, and safe egress are standard practice.",
               },
             ].map((item) => (
-              <div
-                key={item.title}
-                className="bg-white border border-navy/10 p-6"
-              >
+              <div key={item.title} className="bg-white border border-navy/10 p-6">
                 <div className="w-8 h-px bg-gold mb-4" />
-                <div className="font-display text-navy text-xl mb-3">
-                  {item.title}
-                </div>
-                <p className="text-navy/65 text-sm leading-relaxed">
-                  {item.body}
-                </p>
+                <div className="font-display text-navy text-xl mb-3">{item.title}</div>
+                <p className="text-navy/65 text-sm leading-relaxed">{item.body}</p>
               </div>
             ))}
           </div>
@@ -474,7 +546,7 @@ export default function CommercialPage() {
 
       <FAQAccordion faqs={FAQS} />
 
-      {/* Related services */}
+      {/* Related residential services */}
       <section className="bg-cream py-16">
         <div className="max-w-7xl mx-auto px-5 lg:px-10">
           <div className="text-gold text-xs tracking-[0.3em] uppercase mb-3 text-center">
@@ -508,14 +580,10 @@ export default function CommercialPage() {
               >
                 <div className="flex items-center justify-between">
                   <div>
-                    <div className="font-display text-navy text-xl">
-                      {s.name}
-                    </div>
+                    <div className="font-display text-navy text-xl">{s.name}</div>
                     <div className="text-navy/60 text-sm mt-1">{s.desc}</div>
                   </div>
-                  <div className="text-gold group-hover:translate-x-1 transition-transform">
-                    →
-                  </div>
+                  <div className="text-gold group-hover:translate-x-1 transition-transform">→</div>
                 </div>
               </Link>
             ))}
@@ -525,7 +593,7 @@ export default function CommercialPage() {
 
       <CtaSection
         heading="Let's walk your commercial space."
-        subheading="Free site walk and scope estimate. No obligation — just a straight conversation about your project."
+        subheading="Free site walk and scope estimate. No obligation — just a straight conversation about your project and timeline."
         showForm
       />
     </>
