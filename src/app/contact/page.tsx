@@ -12,6 +12,13 @@ const PROJECT_TYPES = [
   "Other",
 ];
 
+const TEAM = [
+  { name: "Gregory Pilon", title: "Co-Owner & President", initials: "GP" },
+  { name: "Gustavo Mancilla", title: "Co-Owner & VP of Operations", initials: "GM" },
+  { name: "Cameron Kemock", title: "Lead Project Manager", initials: "CK" },
+  { name: "Lisa Elias", title: "Office Manager & Accounting", initials: "LE" },
+];
+
 export default function ContactPage() {
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
@@ -222,10 +229,33 @@ export default function ContactPage() {
                     >
                       {submitting ? "Sending…" : "Book My Free Consultation"}
                     </button>
-                    <div className="text-xs text-navy/50 text-center">
-                      By submitting you agree to be contacted by Construction
-                      Station. We never sell your info.
-                    </div>
+                    <p className="text-xs text-gray-500 text-center leading-relaxed">
+                      By submitting this form, you agree to be contacted by
+                      Construction Station Flooring and Design regarding your
+                      project inquiry. This includes recurring automated
+                      SMS/text messages for appointment confirmations, project
+                      updates, and follow-ups. Message frequency varies.
+                      Message and data rates may apply. Reply STOP to opt out
+                      at any time. Reply HELP for help. Consent is not a
+                      condition of purchase.{" "}
+                      <a
+                        href="https://www.openmindmarketing.ai/privacy"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="underline hover:text-gray-700"
+                      >
+                        Privacy Policy
+                      </a>
+                      {" | "}
+                      <a
+                        href="https://www.openmindmarketing.ai/terms"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="underline hover:text-gray-700"
+                      >
+                        Terms
+                      </a>
+                    </p>
                   </form>
                 </div>
               ) : (
@@ -374,6 +404,46 @@ export default function ContactPage() {
             Skip the phone tag — pick a time that works for you and we&rsquo;ll come to you. Free consultation, no obligation.
           </p>
           <CalendlyWidget url="https://calendly.com/constructionstation-sales/free-kitchen-design-consultation" />
+        </div>
+      </section>
+
+      {/* Meet Our Team */}
+      <section className="bg-cream py-16 lg:py-24 border-t border-navy/10">
+        <div className="max-w-7xl mx-auto px-5 lg:px-10">
+          <div className="text-center mb-12">
+            <div className="flex items-center justify-center gap-3 mb-4">
+              <span className="w-8 h-px bg-gold" />
+              <span className="text-gold text-xs uppercase tracking-[0.4em]">
+                The People Behind the Work
+              </span>
+              <span className="w-8 h-px bg-gold" />
+            </div>
+            <h2 className="font-display text-navy text-4xl md:text-5xl">
+              Meet our team
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 lg:gap-10">
+            {TEAM.map((member) => (
+              <div key={member.name} className="flex flex-col items-center text-center">
+                <div className="w-24 h-24 md:w-28 md:h-28 rounded-full bg-navy flex items-center justify-center mb-4 shadow-md">
+                  <span className="font-display text-gold text-2xl md:text-3xl tracking-wide">
+                    {member.initials}
+                  </span>
+                </div>
+                <div className="font-body font-semibold text-navy text-sm md:text-base leading-snug">
+                  {member.name}
+                </div>
+                <div className="text-navy/60 text-xs md:text-sm mt-1 leading-snug">
+                  {member.title}
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <p className="text-center text-navy/40 text-xs mt-10 tracking-wide uppercase">
+            Team photos coming soon
+          </p>
         </div>
       </section>
     </>
