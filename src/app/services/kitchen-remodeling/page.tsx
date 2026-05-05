@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import ServiceHero from "@/components/ServiceHero";
+import TrustBar from "@/components/TrustBar";
 import ProcessSteps from "@/components/ProcessSteps";
 import FAQAccordion from "@/components/FAQAccordion";
-import CtaSection from "@/components/CtaSection";
-import CalendlyWidget from "@/components/CalendlyWidget";
+import LeadMagnetCard from "@/components/LeadMagnetCard";
+import CalendlyEmbed from "@/components/CalendlyEmbed";
+import KitchenQuickForm from "@/components/KitchenQuickForm";
 import JsonLd from "@/components/JsonLd";
 import { CS } from "@/lib/constants";
 
@@ -119,6 +121,7 @@ export default function KitchenRemodelingPage() {
       <JsonLd data={serviceSchema} />
       <JsonLd data={faqSchema} />
 
+      {/* 1. Hero */}
       <ServiceHero
         eyebrow="Service · Kitchens"
         title="Kitchen Remodeling in the Inland Empire"
@@ -126,6 +129,40 @@ export default function KitchenRemodelingPage() {
         subtitle="Custom cabinetry, stone countertops, and tile work delivered by the same Construction Station crew you meet on day one. No subs. No surprises. No shortcuts."
       />
 
+      {/* 2. Trust bar */}
+      <TrustBar />
+
+      {/* 3. Lead magnet — lowest commitment */}
+      <section className="bg-cream py-16 lg:py-20">
+        <div className="max-w-7xl mx-auto px-5 lg:px-10">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
+            <div className="lg:col-span-5">
+              <div className="flex items-center gap-3 mb-4">
+                <span className="w-10 h-px bg-gold" />
+                <span className="text-gold text-xs uppercase tracking-[0.4em]">Free Resource</span>
+              </div>
+              <h2 className="font-display text-navy text-4xl md:text-5xl leading-[1.05] mb-5">
+                Not ready to talk?{" "}
+                <span className="italic text-gold">Get our free guide.</span>
+              </h2>
+              <p className="text-navy/70 leading-relaxed mb-6">
+                Before you call anyone, arm yourself with the numbers. Our 2026
+                cost guide covers everything Inland Empire homeowners need to
+                know — average prices, how to compare bids, and the five
+                mistakes that blow kitchen budgets.
+              </p>
+              <p className="text-navy/55 text-sm">
+                Instant download. No spam. Unsubscribe anytime.
+              </p>
+            </div>
+            <div className="lg:col-span-7">
+              <LeadMagnetCard />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Content: overview, process, FAQs */}
       <article className="bg-white py-20 lg:py-24">
         <div className="max-w-4xl mx-auto px-5 lg:px-10">
           <div className="grid grid-cols-12 gap-6 mb-10 items-start">
@@ -214,22 +251,6 @@ export default function KitchenRemodelingPage() {
       <ProcessSteps steps={STEPS} />
       <FAQAccordion faqs={FAQS} />
 
-      {/* Calendly booking */}
-      <section className="bg-cream py-16 lg:py-20">
-        <div className="max-w-4xl mx-auto px-5 lg:px-10">
-          <div className="text-gold text-xs tracking-[0.3em] uppercase mb-3 text-center">
-            Free Consultation
-          </div>
-          <h2 className="font-display text-navy text-3xl md:text-4xl text-center mb-3">
-            Book Your Free Design Consultation
-          </h2>
-          <p className="text-navy/70 text-center max-w-xl mx-auto mb-10">
-            Reserve your 60-minute in-home visit online — pick a time that works for you. No obligation. Normally $299, free for new clients.
-          </p>
-          <CalendlyWidget url="https://calendly.com/constructionstation-sales/free-kitchen-design-consultation" />
-        </div>
-      </section>
-
       {/* Related services */}
       <section className="bg-cream py-16">
         <div className="max-w-7xl mx-auto px-5 lg:px-10">
@@ -280,11 +301,95 @@ export default function KitchenRemodelingPage() {
         </div>
       </section>
 
-      <CtaSection
-        heading="Let's design your kitchen."
-        subheading="Free 60-minute in-home consultation. No obligation, no high pressure."
-        showForm
-      />
+      {/* 4. Calendly — medium commitment */}
+      <section className="bg-white py-16 lg:py-20">
+        <div className="max-w-4xl mx-auto px-5 lg:px-10">
+          <div className="text-center mb-10">
+            <div className="flex items-center justify-center gap-3 mb-4">
+              <span className="w-10 h-px bg-gold" />
+              <span className="text-gold text-xs uppercase tracking-[0.4em]">Free Consultation</span>
+              <span className="w-10 h-px bg-gold" />
+            </div>
+            <h2 className="font-display text-navy text-4xl md:text-5xl leading-[1] mb-4">
+              Ready to talk?{" "}
+              <span className="italic text-gold">Pick a time.</span>
+            </h2>
+            <p className="text-navy/65 max-w-lg mx-auto text-sm leading-relaxed">
+              Book your free 60-minute design consultation directly on our
+              calendar. Normally $299 — free for new clients. No obligation,
+              no high-pressure pitch.
+            </p>
+          </div>
+          <CalendlyEmbed />
+        </div>
+      </section>
+
+      {/* 5. Call section — highest commitment */}
+      <section className="bg-navy texture-navy text-white py-16 lg:py-20">
+        <div className="max-w-3xl mx-auto px-5 lg:px-10 text-center">
+          <div className="flex items-center justify-center gap-3 mb-4">
+            <span className="w-10 h-px bg-gold" />
+            <span className="text-gold text-xs uppercase tracking-[0.4em]">Ready Now?</span>
+            <span className="w-10 h-px bg-gold" />
+          </div>
+          <h2 className="font-display text-4xl md:text-5xl leading-[1] mb-4">
+            Call us directly.
+          </h2>
+          <p className="text-white/65 mb-8 text-sm leading-relaxed">
+            Speak with a project coordinator right now. We answer during business
+            hours and return all missed calls within 30 minutes.
+          </p>
+          <a
+            href={CS.phoneHref}
+            className="inline-flex items-center gap-3 bg-gold text-navy font-body font-semibold px-10 py-5 text-xl hover:bg-yellow-400 transition-colors tracking-wide"
+          >
+            <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+            {CS.phone}
+          </a>
+        </div>
+      </section>
+
+      {/* 6. Contact form — simplified 3 fields */}
+      <section className="bg-cream py-16 lg:py-20">
+        <div className="max-w-7xl mx-auto px-5 lg:px-10">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
+            <div className="lg:col-span-5">
+              <div className="flex items-center gap-3 mb-4">
+                <span className="w-10 h-px bg-gold" />
+                <span className="text-gold text-xs uppercase tracking-[0.4em]">Request a Callback</span>
+              </div>
+              <h2 className="font-display text-navy text-4xl md:text-5xl leading-[1.05] mb-5">
+                Prefer us to{" "}
+                <span className="italic text-gold">call you?</span>
+              </h2>
+              <p className="text-navy/70 leading-relaxed mb-6">
+                Leave your name and number and we&rsquo;ll reach out within 2
+                business hours to discuss your project — no obligation, no
+                high-pressure sales call.
+              </p>
+              <div className="space-y-3 text-sm text-navy/70">
+                <div className="flex items-center gap-3">
+                  <span className="w-5 h-5 bg-gold/20 border border-gold flex items-center justify-center text-gold text-xs font-bold shrink-0">✓</span>
+                  Response within 2 business hours
+                </div>
+                <div className="flex items-center gap-3">
+                  <span className="w-5 h-5 bg-gold/20 border border-gold flex items-center justify-center text-gold text-xs font-bold shrink-0">✓</span>
+                  Free in-home estimate included
+                </div>
+                <div className="flex items-center gap-3">
+                  <span className="w-5 h-5 bg-gold/20 border border-gold flex items-center justify-center text-gold text-xs font-bold shrink-0">✓</span>
+                  No obligation, ever
+                </div>
+              </div>
+            </div>
+            <div className="lg:col-span-7">
+              <KitchenQuickForm />
+            </div>
+          </div>
+        </div>
+      </section>
     </>
   );
 }
