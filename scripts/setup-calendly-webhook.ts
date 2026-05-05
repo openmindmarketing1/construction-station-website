@@ -34,17 +34,18 @@ const headers = {
 };
 
 async function main() {
-  // Step a — discover org URI from existing webhooks; fall back to user URI
-  // (on individual Calendly plans the org URI often equals the user URI)
-  console.log("Fetching existing webhook subscriptions to discover org URI…");
-  const listRes = await fetch(
-    `${CALENDLY_BASE}/webhook_subscriptions?scope=user&user=${encodeURIComponent(userUri)}`,
-    { headers }
-  );
-  const listBody = (await listRes.json()) as {
-    collection?: Array<{ organization: string }>;
+  // Step a — get organization URI from /users/me (requires users:read scope)
+  console.log("Fetching user info…");
+  const meRes = await fetch(`${CALENDLY_BASE}/users/me`, { headers });
+  if (!meRes.ok) {
+    const body = await meRes.text();
+    console.error(`GET /users/me failed (${meRes.status}): ${body}`);
+    process.exit(1);
+  }
+  const me = (await meRes.json()) as {
+    resource: { current_organization: string; uri: string };
   };
-  const orgUri = listBody.collection?.[0]?.organization ?? userUri;
+  const orgUri = me.resource.current_organization;
   console.log(`Organization URI: ${orgUri}`);
 
   // Step b — create webhook subscription (user scope; org required by API)
