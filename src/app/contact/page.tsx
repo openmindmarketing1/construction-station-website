@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import ImageUpload from "@/components/ImageUpload";
+import CalendlyWidget from "@/components/CalendlyWidget";
 import { CS, HOURS, SERVICES } from "@/lib/constants";
 
 const PROJECT_TYPES = [
@@ -357,6 +358,22 @@ export default function ContactPage() {
               </div>
             </aside>
           </div>
+        </div>
+      </section>
+
+      {/* Calendly booking */}
+      <section className="bg-white py-16 lg:py-20 border-t border-navy/10">
+        <div className="max-w-4xl mx-auto px-5 lg:px-10">
+          <div className="text-gold text-xs tracking-[0.3em] uppercase mb-3 text-center">
+            Book Online
+          </div>
+          <h2 className="font-display text-navy text-3xl md:text-4xl text-center mb-3">
+            Prefer to schedule online?
+          </h2>
+          <p className="text-navy/70 text-center max-w-xl mx-auto mb-10">
+            Skip the phone tag — pick a time that works for you and we&rsquo;ll come to you. Free consultation, no obligation.
+          </p>
+          <CalendlyWidget url="https://calendly.com/constructionstation-sales/free-kitchen-design-consultation" />
         </div>
       </section>
     </>

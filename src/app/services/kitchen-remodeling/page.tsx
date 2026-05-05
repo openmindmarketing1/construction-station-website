@@ -4,6 +4,7 @@ import ServiceHero from "@/components/ServiceHero";
 import ProcessSteps from "@/components/ProcessSteps";
 import FAQAccordion from "@/components/FAQAccordion";
 import CtaSection from "@/components/CtaSection";
+import CalendlyWidget from "@/components/CalendlyWidget";
 import JsonLd from "@/components/JsonLd";
 import { CS } from "@/lib/constants";
 
@@ -212,6 +213,22 @@ export default function KitchenRemodelingPage() {
 
       <ProcessSteps steps={STEPS} />
       <FAQAccordion faqs={FAQS} />
+
+      {/* Calendly booking */}
+      <section className="bg-cream py-16 lg:py-20">
+        <div className="max-w-4xl mx-auto px-5 lg:px-10">
+          <div className="text-gold text-xs tracking-[0.3em] uppercase mb-3 text-center">
+            Free Consultation
+          </div>
+          <h2 className="font-display text-navy text-3xl md:text-4xl text-center mb-3">
+            Book Your Free Design Consultation
+          </h2>
+          <p className="text-navy/70 text-center max-w-xl mx-auto mb-10">
+            Reserve your 60-minute in-home visit online — pick a time that works for you. No obligation. Normally $299, free for new clients.
+          </p>
+          <CalendlyWidget url="https://calendly.com/constructionstation-sales/free-kitchen-design-consultation" />
+        </div>
+      </section>
 
       {/* Related services */}
       <section className="bg-cream py-16">

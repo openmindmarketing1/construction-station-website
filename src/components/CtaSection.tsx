@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { CS } from "@/lib/constants";
@@ -94,12 +93,14 @@ export default function CtaSection({
                   >
                     Call {CS.phone}
                   </a>
-                  <Link
-                    href="/contact"
+                  <a
+                    href="https://calendly.com/constructionstation-sales/free-kitchen-design-consultation"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="border border-white/40 text-white font-body px-8 py-4 uppercase tracking-[0.2em] text-sm hover:border-gold hover:text-gold transition-colors"
                   >
-                    Book Free Consultation
-                  </Link>
+                    Book Online
+                  </a>
                 </div>
               )}
             </motion.div>
