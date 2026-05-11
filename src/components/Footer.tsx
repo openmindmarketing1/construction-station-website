@@ -181,6 +181,26 @@ export default function Footer() {
             © {new Date().getFullYear()} Construction Station. All rights
             reserved.
           </div>
+          <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2">
+            <Link
+              href="/privacy"
+              className="hover:text-gold transition-colors"
+            >
+              Privacy Policy
+            </Link>
+            <Link
+              href="/terms"
+              className="hover:text-gold transition-colors"
+            >
+              Terms of Service
+            </Link>
+            <Link
+              href="/contact"
+              className="hover:text-gold transition-colors"
+            >
+              Contact
+            </Link>
+          </div>
           <div className="text-center md:text-right">
             Licensed, Bonded &amp; Insured · Serving the Inland Empire Since{" "}
             {CS.founded}
