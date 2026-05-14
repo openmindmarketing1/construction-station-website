@@ -27,7 +27,18 @@ interface OmmBlogResponse {
 function getConfig(): { url: string; businessId: string } | null {
   const base = process.env.NEXT_PUBLIC_OMM_API_URL;
   const businessId = process.env.NEXT_PUBLIC_OMM_BUSINESS_ID;
-  if (!base || !businessId) return null;
+  if (!base || !businessId) {
+    // Fail loudly during build so a missing env var doesn't silently drop
+    // every OMM-published post from the live site (which is what happened
+    // on the first ADU/Kitchen publish). Build logs surface this; runtime
+    // never reaches here because Next.js bakes NEXT_PUBLIC_* at build time.
+    console.warn(
+      `[omm-blog] OMM config missing — posts will not be fetched. base=${
+        base ? "set" : "MISSING"
+      } businessId=${businessId ? "set" : "MISSING"}`
+    );
+    return null;
+  }
   return { url: base.replace(/\/+$/, ""), businessId };
 }
 
