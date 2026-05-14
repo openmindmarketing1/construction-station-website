@@ -15,6 +15,7 @@ const nextConfig = {
       { source: "/commercial-services", destination: "/services/commercial", permanent: true },
       { source: "/outdoor-living", destination: "/services/outdoor-living", permanent: true },
       { source: "/room-additions", destination: "/services/room-additions", permanent: true },
+      { source: "/adu", destination: "/services/adu", permanent: true },
       { source: "/home-builders", destination: "/services/room-additions", permanent: true },
       { source: "/kitchen-bath-remodel", destination: "/services/kitchen-remodeling", permanent: true },
       { source: "/flooring", destination: "https://www.carpet-station.com", permanent: true },
