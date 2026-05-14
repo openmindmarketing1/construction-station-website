@@ -9,13 +9,11 @@ import { CS } from "@/lib/constants";
 export const metadata: Metadata = {
   title: "ADU Contractors Inland Empire | Construction Station",
   description:
-    "Licensed ADU general contractor serving the Inland Empire, Temecula Valley, and Desert communities. Detached ADUs, JADUs, garage conversions, and room-addition ADUs up to 1,200 sq ft. Permits to move-in. Call (909) 942-9742.",
+    "Licensed ADU general contractor serving the Inland Empire, Temecula Valley, and Desert communities. Detached ADUs, JADUs, garage conversions, and room-addition ADUs up to 1,200 sq ft. Permits to move-in. Call 909-797-6333.",
   alternates: { canonical: "/services/adu" },
 };
 
 const CALENDLY_URL = "https://calendly.com/constructionstation";
-const ADU_PHONE_DISPLAY = "(909) 942-9742";
-const ADU_PHONE_HREF = "tel:9099429742";
 
 const ADU_TYPES = [
   {
@@ -255,10 +253,10 @@ export default function ADUPage() {
               <div className="flex flex-col sm:flex-row gap-3">
                 <PrimaryCta />
                 <a
-                  href={ADU_PHONE_HREF}
+                  href={CS.phoneHref}
                   className="border border-white/40 text-white px-7 py-4 uppercase tracking-[0.2em] text-sm hover:border-gold hover:text-gold transition-colors text-center"
                 >
-                  Call {ADU_PHONE_DISPLAY}
+                  Call {CS.phone}
                 </a>
               </div>
             </div>
@@ -594,10 +592,10 @@ export default function ADUPage() {
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <PrimaryCta />
             <a
-              href={ADU_PHONE_HREF}
+              href={CS.phoneHref}
               className="inline-flex items-center justify-center gap-3 border border-white/40 text-white px-8 py-4 text-base hover:border-gold hover:text-gold transition-colors font-body tracking-wide uppercase"
             >
-              Call {ADU_PHONE_DISPLAY}
+              Call {CS.phone}
             </a>
             <Link
               href="/contact"
