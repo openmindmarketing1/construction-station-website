@@ -35,15 +35,6 @@ export const SERVICES = [
     long: "Walk-in showers, freestanding tubs, heated floors, and master-suite bathrooms designed around you.",
   },
   {
-    name: "ADUs",
-    slug: "adus",
-    category: "residential" as const,
-    hasPage: false,
-    icon: "🏠",
-    description: "Accessory Dwelling Units that add value to your property.",
-    long: "Detached and attached ADUs from permits to keys — turnkey backyard homes built to California code.",
-  },
-  {
     name: "Room Additions",
     slug: "room-additions",
     category: "residential" as const,
@@ -71,7 +62,16 @@ export const SERVICES = [
     long: "Covered patios, pergolas, fire features, and outdoor kitchens that turn yards into year-round retreats.",
   },
   {
-    name: "Commercial Construction",
+    name: "ADU / Accessory Dwelling Units",
+    slug: "adu",
+    category: "residential" as const,
+    hasPage: true,
+    icon: "🏠",
+    description: "Accessory Dwelling Units that add value to your property.",
+    long: "Detached and attached ADUs from permits to keys — turnkey backyard homes built to California code.",
+  },
+  {
+    name: "Commercial Services",
     slug: "commercial",
     category: "commercial" as const,
     hasPage: true,

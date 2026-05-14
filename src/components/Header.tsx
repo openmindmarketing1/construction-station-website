@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { CS, SERVICES, COMMERCIAL_SERVICES } from "@/lib/constants";
+import { CS, SERVICES } from "@/lib/constants";
 import { CITIES } from "@/config/cities";
 
 export default function Header() {
@@ -24,7 +24,7 @@ export default function Header() {
   }, [open]);
 
   const isLight = scrolled;
-  const residential = SERVICES.filter((s) => s.category === "residential" && s.hasPage);
+  const services = SERVICES.filter((s) => s.hasPage);
 
   return (
     <>
@@ -80,11 +80,7 @@ export default function Header() {
                       className="absolute left-0 top-full pt-3 w-80"
                     >
                       <div className="bg-white border border-navy/10 shadow-xl py-2">
-                        {/* Residential group */}
-                        <div className="px-5 pt-2 pb-1 text-[10px] text-navy/40 uppercase tracking-[0.3em]">
-                          Residential
-                        </div>
-                        {residential.map((s) => (
+                        {services.map((s) => (
                           <Link
                             key={s.slug}
                             href={`/services/${s.slug}`}
@@ -99,26 +95,7 @@ export default function Header() {
 
                         <div className="mx-4 my-2 h-px bg-navy/10" />
 
-                        {/* Commercial group */}
-                        <div className="px-5 pb-1 text-[10px] text-navy/40 uppercase tracking-[0.3em]">
-                          Commercial
-                        </div>
-                        {COMMERCIAL_SERVICES.map((s) => (
-                          <Link
-                            key={s.anchor}
-                            href={`/services/commercial#${s.anchor}`}
-                            className="flex items-center gap-3 px-5 py-2 hover:bg-cream group"
-                          >
-                            <span className="text-lg">{s.icon}</span>
-                            <div className="font-display text-navy text-sm group-hover:text-gold transition-colors">
-                              {s.name}
-                            </div>
-                          </Link>
-                        ))}
-
-                        <div className="mx-4 my-2 h-px bg-navy/10" />
-
-                        {/* Flooring */}
+                        {/* Flooring — sister company */}
                         <a
                           href="https://www.carpet-station.com"
                           target="_blank"
@@ -286,7 +263,7 @@ export default function Header() {
               }}
               className="px-6 pt-6 pb-12 overflow-y-auto h-[calc(100dvh-5rem)]"
             >
-              {/* Residential */}
+              {/* Services */}
               <motion.div
                 variants={{
                   hidden: { opacity: 0, x: -20 },
@@ -294,9 +271,9 @@ export default function Header() {
                 }}
                 className="text-gold text-xs tracking-[0.3em] uppercase mb-3"
               >
-                Residential
+                Services
               </motion.div>
-              {residential.map((s) => (
+              {services.map((s) => (
                 <motion.div
                   key={s.slug}
                   variants={{
@@ -308,48 +285,6 @@ export default function Header() {
                     href={`/services/${s.slug}`}
                     onClick={() => setOpen(false)}
                     className="block py-3 border-b border-white/10 font-display text-2xl text-white hover:text-gold transition-colors"
-                  >
-                    {s.name}
-                  </Link>
-                </motion.div>
-              ))}
-
-              {/* Commercial */}
-              <motion.div
-                variants={{
-                  hidden: { opacity: 0, x: -20 },
-                  show: { opacity: 1, x: 0 },
-                }}
-                className="text-gold text-xs tracking-[0.3em] uppercase mt-8 mb-3"
-              >
-                Commercial
-              </motion.div>
-              <motion.div
-                variants={{
-                  hidden: { opacity: 0, x: -20 },
-                  show: { opacity: 1, x: 0 },
-                }}
-              >
-                <Link
-                  href="/services/commercial"
-                  onClick={() => setOpen(false)}
-                  className="block py-3 border-b border-white/10 font-display text-2xl text-white hover:text-gold transition-colors"
-                >
-                  Commercial Construction
-                </Link>
-              </motion.div>
-              {COMMERCIAL_SERVICES.map((s) => (
-                <motion.div
-                  key={s.anchor}
-                  variants={{
-                    hidden: { opacity: 0, x: -20 },
-                    show: { opacity: 1, x: 0 },
-                  }}
-                >
-                  <Link
-                    href={`/services/commercial#${s.anchor}`}
-                    onClick={() => setOpen(false)}
-                    className="block py-2 border-b border-white/10 font-body text-base text-white/70 hover:text-gold transition-colors pl-3"
                   >
                     {s.name}
                   </Link>

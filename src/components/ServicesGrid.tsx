@@ -8,7 +8,7 @@ import { SERVICES, CS } from "@/lib/constants";
 const SERVICE_IMAGES: Record<string, string> = {
   "kitchen-remodeling": "/images/services/kitchen/kitchen-01.jpg",
   "bathroom-remodeling": "/images/services/bathroom/bathroom-01.jpg",
-  "adus": "/images/services/adu/adu-01.jpg",
+  "adu": "/images/services/adu/adu-01.jpg",
   "room-additions": "/images/services/room-additions/room-addition-01.jpg",
   "windows-and-doors": "/images/services/windows-doors/windows-01.jpg",
   "outdoor-living": "/images/services/outdoor-living/outdoor-01.jpg",
