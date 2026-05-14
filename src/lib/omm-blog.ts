@@ -25,13 +25,16 @@ interface OmmBlogResponse {
 }
 
 function getConfig(): { url: string; businessId: string } | null {
-  const base = process.env.NEXT_PUBLIC_OMM_API_URL;
-  const businessId = process.env.NEXT_PUBLIC_OMM_BUSINESS_ID;
+  // Trim defensively. Vercel env vars pasted with a trailing newline produce
+  // %0A in the encoded URL, which OMM rejects as an invalid UUID (400). This
+  // silently dropped the first ADU/Kitchen posts.
+  const base = process.env.NEXT_PUBLIC_OMM_API_URL?.trim();
+  const businessId = process.env.NEXT_PUBLIC_OMM_BUSINESS_ID?.trim();
   if (!base || !businessId) {
     // Fail loudly during build so a missing env var doesn't silently drop
-    // every OMM-published post from the live site (which is what happened
-    // on the first ADU/Kitchen publish). Build logs surface this; runtime
-    // never reaches here because Next.js bakes NEXT_PUBLIC_* at build time.
+    // every OMM-published post from the live site. Build logs surface this;
+    // runtime never reaches here because Next.js bakes NEXT_PUBLIC_* at
+    // build time.
     console.warn(
       `[omm-blog] OMM config missing — posts will not be fetched. base=${
         base ? "set" : "MISSING"
