@@ -59,6 +59,9 @@ export const metadata: Metadata = {
     images: [`${SITE_URL}/og.jpg`],
   },
   robots: { index: true, follow: true },
+  verification: {
+    google: "UWNjKJBmwzIEvCFajoKffM2zPfwIqwx8jvCiM6cmNBk",
+  },
 };
 
 export default function RootLayout({
