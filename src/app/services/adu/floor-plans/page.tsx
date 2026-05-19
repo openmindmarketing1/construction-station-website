@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "/services/adu/floor-plans" },
 };
 
-const CALENDLY_URL = "https://calendly.com/constructionstation";
+const CALENDLY_URL = "https://calendly.com/constructionstation-sales/free-adu-remodeling-consult";
 
 type FloorPlan = {
   name: string;

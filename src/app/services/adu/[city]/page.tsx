@@ -10,7 +10,7 @@ import {
   type ADUCity,
 } from "@/lib/adu-cities";
 
-const CALENDLY_URL = "https://calendly.com/constructionstation";
+const CALENDLY_URL = "https://calendly.com/constructionstation-sales/free-adu-remodeling-consult";
 
 const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL ?? "https://constructionstation.com";
