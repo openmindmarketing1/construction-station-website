@@ -1,6 +1,44 @@
 /** @type {import('next').NextConfig} */
+const ADU_CITY_SLUGS = [
+  "yucaipa",
+  "redlands",
+  "loma-linda",
+  "san-bernardino",
+  "highland",
+  "beaumont",
+  "banning",
+  "colton",
+  "rialto",
+  "fontana",
+  "rancho-cucamonga",
+  "ontario",
+  "upland",
+  "chino",
+  "chino-hills",
+  "victorville",
+  "hesperia",
+  "apple-valley",
+  "murrieta",
+  "lake-elsinore",
+  "menifee",
+  "temecula",
+  "palm-springs",
+  "palm-desert",
+  "cathedral-city",
+  "indio",
+  "la-quinta",
+  "anaheim-hills",
+  "yorba-linda",
+];
+
 const nextConfig = {
   async redirects() {
+    const aduCityRedirects = ADU_CITY_SLUGS.map((slug) => ({
+      source: `/adu/${slug}`,
+      destination: `/services/adu/${slug}`,
+      permanent: true,
+    }));
+
     return [
       {
         // Short link given to customers post-project: constructionstation.com/review
@@ -15,6 +53,7 @@ const nextConfig = {
       { source: "/commercial-services", destination: "/services/commercial", permanent: true },
       { source: "/outdoor-living", destination: "/services/outdoor-living", permanent: true },
       { source: "/room-additions", destination: "/services/room-additions", permanent: true },
+      ...aduCityRedirects,
       { source: "/adu", destination: "/services/adu", permanent: true },
       { source: "/home-builders", destination: "/services/room-additions", permanent: true },
       { source: "/kitchen-bath-remodel", destination: "/services/kitchen-remodeling", permanent: true },

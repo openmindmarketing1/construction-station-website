@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 import { CITIES } from "@/config/cities";
 import { SERVICES } from "@/lib/constants";
 import { POSTS } from "@/lib/blog";
+import { ADU_CITIES } from "@/lib/adu-cities";
 
 const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL ?? "https://constructionstation.com";
@@ -42,5 +43,28 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  return [...staticRoutes, ...serviceRoutes, ...blogRoutes, ...cityRoutes];
+  const aduCityRoutes: MetadataRoute.Sitemap = ADU_CITIES.map((c) => ({
+    url: `${SITE_URL}/services/adu/${c.slug}`,
+    lastModified: now,
+    changeFrequency: "monthly" as const,
+    priority: 0.8,
+  }));
+
+  const aduFloorPlansRoute: MetadataRoute.Sitemap = [
+    {
+      url: `${SITE_URL}/services/adu/floor-plans`,
+      lastModified: now,
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
+    },
+  ];
+
+  return [
+    ...staticRoutes,
+    ...serviceRoutes,
+    ...blogRoutes,
+    ...cityRoutes,
+    ...aduCityRoutes,
+    ...aduFloorPlansRoute,
+  ];
 }

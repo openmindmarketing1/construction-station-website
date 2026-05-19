@@ -5,6 +5,7 @@ import ProcessSteps from "@/components/ProcessSteps";
 import FAQAccordion from "@/components/FAQAccordion";
 import JsonLd from "@/components/JsonLd";
 import { CS } from "@/lib/constants";
+import { ADU_CITIES } from "@/lib/adu-cities";
 
 export const metadata: Metadata = {
   title: "ADU Contractors Inland Empire | Construction Station",
@@ -103,16 +104,7 @@ const WHY_CS = [
   },
 ];
 
-const CITIES = [
-  "Yucaipa", "Redlands", "Loma Linda", "San Bernardino",
-  "Highland", "Beaumont", "Banning", "Colton",
-  "Rialto", "Fontana", "Rancho Cucamonga", "Ontario",
-  "Upland", "Chino", "Chino Hills", "Victorville",
-  "Hesperia", "Apple Valley", "Murrieta", "Lake Elsinore",
-  "Menifee", "Temecula", "Palm Springs", "Palm Desert",
-  "Cathedral City", "Indio", "La Quinta", "Anaheim Hills",
-  "Yorba Linda",
-];
+const CITIES = ADU_CITIES.map((c) => ({ name: c.name, slug: c.slug }));
 
 const FAQS = [
   {
@@ -183,7 +175,7 @@ const localBusinessSchema = {
     addressCountry: "US",
     addressLocality: "Inland Empire",
   },
-  areaServed: CITIES.map((city) => `${city}, CA`),
+  areaServed: CITIES.map((city) => `${city.name}, CA`),
   identifier: CS.license,
 };
 
@@ -503,28 +495,37 @@ export default function ADUPage() {
         </div>
       </section>
 
-      {/* Cities */}
+      {/* Cities — clickable links to regulation pages */}
       <section className="bg-white py-20 lg:py-24">
         <div className="max-w-7xl mx-auto px-5 lg:px-10">
-          <div className="text-center mb-12">
+          <div className="text-center mb-4">
             <div className="flex items-center justify-center gap-3 mb-4">
               <span className="w-10 h-px bg-gold" />
               <span className="text-gold text-xs uppercase tracking-[0.4em]">
-                Service Area
+                Cities We Serve
               </span>
               <span className="w-10 h-px bg-gold" />
             </div>
             <h2 className="font-display text-navy text-4xl md:text-5xl leading-[1]">
-              Building ADUs across{" "}
+              ADU regulations across{" "}
               <span className="italic text-gold">29 cities</span>.
             </h2>
+            <p className="text-navy/70 mt-5 max-w-2xl mx-auto leading-relaxed">
+              Click any city below for a complete ADU regulation guide — max
+              size, setbacks, height, parking, JADUs, impact fees, and the
+              local permit process.
+            </p>
           </div>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-y-3 gap-x-6 text-navy/80 text-sm">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-y-3 gap-x-6 text-sm mt-10">
             {CITIES.map((c) => (
-              <div key={c} className="flex items-center gap-2">
+              <Link
+                key={c.slug}
+                href={`/services/adu/${c.slug}`}
+                className="flex items-center gap-2 text-navy/80 hover:text-gold transition-colors"
+              >
                 <span className="w-1 h-1 bg-gold rounded-full shrink-0" />
-                {c}
-              </div>
+                {c.name}
+              </Link>
             ))}
           </div>
         </div>
