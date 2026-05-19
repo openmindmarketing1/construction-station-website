@@ -1,8 +1,16 @@
+export type RegionKey =
+  | "ie-core"
+  | "high-desert"
+  | "temecula-valley"
+  | "desert"
+  | "oc-adjacent";
+
 export type ADUCity = {
   slug: string;
   name: string;
   county: string;
   region: string;
+  regionKey: RegionKey;
   maxSize: string;
   setbacks: string;
   height: string;
@@ -16,6 +24,13 @@ export type ADUCity = {
   whyBuild: string;
 };
 
+export type RentTier = {
+  label: string;
+  size: string;
+  minMonthly: number;
+  maxMonthly: number;
+};
+
 const STATE_SETBACKS = "4 ft side & rear (CA state baseline)";
 const STATE_PARKING =
   "Not required in most cases; no replacement parking for garage conversions";
@@ -23,7 +38,7 @@ const STATE_JADU = "Yes — up to 500 sq ft; owner-occupancy required if JADU is
 const STATE_IMPACT_FEES = "Waived under 750 sq ft (state law)";
 const STATE_PERMIT_TIMELINE = "60 days maximum (state-mandated review window)";
 
-export const ADU_CITIES: ADUCity[] = [
+const BASE_CITIES: Omit<ADUCity, "regionKey">[] = [
   {
     slug: "yucaipa",
     name: "Yucaipa",
@@ -609,7 +624,98 @@ export const ADU_CITIES: ADUCity[] = [
   },
 ];
 
+const REGION_KEY_BY_SLUG: Record<string, RegionKey> = {
+  yucaipa: "ie-core",
+  redlands: "ie-core",
+  "loma-linda": "ie-core",
+  "san-bernardino": "ie-core",
+  highland: "ie-core",
+  beaumont: "ie-core",
+  banning: "ie-core",
+  colton: "ie-core",
+  rialto: "ie-core",
+  fontana: "ie-core",
+  "rancho-cucamonga": "ie-core",
+  ontario: "ie-core",
+  upland: "ie-core",
+  chino: "ie-core",
+  "chino-hills": "ie-core",
+  victorville: "high-desert",
+  hesperia: "high-desert",
+  "apple-valley": "high-desert",
+  murrieta: "temecula-valley",
+  "lake-elsinore": "temecula-valley",
+  menifee: "temecula-valley",
+  temecula: "temecula-valley",
+  "palm-springs": "desert",
+  "palm-desert": "desert",
+  "cathedral-city": "desert",
+  indio: "desert",
+  "la-quinta": "desert",
+  "anaheim-hills": "oc-adjacent",
+  "yorba-linda": "oc-adjacent",
+};
+
+export const REGION_LABEL: Record<RegionKey, string> = {
+  "ie-core": "Inland Empire",
+  "high-desert": "High Desert",
+  "temecula-valley": "Temecula Valley",
+  desert: "Coachella Valley",
+  "oc-adjacent": "North Orange County",
+};
+
+export const RENT_BY_REGION: Record<RegionKey, RentTier[]> = {
+  "ie-core": [
+    { label: "Studio", size: "400–500 sq ft", minMonthly: 1200, maxMonthly: 1600 },
+    { label: "1 Bed / 1 Bath", size: "600–800 sq ft", minMonthly: 1500, maxMonthly: 2000 },
+    { label: "2 Bed / 2 Bath", size: "900–1,200 sq ft", minMonthly: 1800, maxMonthly: 2500 },
+  ],
+  "high-desert": [
+    { label: "Studio", size: "400–500 sq ft", minMonthly: 900, maxMonthly: 1200 },
+    { label: "1 Bed / 1 Bath", size: "600–800 sq ft", minMonthly: 1100, maxMonthly: 1500 },
+    { label: "2 Bed / 2 Bath", size: "900–1,200 sq ft", minMonthly: 1400, maxMonthly: 1800 },
+  ],
+  "temecula-valley": [
+    { label: "Studio", size: "400–500 sq ft", minMonthly: 1400, maxMonthly: 1800 },
+    { label: "1 Bed / 1 Bath", size: "600–800 sq ft", minMonthly: 1700, maxMonthly: 2200 },
+    { label: "2 Bed / 2 Bath", size: "900–1,200 sq ft", minMonthly: 2000, maxMonthly: 2600 },
+  ],
+  desert: [
+    { label: "Studio", size: "400–500 sq ft", minMonthly: 1500, maxMonthly: 2000 },
+    { label: "1 Bed / 1 Bath", size: "600–800 sq ft", minMonthly: 1800, maxMonthly: 2400 },
+    { label: "2 Bed / 2 Bath", size: "900–1,200 sq ft", minMonthly: 2200, maxMonthly: 3000 },
+  ],
+  "oc-adjacent": [
+    { label: "Studio", size: "400–500 sq ft", minMonthly: 1600, maxMonthly: 2100 },
+    { label: "1 Bed / 1 Bath", size: "600–800 sq ft", minMonthly: 2000, maxMonthly: 2600 },
+    { label: "2 Bed / 2 Bath", size: "900–1,200 sq ft", minMonthly: 2400, maxMonthly: 3200 },
+  ],
+};
+
+export const ADU_CITIES: ADUCity[] = BASE_CITIES.map((city) => ({
+  ...city,
+  regionKey: REGION_KEY_BY_SLUG[city.slug],
+}));
+
 export const getCityBySlug = (slug: string): ADUCity | undefined =>
   ADU_CITIES.find((city) => city.slug === slug);
 
 export const ADU_CITY_SLUGS = ADU_CITIES.map((c) => c.slug);
+
+// Short headline size for the stats bar — first "N,NNN sq ft" found in maxSize.
+export const maxSizeStat = (city: ADUCity): string => {
+  const match = city.maxSize.match(/[\d,]+\s*sq\s*ft/i);
+  return match ? match[0].replace(/\s+/g, " ") : city.maxSize;
+};
+
+// Planning-department phone pulled from the contact string, if present.
+export const contactPhone = (city: ADUCity): string | null => {
+  const match = city.contact.match(/\(\d{3}\)\s*\d{3}-\d{4}(?:\s*ext\s*\d+)?/i);
+  return match ? match[0] : null;
+};
+
+export const rentTiersFor = (city: ADUCity): RentTier[] =>
+  RENT_BY_REGION[city.regionKey];
+
+export const formatUSD = (value: number): string =>
+  `$${value.toLocaleString("en-US")}`;
