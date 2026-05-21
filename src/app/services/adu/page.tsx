@@ -495,8 +495,56 @@ export default function ADUPage() {
         </div>
       </section>
 
+      {/* ADU Resources */}
+      <section className="bg-white py-20 lg:py-24">
+        <div className="max-w-7xl mx-auto px-5 lg:px-10">
+          <div className="text-center mb-14">
+            <div className="flex items-center justify-center gap-3 mb-4">
+              <span className="w-10 h-px bg-gold" />
+              <span className="text-gold text-xs uppercase tracking-[0.4em]">
+                ADU Resources
+              </span>
+              <span className="w-10 h-px bg-gold" />
+            </div>
+            <h2 className="font-display text-navy text-4xl md:text-5xl lg:text-6xl leading-[1]">
+              Everything you need to{" "}
+              <span className="italic text-gold">plan your ADU</span>.
+            </h2>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {[
+              { icon: "📘", title: "ADU Basics", blurb: "What an ADU is, the types, and how it works.", href: "/services/adu/basics" },
+              { icon: "💰", title: "ADU Costs", blurb: "Transparent all-in pricing and full cost breakdown.", href: "/services/adu/costs" },
+              { icon: "🏦", title: "ADU Financing", blurb: "HELOCs, construction loans, grants, and more.", href: "/services/adu/financing" },
+              { icon: "📈", title: "ADU Investment", blurb: "Rental income, ROI, and property value impact.", href: "/services/adu/investment" },
+              { icon: "📐", title: "Floor Plans", blurb: "12 sample layouts from 400 to 1,200 sq ft.", href: "/services/adu/floor-plans" },
+              { icon: "🏛️", title: "Regulations by City", blurb: "ADU rules across 29 Inland Empire cities.", href: "/services/adu/yucaipa" },
+            ].map((r) => (
+              <Link
+                key={r.href}
+                href={r.href}
+                className="bg-cream border border-navy/10 p-7 hover:border-gold transition-colors group flex flex-col"
+              >
+                <div className="text-4xl mb-4">{r.icon}</div>
+                <div className="font-display text-navy text-2xl mb-2 leading-tight group-hover:text-gold transition-colors">
+                  {r.title}
+                </div>
+                <div className="text-navy/70 text-sm leading-relaxed mb-5">
+                  {r.blurb}
+                </div>
+                <div className="mt-auto flex items-center gap-2 text-gold uppercase tracking-[0.3em] text-xs">
+                  Learn More
+                  <span className="w-6 h-px bg-gold group-hover:w-10 transition-all" />
+                  <span aria-hidden>→</span>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Cities — clickable links to regulation pages */}
-      <section id="cities" className="bg-white py-20 lg:py-24 scroll-mt-24">
+      <section id="cities" className="bg-cream py-20 lg:py-24 scroll-mt-24">
         <div className="max-w-7xl mx-auto px-5 lg:px-10">
           <div className="text-center mb-4">
             <div className="flex items-center justify-center gap-3 mb-4">

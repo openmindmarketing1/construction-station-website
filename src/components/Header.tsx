@@ -4,13 +4,15 @@ import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { CS, SERVICES } from "@/lib/constants";
+import { CS, SERVICES, ADU_SUBMENU } from "@/lib/constants";
 import { CITIES } from "@/config/cities";
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
+  const [aduOpen, setAduOpen] = useState(false);
+  const [aduMobileOpen, setAduMobileOpen] = useState(false);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60);
@@ -80,18 +82,73 @@ export default function Header() {
                       className="absolute left-0 top-full pt-3 w-80"
                     >
                       <div className="bg-white border border-navy/10 shadow-xl py-2">
-                        {services.map((s) => (
-                          <Link
-                            key={s.slug}
-                            href={`/services/${s.slug}`}
-                            className="flex items-center gap-3 px-5 py-2 hover:bg-cream group"
-                          >
-                            <span className="text-lg">{s.icon}</span>
-                            <div className="font-display text-navy text-sm group-hover:text-gold transition-colors">
-                              {s.name}
+                        {services.map((s) =>
+                          s.slug === "adu" ? (
+                            <div
+                              key={s.slug}
+                              onMouseEnter={() => setAduOpen(true)}
+                              onMouseLeave={() => setAduOpen(false)}
+                            >
+                              <Link
+                                href={`/services/${s.slug}`}
+                                className="flex items-center gap-3 px-5 py-2 hover:bg-cream group"
+                              >
+                                <span className="text-lg">{s.icon}</span>
+                                <div className="flex-1 font-display text-navy text-sm group-hover:text-gold transition-colors">
+                                  {s.name}
+                                </div>
+                                <svg
+                                  className={`w-3 h-3 text-navy/40 transition-transform ${
+                                    aduOpen ? "-rotate-90" : ""
+                                  }`}
+                                  viewBox="0 0 12 12"
+                                  fill="currentColor"
+                                >
+                                  <path d="M4 2l4 4-4 4z" />
+                                </svg>
+                              </Link>
+                              <AnimatePresence initial={false}>
+                                {aduOpen && (
+                                  <motion.div
+                                    initial={{ height: 0, opacity: 0 }}
+                                    animate={{ height: "auto", opacity: 1 }}
+                                    exit={{ height: 0, opacity: 0 }}
+                                    transition={{ duration: 0.2 }}
+                                    className="overflow-hidden bg-cream/40"
+                                  >
+                                    {ADU_SUBMENU.map((item) => (
+                                      <Link
+                                        key={item.href}
+                                        href={item.href}
+                                        className="flex items-center justify-between gap-2 pl-12 pr-5 py-2 hover:bg-cream group"
+                                      >
+                                        <span className="text-navy/80 text-sm group-hover:text-gold transition-colors">
+                                          {item.label}
+                                        </span>
+                                        {item.note && (
+                                          <span className="text-[10px] text-navy/40 italic">
+                                            {item.note}
+                                          </span>
+                                        )}
+                                      </Link>
+                                    ))}
+                                  </motion.div>
+                                )}
+                              </AnimatePresence>
                             </div>
-                          </Link>
-                        ))}
+                          ) : (
+                            <Link
+                              key={s.slug}
+                              href={`/services/${s.slug}`}
+                              className="flex items-center gap-3 px-5 py-2 hover:bg-cream group"
+                            >
+                              <span className="text-lg">{s.icon}</span>
+                              <div className="font-display text-navy text-sm group-hover:text-gold transition-colors">
+                                {s.name}
+                              </div>
+                            </Link>
+                          )
+                        )}
 
                         <div className="mx-4 my-2 h-px bg-navy/10" />
 
@@ -273,23 +330,77 @@ export default function Header() {
               >
                 Services
               </motion.div>
-              {services.map((s) => (
-                <motion.div
-                  key={s.slug}
-                  variants={{
-                    hidden: { opacity: 0, x: -20 },
-                    show: { opacity: 1, x: 0 },
-                  }}
-                >
-                  <Link
-                    href={`/services/${s.slug}`}
-                    onClick={() => setOpen(false)}
-                    className="block py-3 border-b border-white/10 font-display text-2xl text-white hover:text-gold transition-colors"
+              {services.map((s) =>
+                s.slug === "adu" ? (
+                  <motion.div
+                    key={s.slug}
+                    variants={{
+                      hidden: { opacity: 0, x: -20 },
+                      show: { opacity: 1, x: 0 },
+                    }}
                   >
-                    {s.name}
-                  </Link>
-                </motion.div>
-              ))}
+                    <button
+                      onClick={() => setAduMobileOpen((v) => !v)}
+                      aria-expanded={aduMobileOpen}
+                      className="w-full flex items-center justify-between gap-3 py-3 border-b border-white/10 font-display text-2xl text-white hover:text-gold transition-colors text-left"
+                    >
+                      {s.name}
+                      <svg
+                        className={`w-5 h-5 shrink-0 transition-transform ${
+                          aduMobileOpen ? "rotate-180" : ""
+                        }`}
+                        viewBox="0 0 12 12"
+                        fill="currentColor"
+                      >
+                        <path d="M2 4l4 4 4-4z" />
+                      </svg>
+                    </button>
+                    <AnimatePresence initial={false}>
+                      {aduMobileOpen && (
+                        <motion.div
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: "auto", opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ duration: 0.25 }}
+                          className="overflow-hidden"
+                        >
+                          {ADU_SUBMENU.map((item) => (
+                            <Link
+                              key={item.href}
+                              href={item.href}
+                              onClick={() => setOpen(false)}
+                              className="flex items-center justify-between gap-3 py-2.5 pl-4 border-b border-white/5 text-white/80 hover:text-gold transition-colors"
+                            >
+                              <span className="text-lg">{item.label}</span>
+                              {item.note && (
+                                <span className="text-xs text-white/40 italic">
+                                  {item.note}
+                                </span>
+                              )}
+                            </Link>
+                          ))}
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </motion.div>
+                ) : (
+                  <motion.div
+                    key={s.slug}
+                    variants={{
+                      hidden: { opacity: 0, x: -20 },
+                      show: { opacity: 1, x: 0 },
+                    }}
+                  >
+                    <Link
+                      href={`/services/${s.slug}`}
+                      onClick={() => setOpen(false)}
+                      className="block py-3 border-b border-white/10 font-display text-2xl text-white hover:text-gold transition-colors"
+                    >
+                      {s.name}
+                    </Link>
+                  </motion.div>
+                )
+              )}
 
               {/* Flooring */}
               <motion.div

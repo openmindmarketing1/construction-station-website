@@ -19,22 +19,23 @@ type FloorPlan = {
   size: string;
   beds: string;
   type: string;
+  price: string;
   image?: string;
 };
 
 const PLANS: FloorPlan[] = [
-  { name: "The Yucaipa",         size: "400 sq ft",   beds: "Studio / 1ba", type: "Garage Conversion", image: "/images/adu/floor-plans/yucaipa-3d.jpg" },
-  { name: "The Redlands",        size: "500 sq ft",   beds: "1bd / 1ba",    type: "Detached" },
-  { name: "The Highland",        size: "600 sq ft",   beds: "1bd / 1ba",    type: "Detached" },
-  { name: "The Loma Linda",      size: "650 sq ft",   beds: "1bd / 1ba",    type: "Attached" },
-  { name: "The San Bernardino",  size: "750 sq ft",   beds: "2bd / 1ba",    type: "Detached" },
-  { name: "The Beaumont",        size: "800 sq ft",   beds: "2bd / 1ba",    type: "Detached" },
-  { name: "The Fontana",         size: "900 sq ft",   beds: "2bd / 2ba",    type: "Detached" },
-  { name: "The Ontario",         size: "950 sq ft",   beds: "2bd / 2ba",    type: "Attached" },
-  { name: "The Rancho",          size: "1,000 sq ft", beds: "2bd / 2ba",    type: "Detached" },
-  { name: "The Murrieta",        size: "1,100 sq ft", beds: "2bd / 2ba",    type: "Detached" },
-  { name: "The Palm Desert",     size: "1,150 sq ft", beds: "3bd / 2ba",    type: "Detached" },
-  { name: "The Inland",          size: "1,200 sq ft", beds: "3bd / 2ba",    type: "Detached" },
+  { name: "The Yucaipa",         size: "400 sq ft",   beds: "Studio / 1ba", type: "Garage Conversion", price: "Est. $200K all-in", image: "/images/adu/floor-plans/yucaipa-3d.jpg" },
+  { name: "The Redlands",        size: "500 sq ft",   beds: "1bd / 1ba",    type: "Detached", price: "Est. $235K all-in" },
+  { name: "The Highland",        size: "600 sq ft",   beds: "1bd / 1ba",    type: "Detached", price: "Est. $255K all-in" },
+  { name: "The Loma Linda",      size: "650 sq ft",   beds: "1bd / 1ba",    type: "Attached", price: "Est. $275K all-in" },
+  { name: "The San Bernardino",  size: "750 sq ft",   beds: "2bd / 1ba",    type: "Detached", price: "Est. $300K all-in" },
+  { name: "The Beaumont",        size: "800 sq ft",   beds: "2bd / 1ba",    type: "Detached", price: "Est. $320K all-in" },
+  { name: "The Fontana",         size: "900 sq ft",   beds: "2bd / 2ba",    type: "Detached", price: "Est. $345K all-in" },
+  { name: "The Ontario",         size: "950 sq ft",   beds: "2bd / 2ba",    type: "Attached", price: "Est. $360K all-in" },
+  { name: "The Rancho",          size: "1,000 sq ft", beds: "2bd / 2ba",    type: "Detached", price: "Est. $375K all-in" },
+  { name: "The Murrieta",        size: "1,100 sq ft", beds: "2bd / 2ba",    type: "Detached", price: "Est. $410K all-in" },
+  { name: "The Palm Desert",     size: "1,150 sq ft", beds: "3bd / 2ba",    type: "Detached", price: "Est. $423K all-in" },
+  { name: "The Inland",          size: "1,200 sq ft", beds: "3bd / 2ba",    type: "Detached", price: "Est. $435K all-in" },
 ];
 
 const SITE_URL =
@@ -103,9 +104,10 @@ export default function ADUFloorPlansPage() {
                   <div className="text-gold text-xs tracking-[0.3em] uppercase mb-2">
                     {p.type}
                   </div>
-                  <h2 className="font-display text-navy text-2xl leading-tight mb-3">
+                  <h2 className="font-display text-navy text-2xl leading-tight mb-2">
                     {p.name}
                   </h2>
+                  <div className="text-gold font-semibold mb-4">{p.price}</div>
                   <div className="grid grid-cols-2 gap-3 text-sm text-navy/70 mb-6 pb-6 border-b border-navy/10">
                     <div>
                       <div className="text-[10px] uppercase tracking-wider text-navy/40 mb-1">
@@ -134,8 +136,16 @@ export default function ADUFloorPlansPage() {
             ))}
           </div>
 
-          {/* Footer note */}
+          {/* Pricing disclaimer */}
           <p className="mt-14 max-w-3xl mx-auto text-center text-navy/65 text-sm leading-relaxed border-t border-navy/10 pt-8">
+            Pricing shown is estimated all-in cost based on typical IE market
+            conditions. Actual costs vary based on site conditions, city fees,
+            finish selections, and utility connections. Schedule a free
+            consultation for a detailed estimate on your specific property.
+          </p>
+
+          {/* Footer note */}
+          <p className="mt-4 max-w-3xl mx-auto text-center text-navy/65 text-sm leading-relaxed">
             All floor plans are samples and starting points. Final plans are
             engineered and stamped for your specific property and city
             requirements.

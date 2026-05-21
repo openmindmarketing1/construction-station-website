@@ -81,6 +81,28 @@ export const SERVICES = [
   },
 ];
 
+export type NavSubItem = {
+  label: string;
+  href: string;
+  note?: string;
+};
+
+// Submenu rendered under the "ADU / Accessory Dwelling Units" entry in the
+// Services nav dropdown (flyout on desktop, accordion on mobile).
+export const ADU_SUBMENU: NavSubItem[] = [
+  { label: "ADU Overview", href: "/services/adu" },
+  { label: "Floor Plans & Pricing", href: "/services/adu/floor-plans" },
+  { label: "ADU Costs", href: "/services/adu/costs" },
+  { label: "ADU Basics", href: "/services/adu/basics" },
+  { label: "ADU Financing", href: "/services/adu/financing" },
+  { label: "ADU Investment", href: "/services/adu/investment" },
+  {
+    label: "Regulations by City",
+    href: "/services/adu/redlands",
+    note: "select your city",
+  },
+];
+
 export const COMMERCIAL_SERVICES = [
   {
     name: "TI Buildouts",

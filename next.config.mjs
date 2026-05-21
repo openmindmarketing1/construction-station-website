@@ -39,6 +39,14 @@ const nextConfig = {
       permanent: true,
     }));
 
+    const aduInfoRedirects = ["costs", "basics", "financing", "investment"].map(
+      (slug) => ({
+        source: `/adu/${slug}`,
+        destination: `/services/adu/${slug}`,
+        permanent: true,
+      })
+    );
+
     return [
       {
         // Short link given to customers post-project: constructionstation.com/review
@@ -53,6 +61,7 @@ const nextConfig = {
       { source: "/commercial-services", destination: "/services/commercial", permanent: true },
       { source: "/outdoor-living", destination: "/services/outdoor-living", permanent: true },
       { source: "/room-additions", destination: "/services/room-additions", permanent: true },
+      ...aduInfoRedirects,
       ...aduCityRedirects,
       { source: "/adu", destination: "/services/adu", permanent: true },
       { source: "/home-builders", destination: "/services/room-additions", permanent: true },

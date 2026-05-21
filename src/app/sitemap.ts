@@ -50,14 +50,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
-  const aduFloorPlansRoute: MetadataRoute.Sitemap = [
-    {
-      url: `${SITE_URL}/services/adu/floor-plans`,
-      lastModified: now,
-      changeFrequency: "monthly" as const,
-      priority: 0.7,
-    },
-  ];
+  const aduInfoRoutes: MetadataRoute.Sitemap = [
+    "floor-plans",
+    "costs",
+    "basics",
+    "financing",
+    "investment",
+  ].map((slug) => ({
+    url: `${SITE_URL}/services/adu/${slug}`,
+    lastModified: now,
+    changeFrequency: "monthly" as const,
+    priority: 0.7,
+  }));
 
   return [
     ...staticRoutes,
@@ -65,6 +69,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...blogRoutes,
     ...cityRoutes,
     ...aduCityRoutes,
-    ...aduFloorPlansRoute,
+    ...aduInfoRoutes,
   ];
 }
