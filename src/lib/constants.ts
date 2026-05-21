@@ -97,8 +97,8 @@ export const ADU_SUBMENU: NavSubItem[] = [
   { label: "ADU Financing", href: "/services/adu/financing" },
   { label: "ADU Investment", href: "/services/adu/investment" },
   {
-    label: "Regulations by City",
-    href: "/services/adu/redlands",
+    label: "Regulations by City →",
+    href: "/services/adu#cities",
     note: "select your city",
   },
 ];
