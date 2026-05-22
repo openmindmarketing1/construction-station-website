@@ -34,6 +34,8 @@ export default function ContactPage() {
     notes: "",
     honeypot: "",
   });
+  const [smsTransactionalConsent, setSmsTransactionalConsent] = useState(false);
+  const [smsMarketingConsent, setSmsMarketingConsent] = useState(false);
 
   function update<K extends keyof typeof form>(k: K, v: string) {
     setForm((f) => ({ ...f, [k]: v }));
@@ -43,6 +45,10 @@ export default function ContactPage() {
     e.preventDefault();
     if (!form.full_name || !form.phone) {
       setError("Name and phone are required.");
+      return;
+    }
+    if (!smsTransactionalConsent) {
+      setError("You must agree to receive SMS messages to submit this form.");
       return;
     }
     if (form.honeypot) {
@@ -65,6 +71,8 @@ export default function ContactPage() {
           notes: form.notes || undefined,
           source: "website",
           images: imageUrls,
+          sms_transactional_consent: smsTransactionalConsent,
+          sms_marketing_consent: smsMarketingConsent,
         }),
       });
       if (!res.ok) throw new Error(`Request failed: ${res.status}`);
@@ -217,6 +225,51 @@ export default function ContactPage() {
                       aria-hidden="true"
                     />
 
+                    <div className="space-y-4">
+                      <label className="flex items-start gap-3 cursor-pointer">
+                        <input
+                          type="checkbox"
+                          checked={smsTransactionalConsent}
+                          onChange={(e) => setSmsTransactionalConsent(e.target.checked)}
+                          className="mt-0.5 h-4 w-4 shrink-0 accent-navy"
+                          required
+                        />
+                        <span className="text-xs text-gray-600 leading-relaxed">
+                          I agree to receive SMS messages from Construction Station Flooring and Design for appointment confirmations and project updates. Msg &amp; data rates may apply. Reply STOP to opt out.{" "}
+                          <a
+                            href="/privacy"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="underline hover:text-gray-800"
+                          >
+                            Privacy Policy
+                          </a>
+                          {" "}
+                          <a
+                            href="/terms"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="underline hover:text-gray-800"
+                          >
+                            Terms
+                          </a>
+                          <span className="text-gold ml-1">*</span>
+                        </span>
+                      </label>
+
+                      <label className="flex items-start gap-3 cursor-pointer">
+                        <input
+                          type="checkbox"
+                          checked={smsMarketingConsent}
+                          onChange={(e) => setSmsMarketingConsent(e.target.checked)}
+                          className="mt-0.5 h-4 w-4 shrink-0 accent-navy"
+                        />
+                        <span className="text-xs text-gray-600 leading-relaxed">
+                          I also agree to receive promotional offers and follow-up messages via SMS from Construction Station Flooring and Design. Msg &amp; data rates may apply. Reply STOP to opt out.
+                        </span>
+                      </label>
+                    </div>
+
                     {error && (
                       <div className="bg-red-50 border border-red-300 text-red-800 px-4 py-3 text-sm">
                         {error}
@@ -229,33 +282,6 @@ export default function ContactPage() {
                     >
                       {submitting ? "Sending…" : "Book My Free Consultation"}
                     </button>
-                    <p className="text-xs text-gray-500 text-center leading-relaxed">
-                      By submitting this form, you agree to be contacted by
-                      Construction Station Flooring and Design regarding your
-                      project inquiry. This includes recurring automated
-                      SMS/text messages for appointment confirmations, project
-                      updates, and follow-ups. Message frequency varies.
-                      Message and data rates may apply. Reply STOP to opt out
-                      at any time. Reply HELP for help. Consent is not a
-                      condition of purchase.{" "}
-                      <a
-                        href="https://www.openmindmarketing.ai/privacy"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="underline hover:text-gray-700"
-                      >
-                        Privacy Policy
-                      </a>
-                      {" | "}
-                      <a
-                        href="https://www.openmindmarketing.ai/terms"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="underline hover:text-gray-700"
-                      >
-                        Terms
-                      </a>
-                    </p>
                   </form>
                 </div>
               ) : (
