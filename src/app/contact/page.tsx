@@ -235,7 +235,7 @@ export default function ContactPage() {
                           required
                         />
                         <span className="text-xs text-gray-600 leading-relaxed">
-                          I agree to receive SMS messages from Construction Station Flooring and Design for appointment confirmations and project updates. Msg &amp; data rates may apply. Reply STOP to opt out.{" "}
+                          I agree to receive SMS messages from Construction Station Flooring and Design for appointment confirmations, project updates, and estimate follow-ups. Msg &amp; data rates may apply. Consent is not a condition of purchase. Reply STOP to opt out.{" "}
                           <a
                             href="https://constructionstation.com/privacy"
                             target="_blank"
@@ -265,7 +265,7 @@ export default function ContactPage() {
                           className="mt-0.5 h-4 w-4 shrink-0 accent-navy"
                         />
                         <span className="text-xs text-gray-600 leading-relaxed">
-                          I also agree to receive promotional offers and follow-up messages via SMS from Construction Station Flooring and Design. Msg &amp; data rates may apply. Reply STOP to opt out.
+                          I also agree to receive promotional offers and follow-up messages via SMS from Construction Station Flooring and Design. Msg &amp; data rates may apply. Consent is not a condition of purchase. Reply STOP to opt out.
                         </span>
                       </label>
                     </div>
