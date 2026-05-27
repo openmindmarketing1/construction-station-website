@@ -11,8 +11,12 @@ import JsonLd from "@/components/JsonLd";
 import { CS } from "@/lib/constants";
 
 export const metadata: Metadata = {
-  title:
-    "Kitchen Remodeler Yucaipa CA | Free Estimates | Licensed & Insured | Construction Station",
+  // `absolute` bypasses the root layout's "%s | Construction Station" template
+  // so the brand isn't appended twice.
+  title: {
+    absolute:
+      "Kitchen Remodeler Yucaipa CA | Free Estimates | Licensed & Insured | Construction Station",
+  },
   description:
     "Top-rated kitchen remodeler in Yucaipa CA. Custom kitchen remodels, free design consultation. CSLB Licensed #1108879. Call (909) 797-6333.",
   alternates: { canonical: "/services/kitchen-remodeling" },

@@ -39,8 +39,12 @@ export async function generateMetadata({
   const { city: slug } = await params;
   const city = getCityBySlug(slug);
   if (!city) return {};
-  const title =
-    city.seoTitle ?? `ADU Regulations ${city.name}, CA | Construction Station`;
+  // `absolute` bypasses the root layout's "%s | Construction Station" template
+  // so the override's brand isn't appended twice. Cities without an override
+  // keep the templated title (brand added once by the template).
+  const title: Metadata["title"] = city.seoTitle
+    ? { absolute: city.seoTitle }
+    : `ADU Regulations ${city.name}, CA | Construction Station`;
   const description =
     city.seoDescription ??
     `Everything you need to know about building an ADU in ${city.name}, California — size limits, setbacks, permits, costs, and rental income. Licensed ADU contractor since 2008. Call ${CS.phone}.`;

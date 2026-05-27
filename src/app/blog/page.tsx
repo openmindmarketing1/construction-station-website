@@ -5,8 +5,12 @@ import { POSTS, formatDate, type BlogPost } from "@/lib/blog";
 import { fetchOmmPosts, type OmmBlogPost } from "@/lib/omm-blog";
 
 export const metadata: Metadata = {
-  title:
-    "Home Remodeling Tips & Ideas | Yucaipa CA Contractor Blog | Construction Station",
+  // `absolute` bypasses the root layout's "%s | Construction Station" template
+  // so the brand isn't appended twice.
+  title: {
+    absolute:
+      "Home Remodeling Tips & Ideas | Yucaipa CA Contractor Blog | Construction Station",
+  },
   description:
     "Expert home remodeling tips, ADU guides, kitchen and bathroom renovation ideas from Construction Station — Yucaipa CA's trusted licensed contractor.",
   alternates: { canonical: "/blog" },
