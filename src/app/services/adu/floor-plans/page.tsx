@@ -12,30 +12,37 @@ export const metadata: Metadata = {
   alternates: { canonical: "/services/adu/floor-plans" },
 };
 
-const CALENDLY_URL = "https://calendly.com/constructionstation-sales/free-adu-remodeling-consult";
+const CALENDLY_URL =
+  "https://calendly.com/constructionstation-sales/free-adu-remodeling-consult";
+
+// Public Supabase bucket folder holding the 3D renderings and 2D plan PDFs.
+const PLAN_ASSET_BASE =
+  "https://ihvgrybmtngekmfjpxnz.supabase.co/storage/v1/object/public/user-assets/1/ADU%20Plans/";
 
 type FloorPlan = {
   name: string;
   size: string;
   beds: string;
   type: string;
-  price: string;
-  image?: string;
+  price: string; // dollar amount only; rendered as "Est. {price} All-In"
+  image?: string; // filename in PLAN_ASSET_BASE; omit when coming soon
+  pdf?: string; // filename in PLAN_ASSET_BASE; omit when coming soon
+  comingSoon?: boolean;
 };
 
 const PLANS: FloorPlan[] = [
-  { name: "The Yucaipa",         size: "400 sq ft",   beds: "Studio / 1ba", type: "Garage Conversion", price: "Est. $200K all-in", image: "/images/adu/floor-plans/yucaipa-3d.jpg" },
-  { name: "The Redlands",        size: "500 sq ft",   beds: "1bd / 1ba",    type: "Detached", price: "Est. $235K all-in" },
-  { name: "The Highland",        size: "600 sq ft",   beds: "1bd / 1ba",    type: "Detached", price: "Est. $255K all-in" },
-  { name: "The Loma Linda",      size: "650 sq ft",   beds: "1bd / 1ba",    type: "Attached", price: "Est. $275K all-in" },
-  { name: "The San Bernardino",  size: "750 sq ft",   beds: "2bd / 1ba",    type: "Detached", price: "Est. $300K all-in" },
-  { name: "The Beaumont",        size: "800 sq ft",   beds: "2bd / 1ba",    type: "Detached", price: "Est. $320K all-in" },
-  { name: "The Fontana",         size: "900 sq ft",   beds: "2bd / 2ba",    type: "Detached", price: "Est. $345K all-in" },
-  { name: "The Ontario",         size: "950 sq ft",   beds: "2bd / 2ba",    type: "Attached", price: "Est. $360K all-in" },
-  { name: "The Rancho",          size: "1,000 sq ft", beds: "2bd / 2ba",    type: "Detached", price: "Est. $375K all-in" },
-  { name: "The Murrieta",        size: "1,100 sq ft", beds: "2bd / 2ba",    type: "Detached", price: "Est. $410K all-in" },
-  { name: "The Palm Desert",     size: "1,150 sq ft", beds: "3bd / 2ba",    type: "Detached", price: "Est. $423K all-in" },
-  { name: "The Inland",          size: "1,200 sq ft", beds: "3bd / 2ba",    type: "Detached", price: "Est. $435K all-in" },
+  { name: "The Yucaipa",        size: "400 sq ft",   beds: "Studio / 1ba", type: "Garage Conversion", price: "$200K", comingSoon: true },
+  { name: "The Redlands",       size: "499 sq ft",   beds: "1bd / 1ba",    type: "Detached",     price: "$235K", image: "1779910725950-3d-1br1ba499.png",  pdf: "1779901312791-1br1ba499.pdf" },
+  { name: "The Highland",       size: "550 sq ft",   beds: "1bd / 1ba",    type: "Detached",     price: "$258K", image: "1779910725016-3d-1br1ba550.png",  pdf: "1779901313749-1br1ba550.pdf" },
+  { name: "The Loma Linda",     size: "749 sq ft",   beds: "1bd / 1ba",    type: "Detached",     price: "$300K", image: "1779910726961-3d-1br1ba749.png",  pdf: "1779901314421-1br1ba749.pdf" },
+  { name: "The San Bernardino", size: "756 sq ft",   beds: "1bd / 1ba",    type: "Detached",     price: "$302K", image: "1779910720690-3d-1br1ba756.png",  pdf: "1779901315194-1br1ba756.pdf" },
+  { name: "The Beaumont",       size: "999 sq ft",   beds: "1bd / 1ba",    type: "Detached",     price: "$375K", image: "1779910723947-3d-1br1ba999.png",  pdf: "1779901316446-1br1ba999.pdf" },
+  { name: "The Fontana",        size: "749 sq ft",   beds: "2bd / 2ba",    type: "Detached",     price: "$300K", image: "1779910719762-3d-2br2ba749.png",  pdf: "1779901317217-2br2ba749.pdf" },
+  { name: "The Ontario",        size: "800 sq ft",   beds: "2bd / 2ba",    type: "Detached",     price: "$320K", image: "1779910718081-3d-2br2ba800.png",  pdf: "1779901317974-2br2ba800.pdf" },
+  { name: "The Rancho",         size: "999 sq ft",   beds: "2bd / 2ba",    type: "Detached",     price: "$375K", image: "1779910716807-3d-2br2ba999.png",  pdf: "1779901318793-2br2ba999.pdf" },
+  { name: "The Murrieta",       size: "1,200 sq ft", beds: "2bd / 2ba",    type: "With Garage",  price: "$435K", image: "1779910721755-3d-2br2ba1200.jpeg", pdf: "1779901319495-2br2ba1200.pdf" },
+  { name: "The Palm Desert",    size: "1,155 sq ft", beds: "3bd / 2ba",    type: "2-Story",      price: "$423K", image: "1779910722713-3d-3br2ba1155.png",  pdf: "1779901320177-3br2ba1155.pdf" },
+  { name: "The Inland",         size: "1,194 sq ft", beds: "3bd / 2ba",    type: "Detached",     price: "$432K", image: "1779910719101-3d-3br2ba1194.jpeg", pdf: "1779901302440-3br2ba1194.pdf" },
 ];
 
 const SITE_URL =
@@ -69,6 +76,15 @@ export default function ADUFloorPlansPage() {
         subtitle="12 layouts from 400 to 1,200 sq ft. All plans are samples — every ADU is customized to your property and local regulations."
       />
 
+      {/* Sample-plans note */}
+      <section className="bg-white py-8 border-b border-navy/10">
+        <p className="max-w-3xl mx-auto px-5 lg:px-10 text-center text-navy/65 text-sm leading-relaxed">
+          All plans shown are sample layouts. Every ADU is customized to your
+          specific property, local regulations, and preferences. 3D renderings
+          are illustrative only.
+        </p>
+      </section>
+
       {/* Plans grid */}
       <section className="bg-cream py-20 lg:py-24">
         <div className="max-w-7xl mx-auto px-5 lg:px-10">
@@ -78,59 +94,84 @@ export default function ADUFloorPlansPage() {
                 key={p.name}
                 className="bg-white border border-navy/10 hover:border-gold transition-colors flex flex-col"
               >
-                {/* Image / placeholder */}
+                {/* 3D image / placeholder */}
                 <div className="relative aspect-[4/3] bg-navy/5 overflow-hidden">
-                  {p.image ? (
+                  {p.comingSoon || !p.image ? (
+                    <>
+                      <div className="absolute inset-0 flex items-center justify-center text-navy/30">
+                        <div className="text-center">
+                          <div className="font-display text-3xl mb-1">
+                            {p.size}
+                          </div>
+                          <div className="text-xs uppercase tracking-[0.3em]">
+                            Rendering Coming Soon
+                          </div>
+                        </div>
+                      </div>
+                      <span className="absolute top-3 left-3 px-2.5 py-1 text-[10px] uppercase tracking-wider font-semibold bg-amber-100 text-amber-900 border border-amber-200">
+                        Plan Coming Soon
+                      </span>
+                    </>
+                  ) : (
                     <Image
-                      src={p.image}
-                      alt={`${p.name} ADU floor plan — ${p.size} ${p.beds}, ${p.type}`}
+                      src={`${PLAN_ASSET_BASE}${p.image}`}
+                      alt={`${p.name} ADU — ${p.size} ${p.beds} ${p.type} 3D rendering`}
                       fill
                       className="object-cover"
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     />
-                  ) : (
-                    <div className="absolute inset-0 flex items-center justify-center text-navy/30">
-                      <div className="text-center">
-                        <div className="font-display text-3xl mb-1">{p.size}</div>
-                        <div className="text-xs uppercase tracking-[0.3em]">
-                          Render coming soon
-                        </div>
-                      </div>
-                    </div>
                   )}
                 </div>
 
                 <div className="p-6 flex-1 flex flex-col">
-                  <div className="text-gold text-xs tracking-[0.3em] uppercase mb-2">
-                    {p.type}
-                  </div>
-                  <h2 className="font-display text-navy text-2xl leading-tight mb-2">
+                  <h2 className="font-display text-navy text-2xl leading-tight mb-3">
                     {p.name}
                   </h2>
-                  <div className="text-gold font-semibold mb-4">{p.price}</div>
-                  <div className="grid grid-cols-2 gap-3 text-sm text-navy/70 mb-6 pb-6 border-b border-navy/10">
-                    <div>
-                      <div className="text-[10px] uppercase tracking-wider text-navy/40 mb-1">
-                        Size
-                      </div>
-                      <div className="font-semibold text-navy">{p.size}</div>
-                    </div>
-                    <div>
-                      <div className="text-[10px] uppercase tracking-wider text-navy/40 mb-1">
-                        Beds / Baths
-                      </div>
-                      <div className="font-semibold text-navy">{p.beds}</div>
-                    </div>
+
+                  {/* Specs row: sqft · beds/baths · type badge */}
+                  <div className="flex items-center flex-wrap gap-x-2 gap-y-2 text-sm text-navy/70 mb-3">
+                    <span className="font-semibold text-navy">{p.size}</span>
+                    <span className="text-navy/30" aria-hidden>
+                      ·
+                    </span>
+                    <span className="font-semibold text-navy">{p.beds}</span>
+                    <span className="inline-block px-2.5 py-1 text-[10px] uppercase tracking-wider font-semibold bg-navy/5 text-navy/70 border border-navy/10">
+                      {p.type}
+                    </span>
                   </div>
-                  <a
-                    href={CALENDLY_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="mt-auto inline-flex items-center justify-center gap-2 bg-navy text-white font-body uppercase tracking-[0.2em] text-xs py-3 hover:bg-gold hover:text-navy transition-colors"
-                  >
-                    Discuss This Plan
-                    <span aria-hidden>→</span>
-                  </a>
+
+                  <div className="text-gold font-semibold mb-5">
+                    Est. {p.price} All-In
+                  </div>
+
+                  {/* Buttons */}
+                  <div className="mt-auto grid grid-cols-2 gap-3">
+                    {p.comingSoon || !p.pdf ? (
+                      <span
+                        aria-disabled="true"
+                        className="inline-flex items-center justify-center gap-2 border border-navy/15 text-navy/30 font-body uppercase tracking-[0.2em] text-xs py-3 cursor-not-allowed"
+                      >
+                        View 2D Plan
+                      </span>
+                    ) : (
+                      <a
+                        href={`${PLAN_ASSET_BASE}${p.pdf}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center justify-center gap-2 border border-navy/30 text-navy font-body uppercase tracking-[0.2em] text-xs py-3 hover:border-gold hover:text-gold transition-colors"
+                      >
+                        View 2D Plan
+                      </a>
+                    )}
+                    <a
+                      href={CALENDLY_URL}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center justify-center gap-2 bg-navy text-white font-body uppercase tracking-[0.2em] text-xs py-3 hover:bg-gold hover:text-navy transition-colors"
+                    >
+                      Discuss This Plan
+                    </a>
+                  </div>
                 </div>
               </article>
             ))}
@@ -153,6 +194,29 @@ export default function ADUFloorPlansPage() {
         </div>
       </section>
 
+      {/* City pre-approved plans CTA */}
+      <section className="bg-white py-16 lg:py-20">
+        <div className="max-w-3xl mx-auto px-5 lg:px-10">
+          <div className="bg-cream border-l-4 border-gold p-8 text-center">
+            <h2 className="font-display text-navy text-2xl md:text-3xl leading-tight mb-3">
+              Looking for a City Pre-Approved Plan?
+            </h2>
+            <p className="text-navy/75 leading-relaxed mb-6 max-w-xl mx-auto">
+              Many IE cities offer free pre-approved ADU plans that can save
+              $6,000–$14,000 in design fees. Check your city&rsquo;s page for
+              available plans.
+            </p>
+            <Link
+              href="/services/adu#cities"
+              className="inline-flex items-center justify-center gap-2 border border-navy/30 text-navy px-7 py-4 text-sm uppercase tracking-[0.2em] hover:border-gold hover:text-gold transition-colors"
+            >
+              View City Plans
+              <span aria-hidden>→</span>
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* CTA */}
       <section className="bg-navy texture-navy text-white py-20 lg:py-24">
         <div className="max-w-3xl mx-auto px-5 lg:px-10 text-center">
@@ -168,8 +232,8 @@ export default function ADUFloorPlansPage() {
             <span className="italic text-gold">ADU consultation</span>.
           </h2>
           <p className="text-white/70 mb-10 text-base leading-relaxed max-w-xl mx-auto">
-            Pick the plan that&rsquo;s closest, and we&rsquo;ll customize it
-            to your lot, your jurisdiction, and your budget.
+            Pick the plan that&rsquo;s closest, and we&rsquo;ll customize it to
+            your lot, your jurisdiction, and your budget.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <a

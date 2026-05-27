@@ -32,6 +32,17 @@ const ADU_CITY_SLUGS = [
 ];
 
 const nextConfig = {
+  images: {
+    // Supabase public storage host — serves the ADU 3D renderings/plan images.
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "ihvgrybmtngekmfjpxnz.supabase.co",
+        pathname: "/storage/v1/object/public/**",
+      },
+    ],
+  },
+
   async redirects() {
     const aduCityRedirects = ADU_CITY_SLUGS.map((slug) => ({
       source: `/adu/${slug}`,
