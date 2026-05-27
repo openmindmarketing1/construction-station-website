@@ -5,9 +5,10 @@ import { POSTS, formatDate, type BlogPost } from "@/lib/blog";
 import { fetchOmmPosts, type OmmBlogPost } from "@/lib/omm-blog";
 
 export const metadata: Metadata = {
-  title: "Home Improvement Blog — Construction Station",
+  title:
+    "Home Remodeling Tips & Ideas | Yucaipa CA Contractor Blog | Construction Station",
   description:
-    "Expert tips, cost guides, and design ideas for kitchen remodeling, bathroom renovations, flooring, and outdoor living in the Inland Empire.",
+    "Expert home remodeling tips, ADU guides, kitchen and bathroom renovation ideas from Construction Station — Yucaipa CA's trusted licensed contractor.",
   alternates: { canonical: "/blog" },
 };
 

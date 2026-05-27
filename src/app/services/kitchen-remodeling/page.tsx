@@ -11,9 +11,10 @@ import JsonLd from "@/components/JsonLd";
 import { CS } from "@/lib/constants";
 
 export const metadata: Metadata = {
-  title: "Kitchen Remodeling in the Inland Empire",
+  title:
+    "Kitchen Remodeler Yucaipa CA | Free Estimates | Licensed & Insured | Construction Station",
   description:
-    "Premium kitchen remodeling in the Inland Empire — custom cabinetry, quartz and granite countertops, expert tile work, and full design-build service since 2008. Call 909-797-6333.",
+    "Top-rated kitchen remodeler in Yucaipa CA. Custom kitchen remodels, free design consultation. CSLB Licensed #1108879. Call (909) 797-6333.",
   alternates: { canonical: "/services/kitchen-remodeling" },
 };
 

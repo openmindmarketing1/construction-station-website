@@ -8,9 +8,10 @@ import JsonLd from "@/components/JsonLd";
 import { CS } from "@/lib/constants";
 
 export const metadata: Metadata = {
-  title: "Outdoor Living & Patio Covers | Construction Station",
+  title:
+    "Patio Cover Installation Yucaipa CA | Aluminum & Duralum Covers | Construction Station",
   description:
-    "Custom patio covers, alumawood covers, outdoor kitchens, concrete patios, and pergolas across the Inland Empire. Licensed contractor #1108879 since 2008. Call 909-797-6333.",
+    "Professional patio cover installation in Yucaipa CA. Aluminum, Duralum, and wood patio covers. Licensed contractor, free estimates. Call (909) 797-6333.",
   alternates: { canonical: "/services/outdoor-living" },
 };
 

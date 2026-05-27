@@ -5,6 +5,10 @@ export type City = {
   county: string;
   description: string;
   population?: string;
+  // Optional per-city SEO overrides. When set, they replace the generated
+  // title/description in areas/[city] generateMetadata.
+  seoTitle?: string;
+  seoDescription?: string;
 };
 
 export const CITIES: City[] = [
@@ -23,7 +27,7 @@ export const CITIES: City[] = [
   { name: "Chino Hills", state: "CA", slug: "chino-hills", county: "San Bernardino", description: "Luxury home remodels in Chino Hills", population: "82,000" },
   { name: "Victorville", state: "CA", slug: "victorville", county: "San Bernardino", description: "Trusted remodeling contractor in Victorville", population: "135,000" },
   { name: "Hesperia", state: "CA", slug: "hesperia", county: "San Bernardino", description: "Expert home renovation in Hesperia, CA", population: "100,000" },
-  { name: "Apple Valley", state: "CA", slug: "apple-valley", county: "San Bernardino", description: "Home remodeling specialists in Apple Valley", population: "73,000" },
+  { name: "Apple Valley", state: "CA", slug: "apple-valley", county: "San Bernardino", description: "Home remodeling specialists in Apple Valley", population: "73,000", seoTitle: "Kitchen Remodel & Home Additions Apple Valley CA | Licensed Contractor | Construction Station", seoDescription: "Trusted remodeling contractor serving Apple Valley CA. Kitchen remodels, bathroom renovations, home additions. Free estimates. Call (909) 797-6333." },
   { name: "Highland", state: "CA", slug: "highland", county: "San Bernardino", description: "Premium kitchen and bath in Highland, CA", population: "55,000" },
   { name: "Colton", state: "CA", slug: "colton", county: "San Bernardino", description: "Reliable remodeling contractor in Colton", population: "54,000" },
   { name: "Moreno Valley", state: "CA", slug: "moreno-valley", county: "Riverside", description: "Affordable quality remodeling in Moreno Valley", population: "210,000" },

@@ -39,8 +39,11 @@ export async function generateMetadata({
   const { city: slug } = await params;
   const city = getCityBySlug(slug);
   if (!city) return {};
-  const title = `ADU Regulations ${city.name}, CA | Construction Station`;
-  const description = `Everything you need to know about building an ADU in ${city.name}, California — size limits, setbacks, permits, costs, and rental income. Licensed ADU contractor since 2008. Call ${CS.phone}.`;
+  const title =
+    city.seoTitle ?? `ADU Regulations ${city.name}, CA | Construction Station`;
+  const description =
+    city.seoDescription ??
+    `Everything you need to know about building an ADU in ${city.name}, California — size limits, setbacks, permits, costs, and rental income. Licensed ADU contractor since 2008. Call ${CS.phone}.`;
   return {
     title,
     description,

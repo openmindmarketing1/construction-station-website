@@ -22,6 +22,10 @@ export type ADUCity = {
   notes: string;
   intro: string;
   whyBuild: string;
+  // Optional per-city SEO overrides. When set, they replace the generated
+  // title/description in services/adu/[city] generateMetadata.
+  seoTitle?: string;
+  seoDescription?: string;
 };
 
 export type RentTier = {
@@ -139,6 +143,10 @@ const BASE_CITIES: Omit<ADUCity, "regionKey">[] = [
       "Highland sits between San Bernardino and the foothills, with a mix of suburban tract neighborhoods, semi-rural acreage along Greenspot Road, and newer master-planned communities like East Highlands Ranch. The city follows California state ADU baseline closely, but the jurisdictional boundary with unincorporated San Bernardino County zigzags through the area — some Highland-addressed parcels are actually governed by county rules, which changes setback and lot-coverage details. That's the first thing we verify before drawing plans. Highland's larger lots, particularly in the older Base Line corridor and the Greenspot Road semi-rural zone, are ideal candidates for detached ADUs in the 1,000–1,200 sq ft range. Garage conversions are also common on the postwar tract neighborhoods south of Pacific Avenue. The city is generally pro-ADU and processes permits on the state-mandated 60-day timeline.",
     whyBuild:
       "Highland's combination of larger suburban lots, semi-rural acreage on the foothill side, and proximity to San Bernardino employment makes it an underrated ADU market. Homeowners along Greenspot Road and the older Base Line corridor frequently have lots in excess of 10,000 sq ft — large enough to build a full 1,200 sq ft detached ADU without crowding the primary residence or compromising the yard. East Highlands Ranch and the newer master-planned subdivisions have tighter HOA rules to navigate, but Construction Station has worked through Highland HOA architectural review committees before. Rental demand is steady from San Bernardino County government employees, Loma Linda Medical Center commuters, and Crafton Hills College students who prefer a quieter neighborhood than central San Bernardino.",
+    seoTitle:
+      "ADU Contractors Highland CA | Licensed ADU Builder | Construction Station",
+    seoDescription:
+      "Expert ADU builders in Highland CA. Garage conversions, new ADU construction, permit assistance. Licensed & insured CSLB #1108879. Call (909) 797-6333.",
   },
   {
     slug: "beaumont",

@@ -23,8 +23,12 @@ export async function generateMetadata({
   const city = CITIES.find((c) => c.slug === params.city);
   if (!city) return { title: "Service Area Not Found" };
   return {
-    title: `Kitchen & Bathroom Remodeling in ${city.name}, ${city.state}`,
-    description: `Premium home renovation in ${city.name}, ${city.state}. Kitchens, bathrooms, ADUs, and additions by Construction Station — licensed contractor since 2008. Call ${CS.phone}.`,
+    title:
+      city.seoTitle ??
+      `Kitchen & Bathroom Remodeling in ${city.name}, ${city.state}`,
+    description:
+      city.seoDescription ??
+      `Premium home renovation in ${city.name}, ${city.state}. Kitchens, bathrooms, ADUs, and additions by Construction Station — licensed contractor since 2008. Call ${CS.phone}.`,
     alternates: { canonical: `/areas/${city.slug}` },
   };
 }
