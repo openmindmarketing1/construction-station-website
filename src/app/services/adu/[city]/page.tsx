@@ -44,7 +44,7 @@ export async function generateMetadata({
   // keep the templated title (brand added once by the template).
   const title: Metadata["title"] = city.seoTitle
     ? { absolute: city.seoTitle }
-    : `ADU Regulations ${city.name}, CA | Construction Station`;
+    : `ADU Regulations ${city.name}, CA`;
   const description =
     city.seoDescription ??
     `Everything you need to know about building an ADU in ${city.name}, California — size limits, setbacks, permits, costs, and rental income. Licensed ADU contractor since 2008. Call ${CS.phone}.`;
