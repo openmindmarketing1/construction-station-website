@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import ProcessSteps from "@/components/ProcessSteps";
 import JsonLd from "@/components/JsonLd";
+import CityPreApprovedPlans from "@/components/CityPreApprovedPlans";
 import { CS } from "@/lib/constants";
 import {
   ADU_CITY_SLUGS,
@@ -430,6 +431,9 @@ export default async function ADUCityPage({
           </div>
         </div>
       </section>
+
+      {/* 4b. CITY PRE-APPROVED ADU PLANS */}
+      <CityPreApprovedPlans city={city} calendlyUrl={CALENDLY_URL} />
 
       {/* 5. RENTAL INCOME ESTIMATE */}
       <section className="bg-white py-20 lg:py-24">

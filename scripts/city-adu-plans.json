@@ -1,0 +1,155 @@
+{
+  "lake-elsinore": {
+    "programName": "Permit Ready ADU Program",
+    "programUrl": "https://www.lake-elsinore.org/680/Permit-Ready-ADU-Program",
+    "plans": [
+      {
+        "name": "ADU 495 SF",
+        "beds": 1,
+        "baths": 1,
+        "sqft": 495,
+        "type": "Detached",
+        "fileName": "le-adu-495sf.pdf",
+        "supabasePath": "1/City-ADU-Plans/lake-elsinore/le-adu-495sf.pdf"
+      },
+      {
+        "name": "ADU 735 SF — 1 Bed/1 Bath",
+        "beds": 1,
+        "baths": 1,
+        "sqft": 735,
+        "type": "Detached",
+        "fileName": "le-adu-735sf.pdf",
+        "supabasePath": "1/City-ADU-Plans/lake-elsinore/le-adu-735sf.pdf"
+      },
+      {
+        "name": "Garage Conversion Studio — 400 SF",
+        "beds": 0,
+        "baths": 1,
+        "sqft": 400,
+        "type": "Studio Garage Conversion",
+        "fileName": "le-garage-400sf.pdf",
+        "supabasePath": "1/City-ADU-Plans/lake-elsinore/le-garage-400sf.pdf"
+      }
+    ]
+  },
+  "menifee": {
+    "programName": "Permit Ready ADU Program",
+    "programUrl": "https://www.cityofmenifee.us/751/Permit-ready-ADU-program",
+    "plans": [
+      {
+        "name": "Studio A 415 SF",
+        "beds": 0,
+        "baths": 1,
+        "sqft": 415,
+        "type": "Detached",
+        "fileName": "menifee-studio-a-415sf.pdf",
+        "supabasePath": "1/City-ADU-Plans/menifee/menifee-studio-a-415sf.pdf"
+      },
+      {
+        "name": "Studio B 306 SF",
+        "beds": 0,
+        "baths": 1,
+        "sqft": 306,
+        "type": "Detached",
+        "fileName": "menifee-studio-b-306sf.pdf",
+        "supabasePath": "1/City-ADU-Plans/menifee/menifee-studio-b-306sf.pdf"
+      },
+      {
+        "name": "1 Bedroom A 730 SF",
+        "beds": 1,
+        "baths": 1,
+        "sqft": 730,
+        "type": "Detached",
+        "fileName": "menifee-1br-a-730sf.pdf",
+        "supabasePath": "1/City-ADU-Plans/menifee/menifee-1br-a-730sf.pdf"
+      },
+      {
+        "name": "1 Bedroom B 586 SF",
+        "beds": 1,
+        "baths": 1,
+        "sqft": 586,
+        "type": "Detached",
+        "fileName": "menifee-1br-b-586sf.pdf",
+        "supabasePath": "1/City-ADU-Plans/menifee/menifee-1br-b-586sf.pdf"
+      },
+      {
+        "name": "2 Bedroom A 910 SF",
+        "beds": 2,
+        "baths": 2,
+        "sqft": 910,
+        "type": "Detached",
+        "fileName": "menifee-2br-a-910sf.pdf",
+        "supabasePath": "1/City-ADU-Plans/menifee/menifee-2br-a-910sf.pdf"
+      },
+      {
+        "name": "2 Bedroom B 779 SF",
+        "beds": 2,
+        "baths": 1,
+        "sqft": 779,
+        "type": "Detached",
+        "fileName": "menifee-2br-b-779sf.pdf",
+        "supabasePath": "1/City-ADU-Plans/menifee/menifee-2br-b-779sf.pdf"
+      },
+      {
+        "name": "3 Bedroom A 1198 SF",
+        "beds": 3,
+        "baths": 2,
+        "sqft": 1198,
+        "type": "Detached",
+        "fileName": "menifee-3br-a-1198sf.pdf",
+        "supabasePath": "1/City-ADU-Plans/menifee/menifee-3br-a-1198sf.pdf"
+      },
+      {
+        "name": "3 Bedroom B 988 SF",
+        "beds": 3,
+        "baths": 2,
+        "sqft": 988,
+        "type": "Detached",
+        "fileName": "menifee-3br-b-988sf.pdf",
+        "supabasePath": "1/City-ADU-Plans/menifee/menifee-3br-b-988sf.pdf"
+      }
+    ]
+  },
+  "cathedral-city": {
+    "programName": "Pre-Approved ADU Program",
+    "programUrl": "https://www.cathedralcity.gov/departments/building-and-safety/city-of-cathedral-city-pre-approved-adu-program",
+    "plans": [
+      {
+        "name": "Plan 1 — Studio/1BA (468 SF)",
+        "beds": 0,
+        "baths": 1,
+        "sqft": 468,
+        "type": "Detached",
+        "fileName": "cc-plan1-studio-1br-468sf.pdf",
+        "supabasePath": "1/City-ADU-Plans/cathedral-city/cc-plan1-studio-1br-468sf.pdf"
+      },
+      {
+        "name": "Plan 2 – 2BR/1BA 705 SF",
+        "beds": 2,
+        "baths": 1,
+        "sqft": 705,
+        "type": "Detached",
+        "fileName": "cc-plan2-2br1ba-705sf.pdf",
+        "supabasePath": "1/City-ADU-Plans/cathedral-city/cc-plan2-2br1ba-705sf.pdf"
+      },
+      {
+        "name": "Plan 3 – 2BR/2BA 1000 SF",
+        "beds": 2,
+        "baths": 2,
+        "sqft": 1000,
+        "type": "Detached",
+        "fileName": "cc-plan3-2br2ba-1000sf.pdf",
+        "supabasePath": "1/City-ADU-Plans/cathedral-city/cc-plan3-2br2ba-1000sf.pdf"
+      },
+      {
+        "name": "Plan 4 – Garage JADU 441 SF",
+        "beds": 1,
+        "baths": 1,
+        "sqft": 441,
+        "type": "JADU",
+        "fileName": "cc-plan4-garage-jadu.pdf",
+        "supabasePath": "1/City-ADU-Plans/cathedral-city/cc-plan4-garage-jadu.pdf"
+      }
+    ]
+  }
+}

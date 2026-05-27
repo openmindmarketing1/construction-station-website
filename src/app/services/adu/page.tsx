@@ -564,6 +564,19 @@ export default function ADUPage() {
               local permit process.
             </p>
           </div>
+          <div className="mt-10 max-w-3xl mx-auto bg-white border-l-4 border-gold p-7 md:p-8">
+            <div className="font-display text-navy text-2xl md:text-3xl leading-tight mb-3">
+              Many IE Cities Offer Free Pre-Approved ADU Plans
+            </div>
+            <p className="text-navy/75 leading-relaxed">
+              Cities like Yucaipa, Redlands, Temecula, Menifee, Lake Elsinore,
+              Rancho Cucamonga, Fontana, and Cathedral City offer free
+              pre-approved ADU plans that can save you $6,000–$14,000 in design
+              fees and weeks off your approval timeline. Construction Station
+              builds any city pre-approved plan — we handle everything from
+              permit to move-in ready.
+            </p>
+          </div>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-y-3 gap-x-6 text-sm mt-10">
             {CITIES.map((c) => (
               <Link

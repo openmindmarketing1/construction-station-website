@@ -5,6 +5,26 @@ export type RegionKey =
   | "desert"
   | "oc-adjacent";
 
+export interface CityPreApprovedPlan {
+  name: string;
+  beds: number;
+  baths: number;
+  sqft: number;
+  type: string;
+  /** Storage path inside the public `user-assets` bucket (no leading slash). */
+  supabasePath?: string;
+}
+
+export interface CityPreApprovedProgram {
+  available: boolean;
+  programName?: string;
+  programUrl?: string;
+  savingsNote?: string;
+  description?: string;
+  /** Downloadable plan sets hosted in Supabase (only the cities we've sourced). */
+  plans?: CityPreApprovedPlan[];
+}
+
 export type ADUCity = {
   slug: string;
   name: string;
@@ -26,6 +46,9 @@ export type ADUCity = {
   // title/description in services/adu/[city] generateMetadata.
   seoTitle?: string;
   seoDescription?: string;
+  // City pre-approved / permit-ready ADU plan program. Always present (defaults
+  // to { available: false }); merged in from PRE_APPROVED_BY_SLUG below.
+  preApprovedPlans: CityPreApprovedProgram;
 };
 
 export type RentTier = {
@@ -42,7 +65,7 @@ const STATE_JADU = "Yes — up to 500 sq ft; owner-occupancy required if JADU is
 const STATE_IMPACT_FEES = "Waived under 750 sq ft (state law)";
 const STATE_PERMIT_TIMELINE = "60 days maximum (state-mandated review window)";
 
-const BASE_CITIES: Omit<ADUCity, "regionKey">[] = [
+const BASE_CITIES: Omit<ADUCity, "regionKey" | "preApprovedPlans">[] = [
   {
     slug: "yucaipa",
     name: "Yucaipa",
@@ -700,9 +723,224 @@ export const RENT_BY_REGION: Record<RegionKey, RentTier[]> = {
   ],
 };
 
+// City pre-approved / permit-ready ADU plan programs. Cities with downloadable
+// plan sets (lake-elsinore, menifee, cathedral-city) carry `plans[]` sourced from
+// scripts/city-adu-plans.json and hosted in the public Supabase `user-assets`
+// bucket. Cities without a confirmed program use `available: false`.
+const PRE_APPROVED_BY_SLUG: Record<string, CityPreApprovedProgram> = {
+  yucaipa: {
+    available: true,
+    programName: "Pre-Reviewed ADU Program",
+    programUrl: "https://yucaipa.gov/pre-reviewed-adu-program/",
+    description:
+      "Yucaipa offers pre-reviewed ADU plans vetted by the City to expedite building permit approval. Contact Building & Safety at (909) 797-2489 ext 292.",
+  },
+  redlands: {
+    available: true,
+    programName: "Pre-Approved ADU Program",
+    programUrl: "https://www.cityofredlands.org/building-safety",
+    description:
+      "Redlands partnered with RRM Design Group to offer pre-approved ADU plans in Craftsman, Ranch, Contemporary, and Mid-Century Modern styles.",
+  },
+  "loma-linda": {
+    available: true,
+    programName: "Pre-Approved ADU Plans",
+    programUrl:
+      "https://www.lomalinda-ca.gov/our_city/departments/community_development/planning_division/a_d_u_permit_-_ready_plans",
+    description:
+      "Loma Linda offers pre-approved ADU plans through the Planning Division. Contact Community Development at (909) 799-2819.",
+  },
+  "san-bernardino": {
+    available: true,
+    programName: "San Bernardino County Pre-Approved ADU Plans",
+    programUrl: "https://lus.sbcounty.gov/building-safety-home/",
+    description:
+      "San Bernardino County offers pre-approved ADU Models B, C, and D through Land Use Services.",
+  },
+  highland: {
+    available: true,
+    programName: "San Bernardino County Pre-Approved ADU Plans",
+    programUrl: "https://lus.sbcounty.gov/building-safety-home/",
+    description:
+      "Highland unincorporated areas can use San Bernardino County pre-approved ADU Models B, C, and D. Confirm zoning with county first.",
+  },
+  beaumont: {
+    available: true,
+    programName: "ADU Standard Plans Program",
+    programUrl: "https://www.beaumontca.gov/1352/ADU-Standard-Plans-Program",
+    description:
+      "Beaumont offers pre-approved ADU standard plans through the City's Building Department.",
+  },
+  banning: {
+    available: false,
+    description:
+      "Contact Banning Community Development at (951) 922-3130 to ask about pre-approved ADU plans required under AB 1332.",
+  },
+  colton: {
+    available: false,
+    description:
+      "Contact Colton Building & Safety at (909) 370-5079 to ask about pre-approved ADU plans required under AB 1332.",
+  },
+  rialto: {
+    available: true,
+    programName: "Pre-Selected ADU Plans Program",
+    programUrl: "https://www.rialtoca.gov/879/Accessory-Dwelling-Units",
+    description:
+      "Rialto offers pre-selected ADU plans from Design Path Studios. Contact info@designpathstudio.com or (619) 292-8807 to obtain the plans.",
+  },
+  fontana: {
+    available: true,
+    programName: "Standard ADU Plans",
+    programUrl: "https://www.fontanaca.gov/3710/Standard-ADU-Plans",
+    description:
+      "Fontana offers pre-approved Standard ADU Plans through the City's Building Department to simplify the approval process.",
+  },
+  "rancho-cucamonga": {
+    available: true,
+    programName: "Pre-Approved ADU Plans (AB 1332)",
+    programUrl:
+      "https://www.cityofrc.us/community-development/building-safety/assembly-bill-1332",
+    description:
+      "Rancho Cucamonga offers two pre-approved plans: ADU7825-749 (749 sqft 2bd/2ba) and ADU4825-991 (991 sqft 3bd/2ba). 30-day approval timeline.",
+  },
+  ontario: {
+    available: false,
+    description:
+      "Contact Ontario Planning at (909) 395-2036 to ask about pre-approved ADU plans required under AB 1332.",
+  },
+  upland: {
+    available: true,
+    programName: "Pre-Approved ADU Process",
+    programUrl: "https://www.uplandca.gov/adu",
+    description:
+      "Upland has established a pre-approved ADU process per AB 1332. Contact Planning at (909) 931-4130 for available plans.",
+  },
+  chino: {
+    available: true,
+    programName: "Pre-Approved ADU Plans",
+    programUrl: "https://www.cityofchino.org/622/ADU-Plans",
+    description:
+      "Chino offers pre-approved ADU plans through the City Planning Division. Contact Planning at (909) 334-3325.",
+  },
+  "chino-hills": {
+    available: false,
+    description:
+      "Contact Chino Hills Planning at (909) 364-2822 to ask about pre-approved ADU plans required under AB 1332.",
+  },
+  victorville: {
+    available: false,
+    description:
+      "Contact Victorville Planning at (760) 955-5135 to ask about pre-approved ADU plans required under AB 1332.",
+  },
+  hesperia: {
+    available: false,
+    description:
+      "Contact Hesperia Planning at (760) 947-1913 to ask about pre-approved ADU plans required under AB 1332.",
+  },
+  "apple-valley": {
+    available: false,
+    description:
+      "Contact Apple Valley Planning at (760) 240-7000 to ask about pre-approved ADU plans required under AB 1332.",
+  },
+  murrieta: {
+    available: true,
+    programName: "Electronic ADU Permit Submission",
+    programUrl: "https://www.murrietaca.gov/planning",
+    description:
+      "Murrieta accepts fully electronic ADU permit submissions. Contact Planning at (951) 461-6063 for pre-approved plan options under AB 1332.",
+  },
+  "lake-elsinore": {
+    available: true,
+    programName: "Permit Ready ADU Program",
+    programUrl: "https://www.lake-elsinore.org/680/Permit-Ready-ADU-Program",
+    savingsNote:
+      "Streamlined permit process — significant savings on preconstruction fees",
+    plans: [
+      { name: "ADU 495 SF", beds: 1, baths: 1, sqft: 495, type: "Detached", supabasePath: "1/City-ADU-Plans/lake-elsinore/le-adu-495sf.pdf" },
+      { name: "ADU 735 SF — 1 Bed/1 Bath", beds: 1, baths: 1, sqft: 735, type: "Detached", supabasePath: "1/City-ADU-Plans/lake-elsinore/le-adu-735sf.pdf" },
+      { name: "Garage Conversion Studio — 400 SF", beds: 0, baths: 1, sqft: 400, type: "Studio Garage Conversion", supabasePath: "1/City-ADU-Plans/lake-elsinore/le-garage-400sf.pdf" },
+    ],
+  },
+  menifee: {
+    available: true,
+    programName: "Permit Ready ADU Program (PRADU)",
+    programUrl: "https://www.cityofmenifee.us/751/Permit-ready-ADU-program",
+    savingsNote:
+      "8 pre-approved plans — plans can be flipped to meet site conditions",
+    plans: [
+      { name: "Studio A 415 SF", beds: 0, baths: 1, sqft: 415, type: "Detached", supabasePath: "1/City-ADU-Plans/menifee/menifee-studio-a-415sf.pdf" },
+      { name: "Studio B 306 SF", beds: 0, baths: 1, sqft: 306, type: "Detached", supabasePath: "1/City-ADU-Plans/menifee/menifee-studio-b-306sf.pdf" },
+      { name: "1 Bedroom A 730 SF", beds: 1, baths: 1, sqft: 730, type: "Detached", supabasePath: "1/City-ADU-Plans/menifee/menifee-1br-a-730sf.pdf" },
+      { name: "1 Bedroom B 586 SF", beds: 1, baths: 1, sqft: 586, type: "Detached", supabasePath: "1/City-ADU-Plans/menifee/menifee-1br-b-586sf.pdf" },
+      { name: "2 Bedroom A 910 SF", beds: 2, baths: 2, sqft: 910, type: "Detached", supabasePath: "1/City-ADU-Plans/menifee/menifee-2br-a-910sf.pdf" },
+      { name: "2 Bedroom B 779 SF", beds: 2, baths: 1, sqft: 779, type: "Detached", supabasePath: "1/City-ADU-Plans/menifee/menifee-2br-b-779sf.pdf" },
+      { name: "3 Bedroom A 1198 SF", beds: 3, baths: 2, sqft: 1198, type: "Detached", supabasePath: "1/City-ADU-Plans/menifee/menifee-3br-a-1198sf.pdf" },
+      { name: "3 Bedroom B 988 SF", beds: 3, baths: 2, sqft: 988, type: "Detached", supabasePath: "1/City-ADU-Plans/menifee/menifee-3br-b-988sf.pdf" },
+    ],
+  },
+  temecula: {
+    available: true,
+    programName: "Permit Ready ADU (PRADU) Program",
+    programUrl: "https://temeculaca.gov/1422/Accessory-Dwelling-Units-ADUs",
+    description:
+      "Temecula's free PRADU program saves $6,000-$14,000 in architectural fees. Download plans at temeculaca.gov/ADU. Note: short-term rentals not allowed in Temecula ADUs.",
+  },
+  "palm-springs": {
+    available: false,
+    description:
+      "Contact Palm Springs Planning at (760) 323-8245 to ask about pre-approved ADU plans required under AB 1332.",
+  },
+  "palm-desert": {
+    available: false,
+    description:
+      "Contact Palm Desert Planning at (760) 346-0611 to ask about pre-approved ADU plans required under AB 1332.",
+  },
+  "cathedral-city": {
+    available: true,
+    programName: "City Pre-Approved ADU Program",
+    programUrl:
+      "https://www.cathedralcity.gov/departments/community-economic-development-department/building-and-safety/city-of-cathedral-city-pre-approved-adu-program",
+    savingsNote:
+      "4 plans in Desert Modern and Mediterranean styles — no architect cost",
+    plans: [
+      { name: "Plan 1 — Studio/1BA (468 SF)", beds: 0, baths: 1, sqft: 468, type: "Detached", supabasePath: "1/City-ADU-Plans/cathedral-city/cc-plan1-studio-1br-468sf.pdf" },
+      { name: "Plan 2 – 2BR/1BA 705 SF", beds: 2, baths: 1, sqft: 705, type: "Detached", supabasePath: "1/City-ADU-Plans/cathedral-city/cc-plan2-2br1ba-705sf.pdf" },
+      { name: "Plan 3 – 2BR/2BA 1000 SF", beds: 2, baths: 2, sqft: 1000, type: "Detached", supabasePath: "1/City-ADU-Plans/cathedral-city/cc-plan3-2br2ba-1000sf.pdf" },
+      { name: "Plan 4 – Garage JADU 441 SF", beds: 1, baths: 1, sqft: 441, type: "JADU", supabasePath: "1/City-ADU-Plans/cathedral-city/cc-plan4-garage-jadu.pdf" },
+    ],
+  },
+  indio: {
+    available: false,
+    description:
+      "Contact Indio Planning at (760) 391-4111 to ask about pre-approved ADU plans required under AB 1332.",
+  },
+  "la-quinta": {
+    available: false,
+    description:
+      "Contact La Quinta Planning at (760) 777-7000 to ask about pre-approved ADU plans required under AB 1332.",
+  },
+  "anaheim-hills": {
+    available: true,
+    programName: "Orange County Pre-Approved ADU Plans",
+    programUrl:
+      "https://ocds.ocpublicworks.com/service-areas/oc-development-services/planning-development/pre-approved-accessory-dwelling-unit-adu",
+    description:
+      "Orange County offers six pre-approved ADU plan sets for download. Plans are being updated to 2025 California Building Code.",
+  },
+  "yorba-linda": {
+    available: true,
+    programName: "Orange County Pre-Approved ADU Plans",
+    programUrl:
+      "https://ocds.ocpublicworks.com/service-areas/oc-development-services/planning-development/pre-approved-accessory-dwelling-unit-adu",
+    description:
+      "Orange County offers six pre-approved ADU plan sets for download. Plans are being updated to 2025 California Building Code.",
+  },
+};
+
 export const ADU_CITIES: ADUCity[] = BASE_CITIES.map((city) => ({
   ...city,
   regionKey: REGION_KEY_BY_SLUG[city.slug],
+  preApprovedPlans: PRE_APPROVED_BY_SLUG[city.slug] ?? { available: false },
 }));
 
 export const getCityBySlug = (slug: string): ADUCity | undefined =>
