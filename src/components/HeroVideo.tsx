@@ -1,161 +1,217 @@
 "use client";
 
+/**
+ * HeroVideo — cinematic, full-viewport hero for the homepage.
+ *
+ * Dark/immersive (navy-tinted video background) with a GSAP on-load reveal:
+ * a masked line-by-line headline rise, fading subtext + CTAs, an animated
+ * stats bar, and a bouncing scroll indicator. A subtle scroll-driven parallax
+ * (Lenis-synced ScrollTrigger) drifts the video layer and lifts the content.
+ *
+ * All motion is gated behind `prefers-reduced-motion: no-preference` via
+ * gsap.matchMedia() — reduced-motion users get the fully-visible static hero.
+ */
+
+import { useRef } from "react";
 import Link from "next/link";
-import { motion } from "framer-motion";
-import { CS } from "@/lib/constants";
+import { useGSAP, gsap } from "@/lib/design-system";
+
+// Gold accent for the redesign (slightly warmer than the global token).
+const GOLD = "#C9A84C";
+
+const STATS: { value: string; label: string }[] = [
+  { value: "17", label: "5★ Reviews" },
+  { value: "A+", label: "BBB Rated" },
+  { value: "CSLB #1108879", label: "Licensed" },
+  { value: "29", label: "Cities Served" },
+  { value: "$200K", label: "ADUs From" },
+];
 
 export default function HeroVideo() {
+  const root = useRef<HTMLElement>(null);
+  const bgRef = useRef<HTMLDivElement>(null);
+
+  useGSAP(
+    () => {
+      const mm = gsap.matchMedia();
+
+      mm.add("(prefers-reduced-motion: no-preference)", () => {
+        // --- On-load reveal timeline ---
+        const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+        tl.from(".hero-eyebrow", { y: 24, autoAlpha: 0, duration: 0.7 })
+          .from(
+            ".hero-line > span",
+            { yPercent: 115, duration: 0.95, stagger: 0.12 },
+            "-=0.3"
+          )
+          .from(".hero-sub", { y: 24, autoAlpha: 0, duration: 0.7 }, "-=0.45")
+          .from(
+            ".hero-cta",
+            { y: 20, autoAlpha: 0, duration: 0.6, stagger: 0.12 },
+            "-=0.35"
+          )
+          .from(
+            ".hero-stat",
+            { y: 16, autoAlpha: 0, duration: 0.5, stagger: 0.08 },
+            "-=0.2"
+          )
+          .from(".hero-scroll", { autoAlpha: 0, duration: 0.6 }, "-=0.15");
+
+        // Looping bounce on the scroll-indicator arrow.
+        gsap.to(".hero-scroll-arrow", {
+          y: 9,
+          duration: 1.1,
+          repeat: -1,
+          yoyo: true,
+          ease: "sine.inOut",
+        });
+
+        // --- Scroll parallax ---
+        gsap.to(bgRef.current, {
+          yPercent: 10,
+          ease: "none",
+          scrollTrigger: {
+            trigger: root.current,
+            start: "top top",
+            end: "bottom top",
+            scrub: true,
+          },
+        });
+
+        gsap.to(".hero-content", {
+          yPercent: -16,
+          autoAlpha: 0.15,
+          ease: "none",
+          scrollTrigger: {
+            trigger: root.current,
+            start: "top top",
+            end: "bottom top",
+            scrub: true,
+          },
+        });
+
+        // Fade the scroll cue out quickly as the user starts scrolling.
+        gsap.to(".hero-scroll", {
+          autoAlpha: 0,
+          ease: "none",
+          scrollTrigger: {
+            trigger: root.current,
+            start: "top top",
+            end: "18% top",
+            scrub: true,
+          },
+        });
+      });
+    },
+    { scope: root }
+  );
+
+  const scrollToNext = () =>
+    root.current?.nextElementSibling?.scrollIntoView({ behavior: "smooth" });
+
   return (
-    <section className="relative h-[100dvh] w-full overflow-hidden bg-navy-dark">
-      {/* Fallback editorial background — visible if no video loads */}
-      <div className="absolute inset-0 bg-navy-dark">
+    <section
+      ref={root}
+      className="relative h-[100dvh] min-h-[640px] w-full overflow-hidden bg-navy-dark"
+    >
+      {/* Background layer (parallax target) */}
+      <div ref={bgRef} className="absolute inset-0">
+        {/* Editorial fallback — visible until the video paints */}
+        <div className="absolute inset-0 bg-navy-dark" />
         <div
           className="absolute inset-0 opacity-60"
           style={{
             backgroundImage:
-              "radial-gradient(ellipse at 30% 30%, rgba(201,162,39,0.18) 0%, transparent 55%), radial-gradient(ellipse at 70% 80%, rgba(36,50,86,0.6) 0%, transparent 60%)",
+              "radial-gradient(ellipse at 30% 30%, rgba(201,168,76,0.18) 0%, transparent 55%), radial-gradient(ellipse at 70% 80%, rgba(36,50,86,0.6) 0%, transparent 60%)",
           }}
         />
-        <div
-          className="absolute inset-0 opacity-30"
-          style={{
-            backgroundImage:
-              "repeating-linear-gradient(45deg, rgba(201,162,39,0.06) 0 2px, transparent 2px 80px)",
-          }}
-        />
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="absolute inset-0 h-full w-full scale-[1.25] object-cover"
+        >
+          <source src="/video/hero.mp4" type="video/mp4" />
+        </video>
       </div>
 
-      {/* Video background */}
-      <video
-        autoPlay
-        muted
-        loop
-        playsInline
-        className="absolute inset-0 w-full h-full object-cover"
-      >
-        <source src="/video/hero.mp4" type="video/mp4" />
-      </video>
-
-      {/* Gradient overlay */}
+      {/* Navy-tinted cinematic overlay */}
       <div className="absolute inset-0 hero-overlay" />
+      <div className="absolute inset-0 bg-navy/30 mix-blend-multiply" />
 
-      {/* Top-right accent (editorial tag) */}
-      <div className="absolute top-28 right-6 lg:right-16 z-10 hidden md:flex items-center gap-3 text-white">
-        <div className="w-10 h-px bg-gold" />
-        <div className="text-xs tracking-[0.4em] uppercase text-gold">
-          Est. {CS.founded} · Inland Empire
-        </div>
-      </div>
-
-      {/* Content */}
-      <div className="relative z-10 h-full flex items-center">
-        <div className="max-w-7xl mx-auto px-6 lg:px-10 w-full pt-20">
+      {/* Foreground content */}
+      <div className="hero-content relative z-10 flex h-full items-center">
+        <div className="mx-auto w-full max-w-7xl px-6 pt-24 lg:px-10">
           <div className="max-w-4xl">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.1 }}
-              className="flex items-center gap-3 mb-6"
-            >
-              <span className="w-10 h-px bg-gold" />
-              <span className="text-gold text-xs uppercase tracking-[0.4em]">
-                Residential &amp; Commercial Construction
+            {/* Eyebrow */}
+            <div className="hero-eyebrow mb-6 flex items-center gap-3">
+              <span
+                className="h-px w-10"
+                style={{ backgroundColor: GOLD }}
+              />
+              <span
+                className="text-xs uppercase tracking-[0.4em]"
+                style={{ color: GOLD }}
+              >
+                Licensed General Contractor · Est. 2008
               </span>
-            </motion.div>
+            </div>
 
-            <motion.h1
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.25 }}
-              className="font-display text-white text-5xl sm:text-6xl md:text-7xl lg:text-8xl leading-[0.95] mb-8"
-            >
-              Building Dreams
-              <br />
-              <span className="text-gold italic">Across</span> the
-              <br />
-              Inland Empire.
-            </motion.h1>
+            {/* Headline — masked line-by-line reveal */}
+            <h1 className="font-display text-5xl leading-[0.95] text-white sm:text-6xl md:text-7xl lg:text-[5.5rem]">
+              <span className="hero-line block overflow-hidden pb-1">
+                <span className="block">Inland Empire&rsquo;s</span>
+              </span>
+              <span className="hero-line block overflow-hidden pb-1">
+                <span className="block">Premier General</span>
+              </span>
+              <span className="hero-line block overflow-hidden pb-1">
+                <span className="block italic" style={{ color: GOLD }}>
+                  Contractor
+                </span>
+              </span>
+            </h1>
 
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.45 }}
-              className="text-gold/90 font-body text-base md:text-lg tracking-wide mb-10 max-w-xl"
-            >
-              Residential &amp; Commercial Construction Serving the Inland
-              Empire Since 2008 · Licensed {CS.license} · 5-Star Rated ·
-              500+ Projects Delivered.
-            </motion.p>
+            {/* Subtext */}
+            <p className="hero-sub mt-8 max-w-xl font-body text-base tracking-wide text-white/80 md:text-lg">
+              Kitchens · Bathrooms · ADUs · Room Additions · Outdoor Living
+            </p>
 
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.6 }}
-              className="flex flex-col sm:flex-row gap-4"
-            >
+            {/* CTAs */}
+            <div className="mt-10 flex flex-col gap-4 sm:flex-row">
               <Link
                 href="/contact"
-                className="group bg-gold text-navy font-body font-semibold px-8 py-4 uppercase tracking-[0.2em] text-sm hover:bg-gold-light transition-all flex items-center justify-center gap-3"
+                className="hero-cta group flex items-center justify-center gap-3 px-8 py-4 font-body text-sm font-semibold uppercase tracking-[0.2em] text-navy transition-colors"
+                style={{ backgroundColor: GOLD }}
               >
-                Get Your Free Estimate
-                <span className="group-hover:translate-x-1 transition-transform">
+                Book Free Consultation
+                <span className="transition-transform group-hover:translate-x-1">
                   →
                 </span>
               </Link>
               <Link
-                href="#work"
-                className="border border-white/40 text-white font-body px-8 py-4 uppercase tracking-[0.2em] text-sm hover:border-gold hover:text-gold transition-all flex items-center justify-center gap-3"
+                href="/services/adu/floor-plans"
+                className="hero-cta flex items-center justify-center gap-3 border border-white/40 px-8 py-4 font-body text-sm uppercase tracking-[0.2em] text-white transition-colors hover:border-[#C9A84C] hover:text-[#C9A84C]"
               >
-                See Our Work
+                View ADU Plans
               </Link>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.7, delay: 0.85 }}
-              className="mt-12 flex items-center gap-6 text-white/70 text-sm"
-            >
-              <div className="flex items-center gap-2">
-                <div className="flex">
-                  {[1, 2, 3, 4, 5].map((n) => (
-                    <svg
-                      key={n}
-                      className="w-4 h-4 text-gold"
-                      viewBox="0 0 20 20"
-                      fill="currentColor"
-                    >
-                      <path d="M10 1l2.928 6.001 6.572.962-4.75 4.626 1.121 6.535L10 16.022l-5.871 3.102 1.121-6.535L.5 7.963l6.572-.962L10 1z" />
-                    </svg>
-                  ))}
-                </div>
-                <span>5.0 / 5 — 17 Google Reviews</span>
-              </div>
-            </motion.div>
+            </div>
           </div>
         </div>
       </div>
 
-      {/* Explore / skip-to-content button */}
-      <motion.button
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.4, duration: 0.8 }}
-        onClick={() =>
-          document
-            .getElementById("content")
-            ?.scrollIntoView({ behavior: "smooth" })
-        }
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 group cursor-pointer bg-transparent border-0 p-0"
-        aria-label="Skip to content"
+      {/* Scroll indicator */}
+      <button
+        type="button"
+        onClick={scrollToNext}
+        aria-label="Scroll to content"
+        className="hero-scroll group absolute bottom-24 left-1/2 z-20 hidden -translate-x-1/2 flex-col items-center gap-2 border-0 bg-transparent p-0 sm:bottom-28 md:flex"
       >
-        <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
-          className="flex flex-col items-center gap-1"
-        >
+        <span className="hero-scroll-arrow flex flex-col items-center">
           <svg
-            className="w-6 h-6 text-gold/80 group-hover:text-gold transition-colors"
+            className="h-6 w-6 transition-colors"
+            style={{ color: GOLD }}
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"
@@ -165,22 +221,35 @@ export default function HeroVideo() {
           >
             <polyline points="6 9 12 15 18 9" />
           </svg>
-          <svg
-            className="w-6 h-6 text-gold/40 group-hover:text-gold/70 transition-colors -mt-2"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <polyline points="6 9 12 15 18 9" />
-          </svg>
-        </motion.div>
-        <div className="text-white/60 group-hover:text-white/90 text-[10px] tracking-[0.4em] uppercase transition-colors">
+        </span>
+        <span className="text-[10px] uppercase tracking-[0.4em] text-white/60 transition-colors group-hover:text-white/90">
           Explore
+        </span>
+      </button>
+
+      {/* Stats bar — lifted above the mobile FloatingCTA bar (md:hidden, ~56px) */}
+      <div className="absolute bottom-[56px] left-0 right-0 z-20 border-t border-white/10 bg-navy-dark/40 backdrop-blur-sm md:bottom-0">
+        <div className="mx-auto max-w-7xl px-6 lg:px-10">
+          <div className="no-scrollbar flex items-stretch divide-x divide-white/10 overflow-x-auto">
+            {STATS.map((s) => (
+              <div
+                key={s.label}
+                className="hero-stat flex shrink-0 flex-col items-center justify-center gap-0.5 px-5 py-4 text-center sm:flex-1 sm:px-3"
+              >
+                <span
+                  className="font-display text-lg leading-none sm:text-xl"
+                  style={{ color: GOLD }}
+                >
+                  {s.value}
+                </span>
+                <span className="whitespace-nowrap text-[10px] uppercase tracking-[0.2em] text-white/60 sm:text-[11px]">
+                  {s.label}
+                </span>
+              </div>
+            ))}
+          </div>
         </div>
-      </motion.button>
+      </div>
     </section>
   );
 }

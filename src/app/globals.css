@@ -15,9 +15,8 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-html {
-  scroll-behavior: smooth;
-}
+/* Smooth scrolling is handled by Lenis (see SmoothScroll). A CSS
+   `scroll-behavior: smooth` here would fight Lenis's RAF-driven scroll. */
 
 body {
   background: var(--background);
