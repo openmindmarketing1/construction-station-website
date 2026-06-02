@@ -152,23 +152,21 @@ export default function Header() {
 
                         <div className="mx-4 my-2 h-px bg-navy/10" />
 
-                        {/* Flooring — sister company */}
-                        <a
-                          href="https://www.carpet-station.com"
-                          target="_blank"
-                          rel="noopener noreferrer"
+                        {/* Flooring — internal landing page */}
+                        <Link
+                          href="/services/flooring-installation-yucaipa-ca"
                           className="flex items-center gap-3 px-5 py-2 hover:bg-cream group"
                         >
                           <span className="text-lg">🪵</span>
                           <div>
                             <div className="font-display text-navy text-sm group-hover:text-gold transition-colors">
-                              Flooring
+                              Flooring Installation
                             </div>
                             <div className="text-[10px] text-navy/50">
-                              carpet-station.com →
+                              Hardwood, LVP, Tile &amp; More
                             </div>
                           </div>
-                        </a>
+                        </Link>
                       </div>
                     </motion.div>
                   )}
@@ -214,6 +212,14 @@ export default function Header() {
                 } hover:text-gold transition-colors`}
               >
                 Blog
+              </Link>
+              <Link
+                href="/faq"
+                className={`font-body text-sm tracking-wide ${
+                  isLight ? "text-navy" : "text-white"
+                } hover:text-gold transition-colors`}
+              >
+                FAQ
               </Link>
               <Link
                 href="/contact"
@@ -418,14 +424,13 @@ export default function Header() {
                   show: { opacity: 1, x: 0 },
                 }}
               >
-                <a
-                  href="https://www.carpet-station.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <Link
+                  href="/services/flooring-installation-yucaipa-ca"
+                  onClick={() => setOpen(false)}
                   className="block py-3 border-b border-white/10 font-display text-2xl text-white hover:text-gold transition-colors"
                 >
-                  Carpet Station
-                </a>
+                  Flooring Installation
+                </Link>
               </motion.div>
 
               <motion.div
@@ -441,6 +446,7 @@ export default function Header() {
                 { href: "/reviews", label: "Reviews" },
                 { href: "/financing", label: "Financing" },
                 { href: "/blog", label: "Blog & Guides" },
+                { href: "/faq", label: "FAQ" },
                 { href: "/contact", label: "Contact Us" },
               ].map(({ href, label }) => (
                 <motion.div
