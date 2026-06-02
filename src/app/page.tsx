@@ -4,6 +4,7 @@ import ServicesGrid from "@/components/ServicesGrid";
 import BeforeAfterSlider from "@/components/BeforeAfterSlider";
 import WhyChooseUs from "@/components/WhyChooseUs";
 import ServiceAreaSection from "@/components/ServiceAreaSection";
+import RecentPosts from "@/components/RecentPosts";
 import CtaSection from "@/components/CtaSection";
 import JsonLd from "@/components/JsonLd";
 import { CS } from "@/lib/constants";
@@ -74,6 +75,7 @@ export default function Home() {
       <BeforeAfterSlider />
       <WhyChooseUs />
       <ServiceAreaSection />
+      <RecentPosts />
       <CtaSection
         heading="Ready to transform your home?"
         subheading="Free design session — normally $299. Book yours today and get a 3D rendering plus a line-item estimate within a week."
