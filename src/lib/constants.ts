@@ -149,8 +149,9 @@ export const CITIES_SERVED = [
 ];
 
 export const HOURS = [
-  { day: "Monday – Friday", time: "7:00 AM – 6:00 PM" },
-  { day: "Saturday", time: "8:00 AM – 4:00 PM" },
+  { day: "Monday – Thursday", time: "7:00 AM – 5:00 PM" },
+  { day: "Friday", time: "7:00 AM – 4:00 PM" },
+  { day: "Saturday", time: "10:00 AM – 3:00 PM" },
   { day: "Sunday", time: "Closed" },
 ];
 
