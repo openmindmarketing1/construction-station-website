@@ -1,9 +1,9 @@
-import HeroVideo from "@/components/HeroVideo";
-import TrustBar from "@/components/TrustBar";
+import ServiceCarousel from "@/components/ServiceCarousel";
 import ServicesGrid from "@/components/ServicesGrid";
 import BeforeAfterSlider from "@/components/BeforeAfterSlider";
 import WhyChooseUs from "@/components/WhyChooseUs";
 import ServiceAreaSection from "@/components/ServiceAreaSection";
+import ReviewsSection from "@/components/ReviewsSection";
 import RecentPosts from "@/components/RecentPosts";
 import CtaSection from "@/components/CtaSection";
 import JsonLd from "@/components/JsonLd";
@@ -75,15 +75,15 @@ export default function Home() {
   return (
     <>
       <JsonLd data={localBusiness} />
-      <HeroVideo />
-      <TrustBar />
+      <ServiceCarousel />
       <ServicesGrid />
       <BeforeAfterSlider />
       <WhyChooseUs />
       <ServiceAreaSection />
+      <ReviewsSection />
       <RecentPosts />
       <CtaSection
-        heading="Ready to transform your home?"
+        heading="Ready to Start Your Project?"
         subheading="Free design session — normally $299. Book yours today and get a 3D rendering plus a line-item estimate within a week."
       />
     </>
