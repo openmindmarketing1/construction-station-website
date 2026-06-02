@@ -3,11 +3,12 @@ import { CITIES } from "@/config/cities";
 import { SERVICES } from "@/lib/constants";
 import { POSTS } from "@/lib/blog";
 import { ADU_CITIES } from "@/lib/adu-cities";
+import { fetchOmmPosts } from "@/lib/omm-blog";
 
 const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL ?? "https://constructionstation.com";
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const now = new Date();
 
   const staticRoutes: MetadataRoute.Sitemap = [
@@ -35,6 +36,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
     changeFrequency: "monthly" as const,
     priority: 0.6,
   }));
+
+  const ommPosts = await fetchOmmPosts();
+  const staticSlugs = new Set(POSTS.map((p) => p.slug));
+  const ommBlogRoutes: MetadataRoute.Sitemap = ommPosts
+    .filter((p) => p.slug && !staticSlugs.has(p.slug))
+    .map((p) => ({
+      url: `${SITE_URL}/blog/${p.slug}`,
+      lastModified: p.published_at ? new Date(p.published_at) : now,
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
+    }));
 
   const cityRoutes: MetadataRoute.Sitemap = CITIES.map((c) => ({
     url: `${SITE_URL}/areas/${c.slug}`,
@@ -67,6 +79,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...staticRoutes,
     ...serviceRoutes,
     ...blogRoutes,
+    ...ommBlogRoutes,
     ...cityRoutes,
     ...aduCityRoutes,
     ...aduInfoRoutes,
