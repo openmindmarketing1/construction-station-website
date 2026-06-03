@@ -247,7 +247,7 @@ export default function ServicesGrid() {
           </motion.div>
         </div>
 
-        {/* Flooring — sister company external card */}
+        {/* Residential flooring — internal Yucaipa-targeted page */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -255,15 +255,13 @@ export default function ServicesGrid() {
           transition={{ duration: 0.6, delay: 0.3 }}
           className="mt-5"
         >
-          <a
-            href="https://www.carpet-station.com"
-            target="_blank"
-            rel="noopener noreferrer"
+          <Link
+            href="/services/flooring-installation-yucaipa-ca"
             className="group block relative overflow-hidden h-[200px] lg:h-[220px]"
           >
             <Image
-              src="/images/showroom/showroom-01.jpg"
-              alt="Flooring showroom — Carpet Station Tile & Wood"
+              src="https://ihvgrybmtngekmfjpxnz.supabase.co/storage/v1/object/public/user-assets/business-1/Service%20Images/v3/flooring-v3.jpg"
+              alt="Residential flooring installation in Yucaipa, CA — luxury vinyl plank open-concept living room"
               fill
               className="object-cover transition-transform duration-700 group-hover:scale-105"
               sizes="100vw"
@@ -275,25 +273,33 @@ export default function ServicesGrid() {
               <div className="flex items-start justify-between">
                 <div>
                   <div className="text-gold text-xs tracking-[0.4em] uppercase mb-2">
-                    08 — Sister Company
+                    08 — Residential Flooring
                   </div>
                   <h3 className="font-display text-white text-3xl lg:text-4xl leading-tight mb-2">
-                    Flooring
+                    Flooring Installation in Yucaipa, CA
                   </h3>
-                  <p className="text-white/75 text-sm max-w-xl leading-relaxed">
-                    Visit our sister company{" "}
-                    <span className="text-gold">Carpet Station Tile &amp; Wood</span>{" "}
-                    for our complete flooring showroom, including the Roomvo
-                    virtual room visualizer.
+                  <p className="text-white/75 text-sm max-w-xl leading-relaxed mb-4">
+                    Hardwood, luxury vinyl plank, laminate, carpet, and tile —
+                    installed by our own crew across Yucaipa, Redlands, Loma
+                    Linda &amp; the Inland Empire.
                   </p>
+                  <div className="flex flex-wrap gap-x-3 gap-y-1 text-white/55 text-[11px] uppercase tracking-wider">
+                    <span>Hardwood</span>
+                    <span className="text-gold/40">·</span>
+                    <span>LVP</span>
+                    <span className="text-gold/40">·</span>
+                    <span>Tile</span>
+                    <span className="text-gold/40">·</span>
+                    <span>Carpet</span>
+                  </div>
                 </div>
-                <div className="hidden md:flex flex-col items-center gap-2 text-gold">
-                  <span className="text-xs uppercase tracking-[0.3em]">carpet-station.com</span>
+                <div className="hidden md:flex flex-col items-end gap-2 text-gold ml-8 shrink-0">
+                  <span className="text-xs uppercase tracking-[0.3em]">Explore</span>
                   <span className="group-hover:translate-x-1 transition-transform text-2xl">→</span>
                 </div>
               </div>
             </div>
-          </a>
+          </Link>
         </motion.div>
       </div>
     </section>
