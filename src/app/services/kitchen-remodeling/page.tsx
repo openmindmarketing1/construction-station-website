@@ -309,7 +309,25 @@ export default function KitchenRemodelingPage() {
           <div className="font-display text-navy text-3xl text-center mb-10">
             Explore more of our craft
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 max-w-3xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 max-w-5xl mx-auto">
+            <Link
+              href="/kitchen-remodeler-yucaipa-ca"
+              className="bg-white border border-navy/10 p-6 hover:border-gold transition-colors group"
+            >
+              <div className="flex items-center justify-between">
+                <div>
+                  <div className="font-display text-navy text-2xl">
+                    Kitchen Remodel Yucaipa CA
+                  </div>
+                  <div className="text-navy/60 text-sm mt-1">
+                    Local projects, Yucaipa pricing &amp; neighborhoods
+                  </div>
+                </div>
+                <div className="text-gold group-hover:translate-x-1 transition-transform">
+                  →
+                </div>
+              </div>
+            </Link>
             <Link
               href="/services/bathroom-remodeling"
               className="bg-white border border-navy/10 p-6 hover:border-gold transition-colors group"
@@ -329,7 +347,7 @@ export default function KitchenRemodelingPage() {
               </div>
             </Link>
             <Link
-              href="/contact"
+              href="/services/room-additions"
               className="bg-white border border-navy/10 p-6 hover:border-gold transition-colors group"
             >
               <div className="flex items-center justify-between">

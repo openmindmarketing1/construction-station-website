@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import BlogPostLayout from "@/components/BlogPostLayout";
 import JsonLd from "@/components/JsonLd";
 import { POSTS } from "@/lib/blog";
@@ -166,6 +167,34 @@ export default function Page() {
         <li>Expert installation by local professionals who take pride in their work</li>
         <li>Honest, no-pressure guidance from a team that genuinely cares about your home</li>
       </ul>
+
+      <h2 className="font-display text-navy text-3xl mt-12 mb-4">
+        Ready to Start Your Kitchen Remodel in Yucaipa?
+      </h2>
+      <p className="text-navy/80 leading-[1.8] mb-5">
+        If you&rsquo;re in Yucaipa or the surrounding Inland Empire cities,
+        Construction Station has a dedicated{" "}
+        <Link
+          href="/kitchen-remodeler-yucaipa-ca"
+          className="text-gold underline underline-offset-2 hover:text-yellow-600 transition-colors font-semibold"
+        >
+          kitchen remodel Yucaipa CA
+        </Link>{" "}
+        service page where you can see local project examples, full pricing ranges,
+        and book a free in-home consultation directly on our calendar.
+      </p>
+      <p className="text-navy/80 leading-[1.8] mb-5">
+        We&rsquo;re based in Yucaipa, hold California Contractor&rsquo;s License
+        #1108879, and have completed{" "}
+        <Link
+          href="/kitchen-remodeler-yucaipa-ca"
+          className="text-gold underline underline-offset-2 hover:text-yellow-600 transition-colors"
+        >
+          kitchen remodels in Yucaipa CA
+        </Link>{" "}
+        for over fifteen years — from cosmetic refreshes in Yucaipa Village to
+        full open-concept transformations in Chapman Heights.
+      </p>
       </BlogPostLayout>
     </>
   );
