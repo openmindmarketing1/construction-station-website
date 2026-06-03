@@ -562,6 +562,8 @@ export default function ADUPage() {
               { icon: "📈", title: "ADU Investment", blurb: "Rental income, ROI, and property value impact.", href: "/services/adu/investment" },
               { icon: "📐", title: "Floor Plans", blurb: "12 sample layouts from 400 to 1,200 sq ft.", href: "/services/adu/floor-plans" },
               { icon: "🏛️", title: "Regulations by City", blurb: "ADU rules across 29 Inland Empire cities.", href: "/services/adu/yucaipa" },
+              { icon: "🚗", title: "Garage Conversion Cost", blurb: "2026 pricing guide — $85K–$160K all-in breakdown.", href: "/services/adu/garage-conversion-cost" },
+              { icon: "📋", title: "Garage Conversion Permits", blurb: "Complete permit guide for Yucaipa & San Bernardino County.", href: "/services/adu/garage-conversion-permits" },
             ].map((r) => (
               <Link
                 key={r.href}

@@ -96,6 +96,8 @@ export const ADU_SUBMENU: NavSubItem[] = [
   { label: "ADU Basics", href: "/services/adu/basics" },
   { label: "ADU Financing", href: "/services/adu/financing" },
   { label: "ADU Investment", href: "/services/adu/investment" },
+  { label: "Garage Conversion Cost", href: "/services/adu/garage-conversion-cost" },
+  { label: "Garage Conversion Permits", href: "/services/adu/garage-conversion-permits" },
   {
     label: "Regulations by City →",
     href: "/services/adu#cities",
