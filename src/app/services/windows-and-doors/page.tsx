@@ -15,11 +15,7 @@ export const metadata: Metadata = {
 };
 
 const GALLERY = [
-  { src: "/images/services/windows-doors/windows-01.jpg", alt: "Energy-efficient dual-pane window installation in the Inland Empire" },
-  { src: "/images/services/windows-doors/windows-02.jpg", alt: "Sliding glass patio door installation" },
-  { src: "/images/services/windows-doors/windows-03.jpg", alt: "Custom French door entry replacement" },
-  { src: "/images/services/windows-doors/windows-04.jpg", alt: "Modern front entry door installation" },
-  { src: "/images/services/windows-doors/windows-05.jpg", alt: "Black-framed picture window with matching trim" },
+  { src: "https://ihvgrybmtngekmfjpxnz.supabase.co/storage/v1/object/public/user-assets/business-1/Service%20Images/v3/windows-doors-v3.jpg", alt: "Modern window and door replacement — black frame windows on California craftsman home" },
 ];
 
 const STEPS = [

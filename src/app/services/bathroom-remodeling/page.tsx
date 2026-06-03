@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import ServiceHero from "@/components/ServiceHero";
 import ProcessSteps from "@/components/ProcessSteps";
 import FAQAccordion from "@/components/FAQAccordion";
@@ -13,6 +14,14 @@ export const metadata: Metadata = {
     "Luxury bathroom remodeling in the Inland Empire — walk-in showers, freestanding tubs, heated floors, and master suites since 2008. Licensed contractor #1108879. Call 909-797-6333.",
   alternates: { canonical: "/services/bathroom-remodeling" },
 };
+
+const GALLERY = [
+  { src: "https://ihvgrybmtngekmfjpxnz.supabase.co/storage/v1/object/public/user-assets/business-1/Bathroom%20Images/v3/bathroom-master-luxury-v3.jpg", alt: "Luxury master bathroom remodel with freestanding tub" },
+  { src: "https://ihvgrybmtngekmfjpxnz.supabase.co/storage/v1/object/public/user-assets/business-1/Bathroom%20Images/v3/bathroom-modern-v3.jpg", alt: "Modern bathroom remodel with floating vanity" },
+  { src: "https://ihvgrybmtngekmfjpxnz.supabase.co/storage/v1/object/public/user-assets/business-1/Bathroom%20Images/v3/bathroom-walkin-shower-v3.jpg", alt: "Custom walk-in shower with curbless entry and tile work" },
+  { src: "https://ihvgrybmtngekmfjpxnz.supabase.co/storage/v1/object/public/user-assets/business-1/Bathroom%20Images/v3/bathroom-vanity-detail-v3.jpg", alt: "Double vanity detail with quartz countertop and custom mirrors" },
+  { src: "https://ihvgrybmtngekmfjpxnz.supabase.co/storage/v1/object/public/user-assets/business-1/Bathroom%20Images/v3/bathroom-small-transformation-v3.jpg", alt: "Small bathroom transformation — Inland Empire remodel" },
+];
 
 const STEPS = [
   {
@@ -199,6 +208,40 @@ export default function BathroomRemodelingPage() {
           </div>
         </div>
       </article>
+
+      {/* Gallery */}
+      <section className="bg-cream py-20 lg:py-24">
+        <div className="max-w-7xl mx-auto px-5 lg:px-10">
+          <div className="text-center mb-12">
+            <div className="flex items-center justify-center gap-3 mb-4">
+              <span className="w-10 h-px bg-gold" />
+              <span className="text-gold text-xs uppercase tracking-[0.4em]">Our Work</span>
+              <span className="w-10 h-px bg-gold" />
+            </div>
+            <h2 className="font-display text-navy text-4xl md:text-5xl leading-[1]">
+              Real bathrooms, <span className="italic text-gold">real homes</span>.
+            </h2>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {GALLERY.map((img, i) => (
+              <div
+                key={img.src}
+                className={`relative overflow-hidden ${
+                  i === 0 ? "md:col-span-2 md:row-span-2 aspect-[4/3]" : "aspect-[4/3]"
+                }`}
+              >
+                <Image
+                  src={img.src}
+                  alt={img.alt}
+                  fill
+                  className="object-cover transition-transform duration-700 hover:scale-105"
+                  sizes={i === 0 ? "(max-width: 768px) 100vw, 66vw" : "(max-width: 768px) 100vw, 33vw"}
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
       <ProcessSteps steps={STEPS} />
       <FAQAccordion faqs={FAQS} />

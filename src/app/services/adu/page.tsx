@@ -39,6 +39,15 @@ const ADU_TYPES = [
   },
 ];
 
+const GALLERY = [
+  { src: "https://ihvgrybmtngekmfjpxnz.supabase.co/storage/v1/object/public/user-assets/business-1/ADU%20Images/v3/adu-detached-day-v3.jpg", alt: "Detached ADU completed in California backyard — daytime" },
+  { src: "https://ihvgrybmtngekmfjpxnz.supabase.co/storage/v1/object/public/user-assets/business-1/ADU%20Images/v3/adu-garage-conversion-v3.jpg", alt: "Garage conversion to ADU — Inland Empire" },
+  { src: "https://ihvgrybmtngekmfjpxnz.supabase.co/storage/v1/object/public/user-assets/business-1/ADU%20Images/v3/adu-interior-living-v3.jpg", alt: "ADU interior living space — modern finishes" },
+  { src: "https://ihvgrybmtngekmfjpxnz.supabase.co/storage/v1/object/public/user-assets/business-1/ADU%20Images/v3/adu-detached-evening-v3.jpg", alt: "Detached ADU at evening — exterior lighting" },
+  { src: "https://ihvgrybmtngekmfjpxnz.supabase.co/storage/v1/object/public/user-assets/business-1/ADU%20Images/v3/adu-under-construction-v3.jpg", alt: "ADU under construction — framing stage" },
+  { src: "https://ihvgrybmtngekmfjpxnz.supabase.co/storage/v1/object/public/user-assets/business-1/ADU%20Images/v3/adu-aerial-view-v3.jpg", alt: "Aerial view of completed ADU on California property" },
+];
+
 const PROJECTS = [
   {
     name: "Redlands Garage Conversion",
@@ -319,6 +328,40 @@ export default function ADUPage() {
           </div>
         </div>
       </article>
+
+      {/* Gallery */}
+      <section className="bg-white py-20 lg:py-24">
+        <div className="max-w-7xl mx-auto px-5 lg:px-10">
+          <div className="text-center mb-12">
+            <div className="flex items-center justify-center gap-3 mb-4">
+              <span className="w-10 h-px bg-gold" />
+              <span className="text-gold text-xs uppercase tracking-[0.4em]">Our Work</span>
+              <span className="w-10 h-px bg-gold" />
+            </div>
+            <h2 className="font-display text-navy text-4xl md:text-5xl leading-[1]">
+              ADUs we&apos;ve <span className="italic text-gold">built</span>.
+            </h2>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {GALLERY.map((img, i) => (
+              <div
+                key={img.src}
+                className={`relative overflow-hidden ${
+                  i === 0 ? "md:col-span-2 md:row-span-2 aspect-[4/3]" : "aspect-[4/3]"
+                }`}
+              >
+                <Image
+                  src={img.src}
+                  alt={img.alt}
+                  fill
+                  className="object-cover transition-transform duration-700 hover:scale-105"
+                  sizes={i === 0 ? "(max-width: 768px) 100vw, 66vw" : "(max-width: 768px) 100vw, 33vw"}
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* ADU Types */}
       <section className="bg-cream py-20 lg:py-24">

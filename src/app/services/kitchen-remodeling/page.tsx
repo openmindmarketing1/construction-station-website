@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import ServiceHero from "@/components/ServiceHero";
 import TrustBar from "@/components/TrustBar";
 import ProcessSteps from "@/components/ProcessSteps";
@@ -21,6 +22,15 @@ export const metadata: Metadata = {
     "Top-rated kitchen remodeler in Yucaipa CA. Custom kitchen remodels, free design consultation. CSLB Licensed #1108879. Call (909) 797-6333.",
   alternates: { canonical: "/services/kitchen-remodeling" },
 };
+
+const GALLERY = [
+  { src: "https://www.openmindmarketing.ai/images/kitchen/kitchen-hero-main.jpg", alt: "Kitchen remodel completed by Construction Station — Inland Empire" },
+  { src: "https://ihvgrybmtngekmfjpxnz.supabase.co/storage/v1/object/public/user-assets/business-1/Kitchen%20Images/v3/kitchen-modern-v3.jpg", alt: "Modern kitchen remodel with quartz countertops and shaker cabinets" },
+  { src: "https://ihvgrybmtngekmfjpxnz.supabase.co/storage/v1/object/public/user-assets/business-1/Kitchen%20Images/v3/kitchen-luxury-v3.jpg", alt: "Luxury kitchen remodel with custom cabinetry and stone counters" },
+  { src: "https://ihvgrybmtngekmfjpxnz.supabase.co/storage/v1/object/public/user-assets/business-1/Kitchen%20Images/v3/kitchen-open-concept-v3.jpg", alt: "Open concept kitchen transformation with large island" },
+  { src: "https://ihvgrybmtngekmfjpxnz.supabase.co/storage/v1/object/public/user-assets/business-1/Kitchen%20Images/v3/kitchen-transformation-v3.jpg", alt: "Full kitchen transformation in the Inland Empire" },
+  { src: "https://ihvgrybmtngekmfjpxnz.supabase.co/storage/v1/object/public/user-assets/business-1/Design%20Renderings/1779330560547-Gerson_Kitchen_3__1_.jpg", alt: "3D kitchen design rendering by Construction Station" },
+];
 
 const STEPS = [
   {
@@ -252,6 +262,40 @@ export default function KitchenRemodelingPage() {
           </div>
         </div>
       </article>
+
+      {/* Gallery */}
+      <section className="bg-cream py-20 lg:py-24">
+        <div className="max-w-7xl mx-auto px-5 lg:px-10">
+          <div className="text-center mb-12">
+            <div className="flex items-center justify-center gap-3 mb-4">
+              <span className="w-10 h-px bg-gold" />
+              <span className="text-gold text-xs uppercase tracking-[0.4em]">Our Work</span>
+              <span className="w-10 h-px bg-gold" />
+            </div>
+            <h2 className="font-display text-navy text-4xl md:text-5xl leading-[1]">
+              Real kitchens, <span className="italic text-gold">real homes</span>.
+            </h2>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {GALLERY.map((img, i) => (
+              <div
+                key={img.src}
+                className={`relative overflow-hidden ${
+                  i === 0 ? "md:col-span-2 md:row-span-2 aspect-[4/3]" : "aspect-[4/3]"
+                }`}
+              >
+                <Image
+                  src={img.src}
+                  alt={img.alt}
+                  fill
+                  className="object-cover transition-transform duration-700 hover:scale-105"
+                  sizes={i === 0 ? "(max-width: 768px) 100vw, 66vw" : "(max-width: 768px) 100vw, 33vw"}
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
       <ProcessSteps steps={STEPS} />
       <FAQAccordion faqs={FAQS} />

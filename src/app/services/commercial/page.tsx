@@ -15,6 +15,12 @@ export const metadata: Metadata = {
   alternates: { canonical: "/services/commercial" },
 };
 
+const GALLERY = [
+  { src: "https://ihvgrybmtngekmfjpxnz.supabase.co/storage/v1/object/public/user-assets/business-1/Service%20Images/real/commercial-concrete-1.jpg", alt: "Commercial concrete work — rebar detail" },
+  { src: "https://ihvgrybmtngekmfjpxnz.supabase.co/storage/v1/object/public/user-assets/business-1/Service%20Images/real/commercial-concrete-2.jpg", alt: "Commercial construction — wide shot rebar and foundation" },
+  { src: "https://ihvgrybmtngekmfjpxnz.supabase.co/storage/v1/object/public/user-assets/business-1/Service%20Images/v3/commercial-construction-v3.jpg", alt: "Modern commercial office interior remodel — Southern California" },
+];
+
 const STEPS = [
   {
     number: "01",
@@ -498,6 +504,40 @@ export default function CommercialPage() {
           </div>
         </div>
       </article>
+
+      {/* Gallery */}
+      <section className="bg-cream py-20 lg:py-24">
+        <div className="max-w-7xl mx-auto px-5 lg:px-10">
+          <div className="text-center mb-12">
+            <div className="flex items-center justify-center gap-3 mb-4">
+              <span className="w-10 h-px bg-gold" />
+              <span className="text-gold text-xs uppercase tracking-[0.4em]">Our Work</span>
+              <span className="w-10 h-px bg-gold" />
+            </div>
+            <h2 className="font-display text-navy text-4xl md:text-5xl leading-[1]">
+              Commercial projects <span className="italic text-gold">done right</span>.
+            </h2>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {GALLERY.map((img, i) => (
+              <div
+                key={img.src}
+                className={`relative overflow-hidden ${
+                  i === 0 ? "md:col-span-2 md:row-span-2 aspect-[4/3]" : "aspect-[4/3]"
+                }`}
+              >
+                <Image
+                  src={img.src}
+                  alt={img.alt}
+                  fill
+                  className="object-cover transition-transform duration-700 hover:scale-105"
+                  sizes={i === 0 ? "(max-width: 768px) 100vw, 66vw" : "(max-width: 768px) 100vw, 33vw"}
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
       <ProcessSteps steps={STEPS} />
 

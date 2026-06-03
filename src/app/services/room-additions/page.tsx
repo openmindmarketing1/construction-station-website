@@ -15,11 +15,10 @@ export const metadata: Metadata = {
 };
 
 const GALLERY = [
-  { src: "/images/services/room-additions/room-addition-01.jpg", alt: "Two-story room addition in progress in the Inland Empire" },
-  { src: "/images/services/room-additions/room-addition-02.jpg", alt: "Master suite addition with vaulted ceiling" },
-  { src: "/images/services/room-additions/room-addition-03.jpg", alt: "Family room expansion connecting to existing home" },
-  { src: "/images/services/room-additions/room-addition-04.jpg", alt: "Second story addition with matching exterior" },
-  { src: "/images/services/room-additions/room-addition-05.jpg", alt: "Completed garage conversion with finished interior" },
+  { src: "https://ihvgrybmtngekmfjpxnz.supabase.co/storage/v1/object/public/user-assets/business-1/Service%20Images/real/room-addition-completed.jpg", alt: "Completed two-story room addition with pool — Inland Empire" },
+  { src: "https://ihvgrybmtngekmfjpxnz.supabase.co/storage/v1/object/public/user-assets/business-1/Service%20Images/real/room-addition-framing.jpg", alt: "Room addition framing stage with crew on site" },
+  { src: "https://ihvgrybmtngekmfjpxnz.supabase.co/storage/v1/object/public/user-assets/business-1/Service%20Images/real/room-addition-scaffolding.jpg", alt: "Room addition scaffolding during construction" },
+  { src: "https://ihvgrybmtngekmfjpxnz.supabase.co/storage/v1/object/public/user-assets/business-1/Service%20Images/v3/room-addition-v3.jpg", alt: "Professional room addition rendering — Construction Station" },
 ];
 
 const STEPS = [

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import ServiceHero from "@/components/ServiceHero";
 import TrustBar from "@/components/TrustBar";
 import ProcessSteps from "@/components/ProcessSteps";
@@ -19,6 +20,10 @@ export const metadata: Metadata = {
     canonical: "/services/flooring-installation-yucaipa-ca",
   },
 };
+
+const GALLERY = [
+  { src: "https://ihvgrybmtngekmfjpxnz.supabase.co/storage/v1/object/public/user-assets/business-1/Service%20Images/v3/flooring-v3.jpg", alt: "Luxury vinyl plank flooring installation in California home — open concept living room" },
+];
 
 const STEPS = [
   {
@@ -348,6 +353,35 @@ export default function FlooringInstallationPage() {
           </div>
         </div>
       </article>
+
+      {/* Photo Gallery */}
+      <section className="bg-cream py-20 lg:py-24">
+        <div className="max-w-7xl mx-auto px-5 lg:px-10">
+          <div className="text-center mb-12">
+            <div className="flex items-center justify-center gap-3 mb-4">
+              <span className="w-10 h-px bg-gold" />
+              <span className="text-gold text-xs uppercase tracking-[0.4em]">Our Work</span>
+              <span className="w-10 h-px bg-gold" />
+            </div>
+            <h2 className="font-display text-navy text-4xl md:text-5xl leading-[1]">
+              Beautiful floors, <span className="italic text-gold">every space</span>.
+            </h2>
+          </div>
+          <div className="grid grid-cols-1 gap-4">
+            {GALLERY.map((img) => (
+              <div key={img.src} className="relative overflow-hidden aspect-[16/7]">
+                <Image
+                  src={img.src}
+                  alt={img.alt}
+                  fill
+                  className="object-cover transition-transform duration-700 hover:scale-105"
+                  sizes="100vw"
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* 4. Process */}
       <ProcessSteps steps={STEPS} />

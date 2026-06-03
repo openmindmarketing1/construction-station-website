@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useState, useEffect, useCallback } from "react";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -77,8 +78,8 @@ const SERVICES = [
 const COUNT = SERVICES.length;
 const STEP = 360 / COUNT; // 45°
 const CARD_W = 320;
-const CARD_H = 440;
-const RADIUS = 560;
+const CARD_H = 310;
+const RADIUS = 460;
 
 const TRUST_ITEMS = [
   { icon: "★", label: "5.0 Google Rating", sub: "17 Reviews" },
@@ -89,6 +90,7 @@ const TRUST_ITEMS = [
 ];
 
 export default function ServiceCarousel() {
+  const router = useRouter();
   const [active, setActive] = useState(0);
   const [lean, setLean] = useState(0);
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
@@ -136,13 +138,6 @@ export default function ServiceCarousel() {
     setLean(0);
   };
 
-  const handleCarouselClick = (e: React.MouseEvent<HTMLDivElement>) => {
-    const rect = containerRef.current?.getBoundingClientRect();
-    if (!rect) return;
-    const rel = (e.clientX - rect.left) / rect.width;
-    if (rel < 0.3) navigate(active - 1);
-    else if (rel > 0.7) navigate(active + 1);
-  };
 
   return (
     <section className="relative min-h-screen flex flex-col overflow-hidden" style={{ background: "#0B1629" }}>
@@ -189,7 +184,6 @@ export default function ServiceCarousel() {
         onMouseMove={handleMouseMove}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
-        onClick={handleCarouselClick}
         onTouchStart={(e) => {
           touchStartX.current = e.touches[0].clientX;
         }}
@@ -225,12 +219,7 @@ export default function ServiceCarousel() {
             return (
               <div
                 key={svc.name}
-                onClick={(e) => {
-                  if (!isActive) {
-                    e.stopPropagation();
-                    navigate(i);
-                  }
-                }}
+                onClick={() => router.push(svc.href)}
                 style={{
                   position: "absolute",
                   width: `${CARD_W}px`,
@@ -243,7 +232,7 @@ export default function ServiceCarousel() {
                   transition:
                     "transform 0.75s cubic-bezier(0.4,0,0.2,1), opacity 0.75s ease",
                   opacity,
-                  cursor: isActive ? "default" : "pointer",
+                  cursor: "pointer",
                   backfaceVisibility: "hidden",
                   pointerEvents: hidden ? "none" : "auto",
                 }}

@@ -20,15 +20,7 @@ export const metadata: Metadata = {
 };
 
 const GALLERY = [
-  { src: "/images/services/outdoor-living/outdoor-01.jpg", alt: "Custom outdoor living space with covered patio" },
-  { src: "/images/services/patio-covers/patio-01.jpg", alt: "Alumawood patio cover installation in the Inland Empire" },
-  { src: "/images/services/outdoor-living/outdoor-02.jpg", alt: "Outdoor kitchen with built-in BBQ and seating" },
-  { src: "/images/services/patio-covers/patio-02.jpg", alt: "Wood pergola over backyard patio" },
-  { src: "/images/services/outdoor-living/outdoor-03.jpg", alt: "Outdoor fireplace and lounge area" },
-  { src: "/images/services/patio-covers/patio-03.jpg", alt: "Solid-roof patio cover with recessed lighting" },
-  { src: "/images/services/outdoor-living/outdoor-04.jpg", alt: "Concrete patio with fire feature" },
-  { src: "/images/services/patio-covers/patio-04.jpg", alt: "Attached patio cover matching home architecture" },
-  { src: "/images/services/outdoor-living/outdoor-05.jpg", alt: "Outdoor living space at twilight with ambient lighting" },
+  { src: "https://ihvgrybmtngekmfjpxnz.supabase.co/storage/v1/object/public/user-assets/business-1/Service%20Images/v3/outdoor-living-v3.jpg", alt: "California backyard with alumawood patio cover, outdoor kitchen, and drought-resistant landscaping" },
 ];
 
 const STEPS = [
