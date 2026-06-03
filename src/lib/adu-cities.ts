@@ -172,6 +172,78 @@ const BASE_CITIES: Omit<ADUCity, "regionKey" | "preApprovedPlans">[] = [
       "Expert ADU builders in Highland CA. Garage conversions, new ADU construction, permit assistance. Licensed & insured CSLB #1108879. Call (909) 797-6333.",
   },
   {
+    slug: "calimesa",
+    name: "Calimesa",
+    county: "Riverside County",
+    region: "Inland Empire Core",
+    maxSize: "1,200 sq ft",
+    setbacks: STATE_SETBACKS,
+    height: "16 ft detached, 25 ft attached",
+    parking: STATE_PARKING,
+    jaduAllowed: STATE_JADU,
+    impactFees: STATE_IMPACT_FEES,
+    permitTimeline: STATE_PERMIT_TIMELINE,
+    contact: "Calimesa Community Development: (909) 795-9801",
+    notes:
+      "Calimesa is a small city with a lean permitting staff — personal relationships with the building department move projects faster. Construction Station's long history in the Yucaipa–Calimesa corridor means we know the local review process well.",
+    intro:
+      "Calimesa is one of the smallest incorporated cities in Riverside County, tucked between Yucaipa to the north and Beaumont to the south at the foot of the San Bernardino Mountains. Incorporated in 1993, the city has a quiet, semi-rural character — Cherry Valley Road, the Calimesa Country Club corridor, and the foothill neighborhoods along Sandalwood Drive are the defining residential areas. Lot sizes tend to run larger than in neighboring Beaumont, and the mix of older ranch homes and newer infill on generous parcels makes Calimesa a strong candidate for detached ADU construction. The city follows California state ADU baseline with minimal additional local overlays, and its small building-department staff means permit submissions receive direct, personal attention rather than disappearing into a large queue. Construction Station builds in the Yucaipa–Calimesa corridor regularly and has pulled permits at Calimesa Community Development before.",
+    whyBuild:
+      "Calimesa offers a combination of larger-than-average residential lots, semi-rural character, and a straightforward permitting environment that makes it one of the underrated ADU markets in eastern Riverside County. Properties along Cherry Valley Road, the Calimesa Country Club area, and the foothill neighborhoods north of Calimesa Boulevard frequently have lots in excess of 8,000–12,000 sq ft — ample room for a full 1,200 sq ft detached ADU without crowding the primary residence. Rental demand is supported by commuters working in Beaumont, Redlands, Yucaipa, and the broader San Gorgonio Pass economy. The semi-rural character of the city also supports lifestyle-driven ADU construction: in-law suites for multi-generational families, guest houses for frequent visitors, and on-site housing for home-based businesses. Property values in Calimesa have appreciated steadily as the San Gorgonio Pass corridor has grown, and early ADU adopters are compounding that appreciation with rental income and appraisal lift.",
+    seoTitle:
+      "ADU Contractors Calimesa CA | Licensed ADU Builder | Construction Station",
+    seoDescription:
+      "Licensed ADU contractor serving Calimesa, CA. Garage conversions, new ADU construction, permits handled. CSLB #1108879. Call (909) 797-6333.",
+  },
+  {
+    slug: "moreno-valley",
+    name: "Moreno Valley",
+    county: "Riverside County",
+    region: "Inland Empire Core",
+    maxSize: "1,200 sq ft",
+    setbacks: STATE_SETBACKS,
+    height: "16 ft detached, 25 ft attached",
+    parking: STATE_PARKING,
+    jaduAllowed: STATE_JADU,
+    impactFees: STATE_IMPACT_FEES,
+    permitTimeline: STATE_PERMIT_TIMELINE,
+    contact: "Moreno Valley Building & Safety: (951) 413-3210",
+    notes:
+      "Moreno Valley follows California state ADU baseline closely. The city's March Air Reserve Base adjacent areas and newer master-planned subdivisions in Sunnymead Ranch and Moreno Valley Ranch have modern utility infrastructure that keeps ADU buildout predictable.",
+    intro:
+      "Moreno Valley is one of the largest cities in Riverside County and one of the fastest-growing in the Inland Empire, with a population exceeding 220,000. The city sprawls across the floor of the Moreno Valley basin between Box Springs Mountain and the San Jacinto Mountains, and the residential character ranges from older Sunnymead and Edgemont neighborhoods near the freeway to newer master-planned communities like Moreno Valley Ranch, Sunnymead Ranch, and the Alessandro Heights area. March Air Reserve Base defines the city's economic identity — the base and its adjacent industrial parks are a major employer, and the resulting workforce drives steady demand for affordable one- and two-bedroom rentals. Moreno Valley follows California state ADU baseline with minimal additional local overlays. Standard suburban lots in the master-planned subdivisions accommodate full 1,200 sq ft detached ADUs within state setbacks. The city processes permits within the 60-day state window and has been actively pro-ADU as a housing-supply strategy.",
+    whyBuild:
+      "Moreno Valley combines the Inland Empire's largest affordable housing market with some of the most predictable ADU construction economics in Riverside County. The city's newer master-planned subdivisions — Moreno Valley Ranch, Sunnymead Ranch, Gateway — were built in the 1990s and 2000s with modern electrical panels, modern sewer connections, and standardized lot configurations that keep ADU construction costs tight and change orders rare. March Field at March Air Reserve Base, the WorldLogistics Center (one of the largest logistics parks in the world), Kaiser Permanente Moreno Valley Medical Center, and Riverside University Health System's hospital all generate steady demand for affordable professional and workforce housing — exactly the tenant pool that fills ADU rentals quickly. Moreno Valley home values have appreciated significantly over the past decade, and ADU appraisal lift compounds that appreciation for owners who build now rather than waiting. Construction Station builds across Riverside County and has navigated Moreno Valley's plan-check process.",
+    seoTitle:
+      "ADU Contractors Moreno Valley CA | Licensed ADU Builder | Construction Station",
+    seoDescription:
+      "Expert ADU builders in Moreno Valley CA. Detached ADUs, garage conversions, permits handled start to finish. CSLB #1108879. Call (909) 797-6333.",
+  },
+  {
+    slug: "riverside",
+    name: "Riverside",
+    county: "Riverside County",
+    region: "Inland Empire Core",
+    maxSize: "1,200 sq ft",
+    setbacks: STATE_SETBACKS,
+    height: "16 ft detached, 25 ft attached",
+    parking: STATE_PARKING,
+    jaduAllowed: STATE_JADU,
+    impactFees: STATE_IMPACT_FEES,
+    permitTimeline: STATE_PERMIT_TIMELINE,
+    contact: "Riverside Building & Safety: (951) 826-5697",
+    notes:
+      "Riverside follows California state ADU baseline. Historic districts and Mill Street–Downtown overlay zones may add design-review requirements for properties within those boundaries. Confirm zoning and any overlay before designing on older Riverside parcels near downtown or the Mission Inn corridor.",
+    intro:
+      "Riverside is the county seat of Riverside County and one of the most historically significant cities in Southern California — the city that gave the world the navel orange. With a population exceeding 330,000, Riverside is one of the larger cities in the Inland Empire and has one of the most architecturally varied housing stocks in the region: Victorian and Craftsman homes in the Wood Streets Historic District, mid-century ranches in Mission Grove and Orangecrest, Spanish Colonial and Mediterranean estates along Magnolia Avenue, and contemporary infill throughout Canyon Crest and La Sierra. UC Riverside, Riverside Community College, Riverside University Health System, and a large county government workforce all anchor steady rental demand. Riverside follows California state ADU baseline at the regulatory level, with historic district overlay review applying to a subset of properties in the downtown core and Wood Streets. Most Riverside residential lots comfortably accommodate full 1,200 sq ft detached ADUs within state setbacks. Construction Station pulls Riverside permits regularly.",
+    whyBuild:
+      "Riverside has one of the strongest ADU markets in the entire region. The combination of UC Riverside's 26,000+ students and faculty, the county government and court system workforce, Riverside Community Hospital, and the Metrolink–Amtrak hub at Downtown Riverside Station creates a diverse, deep tenant pool that keeps ADU vacancy low and lease terms long. Neighborhoods like Canyon Crest, Orangecrest, and La Sierra have larger suburban lots — frequently 8,000 to 12,000+ sq ft — that support full 1,200 sq ft detached ADUs with substantial yard remaining. Mission Grove and Alessandro's newer subdivisions have modern utility infrastructure that simplifies and de-risks ADU construction. Wood Streets and the Victorian neighborhoods are ideal for JADUs and detached studio ADUs — character-driven finishes command premium rents in those historic blocks. Riverside property values have appreciated materially over the past decade, and ADU appraisal lift compounds significantly on homes that were already appreciating. The 25 ft attached-ADU height allowance enables two-story room-addition ADUs on existing two-story homes throughout the city.",
+    seoTitle:
+      "ADU Contractors Riverside CA | Licensed ADU Builder | Construction Station",
+    seoDescription:
+      "Licensed ADU contractor serving Riverside, CA. Detached ADUs, garage conversions, room additions — permits handled start to finish. CSLB #1108879. Call (909) 797-6333.",
+  },
+  {
     slug: "beaumont",
     name: "Beaumont",
     county: "Riverside County",
@@ -661,6 +733,9 @@ const REGION_KEY_BY_SLUG: Record<string, RegionKey> = {
   "loma-linda": "ie-core",
   "san-bernardino": "ie-core",
   highland: "ie-core",
+  calimesa: "ie-core",
+  "moreno-valley": "ie-core",
+  riverside: "ie-core",
   beaumont: "ie-core",
   banning: "ie-core",
   colton: "ie-core",
@@ -763,6 +838,25 @@ const PRE_APPROVED_BY_SLUG: Record<string, CityPreApprovedProgram> = {
     programUrl: "https://lus.sbcounty.gov/building-safety-home/",
     description:
       "Highland unincorporated areas can use San Bernardino County pre-approved ADU Models B, C, and D. Confirm zoning with county first.",
+  },
+  calimesa: {
+    available: false,
+    description:
+      "Contact Calimesa Community Development at (909) 795-9801 to ask about pre-approved ADU plans required under AB 1332.",
+  },
+  "moreno-valley": {
+    available: true,
+    programName: "Pre-Approved ADU Plans (AB 1332)",
+    programUrl: "https://www.moval.org/departments/community-development/building-safety/",
+    description:
+      "Moreno Valley offers pre-approved ADU plans through Building & Safety per AB 1332. Contact Building & Safety at (951) 413-3210 for current plan sets.",
+  },
+  riverside: {
+    available: true,
+    programName: "Pre-Approved ADU Plans (AB 1332)",
+    programUrl: "https://www.riversideca.gov/planning/housing/adu",
+    description:
+      "The City of Riverside offers pre-approved ADU plan sets through Planning & Development. Contact Building & Safety at (951) 826-5697.",
   },
   beaumont: {
     available: true,
