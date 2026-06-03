@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import ProcessSteps from "@/components/ProcessSteps";
+import ServiceGallery from "@/components/ServiceGallery";
 import FAQAccordion from "@/components/FAQAccordion";
 import JsonLd from "@/components/JsonLd";
 import { CS } from "@/lib/constants";
@@ -342,24 +343,7 @@ export default function ADUPage() {
               ADUs we&apos;ve <span className="italic text-gold">built</span>.
             </h2>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {GALLERY.map((img, i) => (
-              <div
-                key={img.src}
-                className={`relative overflow-hidden ${
-                  i === 0 ? "md:col-span-2 md:row-span-2 aspect-[4/3]" : "aspect-[4/3]"
-                }`}
-              >
-                <Image
-                  src={img.src}
-                  alt={img.alt}
-                  fill
-                  className="object-cover transition-transform duration-700 hover:scale-105"
-                  sizes={i === 0 ? "(max-width: 768px) 100vw, 66vw" : "(max-width: 768px) 100vw, 33vw"}
-                />
-              </div>
-            ))}
-          </div>
+          <ServiceGallery images={GALLERY} />
         </div>
       </section>
 

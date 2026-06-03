@@ -8,7 +8,7 @@ import { CS } from "@/lib/constants";
 export const metadata: Metadata = {
   title: "ADU Floor Plans Inland Empire | Construction Station",
   description:
-    "12 sample ADU floor plans from 400 to 1,200 sq ft — studios, 1-bedrooms, 2-bedrooms, and 3-bedrooms. Detached, attached, and garage-conversion layouts customized to your lot. Inland Empire ADU contractor since 2008.",
+    "13 sample ADU floor plans from 400 to 1,200 sq ft — studios, 1-bedrooms, 2-bedrooms, and 3-bedrooms. Detached, attached, and garage-conversion layouts customized to your lot. Inland Empire ADU contractor since 2008.",
   alternates: { canonical: "/services/adu/floor-plans" },
 };
 
@@ -31,7 +31,7 @@ type FloorPlan = {
 };
 
 const PLANS: FloorPlan[] = [
-  { name: "The Yucaipa",        size: "400 sq ft",   beds: "Studio / 1ba", type: "Garage Conversion", price: "$200K", comingSoon: true },
+  { name: "The Yucaipa",        size: "400 sq ft",   beds: "1bd / 1ba",    type: "Garage Conversion", price: "$200K", image: "1780419820952-1br1ba_400sqft_garage_converstion.png", pdf: "1780419819936-3d-1bd1ba400sqft_garage_converstion.pdf" },
   { name: "The Redlands",       size: "499 sq ft",   beds: "1bd / 1ba",    type: "Detached",     price: "$235K", image: "1779910725950-3d-1br1ba499.png",  pdf: "1779901312791-1br1ba499.pdf" },
   { name: "The Highland",       size: "550 sq ft",   beds: "1bd / 1ba",    type: "Detached",     price: "$258K", image: "1779910725016-3d-1br1ba550.png",  pdf: "1779901313749-1br1ba550.pdf" },
   { name: "The Loma Linda",     size: "749 sq ft",   beds: "1bd / 1ba",    type: "Detached",     price: "$300K", image: "1779910726961-3d-1br1ba749.png",  pdf: "1779901314421-1br1ba749.pdf" },
@@ -39,6 +39,7 @@ const PLANS: FloorPlan[] = [
   { name: "The Beaumont",       size: "999 sq ft",   beds: "1bd / 1ba",    type: "Detached",     price: "$375K", image: "1779910723947-3d-1br1ba999.png",  pdf: "1779901316446-1br1ba999.pdf" },
   { name: "The Fontana",        size: "749 sq ft",   beds: "2bd / 2ba",    type: "Detached",     price: "$300K", image: "1779910719762-3d-2br2ba749.png",  pdf: "1779901317217-2br2ba749.pdf" },
   { name: "The Ontario",        size: "800 sq ft",   beds: "2bd / 2ba",    type: "Detached",     price: "$320K", image: "1779910718081-3d-2br2ba800.png",  pdf: "1779901317974-2br2ba800.pdf" },
+  { name: "The Riverside",      size: "900 sq ft",   beds: "2bd / 2ba",    type: "Detached",     price: "$355K", image: "1780419821930-2bd2ba900sqft.png", pdf: "1780419822999-3d-2bd2ba900sqft.pdf" },
   { name: "The Rancho",         size: "999 sq ft",   beds: "2bd / 2ba",    type: "Detached",     price: "$375K", image: "1779910716807-3d-2br2ba999.png",  pdf: "1779901318793-2br2ba999.pdf" },
   { name: "The Murrieta",       size: "1,200 sq ft", beds: "2bd / 2ba",    type: "With Garage",  price: "$435K", image: "1779910721755-3d-2br2ba1200.jpeg", pdf: "1779901319495-2br2ba1200.pdf" },
   { name: "The Palm Desert",    size: "1,155 sq ft", beds: "3bd / 2ba",    type: "2-Story",      price: "$423K", image: "1779910722713-3d-3br2ba1155.png",  pdf: "1779901320177-3br2ba1155.pdf" },
@@ -61,7 +62,7 @@ const serviceSchema = {
   },
   areaServed: { "@type": "Place", name: "Inland Empire, California" },
   description:
-    "Sample ADU floor plans — 12 layouts from 400 to 1,200 sq ft. Studios, 1-bedroom, 2-bedroom, and 3-bedroom configurations. Detached, attached, and garage-conversion ADUs.",
+    "Sample ADU floor plans — 13 layouts from 400 to 1,200 sq ft. 1-bedroom, 2-bedroom, and 3-bedroom configurations. Detached, attached, and garage-conversion ADUs.",
 };
 
 export default function ADUFloorPlansPage() {
@@ -73,7 +74,7 @@ export default function ADUFloorPlansPage() {
         eyebrow="Service · ADU Floor Plans"
         title="Sample ADU Floor Plans"
         italicWord="Floor Plans"
-        subtitle="12 layouts from 400 to 1,200 sq ft. All plans are samples — every ADU is customized to your property and local regulations."
+        subtitle="13 layouts from 400 to 1,200 sq ft. All plans are samples — every ADU is customized to your property and local regulations."
       />
 
       {/* Sample-plans note */}

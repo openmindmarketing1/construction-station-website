@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import Image from "next/image";
 import ServiceHero from "@/components/ServiceHero";
+import ServiceGallery from "@/components/ServiceGallery";
 import TrustBar from "@/components/TrustBar";
 import ProcessSteps from "@/components/ProcessSteps";
 import FAQAccordion from "@/components/FAQAccordion";
@@ -29,7 +29,7 @@ const GALLERY = [
   { src: "https://ihvgrybmtngekmfjpxnz.supabase.co/storage/v1/object/public/user-assets/business-1/Kitchen%20Images/v3/kitchen-luxury-v3.jpg", alt: "Luxury kitchen remodel with custom cabinetry and stone counters" },
   { src: "https://ihvgrybmtngekmfjpxnz.supabase.co/storage/v1/object/public/user-assets/business-1/Kitchen%20Images/v3/kitchen-open-concept-v3.jpg", alt: "Open concept kitchen transformation with large island" },
   { src: "https://ihvgrybmtngekmfjpxnz.supabase.co/storage/v1/object/public/user-assets/business-1/Kitchen%20Images/v3/kitchen-transformation-v3.jpg", alt: "Full kitchen transformation in the Inland Empire" },
-  { src: "https://ihvgrybmtngekmfjpxnz.supabase.co/storage/v1/object/public/user-assets/business-1/Design%20Renderings/1779330560547-Gerson_Kitchen_3__1_.jpg", alt: "3D kitchen design rendering by Construction Station" },
+  { src: "https://ihvgrybmtngekmfjpxnz.supabase.co/storage/v1/object/public/user-assets/1/Design%20Renderings/1779330560547-Gerson_Kitchen_3__1_.jpg", alt: "3D kitchen design rendering by Construction Station" },
 ];
 
 const STEPS = [
@@ -147,6 +147,24 @@ export default function KitchenRemodelingPage() {
       {/* 2. Trust bar */}
       <TrustBar />
 
+      {/* Gallery — moved above the detailed content sections so users see
+          real work immediately after the trust signals. */}
+      <section className="bg-cream py-20 lg:py-24">
+        <div className="max-w-7xl mx-auto px-5 lg:px-10">
+          <div className="text-center mb-12">
+            <div className="flex items-center justify-center gap-3 mb-4">
+              <span className="w-10 h-px bg-gold" />
+              <span className="text-gold text-xs uppercase tracking-[0.4em]">Our Work</span>
+              <span className="w-10 h-px bg-gold" />
+            </div>
+            <h2 className="font-display text-navy text-4xl md:text-5xl leading-[1]">
+              Real kitchens, <span className="italic text-gold">real homes</span>.
+            </h2>
+          </div>
+          <ServiceGallery images={GALLERY} />
+        </div>
+      </section>
+
       {/* 3. Lead magnet — lowest commitment */}
       <section className="bg-cream py-16 lg:py-20">
         <div className="max-w-7xl mx-auto px-5 lg:px-10">
@@ -262,40 +280,6 @@ export default function KitchenRemodelingPage() {
           </div>
         </div>
       </article>
-
-      {/* Gallery */}
-      <section className="bg-cream py-20 lg:py-24">
-        <div className="max-w-7xl mx-auto px-5 lg:px-10">
-          <div className="text-center mb-12">
-            <div className="flex items-center justify-center gap-3 mb-4">
-              <span className="w-10 h-px bg-gold" />
-              <span className="text-gold text-xs uppercase tracking-[0.4em]">Our Work</span>
-              <span className="w-10 h-px bg-gold" />
-            </div>
-            <h2 className="font-display text-navy text-4xl md:text-5xl leading-[1]">
-              Real kitchens, <span className="italic text-gold">real homes</span>.
-            </h2>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {GALLERY.map((img, i) => (
-              <div
-                key={img.src}
-                className={`relative overflow-hidden ${
-                  i === 0 ? "md:col-span-2 md:row-span-2 aspect-[4/3]" : "aspect-[4/3]"
-                }`}
-              >
-                <Image
-                  src={img.src}
-                  alt={img.alt}
-                  fill
-                  className="object-cover transition-transform duration-700 hover:scale-105"
-                  sizes={i === 0 ? "(max-width: 768px) 100vw, 66vw" : "(max-width: 768px) 100vw, 33vw"}
-                />
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       <ProcessSteps steps={STEPS} />
       <FAQAccordion faqs={FAQS} />
