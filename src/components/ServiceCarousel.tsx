@@ -252,7 +252,6 @@ export default function ServiceCarousel() {
                     className="object-cover"
                     sizes="320px"
                     priority={i < 3}
-                    unoptimized={svc.image.includes("openmindmarketing.ai")}
                   />
                   {/* Gradient overlay */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/92 via-black/25 to-transparent" />

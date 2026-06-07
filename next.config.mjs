@@ -33,6 +33,7 @@ const ADU_CITY_SLUGS = [
 
 const nextConfig = {
   images: {
+    formats: ["image/avif", "image/webp"],
     // Supabase public storage host — serves the ADU 3D renderings/plan images.
     remotePatterns: [
       {
@@ -43,7 +44,7 @@ const nextConfig = {
       {
         protocol: "https",
         hostname: "www.openmindmarketing.ai",
-        pathname: "/images/**",
+        pathname: "/**",
       },
     ],
   },
@@ -95,6 +96,14 @@ const nextConfig = {
           { key: "X-Content-Type-Options", value: "nosniff" },
           { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
           { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=()" },
+        ],
+      },
+      {
+        // Public folder static assets — images, fonts, icons, og.jpg, etc.
+        // Vercel handles /_next/static automatically; this covers /public.
+        source: "/:path((?!_next).*\\.(?:jpg|jpeg|png|webp|avif|gif|svg|ico|woff|woff2|ttf|otf)$)",
+        headers: [
+          { key: "Cache-Control", value: "public, max-age=31536000, immutable" },
         ],
       },
     ];

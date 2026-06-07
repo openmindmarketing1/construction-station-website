@@ -1,10 +1,22 @@
 "use client";
 
 import { useState } from "react";
+import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
-import ImageUpload from "@/components/ImageUpload";
-import CalendlyWidget from "@/components/CalendlyWidget";
 import { CS, HOURS, SERVICES } from "@/lib/constants";
+
+const ImageUpload = dynamic(() => import("@/components/ImageUpload"), {
+  ssr: false,
+  loading: () => (
+    <div className="border-2 border-dashed border-navy/20 p-6 text-center text-navy/40 text-sm animate-pulse">
+      Loading uploader…
+    </div>
+  ),
+});
+
+const CalendlyWidget = dynamic(() => import("@/components/CalendlyWidget"), {
+  ssr: false,
+});
 
 const PROJECT_TYPES = [
   ...SERVICES.map((s) => s.name),

@@ -6,7 +6,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ScrollToTop from "@/components/ScrollToTop";
 import FloatingCTA from "@/components/FloatingCTA";
-import { SmoothScroll } from "@/lib/design-system";
+import SmoothScrollInit from "@/components/SmoothScrollInit";
 import { CS } from "@/lib/constants";
 
 const displayFont = DM_Serif_Display({
@@ -97,13 +97,12 @@ export default function RootLayout({
         </noscript>
       </head>
       <body className="font-body bg-cream text-navy antialiased">
-        <SmoothScroll>
-          <Header />
-          <main className="min-h-screen">{children}</main>
-          <Footer />
-          <ScrollToTop />
-          <FloatingCTA />
-        </SmoothScroll>
+        <SmoothScrollInit />
+        <Header />
+        <main className="min-h-screen">{children}</main>
+        <Footer />
+        <ScrollToTop />
+        <FloatingCTA />
       </body>
     </html>
   );
