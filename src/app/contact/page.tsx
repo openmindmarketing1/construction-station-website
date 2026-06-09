@@ -244,7 +244,6 @@ export default function ContactPage() {
                           checked={smsTransactionalConsent}
                           onChange={(e) => setSmsTransactionalConsent(e.target.checked)}
                           className="mt-0.5 h-4 w-4 shrink-0 accent-navy"
-                          required
                         />
                         <span className="text-sm text-gray-700 leading-relaxed">
                           I agree to receive SMS text messages from Construction Station Flooring and Design at the phone number provided, including appointment confirmations, project updates, and consultation reminders. Message frequency varies. Message and data rates may apply. Reply STOP to opt out. Reply HELP for help. Consent is not a condition of purchase.{" "}
@@ -265,7 +264,6 @@ export default function ContactPage() {
                           >
                             Terms
                           </a>
-                          <span className="text-gold ml-1">*</span>
                         </span>
                       </label>
 
