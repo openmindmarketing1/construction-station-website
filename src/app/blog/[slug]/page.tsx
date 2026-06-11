@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { fetchOmmPostBySlug, fetchOmmPosts } from "@/lib/omm-blog";
+import JsonLd from "@/components/JsonLd";
 import { CS } from "@/lib/constants";
 
 // Next.js routes static segments before dynamic ones, so this [slug] page only
@@ -68,8 +69,42 @@ export default async function OmmBlogPostPage({
 
   const dateLabel = formatPublishedDate(post.published_at ?? post.generated_at);
 
+  const postUrl = `${SITE_URL}/blog/${post.slug ?? params.slug}`;
+  const publishedIso = post.published_at ?? post.generated_at ?? undefined;
+
+  const blogPostingSchema = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: post.title,
+    description: post.meta_description ?? undefined,
+    datePublished: publishedIso,
+    dateModified: publishedIso,
+    image: post.featured_image_url ?? undefined,
+    url: postUrl,
+    mainEntityOfPage: { "@type": "WebPage", "@id": postUrl },
+    author: { "@type": "Organization", name: CS.name, url: SITE_URL },
+    publisher: {
+      "@type": "Organization",
+      name: CS.name,
+      url: SITE_URL,
+      logo: { "@type": "ImageObject", url: `${SITE_URL}/images/logo/cs-logo.png` },
+    },
+  };
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
+      { "@type": "ListItem", position: 2, name: "Blog", item: `${SITE_URL}/blog` },
+      { "@type": "ListItem", position: 3, name: post.title, item: postUrl },
+    ],
+  };
+
   return (
     <>
+      <JsonLd data={blogPostingSchema} />
+      <JsonLd data={breadcrumbSchema} />
       {/* Hero */}
       <section className="bg-navy texture-navy text-white pt-36 pb-0 lg:pt-44 relative overflow-hidden">
         <div

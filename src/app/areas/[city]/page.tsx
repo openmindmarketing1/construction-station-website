@@ -71,9 +71,24 @@ export default function CityPage({ params }: { params: { city: string } }) {
     foundingDate: String(CS.founded),
   };
 
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: `Remodeling in ${city.name}, ${city.state}`,
+        item: `${SITE_URL}/areas/${city.slug}`,
+      },
+    ],
+  };
+
   return (
     <>
       <JsonLd data={localBusinessSchema} />
+      <JsonLd data={breadcrumbSchema} />
 
       <ServiceHero
         eyebrow={`Service Area · ${city.county} County`}

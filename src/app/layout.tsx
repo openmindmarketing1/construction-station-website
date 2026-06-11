@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
 import { DM_Serif_Display, Plus_Jakarta_Sans } from "next/font/google";
 import Script from "next/script";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ScrollToTop from "@/components/ScrollToTop";
 import FloatingCTA from "@/components/FloatingCTA";
 import SmoothScrollInit from "@/components/SmoothScrollInit";
+import JsonLd from "@/components/JsonLd";
 import { CS } from "@/lib/constants";
 
 const displayFont = DM_Serif_Display({
@@ -65,6 +67,32 @@ export const metadata: Metadata = {
   },
 };
 
+// Site-wide entity identity for search engines and AI answer engines. Page-level
+// LocalBusiness/GeneralContractor schemas reference richer location data; this
+// establishes the single canonical Organization across every route.
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": `${SITE_URL}/#organization`,
+  name: CS.name,
+  url: SITE_URL,
+  logo: `${SITE_URL}/images/logo/cs-logo.png`,
+  image: `${SITE_URL}/og.jpg`,
+  telephone: CS.phone,
+  email: CS.email,
+  foundingDate: String(CS.founded),
+  identifier: CS.license,
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "33145 Yucaipa Blvd",
+    addressLocality: "Yucaipa",
+    addressRegion: "CA",
+    postalCode: "92399",
+    addressCountry: "US",
+  },
+  sameAs: ["https://www.google.com/maps?cid=8346061725681242502"],
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
@@ -97,12 +125,14 @@ export default function RootLayout({
         </noscript>
       </head>
       <body className="font-body bg-cream text-navy antialiased">
+        <JsonLd data={organizationSchema} />
         <SmoothScrollInit />
         <Header />
         <main className="min-h-screen">{children}</main>
         <Footer />
         <ScrollToTop />
         <FloatingCTA />
+        <SpeedInsights />
       </body>
     </html>
   );

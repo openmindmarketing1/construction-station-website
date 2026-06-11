@@ -104,6 +104,14 @@ body {
   color: #1a2744;
 }
 
+/* Keyboard focus indicator — gold reads on both navy and cream sections.
+   :focus-visible only fires for keyboard/assistive navigation, so mouse
+   clicks don't flash rings. */
+:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+}
+
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }

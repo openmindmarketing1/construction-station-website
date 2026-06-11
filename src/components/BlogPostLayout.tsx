@@ -1,7 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
+import JsonLd from "@/components/JsonLd";
 import { type BlogPost, formatDate } from "@/lib/blog";
 import { CS } from "@/lib/constants";
+
+const SITE_URL =
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://constructionstation.com";
 
 interface Props {
   post: BlogPost;
@@ -10,8 +14,24 @@ interface Props {
 }
 
 export default function BlogPostLayout({ post, related, children }: Props) {
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
+      { "@type": "ListItem", position: 2, name: "Blog", item: `${SITE_URL}/blog` },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: post.title,
+        item: `${SITE_URL}/blog/${post.slug}`,
+      },
+    ],
+  };
+
   return (
     <>
+      <JsonLd data={breadcrumbSchema} />
       {/* Hero */}
       <section className="bg-navy texture-navy text-white pt-36 pb-0 lg:pt-44 relative overflow-hidden">
         <div
