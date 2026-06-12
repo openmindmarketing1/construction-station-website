@@ -95,13 +95,20 @@ export default function ServiceCarousel() {
   const [lean, setLean] = useState(0);
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
+  const trackRef = useRef<HTMLDivElement>(null);
   const touchStartX = useRef<number | null>(null);
-  const isHovering = useRef(false);
 
   const startTimer = useCallback(() => {
     if (timerRef.current) clearInterval(timerRef.current);
     timerRef.current = setInterval(() => {
-      if (!isHovering.current) {
+      // Pause only while a real pointer is over the cards. Queried live via
+      // :hover (no stored state — a missed mouseleave can't wedge it), scoped
+      // to the card track so blank hero space doesn't pause, and gated on
+      // (hover: hover) so touch taps never pause rotation.
+      const paused =
+        window.matchMedia("(hover: hover)").matches &&
+        trackRef.current?.matches(":hover");
+      if (!paused) {
         setActive((i) => (i + 1) % COUNT);
       }
     }, 4000);
@@ -129,12 +136,7 @@ export default function ServiceCarousel() {
     setLean(rel - 0.5); // –0.5 to +0.5
   };
 
-  const handleMouseEnter = () => {
-    isHovering.current = true;
-  };
-
   const handleMouseLeave = () => {
-    isHovering.current = false;
     setLean(0);
   };
 
@@ -182,7 +184,6 @@ export default function ServiceCarousel() {
         className="relative flex-1 flex items-center justify-center"
         style={{ perspective: "1300px", minHeight: "500px" }}
         onMouseMove={handleMouseMove}
-        onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
         onTouchStart={(e) => {
           touchStartX.current = e.touches[0].clientX;
@@ -197,6 +198,7 @@ export default function ServiceCarousel() {
       >
         {/* Track — preserve-3d origin for all cards */}
         <div
+          ref={trackRef}
           style={{
             position: "relative",
             width: `${CARD_W}px`,
