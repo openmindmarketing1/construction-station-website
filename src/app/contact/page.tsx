@@ -59,10 +59,6 @@ export default function ContactPage() {
       setError("Name and phone are required.");
       return;
     }
-    if (!smsTransactionalConsent) {
-      setError("You must agree to receive SMS messages to submit this form.");
-      return;
-    }
     if (form.honeypot) {
       setSubmitted(true);
       return;

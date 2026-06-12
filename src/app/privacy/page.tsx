@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
 };
 
-const EFFECTIVE_DATE = "May 11, 2026";
+const EFFECTIVE_DATE = "June 11, 2026";
 
 const SECTION = "scroll-mt-32";
 
@@ -209,8 +209,9 @@ export default function PrivacyPage() {
               <p>
                 You opt in to transactional SMS by checking the SMS consent box
                 on our contact form, by providing your number when you request
-                a quote, or by texting us first. Transactional SMS is required
-                if you want us to coordinate the project by text.
+                a quote, or by texting us first. Transactional SMS is optional.
+                If you prefer not to receive texts, we will coordinate your
+                project by phone call and email instead.
               </p>
 
               <h3>3.2 Marketing SMS (Promotional)</h3>
@@ -254,10 +255,12 @@ export default function PrivacyPage() {
                   .
                 </li>
                 <li>
-                  Opting out of marketing SMS does not opt you out of
-                  service-related transactional messages required to deliver
-                  work you have hired us to perform. To stop all SMS, reply
-                  STOP to a transactional message as well.
+                  Opting out of marketing SMS does not automatically opt you
+                  out of transactional project messages — these are managed as
+                  separate categories. To stop all SMS, reply STOP to a
+                  transactional message as well. Declining or stopping SMS
+                  never affects your service; we will simply use phone and
+                  email instead.
                 </li>
               </ul>
 
