@@ -17,16 +17,6 @@ const SB = "https://ihvgrybmtngekmfjpxnz.supabase.co/storage/v1/object/public/us
 const ADU_PHOTOS = [
   `${SB}1/Jr%20ADU%20Redlands/1781284267634-IMG_4468.jpeg`,
   `${SB}1/Jr%20ADU%20Redlands/1781284265236-IMG_4469.jpeg`,
-  `${SB}1/Jr%20ADU%20Redlands/1781284262754-IMG_4479.jpeg`,
-  `${SB}1/Jr%20ADU%20Redlands/1781284258987-IMG_4518.jpeg`,
-  `${SB}1/Jr%20ADU%20Redlands/1781284255767-IMG_4519.jpeg`,
-  `${SB}1/Jr%20ADU%20Redlands/1781284252539-IMG_4520.jpeg`,
-  `${SB}1/Jr%20ADU%20Redlands/1781284248473-IMG_4521.jpeg`,
-  `${SB}1/Jr%20ADU%20Redlands/1781284244270-IMG_4522.jpeg`,
-  `${SB}1/Jr%20ADU%20Redlands/1781284240139-IMG_4523.jpeg`,
-  `${SB}1/Jr%20ADU%20Redlands/1781284235526-IMG_4593.jpeg`,
-  `${SB}1/Jr%20ADU%20Redlands/1781284232352-IMG_4594.jpeg`,
-  `${SB}1/Jr%20ADU%20Redlands/1781284229887-IMG_4595.jpeg`,
 ];
 
 const CALENDLY_URL =
@@ -198,7 +188,7 @@ export default function RedlandsJrADUPage() {
             Construction underway since March 2026. Scheduled completion June 2026.
           </p>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-3xl mx-auto">
             {ADU_PHOTOS.map((src, i) => (
               <div key={i} className="relative aspect-[4/3] overflow-hidden bg-navy/5">
                 <Image

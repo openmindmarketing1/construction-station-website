@@ -82,6 +82,59 @@ export default function Home() {
       <WhyChooseUs />
       <ServiceAreaSection />
       <ReviewsSection />
+
+      {/* Featured Project */}
+      <section className="bg-navy texture-navy py-20 lg:py-24">
+        <div className="max-w-7xl mx-auto px-5 lg:px-10">
+          <div className="flex items-center gap-3 mb-4">
+            <span className="w-10 h-px bg-gold" />
+            <span className="text-gold text-xs uppercase tracking-[0.4em]">
+              Featured Project
+            </span>
+          </div>
+          <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-10">
+            <h2 className="font-display text-white text-4xl md:text-5xl lg:text-6xl leading-[1.05] max-w-2xl">
+              A Junior ADU in Redlands —{" "}
+              <span className="italic text-gold">in progress now.</span>
+            </h2>
+            <Link
+              href="/projects"
+              className="text-white/60 hover:text-gold font-body text-sm tracking-wide transition-colors shrink-0"
+            >
+              View all projects →
+            </Link>
+          </div>
+          <div className="grid md:grid-cols-3 gap-6 items-start">
+            <div className="md:col-span-2 flex flex-wrap gap-3 mb-2">
+              {[
+                ["Location", "Redlands, CA"],
+                ["Type", "Junior ADU (JADU)"],
+                ["Size", "465 sq ft"],
+                ["Budget", "~$200K all-in"],
+                ["Status", "In Progress"],
+              ].map(([k, v]) => (
+                <div
+                  key={k}
+                  className="flex items-center gap-2 border border-white/20 px-4 py-2"
+                >
+                  <span className="text-white/45 text-xs uppercase tracking-wider">{k}</span>
+                  <span className="w-px h-3 bg-white/20" />
+                  <span className="text-white text-sm font-semibold">{v}</span>
+                </div>
+              ))}
+            </div>
+            <div className="md:col-span-1 md:text-right">
+              <Link
+                href="/projects/redlands-jr-adu"
+                className="inline-flex items-center gap-2 bg-gold text-navy font-body font-semibold uppercase tracking-wider px-7 py-3 text-sm hover:bg-yellow-400 transition-colors"
+              >
+                Read the Case Study →
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Local service spotlight — Yucaipa */}
       <section className="bg-cream py-14 lg:py-16">
         <div className="max-w-7xl mx-auto px-5 lg:px-10">
