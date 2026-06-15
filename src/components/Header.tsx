@@ -182,7 +182,7 @@ export default function Header() {
                 Areas We Serve
               </Link>
               <Link
-                href="/#about"
+                href="/about"
                 className={`font-body text-sm tracking-wide ${
                   isLight ? "text-navy" : "text-white"
                 } hover:text-gold transition-colors`}
@@ -443,6 +443,7 @@ export default function Header() {
                 Explore
               </motion.div>
               {[
+                { href: "/about", label: "About" },
                 { href: "/reviews", label: "Reviews" },
                 { href: "/financing", label: "Financing" },
                 { href: "/blog", label: "Blog & Guides" },

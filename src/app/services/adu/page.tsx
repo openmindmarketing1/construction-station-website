@@ -415,6 +415,48 @@ export default function ADUPage() {
               </div>
             ))}
           </div>
+
+          {/* Featured Project Card */}
+          <div className="mt-10 border border-gold/40 bg-navy p-8 md:p-10">
+            <div className="flex items-center gap-3 mb-4">
+              <span className="text-gold text-xs uppercase tracking-[0.4em]">
+                Featured Project
+              </span>
+              <span className="h-px flex-1 bg-gold/30" />
+              <span className="inline-flex px-3 py-1 border border-amber-200 bg-amber-100 text-amber-900 text-xs uppercase tracking-wider font-semibold">
+                In Progress
+              </span>
+            </div>
+            <h3 className="font-display text-white text-2xl md:text-3xl lg:text-4xl mb-4 leading-tight">
+              Junior ADU in Redlands —{" "}
+              <span className="italic text-gold">Making Room for Family</span>
+            </h3>
+            <p className="text-white/65 text-sm md:text-base leading-relaxed mb-6 max-w-2xl">
+              465 sq ft 1BD/1BA Junior ADU. New construction incorporating two existing home
+              walls to reduce cost. ~$200K all-in budget met. Construction started March 2026,
+              completion June 2026.
+            </p>
+            <div className="flex flex-wrap gap-4 mb-8">
+              {[
+                { l: "Location", v: "Redlands, CA" },
+                { l: "Size", v: "465 sq ft" },
+                { l: "Budget", v: "~$200K" },
+              ].map((chip) => (
+                <div key={chip.l} className="flex items-center gap-2 border border-white/15 px-4 py-2">
+                  <span className="text-white/40 text-xs uppercase tracking-wider">{chip.l}</span>
+                  <span className="w-px h-3 bg-white/15" />
+                  <span className="text-white text-sm font-semibold">{chip.v}</span>
+                </div>
+              ))}
+            </div>
+            <Link
+              href="/projects/redlands-jr-adu"
+              className="inline-flex items-center gap-2 bg-gold text-navy font-body font-semibold uppercase tracking-wider px-7 py-3 text-sm hover:bg-yellow-400 transition-colors"
+            >
+              Read the Case Study
+              <span aria-hidden>→</span>
+            </Link>
+          </div>
         </div>
       </section>
 
