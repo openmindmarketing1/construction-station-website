@@ -133,6 +133,11 @@ export default function RootLayout({
         <ScrollToTop />
         <FloatingCTA />
         <SpeedInsights />
+        <Script
+          src="https://www.openmindmarketing.ai/widget/chat.js"
+          data-business-id="1"
+          strategy="afterInteractive"
+        />
       </body>
     </html>
   );
