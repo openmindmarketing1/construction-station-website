@@ -52,7 +52,7 @@ const TEAM = [
   {
     name: "Gustavo Mancilla",
     role: "Co-Owner / VP Operations",
-    photo: `${SB}business-1/Team%20Photos/Gustavo_Mancilla.jpg`,
+    photo: `${SB}business-1/Team%20Photos/Gus%20Mancilla.jpg`,
     initials: "GM",
     hasPhoto: true,
   },

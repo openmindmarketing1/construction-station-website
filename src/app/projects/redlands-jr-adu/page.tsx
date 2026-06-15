@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import JsonLd from "@/components/JsonLd";
 import { CS } from "@/lib/constants";
@@ -11,6 +12,23 @@ export const metadata: Metadata = {
 };
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://constructionstation.com";
+const SB = "https://ihvgrybmtngekmfjpxnz.supabase.co/storage/v1/object/public/user-assets/";
+
+const ADU_PHOTOS = [
+  `${SB}1/Jr%20ADU%20Redlands/1781284267634-IMG_4468.jpeg`,
+  `${SB}1/Jr%20ADU%20Redlands/1781284265236-IMG_4469.jpeg`,
+  `${SB}1/Jr%20ADU%20Redlands/1781284262754-IMG_4479.jpeg`,
+  `${SB}1/Jr%20ADU%20Redlands/1781284258987-IMG_4518.jpeg`,
+  `${SB}1/Jr%20ADU%20Redlands/1781284255767-IMG_4519.jpeg`,
+  `${SB}1/Jr%20ADU%20Redlands/1781284252539-IMG_4520.jpeg`,
+  `${SB}1/Jr%20ADU%20Redlands/1781284248473-IMG_4521.jpeg`,
+  `${SB}1/Jr%20ADU%20Redlands/1781284244270-IMG_4522.jpeg`,
+  `${SB}1/Jr%20ADU%20Redlands/1781284240139-IMG_4523.jpeg`,
+  `${SB}1/Jr%20ADU%20Redlands/1781284235526-IMG_4593.jpeg`,
+  `${SB}1/Jr%20ADU%20Redlands/1781284232352-IMG_4594.jpeg`,
+  `${SB}1/Jr%20ADU%20Redlands/1781284229887-IMG_4595.jpeg`,
+];
+
 const CALENDLY_URL =
   "https://calendly.com/constructionstation-sales/free-adu-remodeling-consult";
 
@@ -162,7 +180,7 @@ export default function RedlandsJrADUPage() {
         </div>
       </article>
 
-      {/* ── Gallery Placeholder ───────────────────────────────────────── */}
+      {/* ── Gallery ──────────────────────────────────────────────────── */}
       <section className="bg-white py-24 lg:py-28">
         <div className="max-w-7xl mx-auto px-5 lg:px-10">
           <div className="flex items-center justify-center gap-3 mb-4">
@@ -177,30 +195,19 @@ export default function RedlandsJrADUPage() {
             <span className="italic text-gold">Progress</span>
           </h2>
           <p className="text-navy/55 text-center text-base max-w-lg mx-auto mb-16">
-            Construction started March 2026. Site photos will be added here as the
-            project moves toward its June 2026 completion.
+            Construction underway since March 2026. Scheduled completion June 2026.
           </p>
 
-          {/* Placeholder grid */}
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-            {[
-              "Foundation & Slab",
-              "Framing",
-              "MEP Rough-In",
-              "Insulation & Drywall",
-              "Exterior Finish",
-              "Interior Finish",
-            ].map((phase) => (
-              <div
-                key={phase}
-                className="aspect-[4/3] bg-navy/5 border border-navy/10 flex flex-col items-center justify-center gap-3 p-6 text-center"
-              >
-                <div className="w-8 h-8 border border-navy/20 rounded-full flex items-center justify-center">
-                  <span className="text-navy/30 text-lg">📷</span>
-                </div>
-                <span className="text-navy/40 text-xs uppercase tracking-wider">
-                  {phase}
-                </span>
+            {ADU_PHOTOS.map((src, i) => (
+              <div key={i} className="relative aspect-[4/3] overflow-hidden bg-navy/5">
+                <Image
+                  src={src}
+                  alt={`Redlands Jr ADU construction photo ${i + 1}`}
+                  fill
+                  className="object-cover hover:scale-105 transition-transform duration-700"
+                  sizes="(max-width: 768px) 50vw, 33vw"
+                />
               </div>
             ))}
           </div>
