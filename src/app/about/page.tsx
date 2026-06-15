@@ -45,9 +45,9 @@ const TEAM = [
   {
     name: "Gregory Pilon",
     role: "Co-Owner / President",
-    photo: `${SB}business-1/Team%20Photos/Greg_Pilon.jpg`,
+    photo: `${SB}business-1/Team%20Photos/Greg%20Pilon.jpg`,
     initials: "GP",
-    hasPhoto: false,
+    hasPhoto: true,
   },
   {
     name: "Gustavo Mancilla",
@@ -59,16 +59,16 @@ const TEAM = [
   {
     name: "Cameron Kemock",
     role: "Lead Project Manager",
-    photo: `${SB}business-1/Team%20Photos/Cameron_Kemock.jpg`,
+    photo: `${SB}business-1/Team%20Photos/Cameron%20Kemock.jpg`,
     initials: "CK",
-    hasPhoto: false,
+    hasPhoto: true,
   },
   {
     name: "Lisa Elias",
     role: "Office Manager",
-    photo: `${SB}business-1/Team%20Photos/Lisa_Elias.jpg`,
+    photo: `${SB}business-1/Team%20Photos/Lisa%20Elias.jpg`,
     initials: "LE",
-    hasPhoto: false,
+    hasPhoto: true,
   },
 ];
 
