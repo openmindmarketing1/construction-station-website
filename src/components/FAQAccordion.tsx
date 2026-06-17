@@ -1,9 +1,10 @@
 "use client";
 
 import { useState } from "react";
+import type { ReactNode } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-type FAQ = { q: string; a: string };
+type FAQ = { q: string; a: ReactNode };
 
 export default function FAQAccordion({ faqs }: { faqs: FAQ[] }) {
   const [open, setOpen] = useState<number | null>(0);

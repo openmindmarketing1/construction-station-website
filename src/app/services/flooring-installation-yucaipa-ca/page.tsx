@@ -60,28 +60,36 @@ const STEPS = [
 
 const FAQS = [
   {
-    q: "How long does flooring installation take?",
-    a: "Most single-room flooring projects complete in 1–2 days. Whole-home re-floors (1,200–2,000 sq ft) typically take 3–5 days including subfloor prep. Tile installations run longer due to mortar cure time — usually 5–7 days for a kitchen or bathroom. We give you a written timeline before starting.",
+    q: "Which is better — laminate or LVP (luxury vinyl plank)?",
+    a: "There's no single winner — the right choice depends on the room and how you live. Both are premium options, and laminate has made a real comeback. Laminate tends to win on scratch resistance: its hard wear surface (measured by AC rating) stands up to daily abuse better than most LVP. It also resists dents well thanks to its dense core, dampens sound nicely, and often reads more like real wood. LVP's strength is water — its synthetic core is fully waterproof, making it the safer pick for full bathrooms, laundry rooms, and any space that sees standing water. We help you match the material to each room rather than forcing one product everywhere.",
   },
   {
-    q: "What flooring works best in kitchens and bathrooms?",
-    a: "Porcelain or ceramic tile is the traditional choice for wet areas — it's fully waterproof and extremely durable. Luxury vinyl plank (LVP) is a strong alternative: 100% waterproof, comfortable underfoot, and available in realistic wood and stone looks. We don't recommend solid hardwood or standard laminate in kitchens or bathrooms due to moisture sensitivity.",
+    q: "What is an AC rating on laminate flooring?",
+    a: "AC stands for Abrasion Class — it measures how well a laminate's surface resists wear, scratches, and scuffing, on a scale from AC1 to AC5. For most homes, AC3 handles entryways, hallways, and busy family spaces with ease; AC4 and AC5 step up into light commercial and heavy-traffic use. All of the laminate we carry is rated at least AC4, so even our entry-level option is built for any residential use and moderate commercial traffic.",
   },
   {
-    q: "Do you install hardwood flooring in Yucaipa?",
-    a: "Yes — we install both solid hardwood and engineered hardwood throughout the Inland Empire including Yucaipa. Engineered hardwood is often the better choice for Southern California homes due to its improved dimensional stability in our dry climate. We also offer sand-and-finish services to refinish existing hardwood floors.",
+    q: "Is laminate flooring really waterproof now?",
+    a: "Modern premium laminates have come a long way — many are now water-resistant or waterproof at the surface and can handle spills that would have ruined older laminate. Be realistic, though: most waterproof laminates protect against water for a limited window, not an indefinite flood. For rooms where standing water is a genuine risk, we'll usually steer you toward LVP. For kitchens, living areas, and bedrooms, today's waterproof laminate is an excellent, durable choice.",
   },
   {
-    q: "How much does LVP flooring installation cost in the Inland Empire?",
-    a: "LVP flooring installation in the Inland Empire typically runs $4–$8 per square foot installed (materials and labor), depending on product quality, room complexity, and subfloor condition. A 500 sq ft living room might cost $2,000–$4,000 all-in. We provide exact pricing in your free written estimate.",
+    q: "Does LVP scratch easily?",
+    a: "Quality LVP holds up well to everyday wear and has a protective wear layer, but here's the honest tradeoff: because vinyl is a softer material, dragged furniture or sharp objects can scratch or gouge it more visibly than laminate. Some premium LVP carries strong scratch ratings and performs very well. If scratch resistance is your top priority — big dogs, kids, heavy traffic — laminate often has the edge. If waterproofing matters more, LVP is worth the tradeoff.",
   },
   {
-    q: "Do you remove old flooring before installing new?",
-    a: "Yes. Old flooring removal, disposal, and subfloor prep are included in our installation process. We don't install over compromised subfloors — we level, patch, and repair before laying any new material so your investment lasts.",
+    q: "How do I judge the quality of LVP?",
+    a: "LVP doesn't use the AC scale — instead, look at its wear layer, measured in mils (thousandths of an inch). That clear top layer protects against scratches, dents, and stains. As a rough guide: 6-12 mil suits low-traffic rooms like bedrooms; 12-20 mil is the sweet spot for busy spaces like kitchens, living rooms, and hallways with kids and pets; and 20-30 mil is built for heavy commercial-grade traffic. Don't confuse the wear layer with overall plank thickness — thickness affects feel and how well it hides subfloor imperfections, but the wear layer determines durability.",
   },
   {
-    q: "What areas do you serve for flooring installation?",
-    a: "We serve Yucaipa, Redlands, Beaumont, Loma Linda, Banning, Calimesa, San Bernardino, Riverside, Rancho Cucamonga, Ontario, Fontana, Upland, and surrounding Inland Empire cities. Call us to confirm availability at your address.",
+    q: "How long does new flooring last?",
+    a: "With proper installation and normal care, both quality laminate and LVP typically last 15-20+ years. The bigger factors are installation quality and matching the right product to the room — which is where working with an experienced flooring team pays off.",
+  },
+  {
+    q: "What about tile and hardwood?",
+    a: "Tile and hardwood largely come down to personal preference and the look you're after. Tile is exceptionally durable — it can last virtually a lifetime — and is a great choice in bathrooms and kitchens where water is a bigger concern. Hardwood brings warmth and timeless character. Between these and laminate/LVP, it comes down to your style, the room, and how you live. We'll walk you through the options.",
+  },
+  {
+    q: "What is subfloor prep, and will my project need it?",
+    a: "Honestly, we often can't know the full scope of subfloor work until the existing floor comes up — that's the nature of remodeling. What we can tell you: both laminate and LVP need a level subfloor to install correctly and last. If we're installing over concrete, we put down a moisture barrier first (we do this on every concrete install). For most homes there's at least some subfloor prep involved, so we advise budgeting an extra 10% for potential subfloor repairs. Often it's not needed — but planning for it means no surprises if it is.",
   },
 ];
 

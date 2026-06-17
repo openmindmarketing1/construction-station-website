@@ -54,46 +54,53 @@ const STEPS = [
 const FAQS = [
   {
     q: "How long does a bathroom remodel take?",
-    a: "Most full bathroom remodels run 3–5 weeks. Guest bath refreshes (vanity + shower swap) can finish in 10–14 days. Master bath gut renovations with custom tile work, freestanding tubs, and curbless showers run 4–6 weeks. Tile cure times and inspection scheduling are the most common timeline factors.",
+    a: "Depending on the size of the bathroom, most remodels take 2-6 weeks. Larger or more complex bathrooms fall on the longer end of that range.",
   },
   {
-    q: "What's the average cost?",
-    a: "Inland Empire bathroom remodels typically range from $18,000 for a guest bath refresh to $75,000+ for a luxury primary suite remodel with custom tile, heated floors, and high-end fixtures. Your free design session ends with a transparent line-item quote.",
+    q: "What does the bathroom remodel process look like?",
+    a: (
+      <>
+        <p className="mb-3">Here&rsquo;s our general process:</p>
+        <ol className="list-decimal list-outside ml-5 space-y-1.5">
+          <li>Demolition — remove existing fixtures and finishes</li>
+          <li>Buildout — frame to the approved drawings and move plumbing or electrical as needed</li>
+          <li>Waterproofing — hot-mop waterproofing for the shower</li>
+          <li>Tile installation — shower and any tile work</li>
+          <li>Finish work — drywall repairs, painting, setting vanities</li>
+          <li>Flooring — flooring installation</li>
+          <li>Accessories — towel bars, toilet paper holders, fixtures</li>
+          <li>Final clean — we leave the space ready to use</li>
+        </ol>
+        <p className="mt-3">Every project varies, but that&rsquo;s the typical flow.</p>
+      </>
+    ),
   },
   {
-    q: "Can you do a tub-to-shower conversion?",
-    a: "Yes — this is one of our most-requested upgrades. We remove the tub, frame the new shower, install a proper drain, waterproof with Schluter Kerdi or Wedi membrane, and finish with custom tile. Curbless (zero-threshold) showers are also a specialty.",
-  },
-  {
-    q: "Do you handle plumbing and electrical?",
-    a: "Yes, in-house. We&rsquo;re licensed for both, pull all permits, and coordinate inspection scheduling. Moving fixtures, upgrading to a 1.28 GPF toilet, adding GFCI outlets, or running new circuits for heated floors and exhaust fans is all part of the scope.",
-  },
-  {
-    q: "How do you handle water damage?",
-    a: "We open up the affected area, remove rotted framing and substrate, treat for mold, replace structural elements per code, and reinstall with modern waterproofing membranes (Schluter Kerdi, Wedi, RedGard). We document everything for insurance if applicable.",
-  },
-  {
-    q: "What tile brands do you use?",
-    a: "We work with Daltile, Walker Zanger, Ann Sacks, Bedrosians, Marazzi, and local stone yards for natural marble, travertine, and limestone. Large-format porcelain (24x48 and up) is a common choice for showers — fewer grout lines, easier maintenance.",
-  },
-  {
-    q: "Can you add heated floors?",
-    a: "Yes. Electric radiant systems (Schluter Ditra-Heat, WarmlyYours) install under tile or stone, run on a dedicated circuit, and use a programmable thermostat. Plan for a $1,500–$3,500 add depending on bathroom size and tile choice.",
-  },
-  {
-    q: "What's your warranty?",
-    a: "Two years on workmanship (anything we install or build) and lifetime warranty on tile installation. Manufacturer warranties on fixtures and materials pass through to you. Full warranty terms are spelled out in your contract before signing.",
+    q: "Do I need a permit for my bathroom remodel?",
+    a: "For a standard bathroom remodel that doesn't add square footage, permits usually aren't required unless you'd like them pulled. If the project adds square footage, we recommend permitting — and we handle all of it for you.",
   },
 ];
 
 const faqSchema = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
-  mainEntity: FAQS.map((faq) => ({
-    "@type": "Question",
-    name: faq.q,
-    acceptedAnswer: { "@type": "Answer", text: faq.a },
-  })),
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "How long does a bathroom remodel take?",
+      acceptedAnswer: { "@type": "Answer", text: "Depending on the size of the bathroom, most remodels take 2-6 weeks. Larger or more complex bathrooms fall on the longer end of that range." },
+    },
+    {
+      "@type": "Question",
+      name: "What does the bathroom remodel process look like?",
+      acceptedAnswer: { "@type": "Answer", text: "Here's our general process: 1. Demolition — remove existing fixtures and finishes 2. Buildout — frame to the approved drawings and move plumbing or electrical as needed 3. Waterproofing — hot-mop waterproofing for the shower 4. Tile installation — shower and any tile work 5. Finish work — drywall repairs, painting, setting vanities 6. Flooring — flooring installation 7. Accessories — towel bars, toilet paper holders, fixtures 8. Final clean — we leave the space ready to use. Every project varies, but that's the typical flow." },
+    },
+    {
+      "@type": "Question",
+      name: "Do I need a permit for my bathroom remodel?",
+      acceptedAnswer: { "@type": "Answer", text: "For a standard bathroom remodel that doesn't add square footage, permits usually aren't required unless you'd like them pulled. If the project adds square footage, we recommend permitting — and we handle all of it for you." },
+    },
+  ],
 };
 
 const SITE_URL =

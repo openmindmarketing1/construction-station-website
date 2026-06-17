@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import JsonLd from "@/components/JsonLd";
+import FAQAccordion from "@/components/FAQAccordion";
 import { CS } from "@/lib/constants";
 
 export const metadata: Metadata = {
@@ -107,6 +108,44 @@ const TRUST_STATS = [
   { value: "#1108879", label: "CSLB License" },
 ];
 
+const FAQS = [
+  {
+    q: "Are you licensed and insured?",
+    a: "Yes. Construction Station is a licensed general contractor in California (CSLB #1108879), and we carry full insurance. We're also BBB A+ rated with a 5-star Google review record.",
+  },
+  {
+    q: "Do you offer a warranty?",
+    a: "Yes. We warranty all of our workmanship for 12 months from the date of installation, and many of the products we install carry their own, longer manufacturer warranties.",
+  },
+  {
+    q: "Do you offer financing?",
+    a: (
+      <>
+        Yes — we offer financing options, and you can find the details in the{" "}
+        <Link href="/financing" className="text-gold underline decoration-gold/50 hover:text-navy transition-colors">
+          financing section
+        </Link>
+        {" "}of our website.
+      </>
+    ),
+  },
+  {
+    q: "Do you handle permitting?",
+    a: "Yes. When a project calls for permits — or when a customer requests them — we manage the entire permitting process from application through final inspection.",
+  },
+];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    { "@type": "Question", name: "Are you licensed and insured?", acceptedAnswer: { "@type": "Answer", text: "Yes. Construction Station is a licensed general contractor in California (CSLB #1108879), and we carry full insurance. We're also BBB A+ rated with a 5-star Google review record." } },
+    { "@type": "Question", name: "Do you offer a warranty?", acceptedAnswer: { "@type": "Answer", text: "Yes. We warranty all of our workmanship for 12 months from the date of installation, and many of the products we install carry their own, longer manufacturer warranties." } },
+    { "@type": "Question", name: "Do you offer financing?", acceptedAnswer: { "@type": "Answer", text: "Yes — we offer financing options, and you can find the details in the financing section of our website." } },
+    { "@type": "Question", name: "Do you handle permitting?", acceptedAnswer: { "@type": "Answer", text: "Yes. When a project calls for permits — or when a customer requests them — we manage the entire permitting process from application through final inspection." } },
+  ],
+};
+
 const aboutPageSchema = {
   "@context": "https://schema.org",
   "@type": "AboutPage",
@@ -137,6 +176,7 @@ export default function AboutPage() {
   return (
     <>
       <JsonLd data={aboutPageSchema} />
+      <JsonLd data={faqSchema} />
 
       {/* ── Hero ─────────────────────────────────────────────────────── */}
       <section className="relative bg-navy texture-navy pt-40 pb-28 overflow-hidden">
@@ -303,6 +343,9 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
+
+      {/* ── FAQ ──────────────────────────────────────────────────────── */}
+      <FAQAccordion faqs={FAQS} />
 
       {/* ── CTA ──────────────────────────────────────────────────────── */}
       <section className="bg-white py-20 text-center">

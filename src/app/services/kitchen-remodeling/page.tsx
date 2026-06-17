@@ -63,35 +63,15 @@ const STEPS = [
 const FAQS = [
   {
     q: "How long does a kitchen remodel take?",
-    a: "A typical full kitchen remodel runs 6–10 weeks from demo to final walkthrough. Cosmetic refreshes (cabinet refacing, countertops only) can finish in 2–3 weeks. Layout changes that move plumbing or load-bearing walls extend the timeline by 2–4 weeks. We give you a written calendar before signing.",
+    a: "For most full kitchen remodels, we complete the work in 3-6 weeks. The exact timeline depends on scope — a straightforward refresh moves faster, while projects involving removing walls or relocating plumbing and electrical can run a bit longer. We give you a project schedule up front so you know what to expect at each phase.",
   },
   {
-    q: "How much does a kitchen remodel cost?",
-    a: "Inland Empire kitchen remodels typically range from $35,000 for a mid-grade refresh to $120,000+ for a full luxury build with custom cabinetry, stone counters, and high-end appliances. Your free design session ends with a transparent line-item quote — no surprise upcharges.",
+    q: "Do I need a permit for my kitchen remodel?",
+    a: "It depends on the work. For a standard remodel that doesn't add square footage, permits typically aren't required — though we're happy to pull them if you prefer. If your project adds square footage, we recommend permitting, and we handle the entire process for you either way.",
   },
   {
-    q: "Do you pull permits?",
-    a: "Always. Any electrical, plumbing, or structural change requires a permit, and we handle the entire process — drawings, submittals, inspections. Unpermitted work can void homeowner&apos;s insurance and torpedo a future home sale.",
-  },
-  {
-    q: "Can I stay in my home during the remodel?",
-    a: "Yes — most clients do. We seal off the work zone with zip walls, set up a temporary kitchenette (sink, fridge, microwave) in another room, and clean the home daily. We also have relationships with extended-stay hotels for clients who prefer to be away during demo week.",
-  },
-  {
-    q: "What brands do you work with?",
-    a: "We partner with Wolf, Sub-Zero, Thermador, Bosch, KitchenAid, Cafe, and GE Monogram for appliances. For cabinetry, we offer custom-built options as well as Shiloh, Wellborn, and Decora. Counter brands include Caesarstone, Cambria, Silestone, and natural stone yards.",
-  },
-  {
-    q: "Do you offer financing?",
-    a: "Yes. We partner with Enhancify to offer flexible financing — 0% promotional periods and longer-term plans up to 144 months. Apply at constructionstation.com/financing — pre-qualification is a soft credit pull that won&apos;t affect your score.",
-  },
-  {
-    q: "Do you handle the design?",
-    a: "Yes. Our in-house designer works with you on layout, finish selection, lighting plan, and 3D renderings — included with every full kitchen project. You&apos;re welcome to bring your own designer or interior architect; we collaborate seamlessly.",
-  },
-  {
-    q: "What's included in the free consultation?",
-    a: "An in-home measure, scope discussion, finish-level conversation, ballpark range based on similar past projects, and a follow-up written estimate within 5 business days. No high-pressure pitch — bring your Pinterest board, we&apos;ll bring our portfolio.",
+    q: "Can I live in my home during the remodel?",
+    a: "In most cases, yes. You'll temporarily lose access to the kitchen itself, so many homeowners set up a small temporary kitchen with a microwave and a few appliances. We work to contain dust and minimize disruption to the rest of your home.",
   },
 ];
 
