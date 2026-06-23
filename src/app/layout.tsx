@@ -99,6 +99,20 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${displayFont.variable} ${bodyFont.variable}`}>
       <head>
+        {/* Google tag (gtag.js) — GA4 + Google Ads */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-CG9QRL26H7"
+          strategy="afterInteractive"
+        />
+        <Script id="google-gtag" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-CG9QRL26H7');
+            gtag('config', 'AW-16750133133');
+          `}
+        </Script>
         <Script id="meta-pixel" strategy="afterInteractive">
           {`
             !function(f,b,e,v,n,t,s)
