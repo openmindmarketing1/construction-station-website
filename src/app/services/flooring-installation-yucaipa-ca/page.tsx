@@ -91,6 +91,14 @@ const FAQS = [
     q: "What is subfloor prep, and will my project need it?",
     a: "Honestly, we often can't know the full scope of subfloor work until the existing floor comes up — that's the nature of remodeling. What we can tell you: both laminate and LVP need a level subfloor to install correctly and last. If we're installing over concrete, we put down a moisture barrier first (we do this on every concrete install). For most homes there's at least some subfloor prep involved, so we advise budgeting an extra 10% for potential subfloor repairs. Often it's not needed — but planning for it means no surprises if it is.",
   },
+  {
+    q: "What flooring is best for kitchens and bathrooms?",
+    a: "For kitchens, we recommend luxury vinyl plank (LVP) or large-format porcelain tile. LVP is 100% waterproof, comfortable underfoot, and installs quickly — ideal for full kitchen floors. Porcelain tile is unmatched for durability and design flexibility, especially around the dishwasher, sink, and range where water exposure is highest. For bathrooms, porcelain tile is our standard recommendation: slip-resistant floor tile, waterproof wall tile in the shower, and LVP as an option for dry areas outside the shower zone. Avoid solid hardwood in kitchens or bathrooms — engineered hardwood can work in kitchens with diligent spill management, but we generally steer clients toward LVP or tile in any room with meaningful water exposure.",
+  },
+  {
+    q: "How do I maintain luxury vinyl plank flooring?",
+    a: "LVP is among the easiest floors to maintain. Daily: sweep or use a microfiber mop to remove dirt and grit — abrasive particles are the primary cause of surface wear. Weekly: damp mop with a pH-neutral floor cleaner. Avoid steam mops (heat can warp the core), ammonia-based cleaners, and bleach. Protect from scratches by using felt pads on all furniture legs and lift (don't drag) heavy items. For UV protection, use blinds or UV-blocking window film in west-facing rooms — sustained direct sunlight can fade and expand LVP over time. Gouges in the wear layer cannot be repaired; the damaged plank must be replaced, which is why we recommend keeping a few boxes of leftover planks after installation. With proper care, quality LVP lasts 15–25 years.",
+  },
 ];
 
 const SITE_URL =
@@ -189,7 +197,7 @@ const faqSchema = {
   mainEntity: FAQS.map((faq) => ({
     "@type": "Question",
     name: faq.q,
-    acceptedAnswer: { "@type": "Answer", text: faq.a },
+    acceptedAnswer: { "@type": "Answer", text: faq.a as string },
   })),
 };
 

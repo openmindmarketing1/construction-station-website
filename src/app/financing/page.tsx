@@ -5,9 +5,9 @@ import JsonLd from "@/components/JsonLd";
 import TrustBar from "@/components/TrustBar";
 
 export const metadata: Metadata = {
-  title: "Home Improvement Financing",
+  title: "Home Improvement Financing | HELOC, RenoFi & More",
   description:
-    "Flexible financing for your kitchen, bathroom, or home renovation project. Apply in minutes with multiple lender options from $1,000 to $100,000+. Serving the Inland Empire since 2008.",
+    "Financing options for kitchen remodels, bathroom renovations, ADU construction, and flooring — HELOC, RenoFi renovation loans, construction loans, and Enhancify. Serving the Inland Empire since 2008. CSLB #1108879.",
   alternates: { canonical: "/financing" },
 };
 
@@ -189,6 +189,219 @@ export default function FinancingPage() {
 
       <TrustBar />
 
+      {/* Financing Options Overview */}
+      <section className="bg-white py-20 lg:py-24">
+        <div className="max-w-7xl mx-auto px-5 lg:px-10">
+          <div className="text-center mb-14">
+            <div className="flex items-center justify-center gap-3 mb-4">
+              <span className="w-10 h-px bg-gold" />
+              <span className="text-gold text-xs uppercase tracking-[0.4em]">Financing Options</span>
+              <span className="w-10 h-px bg-gold" />
+            </div>
+            <h2 className="font-display text-navy text-4xl md:text-5xl lg:text-6xl leading-[1] mb-4">
+              Six ways to <span className="italic text-gold">fund your project.</span>
+            </h2>
+            <p className="text-navy/65 max-w-2xl mx-auto leading-relaxed">
+              From HELOCs to RenoFi renovation loans, the right financing
+              depends on your equity, existing mortgage, and project scope.
+              Here&rsquo;s how each option compares.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+            {[
+              {
+                name: "HELOC",
+                full: "Home Equity Line of Credit",
+                how: "Revolving credit line secured by your home's equity — borrow as needed, up to your credit limit.",
+                best: "Homeowners with significant equity who want flexible timing as project costs are incurred.",
+                note: "Variable rate; capped by current appraised value.",
+              },
+              {
+                name: "Home Equity Loan",
+                full: "Lump-Sum at Fixed Rate",
+                how: "Single loan secured by home equity, paid in a lump sum at a fixed interest rate — like a second mortgage.",
+                best: "Homeowners who want a fixed monthly payment and have enough equity to cover the full project.",
+                note: "Rates typically lower than personal loans; limited to current equity.",
+              },
+              {
+                name: "RenoFi Loan",
+                full: "After-Renovation Value Lending",
+                how: "Lends against your home's projected after-renovation value rather than current equity — borrow significantly more without refinancing your first mortgage.",
+                best: "Homeowners with limited current equity whose property value will rise substantially after the project.",
+                note: "Available through RenoFi partner lenders. Ideal for ADU projects.",
+              },
+              {
+                name: "Cash-Out Refinance",
+                full: "Replace Mortgage + Take Equity",
+                how: "Replace your existing mortgage with a larger loan and receive the equity difference in cash at closing.",
+                best: "Homeowners whose current rate is at or above today's rates — refinancing doesn't cost much more than holding.",
+                note: "Raising your mortgage rate significantly can offset the benefit of lower project financing costs.",
+              },
+              {
+                name: "Construction Loan",
+                full: "Draw-Based Build Financing",
+                how: "Short-term loan that funds construction in draws (staged payments), then converts to a permanent mortgage at project completion.",
+                best: "Homeowners funding a large ADU or room addition who want to consolidate into a long-term mortgage.",
+                note: "Requires two closings with fees. Lender reviews your plans and contractor credentials.",
+              },
+              {
+                name: "FHA 203(k)",
+                full: "FHA Renovation Mortgage",
+                how: "FHA-backed loan that combines a home purchase or refinance with renovation costs into a single mortgage.",
+                best: "Buyers purchasing a home with ADU or renovation plans, or refinancing homeowners adding major renovation costs.",
+                note: "FHA loan limits apply. Requires FHA-approved contractor and HUD consultant.",
+              },
+            ].map((opt) => (
+              <div key={opt.name} className="border border-navy/10 p-7 hover:border-gold transition-colors">
+                <div className="text-gold text-xs uppercase tracking-[0.3em] mb-1">{opt.name}</div>
+                <div className="font-display text-navy text-xl mb-4">{opt.full}</div>
+                <div className="space-y-3 text-sm">
+                  <div>
+                    <div className="text-navy/40 text-xs uppercase tracking-wider mb-0.5">How It Works</div>
+                    <p className="text-navy/70 leading-relaxed">{opt.how}</p>
+                  </div>
+                  <div>
+                    <div className="text-navy/40 text-xs uppercase tracking-wider mb-0.5">Best For</div>
+                    <p className="text-navy/70 leading-relaxed">{opt.best}</p>
+                  </div>
+                  <div className="border-t border-navy/10 pt-3">
+                    <p className="text-navy/50 text-xs leading-relaxed">{opt.note}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* RenoFi Partnership Highlight */}
+      <section className="bg-cream py-16 lg:py-20">
+        <div className="max-w-5xl mx-auto px-5 lg:px-10">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+            <div className="lg:col-span-7">
+              <div className="flex items-center gap-3 mb-5">
+                <span className="w-10 h-px bg-gold" />
+                <span className="text-gold text-xs uppercase tracking-[0.4em]">RenoFi Partnership</span>
+              </div>
+              <h2 className="font-display text-navy text-3xl md:text-4xl lg:text-5xl leading-[1] mb-5">
+                Borrow based on your home&rsquo;s{" "}
+                <span className="italic text-gold">future value.</span>
+              </h2>
+              <p className="text-navy/75 leading-relaxed mb-4">
+                We&rsquo;ve partnered with RenoFi to offer renovation loans
+                based on your home&rsquo;s after-renovation value — so you can
+                borrow up to 11&times; more than a traditional HELOC without
+                refinancing your existing mortgage.
+              </p>
+              <p className="text-navy/70 leading-relaxed mb-4">
+                Traditional HELOCs are capped by what your home is worth
+                today. A RenoFi loan uses what your home will be worth after
+                the ADU, kitchen, or addition is complete — unlocking equity
+                that doesn&rsquo;t exist yet. This is particularly powerful
+                for ADU projects where a $200,000 build can add $200,000–
+                $300,000 to your property value.
+              </p>
+              <p className="text-navy/70 leading-relaxed">
+                RenoFi loans are originated through partner lenders (not
+                RenoFi directly). We can connect you with a lender in our
+                network who offers this product and is experienced with
+                Inland Empire ADU and renovation financing.
+              </p>
+            </div>
+            <div className="lg:col-span-5">
+              <div className="bg-navy text-white p-8">
+                <div className="text-gold text-xs uppercase tracking-[0.4em] mb-4">RenoFi vs. Traditional HELOC</div>
+                <div className="space-y-4">
+                  {[
+                    { label: "Based on", heloc: "Current home value", renofi: "After-renovation value" },
+                    { label: "Refinance required?", heloc: "No", renofi: "No" },
+                    { label: "Borrowing capacity", heloc: "Limited by equity now", renofi: "Based on future value" },
+                    { label: "Ideal for", heloc: "Quick equity access", renofi: "Large renovation / ADU" },
+                  ].map((row) => (
+                    <div key={row.label} className="grid grid-cols-3 gap-2 text-sm border-b border-white/10 pb-3">
+                      <div className="text-white/50">{row.label}</div>
+                      <div className="text-white/70">{row.heloc}</div>
+                      <div className="text-gold font-semibold">{row.renofi}</div>
+                    </div>
+                  ))}
+                </div>
+                <div className="mt-6 grid grid-cols-3 gap-2 text-xs text-white/30 text-center">
+                  <div />
+                  <div>HELOC</div>
+                  <div className="text-gold">RenoFi</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Per-Service Financing Ranges */}
+      <section className="bg-white py-20 lg:py-24">
+        <div className="max-w-7xl mx-auto px-5 lg:px-10">
+          <div className="text-center mb-14">
+            <div className="flex items-center justify-center gap-3 mb-4">
+              <span className="w-10 h-px bg-gold" />
+              <span className="text-gold text-xs uppercase tracking-[0.4em]">Project Budgets</span>
+              <span className="w-10 h-px bg-gold" />
+            </div>
+            <h2 className="font-display text-navy text-4xl md:text-5xl lg:text-6xl leading-[1]">
+              Typical financing by{" "}
+              <span className="italic text-gold">project type.</span>
+            </h2>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+            {[
+              {
+                service: "Kitchen Remodel",
+                range: "$30K–$80K",
+                typical: "Most Inland Empire kitchen remodels fall in the $40K–$70K range. Semi-custom cabinetry, quartz countertops, and appliance upgrades. Full custom remodels with structural changes run $80K–$150K.",
+                href: "/services/kitchen-remodeling",
+              },
+              {
+                service: "Bathroom Remodel",
+                range: "$15K–$50K",
+                typical: "Standard full bathroom remodels run $20K–$35K. Master suites with custom walk-in showers and heated floors reach $45K–$80K. Walk-in shower conversion from a tub alcove: $8K–$18K.",
+                href: "/services/bathroom-remodeling",
+              },
+              {
+                service: "ADU Construction",
+                range: "$85K–$400K+",
+                typical: "Garage conversions: $85K–$160K. Junior ADUs: $100K–$175K. Detached 1-bedroom ADUs: $175K–$280K. Detached 2-bedroom ADUs: $240K–$400K. All-in pricing including permits, design, and finishes.",
+                href: "/services/adu",
+              },
+              {
+                service: "Flooring Installation",
+                range: "$5K–$25K",
+                typical: "Whole-home LVP or laminate installation (1,200–2,000 sq ft): $8K–$18K. Hardwood: $12K–$28K. Tile in kitchen and bathrooms: $5K–$15K. Includes subfloor prep, removal, and trim.",
+                href: "/services/flooring-installation-yucaipa-ca",
+              },
+            ].map((svc) => (
+              <div key={svc.service} className="border border-navy/10 p-7 hover:border-gold transition-colors group flex flex-col">
+                <div className="font-display text-navy text-2xl mb-1 group-hover:text-gold transition-colors">{svc.service}</div>
+                <div className="text-gold text-3xl font-display mb-4">{svc.range}</div>
+                <p className="text-navy/65 text-sm leading-relaxed mb-5 flex-1">{svc.typical}</p>
+                <a
+                  href={svc.href}
+                  className="text-gold text-xs uppercase tracking-[0.3em] hover:text-navy transition-colors flex items-center gap-2 mt-auto"
+                >
+                  Learn More →
+                </a>
+              </div>
+            ))}
+          </div>
+          <div className="mt-10 max-w-3xl mx-auto text-center">
+            <p className="text-navy/60 text-sm leading-relaxed">
+              We also work with local construction loan specialists for larger
+              projects — ADUs, room additions, and full home renovations.{" "}
+              <a href={CS.phoneHref} className="text-gold hover:text-navy transition-colors">
+                Contact us for a referral
+              </a>.
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* Selling points */}
       <section className="bg-white py-20 lg:py-24">
         <div className="max-w-7xl mx-auto px-5 lg:px-10">
@@ -299,21 +512,38 @@ export default function FinancingPage() {
       {/* CTA */}
       <section className="bg-navy texture-navy text-white py-16 lg:py-20">
         <div className="max-w-3xl mx-auto px-5 lg:px-10 text-center">
+          <div className="flex items-center justify-center gap-3 mb-4">
+            <span className="w-10 h-px bg-gold" />
+            <span className="text-gold text-xs uppercase tracking-[0.4em]">Get Started</span>
+            <span className="w-10 h-px bg-gold" />
+          </div>
           <h2 className="font-display text-3xl md:text-4xl lg:text-5xl leading-[1] mb-4">
             Questions about <span className="italic text-gold">financing?</span>
           </h2>
-          <p className="text-white/70 mb-8">
-            Our team is happy to walk you through your options before you apply.
+          <p className="text-white/70 mb-8 max-w-xl mx-auto leading-relaxed">
+            Our team will walk you through your options before you apply —
+            including which financing type fits your project, equity position,
+            and goals. Free consultation, no obligation.
           </p>
-          <a
-            href={CS.phoneHref}
-            className="inline-flex items-center gap-3 bg-gold text-navy font-body font-semibold px-8 py-4 uppercase tracking-[0.2em] text-sm hover:bg-gold-light transition-colors"
-          >
-            <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-            Call {CS.phone}
-          </a>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <a
+              href={CS.phoneHref}
+              className="inline-flex items-center justify-center gap-3 bg-gold text-navy font-body font-semibold px-8 py-4 uppercase tracking-[0.2em] text-sm hover:bg-yellow-400 transition-colors"
+            >
+              <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+              Call {CS.phone}
+            </a>
+            <a
+              href="https://calendly.com/constructionstation-sales/free-adu-remodeling-consult"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center border border-white/30 text-white font-body px-8 py-4 hover:border-gold hover:text-gold transition-colors uppercase tracking-[0.2em] text-sm"
+            >
+              Book Free Consultation
+            </a>
+          </div>
         </div>
       </section>
     </>

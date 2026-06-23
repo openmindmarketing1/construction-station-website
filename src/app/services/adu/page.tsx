@@ -117,72 +117,110 @@ const WHY_CS = [
 const CITIES = ADU_CITIES.map((c) => ({ name: c.name, slug: c.slug }));
 
 const FAQS = [
+  // ADU Basics
   {
-    q: "How long does it take to build an ADU?",
-    a: "From start to finish, most ADU projects take 8-16 months. The process begins with a site survey, then deciding on plans — whether a custom design or one of your city's pre-approved plans — followed by submitting for and securing your city permit, and finally the build. Design and permitting often take as long as construction, so we set realistic expectations up front and keep you updated at every stage.",
+    q: "What is an ADU?",
+    a: "An Accessory Dwelling Unit (ADU) is a secondary residential unit on a single-family or multifamily property with its own entrance, kitchen, bathroom, and sleeping area — a fully independent living space. In California, ADUs can be detached in the backyard, attached to the main home, or converted from an existing garage or bedroom. They're called granny flats, backyard cottages, in-law suites, or casitas — the legal term is ADU. California's ADU reforms (2020–2023) slashed setback requirements to 4 feet, waived parking mandates for garage conversions, set a 60-day statewide permit processing limit, and eliminated the owner-occupancy requirement. The result: Inland Empire homeowners can add a rentable unit, a multi-generational space, or a home office on land they already own.",
   },
   {
-    q: "What is the process for building an ADU with Construction Station?",
-    a: (
-      <>
-        <p className="mb-3">Our ADU process runs in four main phases:</p>
-        <ol className="list-decimal list-outside ml-5 space-y-1.5">
-          <li>Site survey — we assess your property, lot dimensions, utilities, and existing conditions</li>
-          <li>Plans — we help you choose between a custom design or a city pre-approved plan</li>
-          <li>Permitting — we prepare and submit your plans to the city and manage approvals</li>
-          <li>Build — once permits are approved, we construct your ADU through to final inspection</li>
-        </ol>
-        <p className="mt-3">We handle the entire process under one roof so you have a single accountable team from survey to keys.</p>
-      </>
-    ),
+    q: "What types of ADUs can I build in California?",
+    a: "California recognizes four main ADU types: (1) Detached ADU — a standalone structure up to 1,200 sq ft, separate from the main house with its own utilities; (2) Attached ADU — an addition to the main home sharing at least one wall, up to 50% of the main home's size or 1,200 sq ft, whichever is less; (3) Garage Conversion ADU — converting an existing attached or detached garage into a fully permitted living space; (4) Junior ADU (JADU) — up to 500 sq ft carved from within the existing home footprint, with its own exterior entrance and efficiency kitchen. Construction Station builds all four types across 29 Inland Empire cities. During your free feasibility consultation we'll recommend which type best fits your property, budget, and goals.",
   },
   {
-    q: "How much does an ADU cost?",
-    a: (
-      <>
-        ADU costs vary based on size, type, and finishes. We&rsquo;ve broken down detailed, current pricing on our{" "}
-        <Link href="/services/adu/costs" className="text-gold underline decoration-gold/50 hover:text-navy transition-colors">
-          ADU Costs page
-        </Link>
-        {" "}— including how garage conversions, Junior ADUs, and detached new construction compare. We&rsquo;ll also give you a clear, itemized estimate for your specific project.
-      </>
-    ),
+    q: "What is a Junior ADU (JADU) and how is it different from a full ADU?",
+    a: "A Junior ADU is limited to 500 square feet and must be created entirely within the existing footprint of a single-family home — typically from a bedroom or garage space. Unlike a full ADU, a JADU must share a wall with the main residence and requires its own exterior entrance and efficiency kitchen (a cooktop and sink; a full range hood is not required). JADUs typically cost less because they use existing structure and foundation. Our Redlands project — a 465 sq ft, 1BD/1BA Jr. ADU using two existing home walls — came in at approximately $200K all-in, well below the cost of a detached ADU of similar size. JADUs are often the fastest, most budget-friendly path to adding living space.",
   },
   {
-    q: "What is a Junior ADU (JADU)?",
-    a: (
-      <>
-        A Junior ADU is a compact independent living space of up to 500 square feet, created within the existing footprint of your home — often from a garage or spare bedroom. It has its own exterior entrance and an efficiency kitchen. Our recent{" "}
-        <Link href="/projects/redlands-jr-adu" className="text-gold underline decoration-gold/50 hover:text-navy transition-colors">
-          Redlands project
-        </Link>
-        {" "}was a Junior ADU, built so a family member could move in and help around the home. JADUs are often the most budget-friendly path to adding living space.
-      </>
-    ),
+    q: "Can I build more than one ADU on my property?",
+    a: "Yes. California state law (effective 2023) allows single-family properties to have one full ADU plus one Junior ADU simultaneously — two additional units on a single lot. Multifamily properties get even more flexibility: they can convert existing non-livable spaces (storage rooms, common areas, garages) into ADUs up to 25% of existing unit count, and can also build up to two detached ADUs on the lot. Some cities may have additional restrictions beyond state minimums. We'll review your specific parcel, zoning, and any HOA covenants during your free feasibility consultation to confirm what your property actually supports.",
   },
   {
-    q: "What types of ADUs can you build?",
-    a: "We build the full range: garage conversions, Junior ADUs, attached ADUs, and detached new-construction ADUs. The right type depends on your lot, budget, and how you plan to use the space — we'll walk you through the options during your site survey.",
+    q: "Can I sell my ADU separately from my home?",
+    a: "Under standard real estate law, ADUs cannot be separately parceled and sold apart from the primary residence. However, California AB 1033 (effective 2024) allows cities to opt into a program permitting ADU condominiumization — the ADU and primary dwelling can be established as separate condos and sold to different buyers. Not all Inland Empire cities have adopted this option yet. For rental income, there is no restriction — ADUs are fully legal, income-producing rental units. Many CS clients earn $1,400–$2,200 per month renting their completed ADU while living in the primary home.",
+  },
+  // California Law & Permits
+  {
+    q: "Can my HOA stop me from building an ADU?",
+    a: "No — not outright. California AB 670 (2020) prohibits HOAs from imposing blanket bans on ADU construction or conditions that effectively make building infeasible. HOAs may require design consistency with the primary dwelling — matching stucco, paint colors, roofline — and may have reasonable placement guidelines, but they cannot issue a blanket prohibition. If your HOA has rejected or threatened to block your project, contact us. Many clients who were initially told 'no' by their HOA have successfully built once we reviewed the CC&Rs alongside the applicable state law and submitted a properly documented request.",
   },
   {
-    q: "Do I need a permit to build an ADU?",
-    a: "Yes. An ADU adds living space and must meet California building codes, so it requires permits. We handle the entire permitting process for you — preparing plans, submitting to the city, and managing approvals through to final inspection.",
+    q: "What are the setback requirements for an ADU in the Inland Empire?",
+    a: "California state law sets a minimum 4-foot rear and side yard setback for new detached ADUs — your ADU can be built as close as 4 feet from the rear and side property lines. Front setbacks still follow local zoning. Garage conversions are an important exception: if you're converting an existing structure, it can remain in its current location regardless of whether it meets today's setback minimums — even if it sits closer than 4 feet to the property line. Individual Inland Empire cities may impose height limits (typically 16–25 feet) and lot coverage maximums on top of state minimums. We verify your specific city's rules at every feasibility consultation.",
   },
   {
-    q: "What's the difference between custom plans and pre-approved plans?",
-    a: "Pre-approved (or \"permit-ready\") plans are designs your city has already reviewed and approved, which can speed up permitting. Custom plans are designed specifically for your property and vision. Pre-approved plans can save time when they fit your lot as-is but offer limited flexibility; custom plans give you exactly what you want but take longer to permit. We help you weigh the tradeoff.",
+    q: "Do I need to live on my property to build an ADU?",
+    a: "No. California eliminated the owner-occupancy requirement in 2020 (AB 68). You don't need to live in the primary residence or the ADU. This means ADUs can be added to investment or rental properties — both units can be rented simultaneously. The one caveat is short-term rentals: some Inland Empire cities prohibit ADUs from being used for short-term rentals (under 30 days). For traditional long-term rentals (30+ days), there is no owner-occupancy restriction anywhere in California.",
   },
   {
-    q: "Can I rent out my ADU?",
-    a: "Yes. ADUs can be rented, and California no longer requires the owner to live on the property — so an ADU can be added to a rental or investment property. Short-term rental rules vary by location, so check with your city or county to confirm whether your ADU can be used as a short-term rental.",
+    q: "What is the 60-day permit rule for ADUs?",
+    a: "California Government Code Section 65852.2 requires cities and counties to approve or deny complete ADU permit applications within 60 days. If a jurisdiction fails to act within that window, the permit is deemed approved by operation of law. In practice, most Inland Empire cities process ADU permits in 30–60 days, though plan-check corrections can extend the timeline if the initial submittal is incomplete. Construction Station manages the entire permit process — we track deadlines, respond to correction letters promptly, and follow up with building departments proactively. Permit delays are almost always caused by incomplete submittals; we prepare thorough, complete packages.",
   },
   {
-    q: "Will my ADU have its own address and utilities?",
-    a: "Typically yes. ADUs are usually assigned a separate address (important for emergency services), and they're metered separately for electrical service. We handle the utility coordination as part of your project.",
+    q: "Do I need replacement parking if I convert my garage to an ADU?",
+    a: "No. California state law explicitly prohibits cities from requiring replacement parking when a garage is converted to an ADU. If you convert your two-car garage, the city cannot require you to build a new carport or garage as a condition of approval. This is one of the most impactful provisions in California's ADU reform — it removes a major cost and space barrier that previously made garage conversions difficult. If you encounter pushback from a building department on parking replacement, let us know and we'll help you navigate it with the appropriate state code citation.",
+  },
+  // Costs & Financing
+  {
+    q: "How much does an ADU cost in the Inland Empire?",
+    a: "ADU costs in the Inland Empire range by type: garage conversions run $85,000–$150,000 all-in (permits, plans, construction, and utility connections); Junior ADUs range from $100,000–$175,000; detached ADUs with new construction run $175,000–$350,000 for a standard 600–1,000 sq ft unit, and up to $400,000+ for larger or more complex builds. Our Redlands Jr. ADU project came in at approximately $200,000 for 465 sq ft — a realistic benchmark for a quality Jr. ADU in the current market. These are all-in figures: design, permits, construction, MEP, finishes, and utility connections included. We provide transparent, line-item written estimates after your free feasibility consultation.",
   },
   {
-    q: "Why are people building ADUs?",
-    a: "The reasons vary — many of our clients build for family, creating space for an aging parent, an adult child, or a relative who needs to be close by. Others build for rental income or added property value. Whatever your reason, we design an ADU that fits your needs and your property.",
+    q: "What financing options are available for ADU construction?",
+    a: "Several options exist: (1) HELOC or Home Equity Loan — borrow against current equity, typically up to 80% LTV minus your mortgage balance; (2) Cash-out Refinance — replace your mortgage with a larger one and take the equity difference in cash; (3) Construction Loan — short-term financing that converts to a permanent mortgage at completion; (4) RenoFi Loan — a renovation loan based on your home's projected after-renovation value, allowing you to borrow significantly more than a traditional HELOC without refinancing your first mortgage; (5) ADU-specific programs — CalHFA and some local lenders offer ADU-targeted products. We can refer you to lenders experienced in ADU construction financing. See constructionstation.com/financing for a full comparison.",
+  },
+  {
+    q: "Does an ADU increase my property value?",
+    a: "Yes, significantly. A well-built ADU typically adds value equal to 100–150% of its construction cost. In the Inland Empire, where rental demand is strong and single-family land is limited, ADUs can add $150,000–$350,000 to appraised value depending on size, quality, and location. Appraisers typically capitalize the ADU's rental income potential (at 60–75% of market rent) into the property value. Beyond appreciation, the ADU's monthly rental income ($1,400–$2,200 in most IE markets) offsets financing cost — many clients find their ADU is cash-flow neutral or positive within 5–7 years of completion.",
+  },
+  {
+    q: "How much rental income can I earn from an ADU in the Inland Empire?",
+    a: "Current rental income for IE ADUs: studios and one-bedrooms rent for $1,200–$1,800/month; two-bedroom units range from $1,600–$2,400/month. Rates vary by submarket — Redlands, Loma Linda, and Riverside command a premium. Areas near Loma Linda University Medical Center or major employment centers see stronger demand. A realistic benchmark: a $200,000 ADU in a strong IE submarket generating $1,500–$1,800/month provides a 9–11% gross yield on construction cost. We can provide rental comparables for your specific city during your consultation so you can model the investment return accurately.",
+  },
+  {
+    q: "What is a RenoFi loan and how does it work for ADUs?",
+    a: "A RenoFi loan is a renovation loan that calculates your borrowing capacity based on your home's projected after-renovation value (ARV) rather than its current equity. Traditional HELOCs are capped by what your home is worth today. A RenoFi loan uses what your home will be worth after the ADU is built — potentially $150,000–$350,000 higher — allowing you to borrow significantly more without refinancing your existing first mortgage. This is particularly valuable for ADU projects where current equity is insufficient to fund the full build. Construction Station can refer you to lenders who offer this product and are experienced with ADU construction financing.",
+  },
+  // Design & Construction
+  {
+    q: "How long does it take to build an ADU from start to finish?",
+    a: "Total ADU timelines: detached ADUs typically take 8–14 months from initial consultation to move-in. Breakdown: feasibility and design (1–2 months), permit submission and approval (2–4 months), construction (4–8 months), final inspection (2–4 weeks). Garage conversions are faster — 6–10 months total because there's no foundation work. Junior ADUs often fall in between at 5–9 months. Our Redlands Jr. ADU broke ground in March 2026 targeting a June 2026 completion — roughly a 4-month construction phase after permits were secured. We provide a written schedule with key milestone dates before you sign anything.",
+  },
+  {
+    q: "What is the ADU construction process from start to finish?",
+    a: "Our ADU process has five phases: (1) Free Feasibility Consultation — we walk your lot, review setbacks, utilities, and zoning to confirm what your city will approve; (2) Design and Engineering — floor plans, elevations, structural calculations, Title 24 energy compliance; (3) Permit Submission — we prepare and submit to your city, respond to plan-check corrections, pay permit fees; (4) Construction — foundation, framing, MEP (mechanical, electrical, plumbing), insulation, drywall, tile, finishes, and punch list; (5) Final Inspection — city sign-off, certificate of occupancy where applicable, and our two-year workmanship warranty. One project manager, one point of contact, permits to keys.",
+  },
+  {
+    q: "What size ADU can I build on my lot?",
+    a: "State law sets the maximum at 1,200 sq ft for detached ADUs. Attached ADUs are capped at 50% of the existing home's square footage or 1,200 sq ft, whichever is less. Junior ADUs are limited to 500 sq ft. Beyond state maximums, your city's lot coverage rules — typically 50% maximum impervious coverage — further constrain what's buildable. Your setbacks, existing structures, and any easements also shape the buildable footprint. During the feasibility consultation, we calculate the maximum buildable envelope for your specific parcel, accounting for all constraints, and present the realistic size range.",
+  },
+  {
+    q: "Do I need an architect for my ADU project?",
+    a: "Yes — California ADU construction requires permitted plans drawn by a licensed architect or engineer before the city will issue a building permit. Construction Station coordinates architectural design as part of our process. We work with licensed architects who specialize in ADU design and are familiar with each local jurisdiction's typical plan-check requirements. Many Inland Empire cities (Yucaipa, Redlands, Temecula, Rancho Cucamonga, Fontana, and others) offer free pre-approved ADU plans that save $6,000–$14,000 in design fees and weeks off your permit timeline — we build any city pre-approved plan.",
+  },
+  {
+    q: "Can I convert my garage into an ADU?",
+    a: "Yes — garage conversions are one of the most cost-effective ADU paths. Both attached and detached garages can be converted. California prohibits cities from requiring replacement parking, so you don't need to build a new carport when you convert. The process involves: closing or modifying the garage door opening, framing an exterior wall, adding insulation, running new MEP (mechanical, electrical, plumbing), installing drywall, flooring, a kitchen, and bathroom. Attached garages typically convert for $85,000–$130,000 all-in; detached garages run $95,000–$150,000+ depending on size and finish level. See our Garage Conversion Cost guide for a full 2026 pricing breakdown.",
+  },
+  // Our ADU Experience
+  {
+    q: "Does Construction Station build all types of ADUs?",
+    a: "Yes. We build the full range: detached new-construction ADUs, attached ADUs, garage conversions (attached and detached), and Junior ADUs. Active and completed projects include a Redlands garage conversion (complete), a Redlands Jr. ADU currently under construction targeting June 2026 completion, and a Lake Elsinore dual-garage ADU in the permitted stage. CSLB License #1108879 covers all ADU construction in California. We use our own W-2 crew for framing, MEP, tile, and finishes — no revolving subcontractors on core trades.",
+  },
+  {
+    q: "What Inland Empire cities do you serve for ADU construction?",
+    a: "We serve 29 cities across San Bernardino, Riverside, and San Diego counties: Yucaipa, Redlands, Loma Linda, Highland, San Bernardino, Rialto, Colton, Fontana, Rancho Cucamonga, Ontario, Upland, Chino Hills, Beaumont, Banning, Calimesa, Riverside, Corona, Lake Elsinore, Temecula, Murrieta, Menifee, Perris, Hemet, Palm Springs, Palm Desert, Cathedral City, Indio, Coachella, and Desert Hot Springs. We know each city's plan-check process and common corrections before we submit. View city-specific ADU regulation guides in the Cities We Serve section below.",
+  },
+  {
+    q: "Does Construction Station handle permits and inspections for ADUs?",
+    a: "Yes — completely. We prepare all permit documents: architectural plans, structural calculations, Title 24 energy reports, and permit applications. We submit to the building department, respond to plan-check correction letters, and track approval status. During construction, we schedule and pass every required inspection: foundation, framing, rough MEP, insulation, drywall, and final. You never need to visit a building department or track a permit status — we handle it and keep you updated at each milestone. CSLB License #1108879 authorizes us to pull permits in every Inland Empire jurisdiction.",
+  },
+  {
+    q: "What is included in Construction Station's all-in ADU pricing?",
+    a: "Our all-in ADU pricing includes: architectural design and engineering, Title 24 energy reports, all permit fees, site preparation, foundation (slab, raised, or crawlspace per soil conditions), framing, roofing, exterior finish (stucco or siding), windows and exterior doors, insulation, drywall, electrical (panel upgrade if required, all wiring and fixtures), plumbing (water supply, drain, vent, and utility connection), HVAC (mini-split system), kitchen (cabinets, countertops, and appliances), bathroom (tile, vanity, and fixtures), flooring, interior and exterior paint, final cleanup, and all required city inspections. We do not charge separately for project management.",
+  },
+  {
+    q: "Do you offer ADU floor plans?",
+    a: "Yes. We have 12 sample ADU floor plans ranging from 400 to 1,200 sq ft — studio, 1-bedroom, and 2-bedroom configurations in both detached and garage-conversion formats. Plans can be customized to your specific lot dimensions. We also build directly from your city's pre-approved plan library — Yucaipa, Redlands, Temecula, Rancho Cucamonga, Fontana, Lake Elsinore, and other IE cities offer free pre-approved plans that save $6,000–$14,000 in design fees and cut weeks from permit approval. View all 12 sample plans at constructionstation.com/services/adu/floor-plans, or request custom plans during your free feasibility consultation.",
   },
 ];
 
@@ -227,18 +265,11 @@ const localBusinessSchema = {
 const faqSchema = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
-  mainEntity: [
-    { "@type": "Question", name: "How long does it take to build an ADU?", acceptedAnswer: { "@type": "Answer", text: "From start to finish, most ADU projects take 8-16 months. The process begins with a site survey, then deciding on plans — whether a custom design or one of your city's pre-approved plans — followed by submitting for and securing your city permit, and finally the build. Design and permitting often take as long as construction, so we set realistic expectations up front and keep you updated at every stage." } },
-    { "@type": "Question", name: "What is the process for building an ADU with Construction Station?", acceptedAnswer: { "@type": "Answer", text: "Our ADU process runs in four main phases: 1. Site survey — we assess your property, lot dimensions, utilities, and existing conditions 2. Plans — we help you choose between a custom design or a city pre-approved plan 3. Permitting — we prepare and submit your plans to the city and manage approvals 4. Build — once permits are approved, we construct your ADU through to final inspection. We handle the entire process under one roof so you have a single accountable team from survey to keys." } },
-    { "@type": "Question", name: "How much does an ADU cost?", acceptedAnswer: { "@type": "Answer", text: "ADU costs vary based on size, type, and finishes. We've broken down detailed, current pricing on our ADU Costs page — including how garage conversions, Junior ADUs, and detached new construction compare. We'll also give you a clear, itemized estimate for your specific project." } },
-    { "@type": "Question", name: "What is a Junior ADU (JADU)?", acceptedAnswer: { "@type": "Answer", text: "A Junior ADU is a compact independent living space of up to 500 square feet, created within the existing footprint of your home — often from a garage or spare bedroom. It has its own exterior entrance and an efficiency kitchen. Our recent Redlands project was a Junior ADU, built so a family member could move in and help around the home. JADUs are often the most budget-friendly path to adding living space." } },
-    { "@type": "Question", name: "What types of ADUs can you build?", acceptedAnswer: { "@type": "Answer", text: "We build the full range: garage conversions, Junior ADUs, attached ADUs, and detached new-construction ADUs. The right type depends on your lot, budget, and how you plan to use the space — we'll walk you through the options during your site survey." } },
-    { "@type": "Question", name: "Do I need a permit to build an ADU?", acceptedAnswer: { "@type": "Answer", text: "Yes. An ADU adds living space and must meet California building codes, so it requires permits. We handle the entire permitting process for you — preparing plans, submitting to the city, and managing approvals through to final inspection." } },
-    { "@type": "Question", name: "What's the difference between custom plans and pre-approved plans?", acceptedAnswer: { "@type": "Answer", text: "Pre-approved (or \"permit-ready\") plans are designs your city has already reviewed and approved, which can speed up permitting. Custom plans are designed specifically for your property and vision. Pre-approved plans can save time when they fit your lot as-is but offer limited flexibility; custom plans give you exactly what you want but take longer to permit. We help you weigh the tradeoff." } },
-    { "@type": "Question", name: "Can I rent out my ADU?", acceptedAnswer: { "@type": "Answer", text: "Yes. ADUs can be rented, and California no longer requires the owner to live on the property — so an ADU can be added to a rental or investment property. Short-term rental rules vary by location, so check with your city or county to confirm whether your ADU can be used as a short-term rental." } },
-    { "@type": "Question", name: "Will my ADU have its own address and utilities?", acceptedAnswer: { "@type": "Answer", text: "Typically yes. ADUs are usually assigned a separate address (important for emergency services), and they're metered separately for electrical service. We handle the utility coordination as part of your project." } },
-    { "@type": "Question", name: "Why are people building ADUs?", acceptedAnswer: { "@type": "Answer", text: "The reasons vary — many of our clients build for family, creating space for an aging parent, an adult child, or a relative who needs to be close by. Others build for rental income or added property value. Whatever your reason, we design an ADU that fits your needs and your property." } },
-  ],
+  mainEntity: FAQS.map((faq) => ({
+    "@type": "Question",
+    name: faq.q,
+    acceptedAnswer: { "@type": "Answer", text: faq.a as string },
+  })),
 };
 
 function PrimaryCta({ id }: { id?: string }) {

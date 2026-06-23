@@ -62,16 +62,64 @@ const STEPS = [
 
 const FAQS = [
   {
+    q: "How much does a kitchen remodel cost in the Inland Empire?",
+    a: "Kitchen remodel costs in the Inland Empire range from $35,000–$60,000 for a mid-grade refresh (new cabinets, countertops, flooring, and appliances without structural changes), $60,000–$100,000 for a full remodel with semi-custom cabinetry and stone countertops, and $100,000–$150,000+ for a luxury remodel with custom-built cabinetry, high-end appliances, and structural changes such as opening walls. The biggest cost drivers are cabinet quality (stock vs. semi-custom vs. fully custom), whether you're moving plumbing or gas lines, countertop material, and appliance tier. Construction Station provides a transparent, line-item written estimate after your free in-home design consultation — no vague 'starting at' pricing.",
+  },
+  {
     q: "How long does a kitchen remodel take?",
-    a: "For most full kitchen remodels, we complete the work in 3-6 weeks. The exact timeline depends on scope — a straightforward refresh moves faster, while projects involving removing walls or relocating plumbing and electrical can run a bit longer. We give you a project schedule up front so you know what to expect at each phase.",
+    a: "Most full kitchen remodels with Construction Station take 4–8 weeks from demo to final walkthrough. A cosmetic refresh — new cabinet doors, countertops, and appliances without moving plumbing or electrical — can finish in 3–4 weeks. Full gut remodels with custom cabinetry (4–8 week manufacturing lead time), layout changes, and new flooring typically run 8–12 weeks total. We provide a written project schedule before you sign anything, with each phase and its expected start and finish date.",
   },
   {
-    q: "Do I need a permit for my kitchen remodel?",
-    a: "It depends on the work. For a standard remodel that doesn't add square footage, permits typically aren't required — though we're happy to pull them if you prefer. If your project adds square footage, we recommend permitting, and we handle the entire process for you either way.",
+    q: "What is the kitchen remodel process?",
+    a: "Our process: (1) Free design consultation — in-home walkthrough to measure, discuss layout, and review your wish list; (2) 3D photorealistic rendering of the finished kitchen before any orders are placed; (3) Material selection — cabinet, countertop, tile, and flooring samples; (4) Permitting — we pull any required permits; (5) Demolition — existing cabinets, countertops, flooring, and fixtures removed; (6) Rough work — plumbing, electrical, or structural modifications; (7) Cabinet installation; (8) Countertop templating and installation; (9) Tile and backsplash; (10) Flooring; (11) Appliance installation; (12) Final walkthrough and punch list. One crew, one warranty, one point of contact from design through keys.",
   },
   {
-    q: "Can I live in my home during the remodel?",
-    a: "In most cases, yes. You'll temporarily lose access to the kitchen itself, so many homeowners set up a small temporary kitchen with a microwave and a few appliances. We work to contain dust and minimize disruption to the rest of your home.",
+    q: "Do I need permits for a kitchen remodel?",
+    a: "It depends on scope. A cosmetic remodel — replacing cabinets in the same location, new countertops, tile, and appliances — typically does not require permits. If you're moving plumbing (relocating the sink, adding a gas line), adding dedicated electrical circuits, or making structural changes (removing walls, adding a beam), permits are required. Construction Station pulls all required permits as part of your project and schedules all inspections. We'll tell you up front which elements require permits and handle the process on your behalf.",
+  },
+  {
+    q: "Should I remodel my kitchen or just replace the cabinets?",
+    a: "If your cabinet boxes are solid and the layout works, cabinet refacing or door replacement can refresh the look for 40–60% of the cost of new cabinets. If the layout is inefficient, the boxes are failing, or you want to change the footprint, a full remodel is the better investment. Cabinet refacing typically runs $8,000–$20,000; a full kitchen remodel with new cabinets starts around $35,000. The right answer depends on cabinet condition, how long you plan to stay, and what's actually bothering you about the kitchen. We give you an honest assessment during the free consultation — no pressure to sell more than you need.",
+  },
+  {
+    q: "What are the most popular kitchen layouts?",
+    a: "The most popular layouts in Inland Empire homes: L-shape (efficient use of corner space, works well in open-concept homes), U-shape (maximum storage and counter space, ideal for serious cooks), galley (efficient for narrower kitchens with high traffic flow), and island or peninsula (adds prep space and casual seating, works in most open-concept layouts). Our designer will assess your existing footprint, traffic patterns, and family use to recommend the optimal configuration. Sometimes a minor reconfiguration — moving a doorway or removing a non-load-bearing wall — dramatically improves function without a complete gut.",
+  },
+  {
+    q: "Can I stay in my home during a kitchen remodel?",
+    a: "Yes — most clients do. You'll temporarily lose access to the kitchen itself for 4–8 weeks. Many families set up a temporary kitchen with a microwave, electric skillet, mini-fridge, and coffee maker in the dining room or garage. We install construction-grade barriers to contain dust and protect adjacent rooms, clean the site daily, and schedule deliveries to minimize driveway disruption. Families with young children or special dietary needs should budget for restaurant and grocery delivery spending during the active phase.",
+  },
+  {
+    q: "What countertop materials do you recommend?",
+    a: "Quartz (engineered stone) is our most popular recommendation — non-porous (no sealing required), extremely durable, and available in hundreds of colors. We install Caesarstone, Cambria, and Silestone regularly. Natural granite adds unique character and holds up well with periodic sealing. Quartzite offers marble-like aesthetics with better hardness. Marble is beautiful but porous and prone to etching from acids — best in lower-traffic areas or for clients who embrace natural patina. Modern laminate countertops work well for budget-conscious remodels. We walk every natural stone slab in person before fabrication.",
+  },
+  {
+    q: "How do I choose kitchen cabinets?",
+    a: "Start with door style — shaker is the most popular and timeless, flat-panel is contemporary, raised-panel is traditional. Then consider face-frame vs. frameless construction, material (plywood box vs. MDF, solid wood vs. thermofoil doors), and finish (paint, stain, or factory laminate). The biggest value decision is stock vs. semi-custom vs. custom. We carry semi-custom lines from Shiloh, Wellborn, and Decora — quality products with hundreds of configurations at mid-range pricing. During your design consultation we'll show samples from all tiers and help you match cabinet quality to your budget and timeline.",
+  },
+  {
+    q: "What's the difference between stock, semi-custom, and custom cabinets?",
+    a: "Stock cabinets are pre-manufactured in standard 3-inch width increments, available off the shelf — fastest and least expensive, but limited configuration. Semi-custom cabinets are manufactured to order in more size increments with more door styles, finish options, and interior accessories — 3–8 week lead times, 30–60% more than stock. Custom cabinets are built to your exact dimensions by a cabinet maker — maximum flexibility and quality, but 8–16 week lead times and the highest cost. For most $50,000–$100,000 kitchen remodels, semi-custom delivers the best balance of quality, customization, and price. Full custom makes sense for unique spaces, luxury builds, or exact-fit requirements.",
+  },
+  {
+    q: "Do you handle kitchen plumbing and electrical?",
+    a: "Yes — completely. Construction Station is a licensed general contractor (CSLB #1108879), not just a cabinet installer. We handle all trades: plumbing (sink connections, garbage disposal, dishwasher, gas lines, pot filler), electrical (dedicated circuits for dishwasher, disposal, microwave, and range; under-cabinet lighting; pendant wiring; GFCI outlets), and any structural work. Our licensed tradespeople handle all rough and finish work under our general contractor license — one accountable party for the entire project, one permit package, one warranty.",
+  },
+  {
+    q: "What kitchen features add the most resale value?",
+    a: "In Inland Empire real estate, the features that consistently add the most resale value: quartz or stone countertops (buyers notice immediately), updated cabinet faces with soft-close hardware (critical in the $400K–$700K market), a functional island with seating, updated lighting (recessed cans plus pendants over the island), and stainless or panel-ready appliances. Kitchen remodels in the Inland Empire generally return 60–80% of cost at resale — higher for homes priced under $600K, where kitchen condition directly influences offers.",
+  },
+  {
+    q: "How much should I budget for kitchen appliances?",
+    a: "Appliance budgets range from $3,000–$6,000 for mid-grade (GE, Whirlpool, Frigidaire), $6,000–$15,000 for premium (Bosch, KitchenAid, Samsung), and $15,000–$40,000+ for luxury (Wolf, Sub-Zero, Thermador, Miele). Construction Station installs all tiers and coordinates directly with appliance reps to confirm rough-in dimensions. A common mistake: clients allocate nearly all their budget to cabinetry and countertops and are surprised by appliance costs. We include a recommended appliance budget in every estimate so you have the complete picture before signing.",
+  },
+  {
+    q: "Can you remodel a kitchen in stages?",
+    a: "Yes — phased remodels work for clients who want to spread costs or minimize disruption. A common sequence: Phase 1 — countertops and sink (high visual impact, short disruption); Phase 2 — cabinets and flooring; Phase 3 — appliances and lighting. The tradeoffs: phased work costs more overall due to multiple mobilizations and potential rework between stages. If budget is the main driver, we can prioritize which elements deliver the most value improvement per dollar so you start with the highest-impact changes first.",
+  },
+  {
+    q: "Do you offer kitchen design services?",
+    a: "Yes. Every kitchen remodel starts with a free in-home design consultation — normally $299, included at no charge for new clients. Our designer measures your space, discusses your lifestyle and cooking habits, reviews your inspiration images, and develops a floor plan with cabinet layout. We then produce 3D photorealistic renderings showing the finished kitchen — every cabinet, countertop, tile, and fixture — before any order is placed. The design process is included in your project cost; we don't charge separately for revisions. Our goal is for you to love the design on paper before construction begins.",
   },
 ];
 
