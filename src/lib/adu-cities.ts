@@ -284,6 +284,66 @@ const BASE_CITIES: Omit<ADUCity, "regionKey" | "preApprovedPlans">[] = [
       "Banning offers some of the most affordable entry points for ADU construction in Riverside County. Land values and existing home prices are lower than in Beaumont or Calimesa, which means ADU appraisal lift as a percentage of property value is often higher. Larger lots in the foothill zones north of Ramsey Street give homeowners room for detached ADUs without compromising the yard, and some equestrian-zoned parcels can support both an ADU and continued horse-keeping. Long-term rental demand comes from Morongo Casino workers, Cabazon outlet employees, and commuters using I-10. Banning is also one of the few Inland Empire cities where lot size and zoning often align cleanly for a freestanding ADU on a generous lot — without HOA design committees adding months of additional review.",
   },
   {
+    slug: "norco",
+    name: "Norco",
+    county: "Riverside County",
+    region: "Inland Empire Core",
+    maxSize: "1,200 sq ft",
+    setbacks: STATE_SETBACKS,
+    height: "16 ft detached",
+    parking: STATE_PARKING,
+    jaduAllowed: STATE_JADU,
+    impactFees: STATE_IMPACT_FEES,
+    permitTimeline: STATE_PERMIT_TIMELINE,
+    contact: "Norco Planning and Building Department",
+    notes:
+      "Norco's citywide animal-keeping lot standards are the defining local factor — ADU placement is reviewed with lot coverage, setbacks, and animal-keeping capacity in mind. The city's half-acre-plus lots give most properties exceptional siting flexibility once those standards are accounted for.",
+    intro:
+      "Norco — Horsetown USA — is one of the most distinctive ADU markets in Southern California. The city mandates animal-keeping lots across most residential zones, which means half-acre-plus parcels, horse trails in place of sidewalks, and a housing stock dominated by 1960s–1980s single-story ranch homes with room to spare. That lot generosity is the foundation of Norco's ADU appeal: nearly every property can fit a full 1,200 sq ft detached ADU within state setbacks without crowding the primary residence, the arena, or trailer access. The main local consideration is Norco's lot standards protecting animal-keeping capacity — ADU placement gets reviewed with that in mind, and we lay out every project to preserve corral sightlines and turnaround space. Construction Station builds across the Inland Empire from our Yucaipa headquarters, about 40 minutes east via the 60 and I-15.",
+    whyBuild:
+      "Norco's oversized lots make it one of the few Inland Empire cities where a full-size detached ADU rarely requires compromise — most parcels can absorb 1,200 sq ft plus parking without touching the yard's working layout. Multi-generational living is the dominant use case here: families keeping parents or adult children on the property, with the ADU sited to share the equestrian lifestyle. Rental demand is steady from Norco College students, SilverLakes Sports Complex traffic, and Corona and Eastvale commuters who want acreage character at a rental price. Norco homes also carry a premium for usable land, and a permitted ADU compounds that appraisal story — buyers here pay for properties that can house more people and more animals.",
+  },
+  {
+    slug: "eastvale",
+    name: "Eastvale",
+    county: "Riverside County",
+    region: "Inland Empire Core",
+    maxSize: "1,200 sq ft",
+    setbacks: STATE_SETBACKS,
+    height: "16 ft detached, 25 ft attached",
+    parking: STATE_PARKING,
+    jaduAllowed: STATE_JADU,
+    impactFees: STATE_IMPACT_FEES,
+    permitTimeline: STATE_PERMIT_TIMELINE,
+    contact: "Eastvale Building and Safety Division",
+    notes:
+      "Eastvale follows the California state ADU baseline. Nearly all neighborhoods are HOA-governed — state law preempts blanket ADU prohibitions, but architectural review still applies to exterior design, and we manage that submittal alongside the city permit.",
+    intro:
+      "Eastvale is one of California's youngest cities — incorporated in 2010 and built almost entirely between the late 1990s and mid-2010s on former dairy land. For ADU construction, that youth is an asset: modern electrical panels, modern sewer connections, and standardized lot configurations keep buildout costs predictable and change orders rare. Lots in Eastvale's master-planned neighborhoods are tighter than in older Inland Empire cities, so siting matters — many properties fit a 600–1,000 sq ft detached ADU comfortably, while garage conversions and attached ADUs are the right answer on smaller parcels. The other Eastvale reality is HOAs: state law prevents associations from banning ADUs outright, but architectural review of exterior design still applies, and we prepare that package alongside the city permit so both approvals move in parallel.",
+    whyBuild:
+      "Eastvale pairs some of the Inland Empire's strongest household incomes with a persistent shortage of rental housing — the city built single-family homes almost exclusively, so well-finished ADUs rent quickly and at strong rates to teachers, logistics managers, and young families priced out of buying in the neighborhood they grew up in. Multi-generational use is just as common: Eastvale's family-oriented culture makes on-property housing for parents a natural fit. Because the housing stock is new, ADU construction here avoids the repair surprises common in older cities, which keeps fixed-price contracts tight. Home values have climbed steadily since incorporation, and a permitted ADU adds appraisal value on top of rental income that can offset a meaningful share of a mortgage.",
+  },
+  {
+    slug: "perris",
+    name: "Perris",
+    county: "Riverside County",
+    region: "Inland Empire Core",
+    maxSize: "1,200 sq ft",
+    setbacks: STATE_SETBACKS,
+    height: "16 ft detached, 25 ft attached",
+    parking: STATE_PARKING,
+    jaduAllowed: STATE_JADU,
+    impactFees: STATE_IMPACT_FEES,
+    permitTimeline: STATE_PERMIT_TIMELINE,
+    contact: "Perris Building and Safety Division",
+    notes:
+      "Perris follows the California state ADU baseline. The city's older neighborhoods near downtown have generous lots but aging utilities — we verify panel capacity and sewer condition during the feasibility walk. Newer subdivisions like May Ranch and Villages of Avalon have modern infrastructure that keeps ADU buildout predictable.",
+    intro:
+      "Perris is one of the fastest-growing cities in Riverside County, and its ADU potential spans two very different property types. The established neighborhoods around downtown and D Street sit on generous mid-century lots — frequently 7,200 sq ft and up — with detached garages that make excellent conversion candidates and yard space for full detached ADUs. The newer master-planned subdivisions like May Ranch, Villages of Avalon, and Green Valley offer modern electrical and sewer infrastructure that keeps construction predictable. Perris follows the California state ADU baseline with minimal local overlays and processes permits within the state-mandated 60-day window. On older parcels we verify electrical panel capacity and sewer condition during the free feasibility walk, because upgrading them during ADU construction is far cheaper than discovering them mid-project.",
+    whyBuild:
+      "Perris offers some of the best ADU economics in Riverside County: land is affordable, lots are generous, and rental demand keeps climbing with the city's growth. The March Air Reserve Base employment corridor, the massive logistics parks along I-215, Lake Perris recreation traffic, and the Metrolink 91/Perris Valley Line all feed a steady tenant pool for one- and two-bedroom units. Because Perris home prices are lower than the regional median, ADU appraisal lift as a percentage of property value is often higher here than anywhere in the county — and rental income covers a larger share of construction cost. For owners of older downtown properties, an ADU project is also the natural moment to modernize aging utilities and compound the whole parcel's value.",
+  },
+  {
     slug: "colton",
     name: "Colton",
     county: "San Bernardino County",
@@ -738,6 +798,9 @@ const REGION_KEY_BY_SLUG: Record<string, RegionKey> = {
   riverside: "ie-core",
   beaumont: "ie-core",
   banning: "ie-core",
+  norco: "ie-core",
+  eastvale: "ie-core",
+  perris: "ie-core",
   colton: "ie-core",
   rialto: "ie-core",
   fontana: "ie-core",
@@ -874,6 +937,21 @@ const PRE_APPROVED_BY_SLUG: Record<string, CityPreApprovedProgram> = {
     available: false,
     description:
       "Contact Colton Building & Safety at (909) 370-5079 to ask about pre-approved ADU plans required under AB 1332.",
+  },
+  norco: {
+    available: false,
+    description:
+      "Contact the Norco Planning and Building Department to ask about pre-approved ADU plans required under AB 1332.",
+  },
+  eastvale: {
+    available: false,
+    description:
+      "Contact Eastvale Building and Safety to ask about pre-approved ADU plans required under AB 1332.",
+  },
+  perris: {
+    available: false,
+    description:
+      "Contact Perris Building and Safety to ask about pre-approved ADU plans required under AB 1332.",
   },
   rialto: {
     available: true,

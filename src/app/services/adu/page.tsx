@@ -208,7 +208,7 @@ const FAQS = [
   },
   {
     q: "What Inland Empire cities do you serve for ADU construction?",
-    a: "We serve 29 cities across San Bernardino, Riverside, and San Diego counties: Yucaipa, Redlands, Loma Linda, Highland, San Bernardino, Rialto, Colton, Fontana, Rancho Cucamonga, Ontario, Upland, Chino Hills, Beaumont, Banning, Calimesa, Riverside, Corona, Lake Elsinore, Temecula, Murrieta, Menifee, Perris, Hemet, Palm Springs, Palm Desert, Cathedral City, Indio, Coachella, and Desert Hot Springs. We know each city's plan-check process and common corrections before we submit. View city-specific ADU regulation guides in the Cities We Serve section below.",
+    a: "We serve 35 cities across San Bernardino, Riverside, and Orange counties: Yucaipa, Redlands, Loma Linda, Highland, San Bernardino, Rialto, Colton, Fontana, Rancho Cucamonga, Ontario, Upland, Chino, Chino Hills, Beaumont, Banning, Calimesa, Moreno Valley, Riverside, Norco, Eastvale, Perris, Victorville, Hesperia, Apple Valley, Lake Elsinore, Temecula, Murrieta, Menifee, Palm Springs, Palm Desert, Cathedral City, Indio, La Quinta, Anaheim Hills, and Yorba Linda. We know each city's plan-check process and common corrections before we submit. View city-specific ADU regulation guides in the Cities We Serve section below.",
   },
   {
     q: "Does Construction Station handle permits and inspections for ADUs?",
@@ -700,7 +700,7 @@ export default function ADUPage() {
             </div>
             <h2 className="font-display text-navy text-4xl md:text-5xl leading-[1]">
               ADU regulations across{" "}
-              <span className="italic text-gold">29 cities</span>.
+              <span className="italic text-gold">{CITIES.length} cities</span>.
             </h2>
             <p className="text-navy/70 mt-5 max-w-2xl mx-auto leading-relaxed">
               Click any city below for a complete ADU regulation guide — max

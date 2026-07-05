@@ -692,7 +692,8 @@ export default async function ADUCityPage({
                 View All Cities
               </div>
               <div className="text-navy/60 text-sm mt-1">
-                ADU regulation guides for all 29 cities we serve.
+                ADU regulation guides for all {ADU_CITY_SLUGS.length} cities we
+                serve.
               </div>
             </Link>
           </div>

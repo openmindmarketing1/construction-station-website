@@ -3,6 +3,10 @@ import { CITIES } from "@/config/cities";
 import { SERVICES } from "@/lib/constants";
 import { POSTS } from "@/lib/blog";
 import { ADU_CITIES } from "@/lib/adu-cities";
+import {
+  SERVICE_CITY_SERVICES,
+  SERVICE_CITY_SLUGS,
+} from "@/lib/service-city-pages";
 import { fetchOmmPosts } from "@/lib/omm-blog";
 
 const SITE_URL =
@@ -65,6 +69,16 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.8,
   }));
 
+  const serviceCityRoutes: MetadataRoute.Sitemap =
+    SERVICE_CITY_SERVICES.flatMap((s) =>
+      SERVICE_CITY_SLUGS.map((slug) => ({
+        url: `${SITE_URL}/services/${s.routeSegment}/${slug}`,
+        lastModified: now,
+        changeFrequency: "monthly" as const,
+        priority: 0.8,
+      }))
+    );
+
   const aduInfoRoutes: MetadataRoute.Sitemap = [
     "floor-plans",
     "costs",
@@ -85,6 +99,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...ommBlogRoutes,
     ...cityRoutes,
     ...aduCityRoutes,
+    ...serviceCityRoutes,
     ...aduInfoRoutes,
   ];
 }

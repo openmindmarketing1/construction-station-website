@@ -4,6 +4,7 @@ import ServiceHero from "@/components/ServiceHero";
 import ServiceGallery from "@/components/ServiceGallery";
 import ProcessSteps from "@/components/ProcessSteps";
 import FAQAccordion from "@/components/FAQAccordion";
+import ServiceCityLinksStrip from "@/components/ServiceCityLinksStrip";
 import JsonLd from "@/components/JsonLd";
 import { CS } from "@/lib/constants";
 
@@ -325,6 +326,8 @@ export default function RoomAdditionsPage() {
           </div>
         </div>
       </section>
+
+      <ServiceCityLinksStrip serviceKey="room-additions" />
     </>
   );
 }

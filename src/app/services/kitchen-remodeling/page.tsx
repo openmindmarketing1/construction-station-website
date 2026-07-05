@@ -8,6 +8,7 @@ import FAQAccordion from "@/components/FAQAccordion";
 import LeadMagnetCard from "@/components/LeadMagnetCard";
 import CalendlyEmbed from "@/components/CalendlyEmbed";
 import KitchenQuickForm from "@/components/KitchenQuickForm";
+import ServiceCityLinksStrip from "@/components/ServiceCityLinksStrip";
 import JsonLd from "@/components/JsonLd";
 import { CS } from "@/lib/constants";
 
@@ -469,6 +470,8 @@ export default function KitchenRemodelingPage() {
           </div>
         </div>
       </section>
+
+      <ServiceCityLinksStrip serviceKey="kitchen-remodeling" />
     </>
   );
 }

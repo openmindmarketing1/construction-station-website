@@ -6,6 +6,7 @@ import ProcessSteps from "@/components/ProcessSteps";
 import FAQAccordion from "@/components/FAQAccordion";
 import FlooringQuickForm from "@/components/FlooringQuickForm";
 import CalendlyEmbed from "@/components/CalendlyEmbed";
+import ServiceCityLinksStrip from "@/components/ServiceCityLinksStrip";
 import JsonLd from "@/components/JsonLd";
 import { CS } from "@/lib/constants";
 
@@ -586,6 +587,8 @@ export default function FlooringInstallationPage() {
           </div>
         </div>
       </section>
+
+      <ServiceCityLinksStrip serviceKey="flooring" />
     </>
   );
 }
