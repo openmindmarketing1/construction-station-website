@@ -79,7 +79,7 @@ export default async function RecentPosts() {
 
         {/* Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {recent.map((post, i) => (
+          {recent.map((post) => (
             <article
               key={`${post.source}-${post.slug}`}
               className="group flex flex-col bg-white border border-navy/10 overflow-hidden hover:border-gold transition-colors"
@@ -96,13 +96,16 @@ export default async function RecentPosts() {
                       fill
                       className="object-cover group-hover:scale-105 transition-transform duration-500"
                       sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                      priority={i === 0}
                     />
                   ) : (
+                    // Remote OMM image — host isn't guaranteed to be in
+                    // next.config remotePatterns, so next/image is unsafe here.
                     // eslint-disable-next-line @next/next/no-img-element
                     <img
                       src={post.image}
                       alt={post.imageAlt}
+                      loading="lazy"
+                      decoding="async"
                       className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
                   )

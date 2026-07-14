@@ -75,7 +75,6 @@ function DragSlider({ slide }: { slide: Slide }) {
           fill
           className="object-cover"
           sizes="(max-width: 1280px) 100vw, 1280px"
-          priority
         />
         <div className="absolute inset-0 flex items-end p-6 md:p-8 bg-gradient-to-t from-navy-dark/60 to-transparent pointer-events-none">
           <div>
@@ -96,7 +95,6 @@ function DragSlider({ slide }: { slide: Slide }) {
           fill
           className="object-cover grayscale"
           sizes="(max-width: 1280px) 100vw, 1280px"
-          priority
         />
         <div className="absolute inset-0 flex items-end p-6 md:p-8 bg-gradient-to-t from-navy-dark/60 to-transparent pointer-events-none">
           <div>

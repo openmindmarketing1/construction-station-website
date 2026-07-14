@@ -113,7 +113,7 @@ export default function RootLayout({
             gtag('config', 'AW-16750133133');
           `}
         </Script>
-        <Script id="meta-pixel" strategy="afterInteractive">
+        <Script id="meta-pixel" strategy="lazyOnload">
           {`
             !function(f,b,e,v,n,t,s)
             {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -150,7 +150,7 @@ export default function RootLayout({
         <Script
           src="https://www.openmindmarketing.ai/widget/chat.js"
           data-business-id="1"
-          strategy="afterInteractive"
+          strategy="lazyOnload"
         />
       </body>
     </html>

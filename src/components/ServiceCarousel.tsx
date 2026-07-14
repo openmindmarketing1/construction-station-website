@@ -253,7 +253,9 @@ export default function ServiceCarousel() {
                     fill
                     className="object-cover"
                     sizes="320px"
-                    priority={i < 3}
+                    quality={65}
+                    priority={i === 0}
+                    loading={i === 0 ? undefined : "lazy"}
                   />
                   {/* Gradient overlay */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/92 via-black/25 to-transparent" />
