@@ -13,7 +13,7 @@ import { CS } from "@/lib/constants";
 export const metadata: Metadata = {
   title: {
     absolute:
-      "Kitchen Remodel Yucaipa CA — Licensed Kitchen Remodeler | Construction Station",
+      "Kitchen & Bathroom Remodel Yucaipa CA | Affordable",
   },
   description:
     "Construction Station is Yucaipa's kitchen remodeler — custom cabinets, quartz countertops, tile work, and open-concept transformations. Free in-home consultation. CSLB #1108879. (909) 797-6333.",
