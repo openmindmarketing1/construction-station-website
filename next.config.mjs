@@ -66,6 +66,13 @@ const nextConfig = {
 
     return [
       {
+        // Host canonicalization (OMM SEO remediation): www.constructionstation.com → constructionstation.com
+        source: "/:path*",
+        has: [{ type: "host", value: "www.constructionstation.com" }],
+        destination: "https://constructionstation.com/:path*",
+        permanent: true,
+      },
+      {
         // Short link given to customers post-project: constructionstation.com/review
         source: "/review",
         destination: "https://g.page/r/CYbRtpDrKtNzEAE/review",
