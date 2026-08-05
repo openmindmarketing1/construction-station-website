@@ -118,7 +118,7 @@ export const CITIES: City[] = [
     ],
   },
   { name: "Hesperia", state: "CA", slug: "hesperia", county: "San Bernardino", description: "Expert home renovation in Hesperia, CA", population: "100,000" },
-  { name: "Apple Valley", state: "CA", slug: "apple-valley", county: "San Bernardino", description: "Home remodeling specialists in Apple Valley", population: "73,000", seoTitle: "Kitchen Remodel & Home Additions Apple Valley CA | Licensed Contractor | Construction Station", seoDescription: "Trusted remodeling contractor serving Apple Valley CA. Kitchen remodels, bathroom renovations, home additions. Free estimates. Call (909) 797-6333." ,
+  { name: "Apple Valley", state: "CA", slug: "apple-valley", county: "San Bernardino", description: "Home remodeling specialists in Apple Valley", population: "73,000", seoTitle: "Kitchen Remodel & Home Additions Apple Valley CA | Licensed Contractor | Construction Station",
     seoDescription: "Apple Valley remodeling — High Desert ranch homes on acre lots, Jess Ranch updates, Town permits handled. Kitchens, baths & additions.",
     localContext: [
       "Apple Valley is a Town, not a city — and its Building Division reviews accordingly, with High Desert realities baked in: acre-plus lots, single-story ranch homes, and on the outskirts, properties running well and septic systems that any addition has to respect.",
