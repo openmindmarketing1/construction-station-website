@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { notFound } from "next/navigation";
-import { fetchOmmPostBySlug, fetchOmmPosts } from "@/lib/omm-blog";
+import { notFound, permanentRedirect } from "next/navigation";
+import { fetchOmmPostByIdOrSlug, fetchOmmPosts } from "@/lib/omm-blog";
 import JsonLd from "@/components/JsonLd";
 import { CS } from "@/lib/constants";
 
@@ -10,6 +10,10 @@ import { CS } from "@/lib/constants";
 // directories (e.g. /blog/inland-empire-kitchen-remodel-costs continues to
 // render its bespoke page). This page renders posts published from the OMM
 // platform (Open Mind Marketing) via the public feed.
+//
+// UUID fallback: if the param looks like a UUID and the post now has a proper
+// slug, we 301-redirect to the canonical slug URL so Google transfers ranking
+// from old UUID links to the new slug.
 
 const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL ?? "https://constructionstation.com";
@@ -32,20 +36,22 @@ export async function generateMetadata({
 }: {
   params: { slug: string };
 }): Promise<Metadata> {
-  const post = await fetchOmmPostBySlug(params.slug);
-  if (!post) {
+  const result = await fetchOmmPostByIdOrSlug(params.slug);
+  if (!result) {
     return {
       title: { absolute: "Article Not Found | Construction Station" },
       robots: { index: false, follow: false },
     };
   }
+  const { post } = result;
+  const canonicalSlug = post.slug ?? params.slug;
   return {
     title: { absolute: `${post.title} | Construction Station` },
     description: post.meta_description ?? undefined,
-    alternates: { canonical: `/blog/${post.slug ?? params.slug}` },
+    alternates: { canonical: `/blog/${canonicalSlug}` },
     openGraph: {
       type: "article",
-      url: `${SITE_URL}/blog/${post.slug ?? params.slug}`,
+      url: `${SITE_URL}/blog/${canonicalSlug}`,
       title: post.title,
       description: post.meta_description ?? undefined,
       images: post.featured_image_url
@@ -60,8 +66,15 @@ export default async function OmmBlogPostPage({
 }: {
   params: { slug: string };
 }) {
-  const post = await fetchOmmPostBySlug(params.slug);
-  if (!post) notFound();
+  const result = await fetchOmmPostByIdOrSlug(params.slug);
+  if (!result) notFound();
+
+  const { post, redirectToSlug } = result;
+
+  // 301 redirect: UUID param → canonical slug URL so Google transfers equity.
+  if (redirectToSlug) {
+    permanentRedirect(`/blog/${redirectToSlug}`);
+  }
 
   const related = (await fetchOmmPosts())
     .filter((p) => p.slug !== post.slug && p.slug)
@@ -105,7 +118,8 @@ export default async function OmmBlogPostPage({
     <>
       <JsonLd data={blogPostingSchema} />
       <JsonLd data={breadcrumbSchema} />
-      {/* Hero */}
+
+      {/* Hero — title + date + hero image */}
       <section className="bg-navy texture-navy text-white pt-36 pb-0 lg:pt-44 relative overflow-hidden">
         <div
           className="absolute inset-0 opacity-20 pointer-events-none"
@@ -151,7 +165,7 @@ export default async function OmmBlogPostPage({
         )}
       </section>
 
-      {/* Article */}
+      {/* Article body */}
       <section className="bg-white py-16 lg:py-20">
         <div className="max-w-4xl mx-auto px-5 lg:px-10">
           <div
@@ -160,6 +174,28 @@ export default async function OmmBlogPostPage({
           />
         </div>
       </section>
+
+      {/* Infographic — shown at the bottom when one was generated */}
+      {post.infographic_url && (
+        <section className="bg-cream py-12 lg:py-16">
+          <div className="max-w-4xl mx-auto px-5 lg:px-10">
+            <div className="flex items-center gap-3 mb-6">
+              <span className="w-10 h-px bg-gold" />
+              <span className="text-gold text-xs uppercase tracking-[0.4em]">
+                Visual Summary
+              </span>
+            </div>
+            <div className="flex justify-center">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={post.infographic_url}
+                alt={`${post.title} — infographic summary`}
+                className="max-w-sm w-full rounded-sm shadow-md"
+              />
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* CTA band */}
       <section className="bg-navy texture-navy text-white py-16">

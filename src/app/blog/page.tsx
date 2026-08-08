@@ -61,7 +61,7 @@ export default async function BlogIndexPage() {
   const ommPosts = await fetchOmmPosts();
   const cards: UnifiedCard[] = [
     ...POSTS.map(staticToCard),
-    ...ommPosts.map(ommToCard),
+    ...ommPosts.filter((p) => !!p.slug).map(ommToCard),
   ].sort((a, b) => (a.date < b.date ? 1 : a.date > b.date ? -1 : 0));
   return (
     <>

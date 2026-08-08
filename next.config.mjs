@@ -64,7 +64,7 @@ const nextConfig = {
       })
     );
 
-    return [
+    const staticRedirects = [
       {
         // Host canonicalization (OMM SEO remediation): www.constructionstation.com → constructionstation.com
         source: "/:path*",
@@ -92,6 +92,60 @@ const nextConfig = {
       { source: "/kitchen-bath-remodel", destination: "/services/kitchen-remodeling", permanent: true },
       { source: "/flooring", destination: "https://www.carpet-station.com", permanent: true },
     ];
+
+    // UUID → slug: fetched at build time so old Google-indexed /blog/<uuid>
+    // links get a proper 301 at the edge rather than a runtime server-side
+    // redirect. The build still succeeds if the feed is unreachable, but
+    // every failure path logs loudly — a silent miss here means the UUID
+    // redirects quietly don't exist in the deployed build.
+    let uuidRedirects = [];
+    try {
+      const base = process.env.NEXT_PUBLIC_OMM_API_URL?.trim();
+      const bizId = process.env.NEXT_PUBLIC_OMM_BUSINESS_ID?.trim();
+      if (!base || !bizId) {
+        console.error(
+          "[redirects] BLOG UUID REDIRECTS SKIPPED: NEXT_PUBLIC_OMM_API_URL and/or " +
+            "NEXT_PUBLIC_OMM_BUSINESS_ID is unset — old /blog/<uuid> links will NOT 301."
+        );
+      } else {
+        const res = await fetch(
+          `${base}/api/public/blogs?business_id=${encodeURIComponent(bizId)}`
+        );
+        if (!res.ok) {
+          console.error(
+            `[redirects] BLOG UUID REDIRECTS MISSING: OMM blog feed returned HTTP ${res.status} — ` +
+              "old /blog/<uuid> links will NOT 301 in this build."
+          );
+        } else {
+          const json = await res.json();
+          uuidRedirects = (json.posts ?? [])
+            .filter((p) => p.id && p.slug)
+            .map((p) => ({
+              source: `/blog/${p.id}`,
+              destination: `/blog/${p.slug}`,
+              permanent: true,
+            }));
+          if (uuidRedirects.length === 0) {
+            console.error(
+              "[redirects] BLOG UUID REDIRECTS EMPTY: OMM blog feed returned OK but yielded " +
+                "0 id→slug pairs — old /blog/<uuid> links will NOT 301 in this build."
+            );
+          } else {
+            console.log(
+              `[redirects] Generated ${uuidRedirects.length} /blog/<uuid> → /blog/<slug> redirects.`
+            );
+          }
+        }
+      }
+    } catch (err) {
+      console.error(
+        "[redirects] BLOG UUID REDIRECTS FAILED: could not fetch OMM blog feed — " +
+          "old /blog/<uuid> links will NOT 301 in this build.",
+        err
+      );
+    }
+
+    return [...staticRedirects, ...uuidRedirects];
   },
 
   async headers() {

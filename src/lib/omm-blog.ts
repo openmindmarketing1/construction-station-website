@@ -15,6 +15,7 @@ export interface OmmBlogPost {
   title: string;
   meta_description: string | null;
   featured_image_url: string | null;
+  infographic_url: string | null;
   html_content: string;
   published_at: string | null;
   generated_at: string | null;
@@ -78,4 +79,38 @@ export async function fetchOmmPostBySlug(
   if (!slug) return null;
   const posts = await fetchOmmPosts();
   return posts.find((p) => p.slug === slug) ?? null;
+}
+
+const UUID_RE =
+  /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+
+/**
+ * Fetch a post by slug (preferred) or by UUID (legacy fallback for links
+ * published before slug backfill). Returns the post plus a canonical slug
+ * to redirect to when the param was a UUID and the post now has a proper slug.
+ */
+export async function fetchOmmPostByIdOrSlug(param: string): Promise<{
+  post: OmmBlogPost;
+  redirectToSlug: string | null;
+} | null> {
+  if (!param) return null;
+  const posts = await fetchOmmPosts();
+
+  // Primary: slug match.
+  const bySlug = posts.find((p) => p.slug === param);
+  if (bySlug) return { post: bySlug, redirectToSlug: null };
+
+  // Fallback: UUID match — old links before slug backfill.
+  if (UUID_RE.test(param)) {
+    const byId = posts.find((p) => p.id === param);
+    if (byId) {
+      return {
+        post: byId,
+        // Redirect to canonical slug URL if one now exists.
+        redirectToSlug: byId.slug ?? null,
+      };
+    }
+  }
+
+  return null;
 }
