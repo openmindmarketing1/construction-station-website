@@ -164,6 +164,8 @@ export default function PrivacyPage() {
               <h2 id="how-we-use" className={SECTION}>
                 2. How We Use Your Information
               </h2>
+
+              <h3>2.1 Service Operations</h3>
               <p>We use your information to:</p>
               <ul>
                 <li>Respond to estimate requests and questions.</li>
@@ -184,6 +186,43 @@ export default function PrivacyPage() {
                   obligations.
                 </li>
               </ul>
+
+              <h3>2.2 Analytics and Advertising Technologies</h3>
+              <p>
+                We use cookies and similar technologies — including the Meta
+                (Facebook) Pixel — to measure traffic, analyze marketing
+                performance, and improve our site. See Section 4 for details.
+              </p>
+
+              <h3>2.3 Connected Google Services</h3>
+              <p>
+                Open Mind Marketing accesses the following data from Google
+                services on behalf of Construction Station, with explicit
+                authorization:
+              </p>
+              <ul>
+                <li>
+                  <strong>Google Business Profile</strong> — profile details,
+                  reviews, photos, posts, and listing data
+                </li>
+                <li>
+                  <strong>Google Analytics (GA4)</strong> — website traffic,
+                  sessions, pageviews, and traffic sources
+                </li>
+                <li>
+                  <strong>Google Search Console</strong> — search queries,
+                  clicks, impressions, and indexing status
+                </li>
+                <li>
+                  <strong>Google Ads</strong> — campaign data, ad spend,
+                  conversions, and performance metrics
+                </li>
+              </ul>
+              <p>
+                All Google data is accessed only with your explicit
+                authorization via OAuth and used solely to provide OMM platform
+                services.
+              </p>
 
               <h2 id="sms-communications" className={SECTION}>
                 3. SMS / Text Message Communications
@@ -317,6 +356,8 @@ export default function PrivacyPage() {
               <h2 id="how-we-share" className={SECTION}>
                 5. How We Share Your Information
               </h2>
+
+              <h3>5.1 Service Partners and Providers</h3>
               <p>
                 We share information only as needed to run our business and
                 deliver your project:
@@ -343,6 +384,34 @@ export default function PrivacyPage() {
                 We do not sell your personal information, and as noted above,
                 we never sell or share SMS opt-in data for third-party
                 marketing.
+              </p>
+
+              <h3>5.2 Third-Party Platforms You Connect</h3>
+              <p>
+                When Construction Station connects third-party accounts — such
+                as Google Business Profile, Google Analytics, Google Search
+                Console, or Google Ads — through Open Mind Marketing&rsquo;s
+                platform, those platforms&rsquo; own terms and privacy policies
+                also govern the data shared with them. We access these
+                platforms only with explicit authorization and use the data
+                solely to provide the requested services.
+              </p>
+
+              <h2 id="google-api-disclosure" className={SECTION}>
+                Google API Services Disclosure
+              </h2>
+              <p>
+                Open Mind Marketing&rsquo;s use and transfer of information
+                received from Google APIs will adhere to the{" "}
+                <a
+                  href="https://developers.google.com/terms/api-services-user-data-policy"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gold underline hover:no-underline"
+                >
+                  Google API Services User Data Policy
+                </a>
+                , including the Limited Use requirements.
               </p>
 
               <h2 id="data-retention" className={SECTION}>
