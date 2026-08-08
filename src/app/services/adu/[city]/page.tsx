@@ -15,6 +15,11 @@ import {
   REGION_LABEL,
   type ADUCity,
 } from "@/lib/adu-cities";
+import { CITIES } from "@/config/cities";
+import {
+  getServiceCityProfile,
+  serviceCityLinks,
+} from "@/lib/service-city-pages";
 
 const CALENDLY_URL =
   "https://calendly.com/constructionstation-sales/free-adu-remodeling-consult";
@@ -80,6 +85,36 @@ const ADU_TYPES = [
     blurb:
       "Attached addition to the main home — adds a bedroom, kitchenette, and bath under one shared roof and foundation.",
     icon: "🏗️",
+  },
+];
+
+// General-contracting services rendered beneath the ADU content. The blurbs
+// stay on the same axis that makes these pages work — what triggers a permit
+// and how plan check runs — not generic service copy.
+const GENERAL_SERVICES = [
+  {
+    title: "Kitchen Remodeling",
+    href: "/services/kitchen-remodeling",
+    blurb:
+      "A permit is triggered the moment plumbing, gas, or electrical circuits move — which covers most full kitchen remodels. We draw the plans, run plan check, and build the permit fees into your fixed price.",
+  },
+  {
+    title: "Bathroom Remodeling",
+    href: "/services/bathroom-remodeling",
+    blurb:
+      "Tub-to-shower conversions, drain relocations, and new exhaust ventilation all require permits and inspections. We handle the submittal and every inspection through final sign-off.",
+  },
+  {
+    title: "Room Additions",
+    href: "/services/room-additions",
+    blurb:
+      "Additions get full structural plan review — foundation design, framing calcs, and Title 24 energy compliance. Our engineering is stamped before we bid final numbers, so plan check doesn't stall the schedule.",
+  },
+  {
+    title: "Windows & Doors",
+    href: "/services/windows-and-doors",
+    blurb:
+      "Retrofit windows need a permit and Title 24 U-factor compliance in every California city. We pull the permit, install to manufacturer spec, and schedule the final inspection.",
   },
 ];
 
@@ -173,6 +208,19 @@ export default async function ADUCityPage({
   const phone = contactPhone(city);
   const regionLabel = REGION_LABEL[city.regionKey];
 
+  // General-contracting content merged in from the former /areas/[city]
+  // pages: city-specific local context and remodeling FAQs where they exist,
+  // plus per-service city guides for the six expansion cities.
+  const areaCity = CITIES.find((c) => c.slug === city.slug);
+  const localContext = areaCity?.localContext ?? null;
+  const generalFaqs = areaCity?.faqs ?? [];
+  const serviceProfile = getServiceCityProfile(city.slug);
+  const cityServiceLinks = serviceProfile
+    ? serviceCityLinks(serviceProfile).filter(
+        (l) => l.href !== `/services/adu/${city.slug}`
+      )
+    : null;
+
   const localBusinessSchema = {
     "@context": "https://schema.org",
     "@type": "GeneralContractor",
@@ -196,7 +244,8 @@ export default async function ADUCityPage({
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    mainEntity: faqs.map((f) => ({
+    // One FAQPage per page: ADU FAQs plus the city's general remodeling FAQs.
+    mainEntity: [...faqs, ...generalFaqs].map((f) => ({
       "@type": "Question",
       name: f.q,
       acceptedAnswer: { "@type": "Answer", text: f.a },
@@ -549,6 +598,128 @@ export default async function ADUCityPage({
               </p>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* 8b. GENERAL CONTRACTING IN [CITY] — merged in from /areas/[city] */}
+      <section className="bg-cream py-20 lg:py-24">
+        <div className="max-w-7xl mx-auto px-5 lg:px-10">
+          <div className="text-center mb-12">
+            <div className="flex items-center justify-center gap-3 mb-4">
+              <span className="w-10 h-px bg-gold" />
+              <span className="text-gold text-xs uppercase tracking-[0.4em]">
+                Beyond the ADU
+              </span>
+              <span className="w-10 h-px bg-gold" />
+            </div>
+            <h2 className="font-display text-navy text-4xl md:text-5xl leading-[1]">
+              Full-service remodeling in{" "}
+              <span className="italic text-gold">{city.name}</span>.
+            </h2>
+            <p className="text-navy/70 mt-5 max-w-2xl mx-auto leading-relaxed">
+              The ADU rules above are only part of what we build in {city.name}.
+              The same crew handles kitchens, bathrooms, room additions, and
+              windows — permitted through the same building department.
+            </p>
+          </div>
+
+          {localContext && (
+            <div className="max-w-4xl mx-auto mb-12">
+              {localContext.map((p) => (
+                <p
+                  key={p.slice(0, 40)}
+                  className="text-navy/80 leading-[1.8] mb-5 last:mb-0"
+                >
+                  {p}
+                </p>
+              ))}
+            </div>
+          )}
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {GENERAL_SERVICES.map((s) => (
+              <Link
+                key={s.href}
+                href={s.href}
+                className="bg-white border border-navy/10 p-6 hover:border-gold transition-colors group"
+              >
+                <div className="flex items-start justify-between mb-3">
+                  <div className="font-display text-navy text-xl leading-tight">
+                    {s.title}
+                  </div>
+                  <span className="text-gold opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all">
+                    →
+                  </span>
+                </div>
+                <div className="text-navy/60 text-sm leading-relaxed">
+                  {s.blurb}
+                </div>
+              </Link>
+            ))}
+          </div>
+          <p className="mt-6 text-navy/60 text-sm text-center max-w-3xl mx-auto">
+            In {city.name}, residential permits run through the same counter we
+            work for ADU plan checks — {city.contact}.
+          </p>
+
+          {cityServiceLinks && (
+            <div className="mt-12">
+              <div className="text-center mb-8">
+                <div className="text-gold text-xs tracking-[0.3em] uppercase">
+                  {city.name} Service Guides
+                </div>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                {cityServiceLinks.map((l) => (
+                  <Link
+                    key={l.href}
+                    href={l.href}
+                    className="bg-white border border-navy/10 p-6 hover:border-gold transition-colors group"
+                  >
+                    <div className="flex items-start justify-between mb-3">
+                      <div className="font-display text-navy text-xl">
+                        {l.name} in {city.name}
+                      </div>
+                      <span className="text-gold opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all">
+                        →
+                      </span>
+                    </div>
+                    <div className="text-navy/60 text-sm">{l.description}</div>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {generalFaqs.length > 0 && (
+            <div className="mt-14 max-w-4xl mx-auto">
+              <div className="text-center mb-8">
+                <div className="text-gold text-xs tracking-[0.3em] uppercase">
+                  {city.name} Remodeling FAQ
+                </div>
+              </div>
+              <div className="border-t border-navy/10">
+                {generalFaqs.map((f) => (
+                  <details key={f.q} className="border-b border-navy/10 group">
+                    <summary className="cursor-pointer list-none flex items-center justify-between gap-6 py-6">
+                      <span className="font-display text-navy text-lg md:text-xl group-hover:text-gold transition-colors">
+                        {f.q}
+                      </span>
+                      <span
+                        aria-hidden
+                        className="shrink-0 w-9 h-9 border border-gold flex items-center justify-center text-gold group-open:rotate-45 transition-transform"
+                      >
+                        +
+                      </span>
+                    </summary>
+                    <div className="pb-6 pr-12 text-navy/75 leading-relaxed">
+                      {f.a}
+                    </div>
+                  </details>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
       </section>
 

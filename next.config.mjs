@@ -31,6 +31,41 @@ const ADU_CITY_SLUGS = [
   "yorba-linda",
 ];
 
+// City-page consolidation (Aug 2026): the thin /areas/[city] pages are merged
+// into the ranking /services/adu/[city] guides. Every removed URL 301s in a
+// single hop — either to its ADU counterpart, or (for the three cities with
+// no ADU guide) to the /areas service-area hub.
+const AREAS_TO_ADU_SLUGS = [
+  "redlands",
+  "yucaipa",
+  "loma-linda",
+  "san-bernardino",
+  "riverside",
+  "fontana",
+  "rancho-cucamonga",
+  "ontario",
+  "upland",
+  "chino",
+  "chino-hills",
+  "victorville",
+  "hesperia",
+  "apple-valley",
+  "highland",
+  "colton",
+  "moreno-valley",
+  "beaumont",
+  "calimesa",
+  "banning",
+  "norco",
+  "eastvale",
+  "perris",
+  "palm-springs",
+  "cathedral-city",
+  "palm-desert",
+];
+
+const AREAS_TO_HUB_SLUGS = ["claremont", "pomona", "corona"];
+
 const nextConfig = {
   images: {
     formats: ["image/avif", "image/webp"],
@@ -55,6 +90,19 @@ const nextConfig = {
       destination: `/services/adu/${slug}`,
       permanent: true,
     }));
+
+    const areasCityRedirects = [
+      ...AREAS_TO_ADU_SLUGS.map((slug) => ({
+        source: `/areas/${slug}`,
+        destination: `/services/adu/${slug}`,
+        permanent: true,
+      })),
+      ...AREAS_TO_HUB_SLUGS.map((slug) => ({
+        source: `/areas/${slug}`,
+        destination: "/areas",
+        permanent: true,
+      })),
+    ];
 
     const aduInfoRedirects = ["costs", "basics", "financing", "investment"].map(
       (slug) => ({
@@ -87,6 +135,7 @@ const nextConfig = {
       { source: "/room-additions", destination: "/services/room-additions", permanent: true },
       ...aduInfoRedirects,
       ...aduCityRedirects,
+      ...areasCityRedirects,
       { source: "/adu", destination: "/services/adu", permanent: true },
       { source: "/home-builders", destination: "/services/room-additions", permanent: true },
       { source: "/kitchen-bath-remodel", destination: "/services/kitchen-remodeling", permanent: true },

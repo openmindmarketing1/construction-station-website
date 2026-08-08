@@ -269,18 +269,18 @@ export default function ServiceCityPage({
         <div className="max-w-7xl mx-auto px-5 lg:px-10">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5 max-w-5xl mx-auto mb-10">
             <Link
-              href={`/areas/${city.slug}`}
+              href={`/services/adu/${city.slug}`}
               className="bg-cream border border-navy/10 p-6 hover:border-gold transition-colors"
             >
               <div className="text-gold text-xs uppercase tracking-[0.3em] mb-2">
-                Service Area
+                City Guide
               </div>
               <div className="font-display text-navy text-2xl">
                 Remodeling in {city.name}
               </div>
               <div className="text-navy/60 text-sm mt-1">
-                Everything Construction Station builds in {city.name} — the full
-                city guide.
+                Everything Construction Station builds in {city.name} — ADU
+                rules, permits, and the full city guide.
               </div>
             </Link>
             <Link

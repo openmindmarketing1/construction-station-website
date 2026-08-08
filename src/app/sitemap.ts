@@ -1,5 +1,4 @@
 import type { MetadataRoute } from "next";
-import { CITIES } from "@/config/cities";
 import { SERVICES } from "@/lib/constants";
 import { POSTS } from "@/lib/blog";
 import { ADU_CITIES } from "@/lib/adu-cities";
@@ -55,12 +54,16 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.7,
     }));
 
-  const cityRoutes: MetadataRoute.Sitemap = CITIES.map((c) => ({
-    url: `${SITE_URL}/areas/${c.slug}`,
-    lastModified: now,
-    changeFrequency: "monthly" as const,
-    priority: 0.7,
-  }));
+  // /areas/[city] pages were consolidated into /services/adu/[city] (Aug
+  // 2026); only the /areas hub survives in the sitemap.
+  const areasHubRoute: MetadataRoute.Sitemap = [
+    {
+      url: `${SITE_URL}/areas`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.7,
+    },
+  ];
 
   const aduCityRoutes: MetadataRoute.Sitemap = ADU_CITIES.map((c) => ({
     url: `${SITE_URL}/services/adu/${c.slug}`,
@@ -97,7 +100,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...serviceRoutes,
     ...blogRoutes,
     ...ommBlogRoutes,
-    ...cityRoutes,
+    ...areasHubRoute,
     ...aduCityRoutes,
     ...serviceCityRoutes,
     ...aduInfoRoutes,

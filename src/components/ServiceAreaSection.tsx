@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { CITIES } from "@/config/cities";
+import { cityPageHref } from "@/lib/city-links";
 
 export default function ServiceAreaSection() {
   return (
@@ -67,7 +68,7 @@ export default function ServiceAreaSection() {
                 }}
               >
                 <Link
-                  href={`/areas/${c.slug}`}
+                  href={cityPageHref(c.slug)}
                   className={`inline-block border border-navy/15 bg-white text-navy hover:bg-navy hover:text-gold hover:border-navy transition-all ${size}`}
                 >
                   {c.name}

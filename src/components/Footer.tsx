@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { CS, SERVICES, HOURS } from "@/lib/constants";
 import { CITIES } from "@/config/cities";
+import { cityPageHref } from "@/lib/city-links";
 
 export default function Footer() {
   return (
@@ -145,7 +146,7 @@ export default function Footer() {
               {CITIES.slice(0, 12).map((c) => (
                 <li key={c.slug}>
                   <Link
-                    href={`/areas/${c.slug}`}
+                    href={cityPageHref(c.slug)}
                     className="text-white/70 hover:text-gold text-sm transition-colors"
                   >
                     {c.name}

@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { CS, SERVICES, ADU_SUBMENU } from "@/lib/constants";
 import { CITIES } from "@/config/cities";
+import { cityPageHref } from "@/lib/city-links";
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -495,7 +496,7 @@ export default function Header() {
                     }}
                   >
                     <Link
-                      href={`/areas/${c.slug}`}
+                      href={cityPageHref(c.slug)}
                       onClick={() => setOpen(false)}
                       className="text-white/80 hover:text-gold text-base"
                     >
