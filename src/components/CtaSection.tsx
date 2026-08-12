@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { CS } from "@/lib/constants";
+import { vibeLead } from "@/lib/vibe";
 
 type Props = {
   heading: string;
@@ -38,6 +39,7 @@ export default function CtaSection({
         }),
       });
       if (!res.ok) throw new Error(`Request failed: ${res.status}`);
+      vibeLead();
       setSubmitted(true);
     } catch {
       setError("Something went wrong. Please call us at " + CS.phone);

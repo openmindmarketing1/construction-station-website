@@ -9,6 +9,7 @@ import ScrollToTop from "@/components/ScrollToTop";
 import FloatingCTA from "@/components/FloatingCTA";
 import SmoothScrollInit from "@/components/SmoothScrollInit";
 import JsonLd from "@/components/JsonLd";
+import VibeRouteTracker from "@/components/VibeRouteTracker";
 import { CS } from "@/lib/constants";
 
 const displayFont = DM_Serif_Display({
@@ -127,6 +128,18 @@ export default function RootLayout({
             fbq('track', 'PageView');
           `}
         </Script>
+        {/* Vibe CTV pixel — ID hardcoded on purpose: an unset NEXT_PUBLIC_ env
+            var silently drops the tag on deploy (how the GA4 tag went missing).
+            Client-side route changes are covered by <VibeRouteTracker />; the
+            lead event fires via vibeLead() (src/lib/vibe.ts) on confirmed
+            submit success in every lead form. */}
+        <Script id="vibe-pixel" strategy="afterInteractive">
+          {`
+            !function(v,i,b,e,c,o){if(!v[c]){var s=v[c]=function(){s.process?s.process.apply(s,arguments):s.queue.push(arguments)};s.queue=[],s.b=1*new Date;var t=i.createElement(b);t.async=!0,t.src=e;var n=i.getElementsByTagName(b)[0];n.parentNode.insertBefore(t,n)}}(window,document,"script","https://s.vibe.co/vbpx.js","vbpx");
+            vbpx('init','MuZz4z');
+            vbpx('event', 'page_view');
+          `}
+        </Script>
         <noscript>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
@@ -140,6 +153,7 @@ export default function RootLayout({
       </head>
       <body className="font-body bg-cream text-navy antialiased">
         <JsonLd data={organizationSchema} />
+        <VibeRouteTracker />
         <SmoothScrollInit />
         <Header />
         <main className="min-h-screen">{children}</main>
