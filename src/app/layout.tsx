@@ -9,6 +9,7 @@ import ScrollToTop from "@/components/ScrollToTop";
 import FloatingCTA from "@/components/FloatingCTA";
 import SmoothScrollInit from "@/components/SmoothScrollInit";
 import JsonLd from "@/components/JsonLd";
+import VibeRouteTracker from "@/components/VibeRouteTracker";
 import { CS } from "@/lib/constants";
 
 const displayFont = DM_Serif_Display({
@@ -127,6 +128,25 @@ export default function RootLayout({
             fbq('track', 'PageView');
           `}
         </Script>
+        {/* Vibe CTV pixel — ID hardcoded on purpose: an unset NEXT_PUBLIC_ env
+            var silently drops the tag on deploy (how the GA4 tag went missing).
+            Client-side route changes are covered by <VibeRouteTracker />.
+            TODO(vibe-lead): Greg is pulling the Lead snippet from Vibe's
+            "Additional events" tab. When it lands, fire it on CONFIRMED submit
+            success (after the fetch resolves ok, next to the fbq Lead calls) in:
+              - src/app/contact/page.tsx        (contact form, source "website")
+              - src/components/KitchenQuickForm.tsx
+              - src/components/FlooringQuickForm.tsx
+              - src/components/LeadMagnetCard.tsx
+              - src/components/CtaSection.tsx   (showForm variant)
+            No lead-confirmation page exists — forms show inline success. */}
+        <Script id="vibe-pixel" strategy="afterInteractive">
+          {`
+            !function(v,i,b,e,c,o){if(!v[c]){var s=v[c]=function(){s.process?s.process.apply(s,arguments):s.queue.push(arguments)};s.queue=[],s.b=1*new Date;var t=i.createElement(b);t.async=!0,t.src=e;var n=i.getElementsByTagName(b)[0];n.parentNode.insertBefore(t,n)}}(window,document,"script","https://s.vibe.co/vbpx.js","vbpx");
+            vbpx('init','MuZz4z');
+            vbpx('event', 'page_view');
+          `}
+        </Script>
         <noscript>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
@@ -140,6 +160,7 @@ export default function RootLayout({
       </head>
       <body className="font-body bg-cream text-navy antialiased">
         <JsonLd data={organizationSchema} />
+        <VibeRouteTracker />
         <SmoothScrollInit />
         <Header />
         <main className="min-h-screen">{children}</main>
