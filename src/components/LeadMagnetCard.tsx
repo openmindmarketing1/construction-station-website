@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { CS } from "@/lib/constants";
-import { vibeLead } from "@/lib/vibe";
 
 declare global {
   interface Window {
@@ -48,7 +47,11 @@ export default function LeadMagnetCard() {
       if (typeof window !== "undefined" && window.fbq) {
         window.fbq("track", "Lead", { content_name: "kitchen_cost_guide" });
       }
-      vibeLead();
+      // No Vibe lead here on purpose: a cost-guide download is far lower
+      // intent than an estimate request, and Vibe's algorithm optimises
+      // toward whatever fires 'lead'. Vibe supports no custom event names
+      // (page_view/lead/purchase only), so the download is deliberately
+      // excluded from Vibe rather than diluting the signal. Meta/GA4 keep it.
       setSubmitted(true);
     } catch {
       setError("Something went wrong. Please try again.");

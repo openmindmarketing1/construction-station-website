@@ -1,12 +1,14 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import useCalendlyVibeLead from "@/components/useCalendlyVibeLead";
 
 const CALENDLY_CSS = "https://assets.calendly.com/assets/external/widget.css";
 const CALENDLY_JS = "https://assets.calendly.com/assets/external/widget.js";
 
 export default function CalendlyWidget({ url }: { url: string }) {
   const loaded = useRef(false);
+  useCalendlyVibeLead();
 
   useEffect(() => {
     if (loaded.current) return;

@@ -132,7 +132,9 @@ export default function RootLayout({
             var silently drops the tag on deploy (how the GA4 tag went missing).
             Client-side route changes are covered by <VibeRouteTracker />; the
             lead event fires via vibeLead() (src/lib/vibe.ts) on confirmed
-            submit success in every lead form. */}
+            submit success in the estimate forms and on Calendly bookings
+            (useCalendlyVibeLead). The cost-guide download deliberately does
+            NOT fire it — see LeadMagnetCard. */}
         <Script id="vibe-pixel" strategy="afterInteractive">
           {`
             !function(v,i,b,e,c,o){if(!v[c]){var s=v[c]=function(){s.process?s.process.apply(s,arguments):s.queue.push(arguments)};s.queue=[],s.b=1*new Date;var t=i.createElement(b);t.async=!0,t.src=e;var n=i.getElementsByTagName(b)[0];n.parentNode.insertBefore(t,n)}}(window,document,"script","https://s.vibe.co/vbpx.js","vbpx");
