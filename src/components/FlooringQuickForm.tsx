@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { CS } from "@/lib/constants";
+import { vibeLead } from "@/lib/vibe";
 
 declare global {
   interface Window {
@@ -48,6 +49,7 @@ export default function FlooringQuickForm() {
       if (typeof window !== "undefined" && window.fbq) {
         window.fbq("track", "Lead", { content_name: "flooring_contact" });
       }
+      vibeLead();
       setSubmitted(true);
     } catch {
       setError(`Something went wrong. Please call us at ${CS.phone}.`);

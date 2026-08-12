@@ -2,12 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
-
-declare global {
-  interface Window {
-    vbpx?: (...args: unknown[]) => void;
-  }
-}
+import { vibePageView } from "@/lib/vibe";
 
 // The base Vibe snippet in the root layout fires page_view once when vbpx.js
 // loads. Next.js client-side routing never reloads that script, so this
@@ -26,7 +21,7 @@ export default function VibeRouteTracker() {
     }
     if (lastTracked.current === pathname) return;
     lastTracked.current = pathname;
-    window.vbpx?.("event", "page_view");
+    vibePageView();
   }, [pathname]);
 
   return null;

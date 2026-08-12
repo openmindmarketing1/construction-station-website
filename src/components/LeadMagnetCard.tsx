@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { CS } from "@/lib/constants";
+import { vibeLead } from "@/lib/vibe";
 
 declare global {
   interface Window {
@@ -47,6 +48,7 @@ export default function LeadMagnetCard() {
       if (typeof window !== "undefined" && window.fbq) {
         window.fbq("track", "Lead", { content_name: "kitchen_cost_guide" });
       }
+      vibeLead();
       setSubmitted(true);
     } catch {
       setError("Something went wrong. Please try again.");

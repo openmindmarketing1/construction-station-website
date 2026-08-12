@@ -130,16 +130,9 @@ export default function RootLayout({
         </Script>
         {/* Vibe CTV pixel — ID hardcoded on purpose: an unset NEXT_PUBLIC_ env
             var silently drops the tag on deploy (how the GA4 tag went missing).
-            Client-side route changes are covered by <VibeRouteTracker />.
-            TODO(vibe-lead): Greg is pulling the Lead snippet from Vibe's
-            "Additional events" tab. When it lands, fire it on CONFIRMED submit
-            success (after the fetch resolves ok, next to the fbq Lead calls) in:
-              - src/app/contact/page.tsx        (contact form, source "website")
-              - src/components/KitchenQuickForm.tsx
-              - src/components/FlooringQuickForm.tsx
-              - src/components/LeadMagnetCard.tsx
-              - src/components/CtaSection.tsx   (showForm variant)
-            No lead-confirmation page exists — forms show inline success. */}
+            Client-side route changes are covered by <VibeRouteTracker />; the
+            lead event fires via vibeLead() (src/lib/vibe.ts) on confirmed
+            submit success in every lead form. */}
         <Script id="vibe-pixel" strategy="afterInteractive">
           {`
             !function(v,i,b,e,c,o){if(!v[c]){var s=v[c]=function(){s.process?s.process.apply(s,arguments):s.queue.push(arguments)};s.queue=[],s.b=1*new Date;var t=i.createElement(b);t.async=!0,t.src=e;var n=i.getElementsByTagName(b)[0];n.parentNode.insertBefore(t,n)}}(window,document,"script","https://s.vibe.co/vbpx.js","vbpx");
