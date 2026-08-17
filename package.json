@@ -4,9 +4,10 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build && node scripts/site-standard-check.mjs",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "check:site-standard": "node scripts/site-standard-check.mjs"
   },
   "dependencies": {
     "@gsap/react": "^2.1.2",
