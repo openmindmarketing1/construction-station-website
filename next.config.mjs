@@ -131,6 +131,28 @@ const nextConfig = {
       { source: "/residential-services/bathroom-remodeling-in-yucaipa-ca", destination: "/services/bathroom-remodeling", permanent: true },
       { source: "/residential-services", destination: "/services/kitchen-remodeling", permanent: true },
       { source: "/commercial-services", destination: "/services/commercial", permanent: true },
+      // Old-platform service CHILDREN (GSC still sends impressions to these —
+      // /residential-services/patio-covers alone earned 1,581 in 90 days while
+      // 404ing). Explicit entries for every known child with impressions map to
+      // the real equivalent; the :slug* fallbacks BELOW catch the long tail.
+      // Order matters: Next.js takes the first matching redirect.
+      { source: "/residential-services/patio-covers", destination: "/services/outdoor-living", permanent: true },
+      { source: "/residential-services/outdoor-living", destination: "/services/outdoor-living", permanent: true },
+      { source: "/residential-services/room-additions", destination: "/services/room-additions", permanent: true },
+      { source: "/residential-services/flooring-installation", destination: "/services/flooring-installation-yucaipa-ca", permanent: true },
+      // Residential carpet retail lives with the sister brand (same rule as the
+      // existing bare /flooring redirect).
+      { source: "/residential-services/carpet-and-flooring", destination: "https://www.carpet-station.com", permanent: true },
+      { source: "/commercial-services/carpet-and-flooring", destination: "/services/commercial", permanent: true },
+      { source: "/commercial-services/buildouts-and-renovations", destination: "/services/commercial", permanent: true },
+      { source: "/commercial-services/tenant-improvements", destination: "/services/commercial", permanent: true },
+      // Family fallbacks LAST — unknown legacy children land on the homepage
+      // (there is no /services hub route; sending them to a 404 or to one
+      // arbitrary specific service would be worse). The bare-path sources
+      // above still win for /residential-services and /commercial-services
+      // themselves because they appear first.
+      { source: "/residential-services/:slug*", destination: "/", permanent: true },
+      { source: "/commercial-services/:slug*", destination: "/", permanent: true },
       { source: "/outdoor-living", destination: "/services/outdoor-living", permanent: true },
       { source: "/room-additions", destination: "/services/room-additions", permanent: true },
       ...aduInfoRedirects,
