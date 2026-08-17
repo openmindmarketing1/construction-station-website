@@ -44,7 +44,10 @@ export const metadata: Metadata = {
     "home renovation",
   ],
   authors: [{ name: "Construction Station" }],
-  alternates: { canonical: "/" },
+  // No root-level canonical: a layout-inherited canonical marks every page
+  // that forgets its own as a duplicate of the homepage (the exact defect the
+  // 2026-08-17 audit found on the OMM site). The homepage's self-canonical
+  // lives in app/page.tsx; every other route declares its own.
   openGraph: {
     type: "website",
     locale: "en_US",

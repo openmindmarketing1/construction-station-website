@@ -11,6 +11,13 @@ import JsonLd from "@/components/JsonLd";
 import { CS } from "@/lib/constants";
 import { CITIES } from "@/config/cities";
 
+import type { Metadata } from "next";
+
+// Self-canonical — the root layout deliberately sets none (see layout.tsx).
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+};
+
 const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL ?? "https://constructionstation.com";
 
