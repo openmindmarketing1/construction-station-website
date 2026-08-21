@@ -115,8 +115,14 @@ export default function ServiceCarousel() {
   }, []);
 
   useEffect(() => {
-    startTimer();
+    // Hold the first rotation for 12s (2026-08-21): rotating at 4s meant the
+    // hero repainted a freshly-scaled card image mid-measurement — every
+    // rotation minted a new, later LCP candidate and kept Speed Index
+    // climbing (PSI mobile LCP 3.5s+/SI 7s came from this, not load speed).
+    // Visitors also get a beat to read the headline before the hero moves.
+    const kickoff = setTimeout(startTimer, 12_000);
     return () => {
+      clearTimeout(kickoff);
       if (timerRef.current) clearInterval(timerRef.current);
     };
   }, [startTimer]);

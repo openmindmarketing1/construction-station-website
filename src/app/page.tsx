@@ -148,14 +148,14 @@ export default function Home() {
           <div className="text-center mb-10">
             <div className="flex items-center justify-center gap-3 mb-4">
               <span className="w-10 h-px bg-gold" />
-              <span className="text-gold text-xs uppercase tracking-[0.4em]">
+              <span className="text-gold-deep text-xs uppercase tracking-[0.4em]">
                 Serving Yucaipa Since 2008
               </span>
               <span className="w-10 h-px bg-gold" />
             </div>
             <h2 className="font-display text-navy text-3xl md:text-4xl leading-[1]">
               Local expertise in{" "}
-              <span className="italic text-gold">Yucaipa &amp; the Inland Empire</span>.
+              <span className="italic text-gold-dark">Yucaipa &amp; the Inland Empire</span>.
             </h2>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-5xl mx-auto">

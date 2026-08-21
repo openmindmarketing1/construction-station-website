@@ -182,9 +182,13 @@ export default function RootLayout({
         <ScrollToTop />
         <FloatingCTA />
         <SpeedInsights />
+        {/* data-offset-bottom lifts the widget above the mobile FloatingCTA
+            bar (a11y target-size: the card was partially covering the Free
+            Estimate link). */}
         <Script
           src="https://www.openmindmarketing.ai/widget/chat.js"
           data-business-id="1"
+          data-offset-bottom="72"
           strategy="lazyOnload"
         />
       </body>
