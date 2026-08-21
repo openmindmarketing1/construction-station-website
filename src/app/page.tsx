@@ -1,12 +1,16 @@
 import Link from "next/link";
 import ServiceCarousel from "@/components/ServiceCarousel";
 import ServicesGrid from "@/components/ServicesGrid";
-import BeforeAfterSlider from "@/components/BeforeAfterSlider";
 import WhyChooseUs from "@/components/WhyChooseUs";
 import ServiceAreaSection from "@/components/ServiceAreaSection";
 import ReviewsSection from "@/components/ReviewsSection";
 import RecentPosts from "@/components/RecentPosts";
+import dynamic from "next/dynamic";
 import CtaSection from "@/components/CtaSection";
+
+// Below-fold interactive section — code-split so its chunk + hydration land
+// after the hero's LCP window instead of inside it (2026-08-21).
+const BeforeAfterSlider = dynamic(() => import("@/components/BeforeAfterSlider"));
 import JsonLd from "@/components/JsonLd";
 import { CS } from "@/lib/constants";
 import { CITIES } from "@/config/cities";

@@ -41,9 +41,21 @@ export default function SmoothScrollInit() {
       lenis.on("scroll", ScrollTrigger.update);
     }
 
-    init();
+    // Idle-defer (2026-08-21): initializing right after hydration put the
+    // gsap+lenis dynamic imports inside the LCP window on slow devices.
+    // Smooth scroll only matters once the user scrolls, so wait for idle
+    // (or 4s, whichever first).
+    let idleId: number | null = null;
+    let timeoutId: ReturnType<typeof setTimeout> | null = null;
+    if (typeof requestIdleCallback === "function") {
+      idleId = requestIdleCallback(() => init(), { timeout: 4000 });
+    } else {
+      timeoutId = setTimeout(init, 2500);
+    }
 
     return () => {
+      if (idleId !== null && typeof cancelIdleCallback === "function") cancelIdleCallback(idleId);
+      if (timeoutId !== null) clearTimeout(timeoutId);
       disposed = true;
       if (tickerFn && gsapRef) gsapRef.ticker.remove(tickerFn);
       lenisRef?.destroy();
