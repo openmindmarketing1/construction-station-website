@@ -47,7 +47,6 @@ export default function Header() {
                 className={`w-[120px] sm:w-[180px] h-auto ${
                   isLight ? "" : "brightness-0 invert"
                 }`}
-                priority
               />
             </Link>
 
@@ -285,7 +284,6 @@ export default function Header() {
                   width={220}
                   height={60}
                   className="w-[120px] sm:w-[180px] h-auto brightness-0 invert"
-                  priority
                 />
               </Link>
               <button
