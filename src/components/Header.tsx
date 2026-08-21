@@ -3,7 +3,6 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import { CS, SERVICES, ADU_SUBMENU } from "@/lib/constants";
 import { CITIES } from "@/config/cities";
 import { cityPageHref } from "@/lib/city-links";
@@ -32,7 +31,7 @@ export default function Header() {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-500 ${
           isLight ? "bg-white/95 backdrop-blur-md shadow-sm" : "bg-transparent"
         }`}
       >
@@ -45,7 +44,7 @@ export default function Header() {
                 alt="Construction Station"
                 width={220}
                 height={60}
-                className={`w-[120px] sm:w-[180px] h-auto transition-all duration-300 ${
+                className={`w-[120px] sm:w-[180px] h-auto ${
                   isLight ? "" : "brightness-0 invert"
                 }`}
                 priority
@@ -73,15 +72,8 @@ export default function Header() {
                     <path d="M2 4l4 4 4-4z" />
                   </svg>
                 </button>
-                <AnimatePresence>
-                  {servicesOpen && (
-                    <motion.div
-                      initial={{ opacity: 0, y: 8 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: 8 }}
-                      transition={{ duration: 0.18 }}
-                      className="absolute left-0 top-full pt-3 w-80"
-                    >
+                {servicesOpen && (
+                  <div className="absolute left-0 top-full pt-3 w-80 menu-drop-in">
                       <div className="bg-white border border-navy/10 shadow-xl py-2">
                         {services.map((s) =>
                           s.slug === "adu" ? (
@@ -108,15 +100,8 @@ export default function Header() {
                                   <path d="M4 2l4 4-4 4z" />
                                 </svg>
                               </Link>
-                              <AnimatePresence initial={false}>
-                                {aduOpen && (
-                                  <motion.div
-                                    initial={{ height: 0, opacity: 0 }}
-                                    animate={{ height: "auto", opacity: 1 }}
-                                    exit={{ height: 0, opacity: 0 }}
-                                    transition={{ duration: 0.2 }}
-                                    className="overflow-hidden bg-cream/40"
-                                  >
+                              <div className={`disclosure bg-cream/40 ${aduOpen ? "disclosure-open" : ""}`}>
+                                <div>
                                     {ADU_SUBMENU.map((item) => (
                                       <Link
                                         key={item.href}
@@ -133,9 +118,8 @@ export default function Header() {
                                         )}
                                       </Link>
                                     ))}
-                                  </motion.div>
-                                )}
-                              </AnimatePresence>
+                                </div>
+                              </div>
                             </div>
                           ) : (
                             <Link
@@ -168,10 +152,9 @@ export default function Header() {
                             </div>
                           </div>
                         </Link>
-                      </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
+                    </div>
+                  </div>
+                )}
               </div>
 
               <Link
@@ -292,15 +275,8 @@ export default function Header() {
       </header>
 
       {/* Mobile overlay */}
-      <AnimatePresence>
-        {open && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.25 }}
-            className="fixed inset-0 z-[60] bg-navy texture-navy lg:hidden"
-          >
+      {open && (
+        <div className="fixed inset-0 z-[60] bg-navy texture-navy lg:hidden menu-overlay-in">
             <div className="flex items-center justify-between px-5 h-20">
               <Link href="/" onClick={() => setOpen(false)}>
                 <Image
@@ -326,34 +302,14 @@ export default function Header() {
                 </svg>
               </button>
             </div>
-            <motion.div
-              initial="hidden"
-              animate="show"
-              variants={{
-                hidden: {},
-                show: { transition: { staggerChildren: 0.06 } },
-              }}
-              className="px-6 pt-6 pb-12 overflow-y-auto h-[calc(100dvh-5rem)]"
-            >
+            <div className="px-6 pt-6 pb-12 overflow-y-auto h-[calc(100dvh-5rem)]">
               {/* Services */}
-              <motion.div
-                variants={{
-                  hidden: { opacity: 0, x: -20 },
-                  show: { opacity: 1, x: 0 },
-                }}
-                className="text-gold text-xs tracking-[0.3em] uppercase mb-3"
-              >
+              <div className="menu-item-in text-gold text-xs tracking-[0.3em] uppercase mb-3">
                 Services
-              </motion.div>
+              </div>
               {services.map((s) =>
                 s.slug === "adu" ? (
-                  <motion.div
-                    key={s.slug}
-                    variants={{
-                      hidden: { opacity: 0, x: -20 },
-                      show: { opacity: 1, x: 0 },
-                    }}
-                  >
+                  <div key={s.slug} className="menu-item-in">
                     <button
                       onClick={() => setAduMobileOpen((v) => !v)}
                       aria-expanded={aduMobileOpen}
@@ -370,15 +326,8 @@ export default function Header() {
                         <path d="M2 4l4 4 4-4z" />
                       </svg>
                     </button>
-                    <AnimatePresence initial={false}>
-                      {aduMobileOpen && (
-                        <motion.div
-                          initial={{ height: 0, opacity: 0 }}
-                          animate={{ height: "auto", opacity: 1 }}
-                          exit={{ height: 0, opacity: 0 }}
-                          transition={{ duration: 0.25 }}
-                          className="overflow-hidden"
-                        >
+                    <div className={`disclosure ${aduMobileOpen ? "disclosure-open" : ""}`}>
+                      <div>
                           {ADU_SUBMENU.map((item) => (
                             <Link
                               key={item.href}
@@ -394,18 +343,11 @@ export default function Header() {
                               )}
                             </Link>
                           ))}
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
-                  </motion.div>
+                      </div>
+                    </div>
+                  </div>
                 ) : (
-                  <motion.div
-                    key={s.slug}
-                    variants={{
-                      hidden: { opacity: 0, x: -20 },
-                      show: { opacity: 1, x: 0 },
-                    }}
-                  >
+                  <div key={s.slug} className="menu-item-in">
                     <Link
                       href={`/services/${s.slug}`}
                       onClick={() => setOpen(false)}
@@ -413,26 +355,15 @@ export default function Header() {
                     >
                       {s.name}
                     </Link>
-                  </motion.div>
+                  </div>
                 )
               )}
 
               {/* Flooring */}
-              <motion.div
-                variants={{
-                  hidden: { opacity: 0, x: -20 },
-                  show: { opacity: 1, x: 0 },
-                }}
-                className="text-gold text-xs tracking-[0.3em] uppercase mt-8 mb-3"
-              >
+              <div className="menu-item-in text-gold text-xs tracking-[0.3em] uppercase mt-8 mb-3">
                 Flooring
-              </motion.div>
-              <motion.div
-                variants={{
-                  hidden: { opacity: 0, x: -20 },
-                  show: { opacity: 1, x: 0 },
-                }}
-              >
+              </div>
+              <div className="menu-item-in">
                 <Link
                   href="/services/flooring-installation-yucaipa-ca"
                   onClick={() => setOpen(false)}
@@ -440,17 +371,11 @@ export default function Header() {
                 >
                   Flooring Installation
                 </Link>
-              </motion.div>
+              </div>
 
-              <motion.div
-                variants={{
-                  hidden: { opacity: 0, x: -20 },
-                  show: { opacity: 1, x: 0 },
-                }}
-                className="text-gold text-xs tracking-[0.3em] uppercase mt-8 mb-3"
-              >
+              <div className="menu-item-in text-gold text-xs tracking-[0.3em] uppercase mt-8 mb-3">
                 Explore
-              </motion.div>
+              </div>
               {[
                 { href: "/projects", label: "Our Work" },
                 { href: "/about", label: "About" },
@@ -460,13 +385,7 @@ export default function Header() {
                 { href: "/faq", label: "FAQ" },
                 { href: "/contact", label: "Contact Us" },
               ].map(({ href, label }) => (
-                <motion.div
-                  key={href}
-                  variants={{
-                    hidden: { opacity: 0, x: -20 },
-                    show: { opacity: 1, x: 0 },
-                  }}
-                >
+                <div key={href} className="menu-item-in">
                   <Link
                     href={href}
                     onClick={() => setOpen(false)}
@@ -474,27 +393,15 @@ export default function Header() {
                   >
                     {label}
                   </Link>
-                </motion.div>
+                </div>
               ))}
 
-              <motion.div
-                variants={{
-                  hidden: { opacity: 0, x: -20 },
-                  show: { opacity: 1, x: 0 },
-                }}
-                className="text-gold text-xs tracking-[0.3em] uppercase mt-8 mb-3"
-              >
+              <div className="menu-item-in text-gold text-xs tracking-[0.3em] uppercase mt-8 mb-3">
                 Areas We Serve
-              </motion.div>
+              </div>
               <div className="grid grid-cols-2 gap-y-2">
                 {CITIES.slice(0, 10).map((c) => (
-                  <motion.div
-                    key={c.slug}
-                    variants={{
-                      hidden: { opacity: 0, x: -20 },
-                      show: { opacity: 1, x: 0 },
-                    }}
-                  >
+                  <div key={c.slug} className="menu-item-in">
                     <Link
                       href={cityPageHref(c.slug)}
                       onClick={() => setOpen(false)}
@@ -502,17 +409,11 @@ export default function Header() {
                     >
                       {c.name}
                     </Link>
-                  </motion.div>
+                  </div>
                 ))}
               </div>
 
-              <motion.div
-                variants={{
-                  hidden: { opacity: 0 },
-                  show: { opacity: 1 },
-                }}
-                className="mt-10 flex flex-col gap-3"
-              >
+              <div className="menu-item-in mt-10 flex flex-col gap-3">
                 <a
                   href={CS.phoneHref}
                   className="border border-gold text-gold text-center py-4 font-body uppercase tracking-wider"
@@ -526,11 +427,10 @@ export default function Header() {
                 >
                   Free Estimate
                 </Link>
-              </motion.div>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+              </div>
+            </div>
+        </div>
+      )}
     </>
   );
 }

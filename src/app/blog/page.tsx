@@ -114,6 +114,8 @@ export default async function BlogIndexPage() {
                       <img
                         src={post.image}
                         alt={post.imageAlt}
+                        loading="lazy"
+                        decoding="async"
                         className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                       />
                     )
@@ -131,7 +133,7 @@ export default async function BlogIndexPage() {
                   )}
                 </Link>
                 <div className="p-6 flex flex-col flex-1">
-                  <div className="text-navy/40 text-xs mb-2">
+                  <div className="text-navy/70 text-xs mb-2">
                     {formatDate(post.date)}
                   </div>
                   <h2 className="font-display text-navy text-xl lg:text-2xl leading-tight mb-3 group-hover:text-gold transition-colors">
@@ -144,7 +146,7 @@ export default async function BlogIndexPage() {
                   )}
                   <Link
                     href={`/blog/${post.slug}`}
-                    className="flex items-center gap-2 text-gold text-xs uppercase tracking-[0.3em] mt-auto group-hover:gap-3 transition-all"
+                    className="flex items-center gap-2 text-gold-deep text-xs uppercase tracking-[0.3em] mt-auto group-hover:gap-3 transition-all"
                   >
                     Read Article
                     <span className="w-6 h-px bg-gold group-hover:w-10 transition-all" />

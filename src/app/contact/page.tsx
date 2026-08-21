@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import dynamic from "next/dynamic";
-import { motion } from "framer-motion";
+import Reveal from "@/components/Reveal";
 import { CS, HOURS, SERVICES } from "@/lib/constants";
 import { vibeLead } from "@/lib/vibe";
 
@@ -114,14 +114,12 @@ export default function ContactPage() {
               Begin Your Project
             </span>
           </div>
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7 }}
+          <Reveal
+            as="h1"
             className="font-display text-5xl md:text-6xl lg:text-7xl leading-[1] mb-5"
           >
             Get your <span className="italic text-gold">free</span> estimate.
-          </motion.h1>
+          </Reveal>
           <p className="text-white/75 max-w-xl text-base md:text-lg">
             No obligation. Our design consultations are normally $299 — free
             for new clients. We&rsquo;ll respond within 2 business hours.

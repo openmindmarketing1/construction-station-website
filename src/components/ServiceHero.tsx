@@ -1,7 +1,5 @@
-"use client";
-
 import Link from "next/link";
-import { motion } from "framer-motion";
+import Reveal from "@/components/Reveal";
 import { CS } from "@/lib/constants";
 
 type Props = {
@@ -48,12 +46,7 @@ export default function ServiceHero({
       </div>
 
       <div className="relative max-w-7xl mx-auto px-5 lg:px-10">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7 }}
-          className="max-w-4xl"
-        >
+        <Reveal className="max-w-4xl">
           <div className="text-gold text-xs tracking-[0.4em] uppercase mb-5 md:hidden">
             {eyebrow}
           </div>
@@ -77,7 +70,7 @@ export default function ServiceHero({
               Call {CS.phone}
             </a>
           </div>
-        </motion.div>
+        </Reveal>
       </div>
     </section>
   );

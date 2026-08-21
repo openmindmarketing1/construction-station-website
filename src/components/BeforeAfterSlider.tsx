@@ -2,7 +2,7 @@
 
 import { useRef, useState, useEffect, useCallback } from "react";
 import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
+import Reveal from "@/components/Reveal";
 
 const SLIDES = [
   {
@@ -125,13 +125,11 @@ function DragSlider({ slide }: { slide: Slide }) {
 
 export default function BeforeAfterSlider() {
   const [current, setCurrent] = useState(0);
-  const [dir, setDir] = useState(1);
   const total = SLIDES.length;
 
   const go = useCallback((next: number) => {
-    setDir(next > current ? 1 : -1);
     setCurrent((next + total) % total);
-  }, [current, total]);
+  }, [total]);
 
   // Auto-rotate every 7 s
   useEffect(() => {
@@ -145,76 +143,47 @@ export default function BeforeAfterSlider() {
     <section id="work" className="bg-white py-24 lg:py-32 relative">
       <div className="max-w-7xl mx-auto px-5 lg:px-10">
         {/* Section header */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
+<Reveal className="text-center mb-16">
           <div className="flex items-center justify-center gap-3 mb-4">
             <span className="w-10 h-px bg-gold" />
-            <span className="text-gold text-xs uppercase tracking-[0.4em]">Recent Work</span>
+            <span className="text-gold-deep text-xs uppercase tracking-[0.4em]">Recent Work</span>
             <span className="w-10 h-px bg-gold" />
           </div>
           <h2 className="font-display text-navy text-5xl md:text-6xl lg:text-7xl leading-[1] max-w-3xl mx-auto">
-            Before. <span className="italic text-gold">After.</span>
+            Before. <span className="italic text-gold-dark">After.</span>
             <br />
             Always intentional.
           </h2>
-        </motion.div>
+        </Reveal>
 
         {/* Carousel */}
         <div className="relative">
           {/* Slide meta */}
-          <AnimatePresence mode="wait" initial={false}>
-            <motion.div
-              key={slide.title + "-meta"}
-              initial={{ opacity: 0, x: dir * 40 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: dir * -40 }}
-              transition={{ duration: 0.35 }}
-              className="flex items-end justify-between mb-4 gap-4"
-            >
+          <div
+            key={slide.title + "-meta"}
+            className="fade-slide-in flex items-end justify-between mb-4 gap-4"
+          >
               <div>
-                <div className="text-gold text-xs tracking-[0.3em] uppercase mb-1">
+                <div className="text-gold-deep text-xs tracking-[0.3em] uppercase mb-1">
                   Project {String(current + 1).padStart(2, "0")} · {slide.year}
                 </div>
                 <h3 className="font-display text-navy text-2xl md:text-3xl">{slide.title}</h3>
-                <div className="text-navy/60 text-sm">{slide.location}</div>
+                <div className="text-navy/70 text-sm">{slide.location}</div>
               </div>
-              <div className="hidden md:block text-navy/50 text-xs italic max-w-xs text-right">
+              <div className="hidden md:block text-navy/70 text-xs italic max-w-xs text-right">
                 Drag to reveal — before / after
               </div>
-            </motion.div>
-          </AnimatePresence>
+          </div>
 
           {/* The drag-compare image */}
-          <AnimatePresence mode="wait" initial={false}>
-            <motion.div
-              key={slide.title}
-              initial={{ opacity: 0, x: dir * 60 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: dir * -60 }}
-              transition={{ duration: 0.4, ease: "easeInOut" }}
-            >
-              <DragSlider slide={slide} />
-            </motion.div>
-          </AnimatePresence>
+          <div key={slide.title} className="fade-slide-in">
+            <DragSlider slide={slide} />
+          </div>
 
           {/* Description */}
-          <AnimatePresence mode="wait" initial={false}>
-            <motion.p
-              key={slide.title + "-desc"}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.3 }}
-              className="text-navy/70 text-sm mt-4 max-w-2xl"
-            >
-              {slide.description}
-            </motion.p>
-          </AnimatePresence>
+          <p key={slide.title + "-desc"} className="fade-slide-in text-navy/70 text-sm mt-4 max-w-2xl">
+            {slide.description}
+          </p>
 
           {/* Navigation row */}
           <div className="flex items-center justify-between mt-8">

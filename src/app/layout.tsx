@@ -103,10 +103,21 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${displayFont.variable} ${bodyFont.variable}`}>
       <head>
-        {/* Google tag (gtag.js) — GA4 + Google Ads */}
+        {/* html.js gate for the CSS scroll reveals (Reveal.tsx) — runs before
+            paint so content never flashes visible-then-hidden; without JS the
+            class is absent and everything stays visible. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: "document.documentElement.classList.add('js')",
+          }}
+        />
+        {/* Google tag (gtag.js) — GA4 + Google Ads. lazyOnload (2026-08-21):
+            gtag was 230ms+ of main-thread work inside the Lighthouse TBT
+            window on throttled mobile; loading after window.load keeps the
+            pageview + Ads config intact while freeing first-load. */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-CG9QRL26H7"
-          strategy="afterInteractive"
+          strategy="lazyOnload"
         />
         <Script id="google-gtag" strategy="afterInteractive">
           {`
@@ -138,13 +149,18 @@ export default function RootLayout({
             submit success in the estimate forms and on Calendly bookings
             (useCalendlyVibeLead). The cost-guide download deliberately does
             NOT fire it — see LeadMagnetCard. */}
+        {/* Split for PageSpeed (2026-08-21): the tiny stub+queue runs early so
+            no vbpx() call is ever lost; the remote vbpx.js (which replays the
+            queue via s.process) loads after window.load, out of the TBT
+            window. */}
         <Script id="vibe-pixel" strategy="afterInteractive">
           {`
-            !function(v,i,b,e,c,o){if(!v[c]){var s=v[c]=function(){s.process?s.process.apply(s,arguments):s.queue.push(arguments)};s.queue=[],s.b=1*new Date;var t=i.createElement(b);t.async=!0,t.src=e;var n=i.getElementsByTagName(b)[0];n.parentNode.insertBefore(t,n)}}(window,document,"script","https://s.vibe.co/vbpx.js","vbpx");
+            !function(v,c){if(!v[c]){var s=v[c]=function(){s.process?s.process.apply(s,arguments):s.queue.push(arguments)};s.queue=[],s.b=1*new Date}}(window,"vbpx");
             vbpx('init','MuZz4z');
             vbpx('event', 'page_view');
           `}
         </Script>
+        <Script src="https://s.vibe.co/vbpx.js" strategy="lazyOnload" />
         <noscript>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img

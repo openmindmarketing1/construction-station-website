@@ -189,7 +189,7 @@ export default function Home() {
                 <div className="font-display text-navy text-base leading-tight group-hover:text-gold transition-colors mb-1">
                   {item.label}
                 </div>
-                <div className="text-navy/55 text-xs leading-relaxed">{item.note}</div>
+                <div className="text-navy/70 text-xs leading-relaxed">{item.note}</div>
               </Link>
             ))}
           </div>

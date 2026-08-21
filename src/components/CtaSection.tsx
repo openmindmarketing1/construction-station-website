@@ -1,7 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { useState } from "react";
+import Reveal from "@/components/Reveal";
 import { CS } from "@/lib/constants";
 import { vibeLead } from "@/lib/vibe";
 
@@ -67,12 +67,7 @@ export default function CtaSection({
       <div className="relative max-w-7xl mx-auto px-5 lg:px-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
           <div className={showForm ? "lg:col-span-7" : "lg:col-span-12 text-center max-w-4xl mx-auto"}>
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-            >
+            <Reveal>
               <div className={`flex items-center gap-3 mb-5 ${showForm ? "" : "justify-center"}`}>
                 <span className="w-10 h-px bg-gold" />
                 <span className="text-gold text-xs uppercase tracking-[0.4em]">
@@ -105,17 +100,11 @@ export default function CtaSection({
                   </a>
                 </div>
               )}
-            </motion.div>
+            </Reveal>
           </div>
 
           {showForm && (
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.15 }}
-              className="lg:col-span-5"
-            >
+            <Reveal from="right" delay={150} className="lg:col-span-5">
               <div className="bg-white text-navy p-8 lg:p-10 relative">
                 <div className="absolute -top-3 left-8 bg-gold px-3 py-1 text-navy text-[10px] tracking-[0.3em] uppercase font-semibold">
                   Free Estimate
@@ -176,7 +165,7 @@ export default function CtaSection({
                   </div>
                 )}
               </div>
-            </motion.div>
+            </Reveal>
           )}
         </div>
       </div>

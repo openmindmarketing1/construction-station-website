@@ -241,12 +241,18 @@ export default function ServiceCarousel() {
               >
                 <div
                   className="relative w-full h-full overflow-hidden shadow-2xl"
-                  style={{
-                    filter: `brightness(${brightness})`,
-                    transition: "filter 0.75s ease",
-                    borderRadius: "2px",
-                  }}
+                  style={{ borderRadius: "2px" }}
                 >
+                  {/* Dimmer overlay instead of a filter transition — opacity
+                      composites on the GPU; animating filter forced repaints
+                      every carousel rotation (PSI non-composited-animations). */}
+                  <div
+                    className="pointer-events-none absolute inset-0 z-10 bg-black"
+                    style={{
+                      opacity: 1 - brightness,
+                      transition: "opacity 0.75s ease",
+                    }}
+                  />
                   <Image
                     src={svc.image}
                     alt={svc.name}
@@ -276,9 +282,12 @@ export default function ServiceCarousel() {
                     >
                       {String(i + 1).padStart(2, "0")} / {String(COUNT).padStart(2, "0")}
                     </p>
-                    <h3 className="font-display text-white text-2xl font-bold leading-tight">
+                    {/* p, not a heading: these card labels sit between the
+                        hero h1 and the first section h2 and were breaking
+                        sequential heading order (a11y audit). */}
+                    <p className="font-display text-white text-2xl font-bold leading-tight">
                       {svc.name}
-                    </h3>
+                    </p>
                     <p className="font-body text-white/70 text-sm mt-1">
                       {svc.tagline}
                     </p>
@@ -331,20 +340,25 @@ export default function ServiceCarousel() {
         </button>
       </div>
 
-      {/* Dot indicators */}
-      <div className="relative z-10 flex items-center justify-center gap-2 pt-2 pb-5">
+      {/* Dot indicators — the visible dot sits inside a >=24px tap target
+          (WCAG 2.5.8; these were 7x5px buttons and failed the audit). */}
+      <div className="relative z-10 flex items-center justify-center pt-2 pb-5">
         {SERVICES.map((svc, i) => (
           <button
             key={svc.name}
             onClick={() => navigate(i)}
             aria-label={`Go to ${svc.name}`}
-            className="h-[5px] rounded-full transition-all duration-300"
-            style={{
-              width: i === active ? "22px" : "7px",
-              backgroundColor:
-                i === active ? AMBER : "rgba(255,255,255,0.28)",
-            }}
-          />
+            className="flex h-6 min-w-6 items-center justify-center px-1"
+          >
+            <span
+              className="block h-[5px] rounded-full transition-[width,background-color] duration-300"
+              style={{
+                width: i === active ? "22px" : "7px",
+                backgroundColor:
+                  i === active ? AMBER : "rgba(255,255,255,0.28)",
+              }}
+            />
+          </button>
         ))}
       </div>
 

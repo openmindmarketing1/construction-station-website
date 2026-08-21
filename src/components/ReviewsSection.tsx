@@ -1,6 +1,4 @@
-"use client";
-
-import { motion } from "framer-motion";
+import Reveal from "@/components/Reveal";
 import { REVIEWS } from "@/lib/constants";
 
 function Stars({ count = 5 }: { count?: number }) {
@@ -32,13 +30,7 @@ export default function ReviewsSection() {
 
       <div className="max-w-7xl mx-auto px-5 lg:px-10 relative">
         {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-14"
-        >
+        <Reveal className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-14">
           <div>
             <div className="flex items-center gap-3 mb-4">
               <span className="w-10 h-px bg-gold" />
@@ -87,16 +79,10 @@ export default function ReviewsSection() {
               <span className="text-white/80 text-sm">Verified on Google</span>
             </div>
           </div>
-        </motion.div>
+        </Reveal>
 
         {/* Featured pull quote */}
-        <motion.div
-          initial={{ opacity: 0, x: -40 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
-          className="mb-16 lg:mb-20 grid grid-cols-12 gap-6"
-        >
+        <Reveal from="left" className="mb-16 lg:mb-20 grid grid-cols-12 gap-6">
           <div className="col-span-12 lg:col-span-2 lg:flex justify-end items-start hidden">
             <div className="font-display text-gold text-[8rem] leading-none -mt-6">
               “
@@ -121,17 +107,15 @@ export default function ReviewsSection() {
               </div>
             </div>
           </div>
-        </motion.div>
+        </Reveal>
 
         {/* Three smaller reviews */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {rest.map((r, i) => (
-            <motion.div
+            <Reveal
               key={r.name}
-              initial={{ opacity: 0, x: i % 2 === 0 ? -30 : 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: i * 0.1 }}
+              from={i % 2 === 0 ? "left" : "right"}
+              delay={i * 100}
               className="bg-white/5 border-l-2 border-gold p-6 hover:bg-white/10 transition-colors"
             >
               <Stars count={r.stars} />
@@ -149,7 +133,7 @@ export default function ReviewsSection() {
                   Google
                 </div>
               </div>
-            </motion.div>
+            </Reveal>
           ))}
         </div>
       </div>

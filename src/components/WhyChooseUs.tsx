@@ -1,6 +1,4 @@
-"use client";
-
-import { motion } from "framer-motion";
+import Reveal from "@/components/Reveal";
 
 const ITEMS = [
   {
@@ -39,16 +37,10 @@ export default function WhyChooseUs() {
       <div className="absolute left-1/2 top-0 w-px h-24 bg-gradient-to-b from-gold to-transparent" />
 
       <div className="max-w-7xl mx-auto px-5 lg:px-10">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="max-w-2xl mb-20"
-        >
+        <Reveal className="max-w-2xl mb-20">
           <div className="flex items-center gap-3 mb-4">
             <span className="w-10 h-px bg-gold" />
-            <span className="text-gold text-xs uppercase tracking-[0.4em]">
+            <span className="text-gold-deep text-xs uppercase tracking-[0.4em]">
               Why Construction Station
             </span>
           </div>
@@ -57,18 +49,15 @@ export default function WhyChooseUs() {
             <br />
             <span className="italic">stay</span> with us.
           </h2>
-        </motion.div>
+        </Reveal>
 
         <div className="space-y-20 lg:space-y-32">
           {ITEMS.map((item, i) => {
             const isReversed = i % 2 === 1;
             return (
-              <motion.div
+              <Reveal
                 key={item.n}
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-80px" }}
-                transition={{ duration: 0.7 }}
+                margin="-80px"
                 className={`grid grid-cols-12 gap-6 items-center ${
                   isReversed ? "lg:[direction:rtl]" : ""
                 }`}
@@ -91,7 +80,7 @@ export default function WhyChooseUs() {
                     isReversed ? "lg:[direction:ltr]" : ""
                   }`}
                 >
-                  <div className="text-gold text-xs tracking-[0.3em] uppercase mb-3">
+                  <div className="text-gold-deep text-xs tracking-[0.3em] uppercase mb-3">
                     {item.pull}
                   </div>
                   <h3 className="font-display text-navy text-3xl md:text-4xl lg:text-5xl mb-5 leading-tight">
@@ -101,7 +90,7 @@ export default function WhyChooseUs() {
                     {item.body}
                   </p>
                 </div>
-              </motion.div>
+              </Reveal>
             );
           })}
         </div>

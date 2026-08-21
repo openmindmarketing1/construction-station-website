@@ -69,6 +69,11 @@ const AREAS_TO_HUB_SLUGS = ["claremont", "pomona", "corona"];
 const nextConfig = {
   images: {
     formats: ["image/avif", "image/webp"],
+    // Optimized-image responses default to max-age=60, which PageSpeed flags
+    // as short-lived cache (161 KiB). Source images are versioned (v3 file
+    // names), so a year-long immutable cache is safe — replacing a photo
+    // means uploading under a new name.
+    minimumCacheTTL: 31536000,
     // Supabase public storage host — serves the ADU 3D renderings/plan images.
     remotePatterns: [
       {

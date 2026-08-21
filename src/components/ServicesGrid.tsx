@@ -1,8 +1,6 @@
-"use client";
-
 import Link from "next/link";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import Reveal from "@/components/Reveal";
 import { SERVICES, CS } from "@/lib/constants";
 
 const SERVICE_IMAGES: Record<string, string> = {
@@ -22,17 +20,11 @@ export default function ServicesGrid() {
     <section className="bg-cream texture-cream py-24 lg:py-32 relative">
       <div className="max-w-7xl mx-auto px-5 lg:px-10">
         {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-6"
-        >
+        <Reveal className="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-6">
           <div>
             <div className="flex items-center gap-3 mb-4">
               <span className="w-10 h-px bg-gold" />
-              <span className="text-gold text-xs uppercase tracking-[0.4em]">
+              <span className="text-gold-deep text-xs uppercase tracking-[0.4em]">
                 Our Craft
               </span>
             </div>
@@ -47,32 +39,20 @@ export default function ServicesGrid() {
             every project is delivered by the same Construction Station crew —
             no rotating subcontractors, no shortcuts.
           </p>
-        </motion.div>
+        </Reveal>
 
         {/* Residential section label */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="flex items-center gap-4 mb-6"
-        >
+        <Reveal from="none" className="flex items-center gap-4 mb-6">
           <span className="text-gold text-xs uppercase tracking-[0.4em]">
             Residential Services
           </span>
           <span className="flex-1 h-px bg-navy/15" />
-        </motion.div>
+        </Reveal>
 
         {/* Asymmetric grid — residential */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
           {/* Featured card (Kitchen) — spans 2 rows */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
-            className="lg:row-span-2"
-          >
+          <Reveal className="lg:row-span-2">
             <Link
               href={`/services/${featured.slug}`}
               className="group block relative overflow-hidden h-full min-h-[500px] lg:min-h-[700px]"
@@ -120,17 +100,11 @@ export default function ServicesGrid() {
                 </div>
               </div>
             </Link>
-          </motion.div>
+          </Reveal>
 
           {/* Smaller residential cards */}
           {rest.map((s, i) => (
-            <motion.div
-              key={s.slug}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.1 + i * 0.08 }}
-            >
+            <Reveal key={s.slug} delay={100 + i * 80}>
               <Link
                 href={`/services/${s.slug}`}
                 className="group block relative overflow-hidden h-[300px] lg:h-[340px]"
@@ -174,31 +148,20 @@ export default function ServicesGrid() {
                   </div>
                 </div>
               </Link>
-            </motion.div>
+            </Reveal>
           ))}
         </div>
 
         {/* Commercial section */}
         <div className="mt-14">
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="flex items-center gap-4 mb-6"
-          >
-            <span className="text-gold text-xs uppercase tracking-[0.4em]">
+          <Reveal from="none" className="flex items-center gap-4 mb-6">
+            <span className="text-gold-deep text-xs uppercase tracking-[0.4em]">
               Commercial Services
             </span>
             <span className="flex-1 h-px bg-navy/15" />
-          </motion.div>
+          </Reveal>
 
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
+          <Reveal>
             <Link
               href="/services/commercial"
               className="group block relative overflow-hidden h-[260px] lg:h-[320px]"
@@ -243,17 +206,11 @@ export default function ServicesGrid() {
                 </div>
               </div>
             </Link>
-          </motion.div>
+          </Reveal>
         </div>
 
         {/* Residential flooring — internal Yucaipa-targeted page */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          className="mt-5"
-        >
+        <Reveal delay={300} className="mt-5">
           <Link
             href="/services/flooring-installation-yucaipa-ca"
             className="group block relative overflow-hidden h-[200px] lg:h-[220px]"
@@ -299,7 +256,7 @@ export default function ServicesGrid() {
               </div>
             </div>
           </Link>
-        </motion.div>
+        </Reveal>
       </div>
     </section>
   );

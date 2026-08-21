@@ -22,6 +22,9 @@ const config: Config = {
           DEFAULT: "#c9a227",
           light: "#e2b83a",
           dark: "#a88320",
+          // WCAG AA on white/cream for small text (>=4.5:1) — use for gold
+          // TEXT on light backgrounds; keep DEFAULT for text on navy/images.
+          deep: "#85690a",
           50: "#fdf8e8",
         },
         cream: "#faf8f3",
