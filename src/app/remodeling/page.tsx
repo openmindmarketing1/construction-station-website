@@ -1,0 +1,382 @@
+import type { Metadata } from "next";
+import Image from "next/image";
+import JsonLd from "@/components/JsonLd";
+import CtvCallBar from "@/components/CtvCallBar";
+import CtvQuickForm from "@/components/CtvQuickForm";
+import CtvCalendlyEmbed from "@/components/CtvCalendlyEmbed";
+import { CS, REVIEWS } from "@/lib/constants";
+
+// Connected-TV landing page. Reached ONLY by scanning a QR code off a
+// television spot, so every assumption here is phone-first: one hand, a couch,
+// a 390px-wide screen.
+//
+// Four things are load-bearing and must not drift:
+//
+//  1. PHONE. The only number on this page is CS.ctvPhone — (909) 316-3032, the
+//     CTV tracking line. The office line (909) 797-6333 appears in the site
+//     header, footer and floating CTA, so all three are suppressed for this
+//     route by BareRouteGate in the root layout. A tap on any of them would
+//     have attributed a TV-driven call to the office number instead.
+//
+//  2. VIBE PIXEL. Inherited from the root layout (advertiser MuZz4z), which is
+//     the reason this page belongs on constructionstation.com and not on
+//     openmindmarketing.ai — the pixel is installed here and nowhere else.
+//     Lead events fire on tap-to-call, form success, and Calendly booking.
+//
+//  3. NOINDEX. It must not compete with the rest of the site or pick up
+//     organic traffic that would muddy CTV attribution. No canonical, not in
+//     the sitemap, not linked from anywhere.
+//
+//  4. LEAD ENDPOINT. CtvQuickForm posts to /api/leads/callback, NOT to
+//     CS.leadsApiUrl — that one is a 404 (see the note in constants.ts).
+export const metadata: Metadata = {
+  title: {
+    absolute: "Home Remodeling in the Inland Empire | Construction Station",
+  },
+  description:
+    "Kitchens, bathrooms, additions, ADUs and flooring by one licensed local crew. Free in-home consultation. CSLB #1108879.",
+  // Deliberately noindex — TV traffic only. No canonical: a canonical on a
+  // noindexed page sends mixed signals about which URL should rank.
+  robots: { index: false, follow: false, nocache: true },
+};
+
+const SITE_URL =
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://constructionstation.com";
+
+// Deliberately mixed across trades — the whole point of this page is that
+// Construction Station is not a one-room contractor.
+const GALLERY = [
+  {
+    src: "https://www.openmindmarketing.ai/images/kitchen/kitchen-hero-main.jpg",
+    alt: "Kitchen remodel completed by Construction Station in the Inland Empire",
+  },
+  {
+    src: "https://ihvgrybmtngekmfjpxnz.supabase.co/storage/v1/object/public/user-assets/business-1/Bathroom%20Images/v3/bathroom-master-luxury-v3.jpg",
+    alt: "Luxury master bathroom with a freestanding soaking tub and marble finishes",
+  },
+  {
+    src: "https://ihvgrybmtngekmfjpxnz.supabase.co/storage/v1/object/public/user-assets/business-1/ADU%20Images/v3/adu-detached-day-v3.jpg",
+    alt: "Detached accessory dwelling unit built in a backyard",
+  },
+  {
+    src: "https://ihvgrybmtngekmfjpxnz.supabase.co/storage/v1/object/public/user-assets/business-1/Kitchen%20Images/v3/kitchen-open-concept-v3.jpg",
+    alt: "Open-concept kitchen transformation with a large island",
+  },
+];
+
+const SCOPES = [
+  {
+    title: "Kitchens",
+    blurb:
+      "Custom cabinetry, quartz and granite counters, tile backsplashes, and open-concept conversions that take out the wall you've always hated.",
+  },
+  {
+    title: "Bathrooms",
+    blurb:
+      "Walk-in showers, freestanding tubs, double vanities, heated floors — from a guest-bath refresh to a full master suite.",
+  },
+  {
+    title: "Room Additions",
+    blurb:
+      "Bedrooms, family rooms, home offices and second-story additions, framed and finished to match the house you already have.",
+  },
+  {
+    title: "ADUs",
+    blurb:
+      "Detached and attached backyard homes, plus garage conversions — permits to keys, built to California code.",
+  },
+  {
+    title: "Flooring",
+    blurb:
+      "Hardwood, luxury vinyl plank, tile and large-format porcelain, installed level with proper subfloor prep. It's where this company started.",
+  },
+  {
+    title: "Whole-Home",
+    blurb:
+      "Windows and doors, patio covers and outdoor living. One contractor, one contract, one crew that shows up.",
+  },
+];
+
+const STEPS: Array<[string, string, string]> = [
+  ["01", "Call or scan", "Tell us what you're thinking. Two minutes on the phone."],
+  ["02", "Free in-home visit", "We measure, look at what's there, and talk budget honestly."],
+  ["03", "Written line-item quote", "Within 5 business days. No surprise upcharges."],
+  ["04", "We build it", "Our own W-2 crew. Two-year workmanship warranty."],
+];
+
+// LocalBusiness schema carries the CTV number deliberately — this page's
+// telephone is the tracking line, not the office line.
+const localBusinessSchema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "@id": `${SITE_URL}/remodeling`,
+  name: CS.name,
+  description:
+    "General remodeling contractor serving the Inland Empire — kitchens, bathrooms, room additions, ADUs and flooring. Licensed CSLB #1108879.",
+  telephone: CS.ctvPhone,
+  url: `${SITE_URL}/remodeling`,
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "33145 Yucaipa Blvd",
+    addressLocality: "Yucaipa",
+    addressRegion: "CA",
+    postalCode: "92399",
+    addressCountry: "US",
+  },
+  areaServed: [
+    "Inland Empire, CA",
+    "San Bernardino County, CA",
+    "Riverside County, CA",
+  ],
+  priceRange: "$$$",
+};
+
+export default function CtvRemodelingPage() {
+  return (
+    <>
+      <JsonLd data={localBusinessSchema} />
+
+      {/* pb-24 keeps the sticky CtvCallBar from covering the last section. */}
+      <div className="pb-24">
+        {/* 1. Hero — everything that matters is above the fold at 390px. */}
+        <section className="relative bg-navy texture-navy text-white px-5 pt-10 pb-9 overflow-hidden">
+          <div
+            className="absolute inset-0 opacity-30 pointer-events-none"
+            style={{
+              backgroundImage:
+                "radial-gradient(ellipse at 75% 15%, rgba(201,162,39,0.28) 0%, transparent 55%)",
+            }}
+          />
+          <div className="relative max-w-2xl mx-auto">
+            <div className="text-gold text-[10px] tracking-[0.35em] uppercase mb-4">
+              As Seen on TV · Inland Empire
+            </div>
+            <h1 className="font-display text-[2.1rem] leading-[1.05] sm:text-5xl mb-4">
+              Remodel it once.{" "}
+              <span className="italic text-gold">Do it right.</span>
+            </h1>
+            <p className="text-white/85 text-base leading-relaxed mb-7">
+              Kitchens, bathrooms, additions, ADUs and flooring — built by one
+              licensed local crew that has been at it since {CS.founded}. Free
+              in-home consultation.
+            </p>
+
+            {/* Primary action. Big, thumb-height, first thing they can hit. */}
+            <a
+              href={CS.ctvPhoneHref}
+              className="flex items-center justify-center gap-3 w-full bg-gold text-navy font-body font-bold text-xl py-5 tracking-wide active:bg-gold-light"
+            >
+              <svg
+                className="w-6 h-6 shrink-0"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.5"
+                aria-hidden="true"
+              >
+                <path
+                  d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+              {CS.ctvPhone}
+            </a>
+            <a
+              href="#callback"
+              className="flex items-center justify-center w-full border border-white/40 text-white py-4 mt-3 uppercase tracking-[0.2em] text-xs active:border-gold active:text-gold"
+            >
+              Or have us call you →
+            </a>
+
+            <div className="flex flex-wrap items-center gap-x-4 gap-y-1 mt-6 text-white/60 text-[11px] uppercase tracking-[0.18em]">
+              <span>CSLB {CS.license}</span>
+              <span className="text-gold">·</span>
+              <span>BBB {CS.bbb}</span>
+              <span className="text-gold">·</span>
+              <span>Since {CS.founded}</span>
+              <span className="text-gold">·</span>
+              <span>5★ Rated</span>
+            </div>
+          </div>
+        </section>
+
+        {/* 2. What we build — the generalisation from one trade to all of them. */}
+        <section className="bg-cream px-5 py-12">
+          <div className="max-w-2xl mx-auto">
+            <div className="flex items-center gap-3 mb-3">
+              <span className="w-8 h-px bg-gold" />
+              <span className="text-gold-deep text-[10px] uppercase tracking-[0.35em]">
+                What We Build
+              </span>
+            </div>
+            <h2 className="font-display text-navy text-3xl leading-tight mb-7">
+              One contractor for the{" "}
+              <span className="italic text-gold-deep">whole house</span>.
+            </h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              {SCOPES.map((s) => (
+                <div key={s.title} className="bg-white border border-navy/10 p-5">
+                  <div className="font-display text-navy text-xl mb-1">
+                    {s.title}
+                  </div>
+                  <p className="text-navy/70 text-sm leading-relaxed">{s.blurb}</p>
+                </div>
+              ))}
+            </div>
+            <p className="text-navy/70 text-sm leading-relaxed mt-6">
+              Most of our clients start with one room and keep going. Because
+              it&rsquo;s the same crew, the same project manager and the same
+              contract, the second project is always easier than the first.
+            </p>
+          </div>
+        </section>
+
+        {/* 3. Work */}
+        <section className="bg-white px-5 py-12">
+          <div className="max-w-2xl mx-auto">
+            <div className="flex items-center gap-3 mb-3">
+              <span className="w-8 h-px bg-gold" />
+              <span className="text-gold-deep text-[10px] uppercase tracking-[0.35em]">
+                Our Work
+              </span>
+            </div>
+            <h2 className="font-display text-navy text-3xl leading-tight mb-6">
+              Real projects,{" "}
+              <span className="italic text-gold-deep">real homes</span>.
+            </h2>
+            <div className="space-y-3">
+              {GALLERY.map((img, i) => (
+                <div key={img.src} className="relative aspect-[4/3] overflow-hidden">
+                  <Image
+                    src={img.src}
+                    alt={img.alt}
+                    fill
+                    priority={i === 0}
+                    className="object-cover"
+                    sizes="(max-width: 640px) 100vw, 640px"
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* 4. Process */}
+        <section className="bg-navy texture-navy text-white px-5 py-12">
+          <div className="max-w-2xl mx-auto">
+            <div className="flex items-center gap-3 mb-3">
+              <span className="w-8 h-px bg-gold" />
+              <span className="text-gold text-[10px] uppercase tracking-[0.35em]">
+                How It Works
+              </span>
+            </div>
+            <h2 className="font-display text-3xl leading-tight mb-8">
+              Four steps. <span className="italic text-gold">No mystery.</span>
+            </h2>
+            <div className="space-y-6">
+              {STEPS.map(([n, title, desc]) => (
+                <div key={n} className="flex gap-4">
+                  <div className="font-display text-gold text-2xl leading-none shrink-0 w-9">
+                    {n}
+                  </div>
+                  <div>
+                    <div className="font-display text-xl leading-tight mb-1">
+                      {title}
+                    </div>
+                    <p className="text-white/70 text-sm leading-relaxed">{desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* 5. Reviews */}
+        <section className="bg-cream px-5 py-12">
+          <div className="max-w-2xl mx-auto">
+            <div className="flex items-center gap-3 mb-3">
+              <span className="w-8 h-px bg-gold" />
+              <span className="text-gold-deep text-[10px] uppercase tracking-[0.35em]">
+                Reviews
+              </span>
+            </div>
+            <h2 className="font-display text-navy text-3xl leading-tight mb-6">
+              What neighbors <span className="italic text-gold-deep">say</span>.
+            </h2>
+            <div className="space-y-4">
+              {REVIEWS.slice(0, 3).map((r) => (
+                <div key={r.name} className="bg-white border border-navy/10 p-5">
+                  <div className="text-gold-deep text-sm tracking-widest mb-2">
+                    {"★".repeat(r.stars)}
+                  </div>
+                  <p className="text-navy/75 text-sm leading-relaxed mb-3">
+                    &ldquo;{r.text}&rdquo;
+                  </p>
+                  <div className="text-navy/50 text-xs uppercase tracking-[0.2em]">
+                    {r.name} · {r.date}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* 6. Book a time — CTV-specific Calendly (placeholder until the
+            dedicated event type exists; see CtvCalendlyEmbed). */}
+        <section className="bg-white px-5 py-12">
+          <div className="max-w-2xl mx-auto">
+            <div className="flex items-center gap-3 mb-3">
+              <span className="w-8 h-px bg-gold" />
+              <span className="text-gold-deep text-[10px] uppercase tracking-[0.35em]">
+                Free Consultation
+              </span>
+            </div>
+            <h2 className="font-display text-navy text-3xl leading-tight mb-6">
+              Pick a time that{" "}
+              <span className="italic text-gold-deep">works</span>.
+            </h2>
+            <CtvCalendlyEmbed />
+          </div>
+        </section>
+
+        {/* 7. Callback form */}
+        <section id="callback" className="bg-cream px-5 py-12 scroll-mt-4">
+          <div className="max-w-2xl mx-auto">
+            <CtvQuickForm />
+          </div>
+        </section>
+
+        {/* 8. Closing CTA + minimal legal footer. The full site footer is
+            suppressed on this route (it links the office line). */}
+        <section className="bg-navy texture-navy text-white px-5 py-12">
+          <div className="max-w-2xl mx-auto text-center">
+            <h2 className="font-display text-3xl leading-tight mb-3">
+              Ready when you are.
+            </h2>
+            <p className="text-white/65 text-sm leading-relaxed mb-7">
+              We answer during business hours and return missed calls within 30
+              minutes.
+            </p>
+            <a
+              href={CS.ctvPhoneHref}
+              className="flex items-center justify-center gap-3 w-full bg-gold text-navy font-body font-bold text-xl py-5 tracking-wide active:bg-gold-light"
+            >
+              {CS.ctvPhone}
+            </a>
+            <div className="text-white/40 text-[11px] leading-relaxed mt-8">
+              {CS.name} · CSLB {CS.license}
+              <br />
+              33145 Yucaipa Blvd, Yucaipa, CA 92399
+              <br />
+              Licensed, bonded and insured. Serving San Bernardino and Riverside
+              Counties.
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <CtvCallBar />
+    </>
+  );
+}

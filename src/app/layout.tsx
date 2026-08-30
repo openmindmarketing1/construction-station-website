@@ -10,6 +10,7 @@ import FloatingCTA from "@/components/FloatingCTA";
 import SmoothScrollInit from "@/components/SmoothScrollInit";
 import JsonLd from "@/components/JsonLd";
 import VibeRouteTracker from "@/components/VibeRouteTracker";
+import BareRouteGate from "@/components/BareRouteGate";
 import { CS } from "@/lib/constants";
 
 const displayFont = DM_Serif_Display({
@@ -176,11 +177,15 @@ export default function RootLayout({
         <JsonLd data={organizationSchema} />
         <VibeRouteTracker />
         <SmoothScrollInit />
-        <Header />
+        <BareRouteGate>
+          <Header />
+        </BareRouteGate>
         <main className="min-h-screen">{children}</main>
-        <Footer />
-        <ScrollToTop />
-        <FloatingCTA />
+        <BareRouteGate>
+          <Footer />
+          <ScrollToTop />
+          <FloatingCTA />
+        </BareRouteGate>
         <SpeedInsights />
         {/* data-offset-bottom lifts the widget above the mobile FloatingCTA
             bar (a11y target-size: the card was partially covering the Free

@@ -3,6 +3,12 @@ export const CS = {
   tagline: "Building Dreams Across the Inland Empire",
   phone: "909-797-6333",
   phoneHref: "tel:9097976333",
+  // CTV tracking number. Rings the same place, but every call to it is
+  // attributable to the Connected-TV campaign. Used ONLY on /remodeling (the
+  // QR landing page) — never in site-wide chrome, or CTV attribution stops
+  // meaning anything. The paid-search landers use (909) 454-7300.
+  ctvPhone: "(909) 316-3032",
+  ctvPhoneHref: "tel:+19093163032",
   email: "sales@constructionstation.com",
   address: "Inland Empire, CA",
   license: "#1108879",
@@ -12,6 +18,11 @@ export const CS = {
   supabaseUrl: process.env.NEXT_PUBLIC_SUPABASE_URL ?? "",
   supabaseAnonKey: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ?? "",
   leadsApiUrl: "https://openmindmarketing.ai/api/leads/landing",
+  // NOTE: leadsApiUrl above 404s — the route does not exist on OMM. The live
+  // endpoint is /api/leads/callback (different field shape: first_name, no
+  // email). The CTV lander uses this one; the five older forms still point at
+  // the dead URL and need a separate field-mapping pass.
+  callbackApiUrl: "https://www.openmindmarketing.ai/api/leads/callback",
   businessId: 1,
 };
 
