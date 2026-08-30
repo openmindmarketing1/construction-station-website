@@ -136,8 +136,9 @@ export default function CtvRemodelingPage() {
     <>
       <JsonLd data={localBusinessSchema} />
 
-      {/* pb-24 keeps the sticky CtvCallBar from covering the last section. */}
-      <div className="pb-24">
+      {/* pb-24 reserves room for the FIXED call bar on phones; from lg the bar is
+          a normal inline element, so the reserved space goes away with it. */}
+      <div className="pb-24 lg:pb-0">
         {/* 1. Hero — everything that matters is above the fold at 390px. */}
         <section className="relative bg-navy texture-navy text-white px-5 pt-6 pb-8 overflow-hidden">
           <div
@@ -147,7 +148,11 @@ export default function CtvRemodelingPage() {
                 "radial-gradient(ellipse at 75% 15%, rgba(201,162,39,0.28) 0%, transparent 55%)",
             }}
           />
-          <div className="relative max-w-2xl mx-auto">
+          {/* lg: two columns — logo + copy + CTAs on the left, video on the
+              right. Placement is explicit (col-start/row-start) rather than
+              source order, so the MOBILE DOM order is untouched: logo, video,
+              then copy, exactly as it was. */}
+          <div className="relative max-w-2xl mx-auto md:max-w-3xl lg:max-w-6xl lg:grid lg:grid-cols-2 lg:gap-x-12 lg:items-center lg:py-8">
             {/* Branding. The site header is suppressed on this route (its links
                 point at the office line), so the logo is placed here as a
                 standalone, non-navigating element — a QR scanner needs to see
@@ -165,12 +170,12 @@ export default function CtvRemodelingPage() {
               width={600}
               height={202}
               priority
-              className="w-[170px] h-auto mb-4 brightness-0 invert"
+              className="w-[170px] h-auto mb-4 brightness-0 invert md:w-[200px] lg:w-[230px] lg:col-start-1 lg:row-start-1 lg:mb-6 lg:self-end"
             />
 
             {/* The same kitchen transformation the TV spot opens with, so a
                 viewer who just scanned the QR recognises it instantly. */}
-            <div className="relative mb-5 overflow-hidden border border-white/15 bg-navy-dark">
+            <div className="relative mb-5 overflow-hidden border border-white/15 bg-navy-dark lg:col-start-2 lg:row-start-1 lg:row-span-2 lg:self-center lg:mb-0 lg:shadow-2xl">
               <video
                 className="w-full h-auto block"
                 src="/video/cs-kitchen-transformation.mp4"
@@ -184,22 +189,26 @@ export default function CtvRemodelingPage() {
               />
             </div>
 
-            <div className="text-gold text-[10px] tracking-[0.35em] uppercase mb-3">
+            <div className="lg:col-start-1 lg:row-start-2 lg:self-start">
+            <div className="text-gold text-[10px] tracking-[0.35em] uppercase mb-3 md:text-[11px]">
               As Seen on TV · Inland Empire
             </div>
-            <h1 className="font-display text-[2rem] leading-[1.05] sm:text-5xl mb-3">
+            <h1 className="font-display text-[2rem] leading-[1.05] sm:text-5xl mb-3 lg:text-6xl lg:mb-4">
               Remodel it once.{" "}
               <span className="italic text-gold">Do it right.</span>
             </h1>
-            <p className="text-white/85 text-[15px] leading-relaxed mb-5">
+            <p className="text-white/85 text-[15px] leading-relaxed mb-5 md:text-lg lg:mb-7">
               Kitchens, bathrooms, additions, ADUs and flooring — built by one
               licensed local crew that has been at it since {CS.founded}.
             </p>
 
-            {/* Primary action. Big, thumb-height, first thing they can hit. */}
+            {/* Primary action. Big, thumb-height, first thing they can hit.
+                Stacked full-width on a phone; side by side from md, where a
+                full-width button would look like a mistake. */}
+            <div className="md:flex md:gap-3">
             <a
               href={CS.ctvPhoneHref}
-              className="flex items-center justify-center gap-3 w-full bg-gold text-navy font-body font-bold text-xl py-5 tracking-wide active:bg-gold-light"
+              className="flex items-center justify-center gap-3 w-full bg-gold text-navy font-body font-bold text-xl py-5 tracking-wide active:bg-gold-light md:flex-1 hover:bg-gold-light transition-colors"
             >
               <svg
                 className="w-6 h-6 shrink-0"
@@ -223,7 +232,7 @@ export default function CtvRemodelingPage() {
                 driveway with a quote has been misled by us, not by Calendly. */}
             <a
               href="#calendly"
-              className="flex items-center justify-center gap-3 w-full bg-white text-navy font-body font-bold text-lg py-4 mt-3 tracking-wide active:bg-white/90"
+              className="flex items-center justify-center gap-3 w-full bg-white text-navy font-body font-bold text-lg py-4 mt-3 tracking-wide active:bg-white/90 md:flex-1 md:mt-0 md:py-5 md:text-xl hover:bg-white/90 transition-colors"
             >
               <svg
                 className="w-5 h-5 shrink-0"
@@ -238,7 +247,8 @@ export default function CtvRemodelingPage() {
               </svg>
               Book a 30-Minute Call
             </a>
-            <p className="text-white/60 text-xs leading-relaxed mt-3">
+            </div>
+            <p className="text-white/60 text-xs leading-relaxed mt-3 md:text-sm">
               A phone call with our team to talk through what you&rsquo;re
               planning and answer your questions. Not a site visit, and not a
               quote &mdash; just a conversation about your project.
@@ -253,29 +263,30 @@ export default function CtvRemodelingPage() {
               <span className="text-gold">·</span>
               <span>5★ Rated</span>
             </div>
+            </div>
           </div>
         </section>
 
         {/* 2. What we build — the generalisation from one trade to all of them. */}
-        <section className="bg-cream px-5 py-12">
-          <div className="max-w-2xl mx-auto">
+        <section className="bg-cream px-5 py-12 md:px-8 md:py-16 lg:py-20">
+          <div className="max-w-2xl mx-auto md:max-w-3xl lg:max-w-5xl">
             <div className="flex items-center gap-3 mb-3">
               <span className="w-8 h-px bg-gold" />
               <span className="text-gold-deep text-[10px] uppercase tracking-[0.35em]">
                 What We Build
               </span>
             </div>
-            <h2 className="font-display text-navy text-3xl leading-tight mb-7">
+            <h2 className="font-display text-navy text-3xl leading-tight md:text-4xl lg:text-5xl mb-7">
               One contractor for the{" "}
               <span className="italic text-gold-deep">whole house</span>.
             </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-5 lg:grid-cols-3">
               {SCOPES.map((s) => (
                 <div key={s.title} className="bg-white border border-navy/10 p-5">
                   <div className="font-display text-navy text-xl mb-1">
                     {s.title}
                   </div>
-                  <p className="text-navy/70 text-sm leading-relaxed">{s.blurb}</p>
+                  <p className="text-navy/70 text-sm leading-relaxed md:text-base">{s.blurb}</p>
                 </div>
               ))}
             </div>
@@ -288,19 +299,19 @@ export default function CtvRemodelingPage() {
         </section>
 
         {/* 3. Work */}
-        <section className="bg-white px-5 py-12">
-          <div className="max-w-2xl mx-auto">
+        <section className="bg-white px-5 py-12 md:px-8 md:py-16 lg:py-20">
+          <div className="max-w-2xl mx-auto md:max-w-3xl lg:max-w-5xl">
             <div className="flex items-center gap-3 mb-3">
               <span className="w-8 h-px bg-gold" />
               <span className="text-gold-deep text-[10px] uppercase tracking-[0.35em]">
                 Our Work
               </span>
             </div>
-            <h2 className="font-display text-navy text-3xl leading-tight mb-6">
+            <h2 className="font-display text-navy text-3xl leading-tight md:text-4xl lg:text-5xl mb-6">
               Real projects,{" "}
               <span className="italic text-gold-deep">real homes</span>.
             </h2>
-            <div className="space-y-3">
+            <div className="space-y-3 md:grid md:grid-cols-2 md:gap-4 md:space-y-0">
               {GALLERY.map((img, i) => (
                 <div key={img.src} className="relative aspect-[4/3] overflow-hidden">
                   <Image
@@ -318,18 +329,18 @@ export default function CtvRemodelingPage() {
         </section>
 
         {/* 4. Process */}
-        <section className="bg-navy texture-navy text-white px-5 py-12">
-          <div className="max-w-2xl mx-auto">
+        <section className="bg-navy texture-navy text-white px-5 py-12 md:px-8 md:py-16 lg:py-20">
+          <div className="max-w-2xl mx-auto md:max-w-3xl lg:max-w-5xl">
             <div className="flex items-center gap-3 mb-3">
               <span className="w-8 h-px bg-gold" />
               <span className="text-gold text-[10px] uppercase tracking-[0.35em]">
                 How It Works
               </span>
             </div>
-            <h2 className="font-display text-3xl leading-tight mb-8">
+            <h2 className="font-display text-3xl leading-tight md:text-4xl lg:text-5xl mb-8">
               Four steps. <span className="italic text-gold">No mystery.</span>
             </h2>
-            <div className="space-y-6">
+            <div className="space-y-6 md:grid md:grid-cols-2 md:gap-x-8 md:gap-y-8 md:space-y-0 lg:grid-cols-4">
               {STEPS.map(([n, title, desc]) => (
                 <div key={n} className="flex gap-4">
                   <div className="font-display text-gold text-2xl leading-none shrink-0 w-9">
@@ -348,18 +359,18 @@ export default function CtvRemodelingPage() {
         </section>
 
         {/* 5. Reviews */}
-        <section className="bg-cream px-5 py-12">
-          <div className="max-w-2xl mx-auto">
+        <section className="bg-cream px-5 py-12 md:px-8 md:py-16 lg:py-20">
+          <div className="max-w-2xl mx-auto md:max-w-3xl lg:max-w-5xl">
             <div className="flex items-center gap-3 mb-3">
               <span className="w-8 h-px bg-gold" />
               <span className="text-gold-deep text-[10px] uppercase tracking-[0.35em]">
                 Reviews
               </span>
             </div>
-            <h2 className="font-display text-navy text-3xl leading-tight mb-6">
+            <h2 className="font-display text-navy text-3xl leading-tight md:text-4xl lg:text-5xl mb-6">
               What neighbors <span className="italic text-gold-deep">say</span>.
             </h2>
-            <div className="space-y-4">
+            <div className="space-y-4 md:grid md:grid-cols-3 md:gap-4 md:space-y-0">
               {REVIEWS.slice(0, 3).map((r) => (
                 <div key={r.name} className="bg-white border border-navy/10 p-5">
                   <div className="text-gold-deep text-sm tracking-widest mb-2">
@@ -380,15 +391,15 @@ export default function CtvRemodelingPage() {
         {/* 6. Book a time — the CTV-specific Calendly event (30-min phone
             call). scroll-mt keeps the heading clear of the sticky call bar
             when the hero CTA jumps here. */}
-        <section id="calendly" className="bg-white px-5 py-12 scroll-mt-4">
-          <div className="max-w-2xl mx-auto">
+        <section id="calendly" className="bg-white px-5 py-12 scroll-mt-4 md:px-8 md:py-16 lg:py-20">
+          <div className="max-w-2xl mx-auto md:max-w-3xl">
             <div className="flex items-center gap-3 mb-3">
               <span className="w-8 h-px bg-gold" />
               <span className="text-gold-deep text-[10px] uppercase tracking-[0.35em]">
                 Book a Call
               </span>
             </div>
-            <h2 className="font-display text-navy text-3xl leading-tight mb-4">
+            <h2 className="font-display text-navy text-3xl leading-tight md:text-4xl lg:text-5xl mb-4">
               Pick a time that{" "}
               <span className="italic text-gold-deep">works</span>.
             </h2>
@@ -406,26 +417,29 @@ export default function CtvRemodelingPage() {
         </section>
 
         {/* 7. Callback form */}
-        <section id="callback" className="bg-cream px-5 py-12 scroll-mt-4">
-          <div className="max-w-2xl mx-auto">
+        <section id="callback" className="bg-cream px-5 py-12 scroll-mt-4 md:px-8 md:py-16 lg:py-20">
+          <div className="max-w-2xl mx-auto md:max-w-2xl">
             <CtvQuickForm />
           </div>
         </section>
 
         {/* 8. Closing CTA + minimal legal footer. The full site footer is
             suppressed on this route (it links the office line). */}
-        <section className="bg-navy texture-navy text-white px-5 py-12">
-          <div className="max-w-2xl mx-auto text-center">
-            <h2 className="font-display text-3xl leading-tight mb-3">
+        <section className="bg-navy texture-navy text-white px-5 py-12 md:px-8 md:py-16 lg:py-20 lg:pb-8">
+          <div className="max-w-2xl mx-auto text-center md:max-w-3xl">
+            <h2 className="font-display text-3xl leading-tight md:text-4xl lg:text-5xl mb-3">
               Ready when you are.
             </h2>
             <p className="text-white/65 text-sm leading-relaxed mb-7">
               We answer during business hours and return missed calls within 30
               minutes.
             </p>
+            {/* Hidden at lg: from there the (inline, no longer fixed) call bar
+                sits directly below this section and carries the same action —
+                two identical gold buttons 100px apart reads as a mistake. */}
             <a
               href={CS.ctvPhoneHref}
-              className="flex items-center justify-center gap-3 w-full bg-gold text-navy font-body font-bold text-xl py-5 tracking-wide active:bg-gold-light"
+              className="flex items-center justify-center gap-3 w-full bg-gold text-navy font-body font-bold text-xl py-5 tracking-wide active:bg-gold-light lg:hidden"
             >
               {CS.ctvPhone}
             </a>
