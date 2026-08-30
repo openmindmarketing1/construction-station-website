@@ -151,9 +151,29 @@ export default function RootLayout({
             (useCalendlyVibeLead). The cost-guide download deliberately does
             NOT fire it — see LeadMagnetCard. */}
         {/* Split for PageSpeed (2026-08-21): the tiny stub+queue runs early so
-            no vbpx() call is ever lost; the remote vbpx.js (which replays the
-            queue via s.process) loads after window.load, out of the TBT
-            window. */}
+            no vbpx() call is ever lost; the remote vbpx.js replays the queue
+            via s.process.
+
+            CORRECTED 2026-08-30. That "never lost" claim held only if vbpx.js
+            eventually loads, and on strategy="lazyOnload" it frequently never
+            did — Next defers such scripts to browser idle after window load,
+            and on a page with a chat widget and third-party tags idle often
+            does not arrive at all. Measured over 10 loads each, 12s dwell:
+
+              /                              vbpx.js 7/10   page_view 7/10
+              /services/kitchen-remodeling   vbpx.js 2/10   page_view 2/10
+              /remodeling (CTV lander)       vbpx.js 4/10   page_view 4/10
+
+            Script-load and beacon-sent were perfectly correlated: when the
+            script loaded the queue flushed in <1s; when it did not, the
+            page_view AND any queued lead event were silently discarded. That
+            is 30-80% of all Vibe conversion data, and the CTV Leads campaign
+            cannot pass its publish gate (page view <12h, lead <7d, >=0.1%
+            conversion rate) on data that lossy.
+
+            afterInteractive loads it deterministically after hydration. It is
+            a ~10KB tracker; the TBT it costs is worth far less than the
+            measurement it was destroying. */}
         <Script id="vibe-pixel" strategy="afterInteractive">
           {`
             !function(v,c){if(!v[c]){var s=v[c]=function(){s.process?s.process.apply(s,arguments):s.queue.push(arguments)};s.queue=[],s.b=1*new Date}}(window,"vbpx");
@@ -161,7 +181,7 @@ export default function RootLayout({
             vbpx('event', 'page_view');
           `}
         </Script>
-        <Script src="https://s.vibe.co/vbpx.js" strategy="lazyOnload" />
+        <Script src="https://s.vibe.co/vbpx.js" strategy="afterInteractive" />
         <noscript>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
