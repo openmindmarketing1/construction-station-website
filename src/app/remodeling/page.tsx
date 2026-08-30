@@ -139,7 +139,7 @@ export default function CtvRemodelingPage() {
       {/* pb-24 keeps the sticky CtvCallBar from covering the last section. */}
       <div className="pb-24">
         {/* 1. Hero — everything that matters is above the fold at 390px. */}
-        <section className="relative bg-navy texture-navy text-white px-5 pt-7 pb-9 overflow-hidden">
+        <section className="relative bg-navy texture-navy text-white px-5 pt-6 pb-8 overflow-hidden">
           <div
             className="absolute inset-0 opacity-30 pointer-events-none"
             style={{
@@ -153,18 +153,24 @@ export default function CtvRemodelingPage() {
                 standalone, non-navigating element — a QR scanner needs to see
                 whose ad they just scanned, but must not be handed a way out of
                 the page or a second phone number. */}
+            {/* cs-logo-mark.png, not cs-logo.png: the original is a 5001x5000
+                square that is ~75% transparent padding, so it rendered as a
+                150px SQUARE with the wordmark marooned in the middle and ate
+                ~100px of the fold. This is the same artwork trimmed to its
+                alpha bounds (600x202). Declared width/height match the real
+                ratio so nothing shifts as it loads. */}
             <Image
-              src="/images/logo/cs-logo.png"
+              src="/images/logo/cs-logo-mark.png"
               alt="Construction Station Flooring and Design"
-              width={220}
-              height={60}
+              width={600}
+              height={202}
               priority
-              className="w-[150px] h-auto mb-6 brightness-0 invert"
+              className="w-[170px] h-auto mb-4 brightness-0 invert"
             />
 
             {/* The same kitchen transformation the TV spot opens with, so a
                 viewer who just scanned the QR recognises it instantly. */}
-            <div className="relative mb-6 overflow-hidden border border-white/15 bg-navy-dark">
+            <div className="relative mb-5 overflow-hidden border border-white/15 bg-navy-dark">
               <video
                 className="w-full h-auto block"
                 src="/video/cs-kitchen-transformation.mp4"
@@ -178,17 +184,16 @@ export default function CtvRemodelingPage() {
               />
             </div>
 
-            <div className="text-gold text-[10px] tracking-[0.35em] uppercase mb-4">
+            <div className="text-gold text-[10px] tracking-[0.35em] uppercase mb-3">
               As Seen on TV · Inland Empire
             </div>
-            <h1 className="font-display text-[2.1rem] leading-[1.05] sm:text-5xl mb-4">
+            <h1 className="font-display text-[2rem] leading-[1.05] sm:text-5xl mb-3">
               Remodel it once.{" "}
               <span className="italic text-gold">Do it right.</span>
             </h1>
-            <p className="text-white/85 text-base leading-relaxed mb-7">
+            <p className="text-white/85 text-[15px] leading-relaxed mb-5">
               Kitchens, bathrooms, additions, ADUs and flooring — built by one
-              licensed local crew that has been at it since {CS.founded}. Free
-              in-home consultation.
+              licensed local crew that has been at it since {CS.founded}.
             </p>
 
             {/* Primary action. Big, thumb-height, first thing they can hit. */}
