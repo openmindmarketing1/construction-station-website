@@ -17,11 +17,12 @@ export const CS = {
   pixel: "1236703801875418",
   supabaseUrl: process.env.NEXT_PUBLIC_SUPABASE_URL ?? "",
   supabaseAnonKey: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ?? "",
-  leadsApiUrl: "https://openmindmarketing.ai/api/leads/landing",
-  // NOTE: leadsApiUrl above 404s — the route does not exist on OMM. The live
-  // endpoint is /api/leads/callback (different field shape: first_name, no
-  // email). The CTV lander uses this one; the five older forms still point at
-  // the dead URL and need a separate field-mapping pass.
+  // MUST be the www host. The apex openmindmarketing.ai answers with a 308 to
+  // www, and a redirected CORS PREFLIGHT always fails — the browser never
+  // follows it, so the POST is never sent and the form dies with a CORS error
+  // no server log ever sees. (This was one of the faults behind every website
+  // form lead being lost between 2026-04-30 and 2026-08-30.)
+  leadsApiUrl: "https://www.openmindmarketing.ai/api/leads/landing",
   callbackApiUrl: "https://www.openmindmarketing.ai/api/leads/callback",
   businessId: 1,
 };
