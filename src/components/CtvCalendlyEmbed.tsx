@@ -4,26 +4,20 @@ import Script from "next/script";
 import { CS } from "@/lib/constants";
 import useCalendlyVibeLead from "@/components/useCalendlyVibeLead";
 
-// ═══════════════════════════════════════════════════════════════════════════
-//  ⚠️  PLACEHOLDER — PUT THE CTV CALENDLY URL ON THE NEXT LINE. NOWHERE ELSE.
+// The CTV lander's OWN Calendly event, so bookings driven by the TV spot are
+// distinguishable from web and paid-search bookings.
 //
-//  This page needs its OWN Calendly event type so bookings driven by the TV
-//  spot are distinguishable from web and paid-search bookings. For reference,
-//  the existing ones are:
-//     /contact + /kitchen-remodeler-yucaipa-ca → .../free-kitchen-design-consultation
-//     ADU pages                                → .../free-adu-remodeling-consult
+// Verified live 2026-08-30: "Home Remodeling Initial Call" — 30 min, PHONE
+// CALL, Pacific Time, under the constructionstation-sales account. It is NOT a
+// site visit and NOT an estimate; the copy around this embed says so, because a
+// homeowner who books expecting someone at their door with a quote is a bad
+// first appointment for everyone.
 //
-//  While this constant is empty the section renders a "book by phone" card
-//  instead of an embed — an empty data-url renders a broken Calendly iframe,
-//  which is worse than no iframe at all.
-//
-//  To go live: create the event type in Calendly, paste its full URL below,
-//  commit, deploy. Nothing else changes — the Vibe lead event on booking is
-//  already wired through useCalendlyVibeLead().
-//
-//    e.g. "https://calendly.com/constructionstation-sales/tv-remodeling-consult"
-// ═══════════════════════════════════════════════════════════════════════════
-const CTV_CALENDLY_URL = "";
+// The other landers point at:
+//   /contact + /kitchen-remodeler-yucaipa-ca → .../free-kitchen-design-consultation
+//   ADU pages                                → .../free-adu-remodeling-consult
+const CTV_CALENDLY_URL =
+  "https://calendly.com/constructionstation-sales/home-remodeling-initial-call";
 
 export default function CtvCalendlyEmbed() {
   useCalendlyVibeLead();
@@ -37,8 +31,8 @@ export default function CtvCalendlyEmbed() {
           Book by phone
         </div>
         <p className="text-navy/70 text-base leading-relaxed mb-6">
-          Call and we&rsquo;ll put your free in-home consultation on the
-          calendar while you&rsquo;re on the line.
+          Call and we&rsquo;ll set up your intro call while you&rsquo;re on the
+          line.
         </p>
         <a
           href={CS.ctvPhoneHref}

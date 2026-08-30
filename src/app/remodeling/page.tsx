@@ -139,7 +139,7 @@ export default function CtvRemodelingPage() {
       {/* pb-24 keeps the sticky CtvCallBar from covering the last section. */}
       <div className="pb-24">
         {/* 1. Hero — everything that matters is above the fold at 390px. */}
-        <section className="relative bg-navy texture-navy text-white px-5 pt-10 pb-9 overflow-hidden">
+        <section className="relative bg-navy texture-navy text-white px-5 pt-7 pb-9 overflow-hidden">
           <div
             className="absolute inset-0 opacity-30 pointer-events-none"
             style={{
@@ -148,6 +148,36 @@ export default function CtvRemodelingPage() {
             }}
           />
           <div className="relative max-w-2xl mx-auto">
+            {/* Branding. The site header is suppressed on this route (its links
+                point at the office line), so the logo is placed here as a
+                standalone, non-navigating element — a QR scanner needs to see
+                whose ad they just scanned, but must not be handed a way out of
+                the page or a second phone number. */}
+            <Image
+              src="/images/logo/cs-logo.png"
+              alt="Construction Station Flooring and Design"
+              width={220}
+              height={60}
+              priority
+              className="w-[150px] h-auto mb-6 brightness-0 invert"
+            />
+
+            {/* The same kitchen transformation the TV spot opens with, so a
+                viewer who just scanned the QR recognises it instantly. */}
+            <div className="relative mb-6 overflow-hidden border border-white/15 bg-navy-dark">
+              <video
+                className="w-full h-auto block"
+                src="/video/cs-kitchen-transformation.mp4"
+                poster="/images/video/cs-kitchen-transformation-poster.jpg"
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="metadata"
+                aria-label="Kitchen transformation: dated oak cabinets become a white open-concept kitchen with a quartz island"
+              />
+            </div>
+
             <div className="text-gold text-[10px] tracking-[0.35em] uppercase mb-4">
               As Seen on TV · Inland Empire
             </div>
@@ -182,12 +212,32 @@ export default function CtvRemodelingPage() {
               </svg>
               {CS.ctvPhone}
             </a>
+            {/* Second primary CTA. Deliberately labelled as a CALL, not a
+                consultation or an estimate — the Calendly event is a 30-minute
+                phone call, and someone who books expecting a van in their
+                driveway with a quote has been misled by us, not by Calendly. */}
             <a
-              href="#callback"
-              className="flex items-center justify-center w-full border border-white/40 text-white py-4 mt-3 uppercase tracking-[0.2em] text-xs active:border-gold active:text-gold"
+              href="#calendly"
+              className="flex items-center justify-center gap-3 w-full bg-white text-navy font-body font-bold text-lg py-4 mt-3 tracking-wide active:bg-white/90"
             >
-              Or have us call you →
+              <svg
+                className="w-5 h-5 shrink-0"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.5"
+                aria-hidden="true"
+              >
+                <rect x="3" y="5" width="18" height="16" rx="2" />
+                <path d="M3 10h18M8 3v4M16 3v4" strokeLinecap="round" />
+              </svg>
+              Book a 30-Minute Call
             </a>
+            <p className="text-white/60 text-xs leading-relaxed mt-3">
+              A phone call with our team to talk through what you&rsquo;re
+              planning and answer your questions. Not a site visit, and not a
+              quote &mdash; just a conversation about your project.
+            </p>
 
             <div className="flex flex-wrap items-center gap-x-4 gap-y-1 mt-6 text-white/60 text-[11px] uppercase tracking-[0.18em]">
               <span>CSLB {CS.license}</span>
@@ -322,20 +372,30 @@ export default function CtvRemodelingPage() {
           </div>
         </section>
 
-        {/* 6. Book a time — CTV-specific Calendly (placeholder until the
-            dedicated event type exists; see CtvCalendlyEmbed). */}
-        <section className="bg-white px-5 py-12">
+        {/* 6. Book a time — the CTV-specific Calendly event (30-min phone
+            call). scroll-mt keeps the heading clear of the sticky call bar
+            when the hero CTA jumps here. */}
+        <section id="calendly" className="bg-white px-5 py-12 scroll-mt-4">
           <div className="max-w-2xl mx-auto">
             <div className="flex items-center gap-3 mb-3">
               <span className="w-8 h-px bg-gold" />
               <span className="text-gold-deep text-[10px] uppercase tracking-[0.35em]">
-                Free Consultation
+                Book a Call
               </span>
             </div>
-            <h2 className="font-display text-navy text-3xl leading-tight mb-6">
+            <h2 className="font-display text-navy text-3xl leading-tight mb-4">
               Pick a time that{" "}
               <span className="italic text-gold-deep">works</span>.
             </h2>
+            {/* Say what the appointment IS, right above the picker. */}
+            <p className="text-navy/70 text-base leading-relaxed mb-6">
+              Thirty minutes on the phone with our team &mdash; we&rsquo;ll go
+              through what you&rsquo;re thinking about, answer your questions,
+              and tell you honestly what your project is likely to involve.
+              It&rsquo;s not a site visit and it&rsquo;s not a quote; if it
+              makes sense to come out and measure after that, we&rsquo;ll set
+              that up separately.
+            </p>
             <CtvCalendlyEmbed />
           </div>
         </section>
