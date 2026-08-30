@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { CS } from "@/lib/constants";
 import { vibeLead } from "@/lib/vibe";
+import { QUICKFORM_TRANSACTIONAL_V1 } from "@/lib/sms-consent";
 
 declare global {
   interface Window {
@@ -43,6 +44,10 @@ export default function KitchenQuickForm() {
           email: form.email || undefined,
           source: "kitchen_form",
           service_requested: "kitchen_remodel",
+          // The disclosure rendered below the submit button comes from this
+          // same constant, so the stored evidence is exactly what was read.
+          sms_transactional_consent: true,
+          sms_consent_text: QUICKFORM_TRANSACTIONAL_V1,
         }),
       });
       if (!res.ok) throw new Error(`Request failed: ${res.status}`);
@@ -148,8 +153,8 @@ export default function KitchenQuickForm() {
         >
           {submitting ? "Sending…" : "Request a Callback"}
         </button>
-        <p className="text-xs text-navy/45 text-center">
-          No obligation. We&rsquo;ll never sell your info.
+        <p className="text-xs text-navy/45 text-center leading-snug">
+          {QUICKFORM_TRANSACTIONAL_V1}
         </p>
       </form>
     </div>

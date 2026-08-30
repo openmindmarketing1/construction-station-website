@@ -5,6 +5,7 @@ import dynamic from "next/dynamic";
 import Reveal from "@/components/Reveal";
 import { CS, HOURS, SERVICES } from "@/lib/constants";
 import { vibeLead } from "@/lib/vibe";
+import { CONTACT_TRANSACTIONAL_V1, CONTACT_MARKETING_V1 } from "@/lib/sms-consent";
 
 const ImageUpload = dynamic(() => import("@/components/ImageUpload"), {
   ssr: false,
@@ -82,6 +83,12 @@ export default function ContactPage() {
           images: imageUrls,
           sms_transactional_consent: smsTransactionalConsent,
           sms_marketing_consent: smsMarketingConsent,
+          // The exact disclosure the visitor read, rendered from these same
+          // constants below. Marketing consent is the broader permission, so
+          // when it is granted that is the text on record.
+          sms_consent_text: smsMarketingConsent
+            ? CONTACT_MARKETING_V1
+            : CONTACT_TRANSACTIONAL_V1,
         }),
       });
       if (!res.ok) throw new Error(`Request failed: ${res.status}`);
@@ -242,7 +249,7 @@ export default function ContactPage() {
                           className="mt-0.5 h-4 w-4 shrink-0 accent-navy"
                         />
                         <span className="text-sm text-gray-700 leading-relaxed">
-                          I agree to receive SMS text messages from Construction Station Flooring and Design at the phone number provided, including appointment confirmations, project updates, and consultation reminders. Message frequency varies. Message and data rates may apply. Reply STOP to opt out. Reply HELP for help. Consent is not a condition of purchase.{" "}
+                          {CONTACT_TRANSACTIONAL_V1}{" "}
                           <a
                             href="https://constructionstation.com/privacy"
                             target="_blank"
@@ -271,7 +278,7 @@ export default function ContactPage() {
                           className="mt-0.5 h-4 w-4 shrink-0 accent-navy"
                         />
                         <span className="text-sm text-gray-700 leading-relaxed">
-                          I also agree to receive promotional offers, review requests, and follow-up messages via SMS from Construction Station Flooring and Design. Message frequency varies. Msg &amp; data rates may apply. Reply STOP to opt out. Reply HELP for help. Consent is not a condition of purchase.
+                          {CONTACT_MARKETING_V1}
                         </span>
                       </label>
                     </div>

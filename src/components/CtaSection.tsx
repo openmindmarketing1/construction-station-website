@@ -4,6 +4,7 @@ import { useState } from "react";
 import Reveal from "@/components/Reveal";
 import { CS } from "@/lib/constants";
 import { vibeLead } from "@/lib/vibe";
+import { QUICKFORM_TRANSACTIONAL_V1 } from "@/lib/sms-consent";
 
 type Props = {
   heading: string;
@@ -36,6 +37,10 @@ export default function CtaSection({
           full_name: name,
           phone,
           source: "homepage_cta",
+          // The disclosure rendered below the submit button comes from this
+          // same constant, so the stored evidence is exactly what was read.
+          sms_transactional_consent: true,
+          sms_consent_text: QUICKFORM_TRANSACTIONAL_V1,
         }),
       });
       if (!res.ok) throw new Error(`Request failed: ${res.status}`);
@@ -147,8 +152,11 @@ export default function CtaSection({
                     >
                       {submitting ? "Sending..." : "Book My Consultation"}
                     </button>
-                    <div className="text-xs text-navy/50">
+                    <div className="text-xs text-navy/50 leading-snug">
                       We&rsquo;ll call within 2 business hours. No obligation.
+                    </div>
+                    <div className="text-xs text-navy/45 leading-snug">
+                      {QUICKFORM_TRANSACTIONAL_V1}
                     </div>
                   </form>
                 ) : (

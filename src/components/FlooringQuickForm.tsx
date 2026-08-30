@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { CS } from "@/lib/constants";
 import { vibeLead } from "@/lib/vibe";
+import { QUICKFORM_TRANSACTIONAL_V1 } from "@/lib/sms-consent";
 
 declare global {
   interface Window {
@@ -43,6 +44,10 @@ export default function FlooringQuickForm() {
           email: form.email || undefined,
           source: "flooring_form",
           service_requested: "flooring_installation",
+          // The disclosure rendered below the submit button comes from this
+          // same constant, so the stored evidence is exactly what was read.
+          sms_transactional_consent: true,
+          sms_consent_text: QUICKFORM_TRANSACTIONAL_V1,
         }),
       });
       if (!res.ok) throw new Error(`Request failed: ${res.status}`);
@@ -169,8 +174,8 @@ export default function FlooringQuickForm() {
         >
           {submitting ? "Sending…" : "Get My Free Quote"}
         </button>
-        <p className="text-xs text-navy/45 text-center">
-          No obligation. We&rsquo;ll never sell your info. CSLB #1108879.
+        <p className="text-xs text-navy/45 text-center leading-snug">
+          {QUICKFORM_TRANSACTIONAL_V1}
         </p>
       </form>
     </div>

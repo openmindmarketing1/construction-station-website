@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { CS } from "@/lib/constants";
 import { vibeLead } from "@/lib/vibe";
+import { QUICKFORM_TRANSACTIONAL_V1 } from "@/lib/sms-consent";
 
 declare global {
   interface Window {
@@ -62,6 +63,10 @@ export default function CtvQuickForm() {
           source: "ctv_landing",
           service_requested: "general_remodel",
           campaign_name: "CS CTV - General Remodeling",
+          // Disclosure below the submit button renders from this same
+          // constant, so the evidence matches what the visitor read.
+          sms_transactional_consent: true,
+          sms_consent_text: QUICKFORM_TRANSACTIONAL_V1,
         }),
       });
       // Only a confirmed 2xx counts as submitted. Never show "got it" for a
@@ -182,9 +187,7 @@ export default function CtvQuickForm() {
           {submitting ? "Sending…" : "Request a Callback"}
         </button>
         <p className="text-xs text-navy/45 text-center leading-snug">
-          By submitting you agree to receive calls and texts from Construction
-          Station about your project. Message and data rates may apply. Reply
-          STOP to opt out.
+          {QUICKFORM_TRANSACTIONAL_V1}
         </p>
       </form>
     </div>
