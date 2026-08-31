@@ -154,26 +154,32 @@ export default function RootLayout({
             no vbpx() call is ever lost; the remote vbpx.js replays the queue
             via s.process.
 
-            CORRECTED 2026-08-30. That "never lost" claim held only if vbpx.js
-            eventually loads, and on strategy="lazyOnload" it frequently never
-            did — Next defers such scripts to browser idle after window load,
-            and on a page with a chat widget and third-party tags idle often
-            does not arrive at all. Measured over 10 loads each, 12s dwell:
+            CORRECTED 2026-08-30, then corrected again the same day — read
+            both halves before changing this.
 
-              /                              vbpx.js 7/10   page_view 7/10
-              /services/kitchen-remodeling   vbpx.js 2/10   page_view 2/10
-              /remodeling (CTV lander)       vbpx.js 4/10   page_view 4/10
+            (a) strategy="lazyOnload" defers the fetch to browser idle after
+            window load, and on a page with a chat widget and other third-party
+            tags idle may never arrive. afterInteractive requests it
+            deterministically instead (measured: fetched at ~400ms, queue
+            flushed by ~740ms). That part stands.
 
-            Script-load and beacon-sent were perfectly correlated: when the
-            script loaded the queue flushed in <1s; when it did not, the
-            page_view AND any queued lead event were silently discarded. That
-            is 30-80% of all Vibe conversion data, and the CTV Leads campaign
-            cannot pass its publish gate (page view <12h, lead <7d, >=0.1%
-            conversion rate) on data that lossy.
+            (b) The event-loss numbers first recorded here blamed lazyOnload
+            for a 30-80% drop. That was WRONG. The real cause is that
+            s.vibe.co itself is flaky: fetching the script directly, with no
+            browser and no page involved, gave 2/12 successes from one network
+            and ECONNRESET from a second, independent one. tracker.vibe.co
+            (the host in Vibe's current docs) was 0/12. By contrast the event
+            COLLECTOR, t.vibe.co/pixel/s, answered 8/8.
 
-            afterInteractive loads it deterministically after hydration. It is
-            a ~10KB tracker; the TBT it costs is worth far less than the
-            measurement it was destroying. */}
+            So: when the script fails to load, the synchronously-queued
+            page_view AND any queued lead event are discarded with nothing
+            logged. That is Vibe-side infrastructure, not something this
+            loading strategy can fix, and it is worth raising with Vibe —
+            it undercounts every conversion the CTV campaign depends on.
+
+            Keeping afterInteractive regardless: a small tracker requested
+            deterministically beats one that waits for an idle that may never
+            come, and it removes one of the two failure modes. */}
         <Script id="vibe-pixel" strategy="afterInteractive">
           {`
             !function(v,c){if(!v[c]){var s=v[c]=function(){s.process?s.process.apply(s,arguments):s.queue.push(arguments)};s.queue=[],s.b=1*new Date}}(window,"vbpx");
