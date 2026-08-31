@@ -11,6 +11,7 @@ import SmoothScrollInit from "@/components/SmoothScrollInit";
 import JsonLd from "@/components/JsonLd";
 import VibeRouteTracker from "@/components/VibeRouteTracker";
 import BareRouteGate from "@/components/BareRouteGate";
+import VibePixelFallback from "@/components/VibePixelFallback";
 import { CS } from "@/lib/constants";
 
 const displayFont = DM_Serif_Display({
@@ -202,6 +203,9 @@ export default function RootLayout({
       <body className="font-body bg-cream text-navy antialiased">
         <JsonLd data={organizationSchema} />
         <VibeRouteTracker />
+        {/* Sends page_view/lead as image beacons when Vibe's script host fails.
+            Mutually exclusive with the script — see the component. */}
+        <VibePixelFallback />
         <SmoothScrollInit />
         <BareRouteGate>
           <Header />
