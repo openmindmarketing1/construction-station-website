@@ -9,7 +9,7 @@ import CalendlyEmbed from "@/components/CalendlyEmbed";
 import ServiceCityLinksStrip from "@/components/ServiceCityLinksStrip";
 import JsonLd from "@/components/JsonLd";
 import { CS } from "@/lib/constants";
-import { CALLBACK_PROMISE_SHORT } from "@/lib/callback-promise";
+import { CALLBACK_PROMISE_SHORT, MISSED_CALL_LINE } from "@/lib/callback-promise";
 
 export const metadata: Metadata = {
   title: {
@@ -509,8 +509,7 @@ export default function FlooringInstallationPage() {
             Call us directly.
           </h2>
           <p className="text-white/65 mb-8 text-sm leading-relaxed">
-            Speak with a flooring specialist right now. We answer during business
-            hours and return all missed calls within 30 minutes. Licensed CSLB
+            Speak with a flooring specialist. {MISSED_CALL_LINE} Licensed CSLB
             #1108879.
           </p>
           <a

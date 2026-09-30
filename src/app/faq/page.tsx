@@ -3,6 +3,7 @@ import Link from "next/link";
 import FAQAccordion from "@/components/FAQAccordion";
 import JsonLd from "@/components/JsonLd";
 import { CS } from "@/lib/constants";
+import { MISSED_CALL_LINE } from "@/lib/callback-promise";
 
 export const metadata: Metadata = {
   title: {
@@ -122,8 +123,7 @@ export default function FAQPage() {
             Still have questions?
           </h2>
           <p className="text-white/65 mb-8 text-sm leading-relaxed">
-            Call us or schedule a free in-home estimate. We answer during
-            business hours and return all missed calls within 30 minutes.
+            Call us or schedule a free in-home estimate. {MISSED_CALL_LINE}{" "}
             Licensed CSLB #1108879.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

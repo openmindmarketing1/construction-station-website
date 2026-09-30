@@ -11,7 +11,7 @@ import KitchenQuickForm from "@/components/KitchenQuickForm";
 import ServiceCityLinksStrip from "@/components/ServiceCityLinksStrip";
 import JsonLd from "@/components/JsonLd";
 import { CS } from "@/lib/constants";
-import { CALLBACK_PROMISE_SHORT } from "@/lib/callback-promise";
+import { CALLBACK_PROMISE_SHORT, MISSED_CALL_LINE } from "@/lib/callback-promise";
 
 export const metadata: Metadata = {
   // `absolute` bypasses the root layout's "%s | Construction Station" template
@@ -417,8 +417,7 @@ export default function KitchenRemodelingPage() {
             Call us directly.
           </h2>
           <p className="text-white/65 mb-8 text-sm leading-relaxed">
-            Speak with a project coordinator right now. We answer during business
-            hours and return all missed calls within 30 minutes.
+            Speak with a project coordinator. {MISSED_CALL_LINE}
           </p>
           <a
             href={CS.phoneHref}

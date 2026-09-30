@@ -5,6 +5,7 @@ import CtvCallBar from "@/components/CtvCallBar";
 import CtvQuickForm from "@/components/CtvQuickForm";
 import CtvCalendlyEmbed from "@/components/CtvCalendlyEmbed";
 import { CS, REVIEWS } from "@/lib/constants";
+import { MISSED_CALL_LINE } from "@/lib/callback-promise";
 
 // Connected-TV landing page. Reached ONLY by scanning a QR code off a
 // television spot, so every assumption here is phone-first: one hand, a couch,
@@ -431,8 +432,7 @@ export default function CtvRemodelingPage() {
               Ready when you are.
             </h2>
             <p className="text-white/65 text-sm leading-relaxed mb-7">
-              We answer during business hours and return missed calls within 30
-              minutes.
+              {MISSED_CALL_LINE}
             </p>
             {/* Hidden at lg: from there the (inline, no longer fixed) call bar
                 sits directly below this section and carries the same action —
