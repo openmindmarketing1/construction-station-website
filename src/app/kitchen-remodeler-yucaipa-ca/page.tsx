@@ -9,6 +9,7 @@ import CalendlyEmbed from "@/components/CalendlyEmbed";
 import KitchenQuickForm from "@/components/KitchenQuickForm";
 import JsonLd from "@/components/JsonLd";
 import { CS } from "@/lib/constants";
+import { CALLBACK_PROMISE_SHORT } from "@/lib/callback-promise";
 
 export const metadata: Metadata = {
   title: {
@@ -653,12 +654,13 @@ export default function KitchenRemodelerYucaipaPage() {
                 <span className="italic text-gold">call you?</span>
               </h2>
               <p className="text-navy/70 leading-relaxed mb-6">
-                Leave your name and number and we&rsquo;ll reach out within 2
-                business hours to discuss your Yucaipa kitchen project.
+                Leave your name and number — {CALLBACK_PROMISE_SHORT} We&rsquo;ll
+                talk through your Yucaipa kitchen project, and a team member
+                follows up during business hours.
               </p>
               <div className="space-y-3 text-sm text-navy/70">
                 {[
-                  "Response within 2 business hours",
+                  "A call within 2 minutes (8 AM–9 PM)",
                   "Free in-home estimate included",
                   "Written quote within 5 business days",
                   `Licensed CSLB ${CS.license} · No obligation, ever`,

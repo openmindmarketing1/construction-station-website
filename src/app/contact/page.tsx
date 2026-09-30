@@ -1,4 +1,5 @@
 "use client";
+import { CALLBACK_PROMISE_SHORT, callbackConfirmation, HUMAN_FOLLOW_UP } from "@/lib/callback-promise";
 
 import { useState } from "react";
 import dynamic from "next/dynamic";
@@ -129,7 +130,7 @@ export default function ContactPage() {
           </Reveal>
           <p className="text-white/75 max-w-xl text-base md:text-lg">
             No obligation. Our design consultations are normally $299 — free
-            for new clients. We&rsquo;ll respond within 2 business hours.
+            for new clients. {CALLBACK_PROMISE_SHORT}
           </p>
         </div>
       </section>
@@ -311,11 +312,10 @@ export default function ContactPage() {
                     </svg>
                   </div>
                   <h2 className="font-display text-navy text-3xl md:text-4xl mb-3">
-                    We&rsquo;ll call you within 2 hours!
+                    {callbackConfirmation()}
                   </h2>
                   <p className="text-navy/70 max-w-md mx-auto">
-                    Thanks {form.full_name.split(" ")[0]}. A team member is
-                    already reviewing your request. If your project is urgent,
+                    Thanks {form.full_name.split(" ")[0]}. {HUMAN_FOLLOW_UP} If your project is urgent,
                     you can reach us directly at{" "}
                     <a
                       href={CS.phoneHref}

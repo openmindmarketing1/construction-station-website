@@ -1,4 +1,5 @@
 "use client";
+import { callbackConfirmation } from "@/lib/callback-promise";
 
 import { useState } from "react";
 import { CS } from "@/lib/constants";
@@ -96,8 +97,8 @@ export default function CtvQuickForm() {
           Got it — we&rsquo;ll call you.
         </h3>
         <p className="text-navy/65 text-sm">
-          Thanks {form.name.trim().split(" ")[0]}. A project coordinator will
-          reach out within 2 business hours.
+          Thanks {form.name.trim().split(" ")[0]}. {callbackConfirmation()} A
+          project coordinator follows up during business hours.
         </p>
       </div>
     );

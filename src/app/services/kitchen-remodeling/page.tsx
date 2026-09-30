@@ -11,6 +11,7 @@ import KitchenQuickForm from "@/components/KitchenQuickForm";
 import ServiceCityLinksStrip from "@/components/ServiceCityLinksStrip";
 import JsonLd from "@/components/JsonLd";
 import { CS } from "@/lib/constants";
+import { CALLBACK_PROMISE_SHORT } from "@/lib/callback-promise";
 
 export const metadata: Metadata = {
   // `absolute` bypasses the root layout's "%s | Construction Station" template
@@ -445,14 +446,14 @@ export default function KitchenRemodelingPage() {
                 <span className="italic text-gold">call you?</span>
               </h2>
               <p className="text-navy/70 leading-relaxed mb-6">
-                Leave your name and number and we&rsquo;ll reach out within 2
-                business hours to discuss your project — no obligation, no
-                high-pressure sales call.
+                Leave your name and number — {CALLBACK_PROMISE_SHORT} No
+                obligation, no high-pressure sales call; a team member follows
+                up during business hours.
               </p>
               <div className="space-y-3 text-sm text-navy/70">
                 <div className="flex items-center gap-3">
                   <span className="w-5 h-5 bg-gold/20 border border-gold flex items-center justify-center text-gold text-xs font-bold shrink-0">✓</span>
-                  Response within 2 business hours
+                  A call within 2 minutes (8 AM–9 PM)
                 </div>
                 <div className="flex items-center gap-3">
                   <span className="w-5 h-5 bg-gold/20 border border-gold flex items-center justify-center text-gold text-xs font-bold shrink-0">✓</span>

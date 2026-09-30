@@ -1,4 +1,5 @@
 "use client";
+import { CALLBACK_PROMISE, callbackConfirmation, HUMAN_FOLLOW_UP } from "@/lib/callback-promise";
 
 import { useState } from "react";
 import { CS } from "@/lib/constants";
@@ -78,11 +79,10 @@ export default function FlooringQuickForm() {
           </svg>
         </div>
         <h3 className="font-display text-navy text-2xl mb-2">
-          We&rsquo;ll call you within 2 hours!
+          {callbackConfirmation()}
         </h3>
         <p className="text-navy/65 text-sm">
-          Thanks {form.name.split(" ")[0]}. A team member is already reviewing
-          your flooring request.
+          Thanks {form.name.split(" ")[0]}. {HUMAN_FOLLOW_UP}
         </p>
       </div>
     );
@@ -97,8 +97,7 @@ export default function FlooringQuickForm() {
         Get your free flooring quote
       </h3>
       <p className="text-navy/60 text-sm mb-6">
-        Leave your info and we&rsquo;ll reach out within 2 business hours with
-        pricing for your project.
+        {CALLBACK_PROMISE}
       </p>
       <form onSubmit={onSubmit} className="space-y-4">
         <div>

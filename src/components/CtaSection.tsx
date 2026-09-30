@@ -1,4 +1,5 @@
 "use client";
+import { CALLBACK_PROMISE_SHORT, callbackConfirmation, HUMAN_FOLLOW_UP } from "@/lib/callback-promise";
 
 import { useState } from "react";
 import Reveal from "@/components/Reveal";
@@ -153,7 +154,7 @@ export default function CtaSection({
                       {submitting ? "Sending..." : "Book My Consultation"}
                     </button>
                     <div className="text-xs text-navy/50 leading-snug">
-                      We&rsquo;ll call within 2 business hours. No obligation.
+                      {CALLBACK_PROMISE_SHORT} No obligation.
                     </div>
                     <div className="text-xs text-navy/45 leading-snug">
                       {QUICKFORM_TRANSACTIONAL_V1}
@@ -168,7 +169,7 @@ export default function CtaSection({
                     </div>
                     <div className="font-display text-2xl mb-2">Thank you!</div>
                     <div className="text-sm text-navy/70">
-                      We&rsquo;ll call you within 2 business hours.
+                      {callbackConfirmation()} {HUMAN_FOLLOW_UP}
                     </div>
                   </div>
                 )}
