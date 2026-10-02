@@ -20,6 +20,10 @@ import type { Metadata } from "next";
 // Self-canonical — the root layout deliberately sets none (see layout.tsx).
 export const metadata: Metadata = {
   alternates: { canonical: "/" },
+  // "Southern California" is positioning (Coachella Valley + Temecula work),
+  // not a ranking target — the H1 and title stay on the Inland Empire.
+  description:
+    "Licensed Southern California contractor serving the Inland Empire since 2008. Kitchen and bathroom remodeling, ADUs, room additions. Free design session worth $299. Call 909-797-6333.",
 };
 
 const SITE_URL =

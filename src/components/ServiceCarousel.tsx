@@ -172,12 +172,11 @@ export default function ServiceCarousel() {
         </div>
 
         <h1 className="font-display text-white leading-[1.0] text-4xl sm:text-5xl md:text-[3.4rem] lg:text-[4.2rem] max-w-4xl">
-          Southern California&apos;s{" "}
-          <span className="italic" style={{ color: AMBER }}>
-            Full-Service
-          </span>
+          Kitchen, Bath &amp; ADU Remodeling{" "}
           <br />
-          Remodeling Contractor
+          <span className="italic" style={{ color: AMBER }}>
+            Across the Inland Empire
+          </span>
         </h1>
         <p className="mt-4 font-body text-white/60 text-sm sm:text-base max-w-lg leading-relaxed">
           From Kitchen Remodels to ADUs — We Design, Permit &amp; Build
