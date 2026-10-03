@@ -53,7 +53,7 @@ export async function generateMetadata({
     : `ADU Regulations ${city.name}, CA`;
   const description =
     city.seoDescription ??
-    `Everything you need to know about building an ADU in ${city.name}, California — size limits, setbacks, permits, costs, and rental income. Licensed ADU contractor since 2008. Call ${CS.phone}.`;
+    `Everything you need to know about building an ADU in ${city.name}, California — size limits, setbacks, permits, costs, and rental income. Serving ${city.name} since 2008. CSLB ${CS.license}. Call ${CS.phone}.`;
   return {
     title,
     description,
@@ -188,7 +188,7 @@ function buildFaqs(city: ADUCity) {
     },
     {
       q: `Does Construction Station build ADUs in ${city.name}?`,
-      a: `Yes. Construction Station is a licensed California general contractor (License ${CS.license}) and has been building ADUs across the Inland Empire, Temecula Valley, Desert, and Orange County–adjacent communities since 2008. We handle the entire ${city.name} project — feasibility, design, structural engineering, permits, construction, and final inspection — under one fixed-price contract and one warranty.`,
+      a: `Yes. Construction Station is a licensed California general contractor and has been building ADUs across the Inland Empire, Temecula Valley, Desert, and Orange County–adjacent communities since 2008. CSLB ${CS.license}. We handle the entire ${city.name} project — feasibility, design, structural engineering, permits, construction, and final inspection — under one fixed-price contract and one warranty.`,
     },
   ];
 }

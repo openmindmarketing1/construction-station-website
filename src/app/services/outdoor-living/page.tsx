@@ -90,7 +90,7 @@ const serviceSchema = {
   },
   areaServed: { "@type": "Place", name: "Inland Empire, California" },
   description:
-    "Custom patio covers, alumawood patio covers, outdoor kitchens, concrete patios, pergolas, and outdoor living spaces. Licensed contractor since 2008.",
+    "Custom patio covers, alumawood patio covers, outdoor kitchens, concrete patios, pergolas, and outdoor living spaces. Serving the Inland Empire since 2008. CSLB #1108879.",
 };
 
 const localBusinessSchema = {

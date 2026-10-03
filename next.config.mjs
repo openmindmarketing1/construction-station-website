@@ -166,14 +166,6 @@ const nextConfig = {
       { source: "/adu", destination: "/services/adu", permanent: true },
       { source: "/home-builders", destination: "/services/room-additions", permanent: true },
       { source: "/kitchen-bath-remodel", destination: "/services/kitchen-remodeling", permanent: true },
-      // Three service×city combos Google rejected outright (soft 404 / never
-      // indexed), not just ranking poorly. 301'd to the nearest live page for
-      // that service — src/lib/service-city-pages.ts EXCLUDED_SERVICE_CITY
-      // and each [city]/page.tsx generateStaticParams keep these in sync
-      // (2026-10-02).
-      { source: "/services/general-contractor/cathedral-city", destination: "/about", permanent: true },
-      { source: "/services/flooring/palm-desert", destination: "/services/flooring-installation-yucaipa-ca", permanent: true },
-      { source: "/services/kitchen-remodeling/palm-springs", destination: "/services/kitchen-remodeling", permanent: true },
       // Bare service-hub paths with no page of their own (2026-10-02 audit):
       // nothing links to either, they only 404 for typed/external URLs.
       { source: "/services/flooring", destination: "/services/flooring-installation-yucaipa-ca", permanent: true },

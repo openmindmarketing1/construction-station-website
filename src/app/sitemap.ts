@@ -5,7 +5,6 @@ import { ADU_CITIES } from "@/lib/adu-cities";
 import {
   SERVICE_CITY_SERVICES,
   SERVICE_CITY_SLUGS,
-  isExcludedServiceCity,
 } from "@/lib/service-city-pages";
 import { fetchOmmPosts } from "@/lib/omm-blog";
 
@@ -82,7 +81,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   const serviceCityRoutes: MetadataRoute.Sitemap =
     SERVICE_CITY_SERVICES.flatMap((s) =>
-      SERVICE_CITY_SLUGS.filter((slug) => !isExcludedServiceCity(s.key, slug)).map((slug) => ({
+      SERVICE_CITY_SLUGS.map((slug) => ({
         url: `${SITE_URL}/services/${s.routeSegment}/${slug}`,
         lastModified: now,
         changeFrequency: "monthly" as const,

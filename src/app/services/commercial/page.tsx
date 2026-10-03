@@ -125,7 +125,7 @@ export default function CommercialPage() {
     },
     areaServed: { "@type": "Place", name: "Inland Empire, California" },
     description:
-      "Full-service commercial construction — tenant improvements, restaurant & retail buildouts, commercial flooring, office renovations, and ADA compliance. Licensed CA contractor since 2008.",
+      "Full-service commercial construction — tenant improvements, restaurant & retail buildouts, commercial flooring, office renovations, and ADA compliance. Serving the Inland Empire since 2008. CSLB #1108879.",
     offers: {
       "@type": "Offer",
       price: "0",

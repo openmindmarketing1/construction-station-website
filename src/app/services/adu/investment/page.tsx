@@ -6,7 +6,7 @@ import { CS } from "@/lib/constants";
 export const metadata: Metadata = {
   title: "ADU Investment & ROI | Construction Station",
   description:
-    "Is an ADU a good investment in the Inland Empire? See regional rent estimates, a real ROI example, payback period, and property-value impact for IE homeowners. Licensed ADU contractor since 2008.",
+    "Is an ADU a good investment in the Inland Empire? See regional rent estimates, a real ROI example, payback period, and property-value impact for IE homeowners. Serving the Inland Empire since 2008. CSLB #1108879.",
   alternates: { canonical: "/services/adu/investment" },
 };
 

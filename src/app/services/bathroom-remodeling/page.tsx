@@ -142,7 +142,7 @@ export default function BathroomRemodelingPage() {
     },
     areaServed: { "@type": "Place", name: "Inland Empire, California" },
     description:
-      "Full-service bathroom remodeling — walk-in showers, soaking tubs, tile work, and master suites. Licensed contractor since 2008.",
+      "Full-service bathroom remodeling — walk-in showers, soaking tubs, tile work, and master suites. Serving the Inland Empire since 2008. CSLB #1108879.",
   };
 
   return (

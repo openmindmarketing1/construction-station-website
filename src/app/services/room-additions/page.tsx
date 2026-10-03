@@ -11,7 +11,7 @@ import { CS } from "@/lib/constants";
 export const metadata: Metadata = {
   title: "Room Additions & Home Expansions | Construction Station",
   description:
-    "Custom room additions across the Inland Empire — master suites, second-story builds, family room expansions, and garage conversions. Licensed contractor #1108879 since 2008. Call 909-797-6333.",
+    "Custom room additions across the Inland Empire — master suites, second-story builds, family room expansions, and garage conversions. Serving the Inland Empire since 2008. CSLB #1108879. Call 909-797-6333.",
   alternates: { canonical: "/services/room-additions" },
 };
 
@@ -89,7 +89,7 @@ const serviceSchema = {
   },
   areaServed: { "@type": "Place", name: "Inland Empire, California" },
   description:
-    "Custom room additions — master suites, second-story builds, family room expansions, and garage conversions. Licensed contractor since 2008.",
+    "Custom room additions — master suites, second-story builds, family room expansions, and garage conversions. Serving the Inland Empire since 2008. CSLB #1108879.",
 };
 
 const localBusinessSchema = {

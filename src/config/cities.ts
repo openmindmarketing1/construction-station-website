@@ -248,7 +248,7 @@ export const CITIES: City[] = [
       },
       {
         q: "Are you licensed and insured for work in Eastvale?",
-        a: "Yes — Construction Station is a licensed California general contractor (CSLB #1108879), bonded and fully insured, family-run since 2008 with an A+ BBB rating. Verify the license anytime at cslb.ca.gov.",
+        a: "Yes — Construction Station is a licensed California general contractor, bonded and fully insured, family-run since 2008 with an A+ BBB rating. CSLB #1108879. Verify the license anytime at cslb.ca.gov.",
       },
     ],
   },
@@ -290,7 +290,7 @@ export const CITIES: City[] = [
       },
       {
         q: "Are you licensed and insured for work in Perris?",
-        a: "Yes — Construction Station is a licensed California general contractor (CSLB #1108879), bonded and fully insured, with an A+ BBB rating, family-run since 2008. Verify the license anytime at cslb.ca.gov.",
+        a: "Yes — Construction Station is a licensed California general contractor, bonded and fully insured, with an A+ BBB rating, family-run since 2008. CSLB #1108879. Verify the license anytime at cslb.ca.gov.",
       },
     ],
   },

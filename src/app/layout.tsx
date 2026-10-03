@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     template: "%s | Construction Station",
   },
   description:
-    "Licensed contractor serving the Inland Empire since 2008. Kitchen remodeling, bathroom renovations, ADUs, room additions. Free design session worth $299. Call 909-797-6333.",
+    "Serving the Inland Empire since 2008. CSLB #1108879. Kitchen remodeling, bathroom renovations, ADUs, room additions. Free design session worth $299. Call 909-797-6333.",
   keywords: [
     "kitchen remodeling",
     "bathroom remodeling",
@@ -57,7 +57,7 @@ export const metadata: Metadata = {
     siteName: "Construction Station",
     title: "Construction Station | Residential & Commercial Construction in the Inland Empire",
     description:
-      "Licensed kitchen, bath, and home renovation contractor serving the Inland Empire since 2008. Free design session — book your consultation today.",
+      "Kitchen, bath, and home renovation contractor serving the Inland Empire since 2008. CSLB #1108879. Free design session — book your consultation today.",
     images: [{ url: `${SITE_URL}/og.jpg`, width: 1200, height: 630, alt: "Construction Station — Inland Empire Contractor" }],
   },
   twitter: {
