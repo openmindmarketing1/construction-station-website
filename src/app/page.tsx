@@ -22,8 +22,10 @@ export const metadata: Metadata = {
   alternates: { canonical: "/" },
   // "Southern California" is positioning (Coachella Valley + Temecula work),
   // not a ranking target — the H1 and title stay on the Inland Empire.
+  // "Since 2008" and the license number are two separate facts, never tied
+  // together in one clause (2026-10-02, Greg).
   description:
-    "Licensed Southern California contractor serving the Inland Empire since 2008. Kitchen and bathroom remodeling, ADUs, room additions. Free design session worth $299. Call 909-797-6333.",
+    "Southern California contractor serving the Inland Empire since 2008. CSLB #1108879. Kitchen and bathroom remodeling, ADUs, room additions. Free design session worth $299. Call 909-797-6333.",
 };
 
 const SITE_URL =

@@ -46,6 +46,12 @@ export type ADUCity = {
   // title/description in services/adu/[city] generateMetadata.
   seoTitle?: string;
   seoDescription?: string;
+  // Optional short "we build these" block rendered between the hero and the
+  // quick-stats bar — for a city that ranks well but earns no clicks, so a
+  // page titled "ADU Regulations" doesn't read as information-only before
+  // the regulations start. Under 100 words, one CTA. Highland only for now
+  // (2026-10-02); see services/adu/[city]/page.tsx.
+  builderIntro?: string;
   // City pre-approved / permit-ready ADU plan program. Always present (defaults
   // to { available: false }); merged in from PRE_APPROVED_BY_SLUG below.
   preApprovedPlans: CityPreApprovedProgram;
@@ -166,10 +172,17 @@ const BASE_CITIES: Omit<ADUCity, "regionKey" | "preApprovedPlans">[] = [
       "Highland sits between San Bernardino and the foothills, with a mix of suburban tract neighborhoods, semi-rural acreage along Greenspot Road, and newer master-planned communities like East Highlands Ranch. The city follows California state ADU baseline closely, but the jurisdictional boundary with unincorporated San Bernardino County zigzags through the area — some Highland-addressed parcels are actually governed by county rules, which changes setback and lot-coverage details. That's the first thing we verify before drawing plans. Highland's larger lots, particularly in the older Base Line corridor and the Greenspot Road semi-rural zone, are ideal candidates for detached ADUs in the 1,000–1,200 sq ft range. Garage conversions are also common on the postwar tract neighborhoods south of Pacific Avenue. The city is generally pro-ADU and processes permits on the state-mandated 60-day timeline.",
     whyBuild:
       "Highland's combination of larger suburban lots, semi-rural acreage on the foothill side, and proximity to San Bernardino employment makes it an underrated ADU market. Homeowners along Greenspot Road and the older Base Line corridor frequently have lots in excess of 10,000 sq ft — large enough to build a full 1,200 sq ft detached ADU without crowding the primary residence or compromising the yard. East Highlands Ranch and the newer master-planned subdivisions have tighter HOA rules to navigate, but Construction Station has worked through Highland HOA architectural review committees before. Rental demand is steady from San Bernardino County government employees, Loma Linda Medical Center commuters, and Crafton Hills College students who prefer a quieter neighborhood than central San Bernardino.",
-    seoTitle:
-      "ADU Contractors Highland CA | Licensed ADU Builder | Construction Station",
+    // 2026-10-02: ranks top 10 for buyer-intent searches (616 impressions /
+    // 90d) with zero clicks — the old title and description read as a
+    // regulations reference, not a builder. New title leads with what the
+    // searcher wants (a builder), description states services + CTA.
+    // "Since 2008" and the license number are two separate facts, never tied
+    // together in one clause (Greg).
+    seoTitle: "ADU Builder in Highland, CA — Design, Permits & Build | Construction Station",
     seoDescription:
-      "Expert ADU builders in Highland CA. Garage conversions, new ADU construction, permit assistance. Licensed & insured CSLB #1108879. Call (909) 797-6333.",
+      "ADU builder in Highland, CA — design, City of Highland permits, and construction under one contract. Serving the Inland Empire since 2008. CSLB #1108879. Free 3D rendering & line-item quote.",
+    builderIntro:
+      "Construction Station builds ADUs in Highland from design through final inspection — one company, one fixed-price contract, one warranty. Serving the Inland Empire since 2008. CSLB #1108879, bonded and insured. We verify whether your parcel falls under Highland or San Bernardino County rules before drawing plans, and provide a free 3D rendering and line-item quote before any money changes hands.",
   },
   {
     slug: "calimesa",

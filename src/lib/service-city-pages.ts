@@ -568,6 +568,21 @@ export const SERVICE_CITY_PROFILES: ServiceCityProfile[] = [
 
 export const SERVICE_CITY_SLUGS = SERVICE_CITY_PROFILES.map((c) => c.slug);
 
+// Three of the 30 service×city combinations Google rejected outright (soft
+// 404 / never indexed) rather than just ranking poorly: general-contractor
+// has no real local content for Cathedral City, flooring's /services/flooring
+// route doesn't exist as a page at all, and kitchen-remodeling/palm-springs
+// sat undiscovered. 301'd to the nearest live page for that service
+// (service-city-pages.ts#mainHref) instead of left thin (2026-10-02).
+export const EXCLUDED_SERVICE_CITY: Array<{ service: ServiceKey; city: string }> = [
+  { service: "general-contractor", city: "cathedral-city" },
+  { service: "flooring", city: "palm-desert" },
+  { service: "kitchen-remodeling", city: "palm-springs" },
+];
+
+export const isExcludedServiceCity = (service: ServiceKey, city: string): boolean =>
+  EXCLUDED_SERVICE_CITY.some((e) => e.service === service && e.city === city);
+
 export const getServiceCityProfile = (
   slug: string
 ): ServiceCityProfile | undefined =>
@@ -588,7 +603,7 @@ export const buildServiceCityFaqs = (
 
 /** All city-specific page links for a city (the five services here + ADU). */
 export const serviceCityLinks = (city: ServiceCityProfile) => [
-  ...SERVICE_CITY_SERVICES.map((s) => ({
+  ...SERVICE_CITY_SERVICES.filter((s) => !isExcludedServiceCity(s.key, city.slug)).map((s) => ({
     name: s.name,
     href: `/services/${s.routeSegment}/${city.slug}`,
     description: s.shortDescription,

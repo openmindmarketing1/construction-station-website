@@ -15,13 +15,17 @@ import { CALLBACK_PROMISE_SHORT, MISSED_CALL_LINE } from "@/lib/callback-promise
 
 export const metadata: Metadata = {
   // `absolute` bypasses the root layout's "%s | Construction Station" template
-  // so the brand isn't appended twice.
+  // so the brand isn't appended twice. Region-wide page (2026-10-02) — it
+  // used to duplicate the Yucaipa-specific title that /kitchen-remodeler-
+  // yucaipa-ca owns; the two pages cross-link via serviceCityLinks instead of
+  // competing for the same query.
   title: {
-    absolute:
-      "Kitchen Remodeler Yucaipa CA | Free Estimates | Licensed & Insured | Construction Station",
+    absolute: "Kitchen Remodeling in the Inland Empire | Construction Station",
   },
+  // "Since 2008" and the license number are two separate facts, never tied
+  // together in one clause (2026-10-02, Greg).
   description:
-    "Top-rated kitchen remodeler in Yucaipa CA. Custom kitchen remodels, free design consultation. CSLB Licensed #1108879. Call (909) 797-6333.",
+    "Kitchen remodels across the Inland Empire — design, cabinetry, countertops, and installation by one crew, start to finish. Serving the Inland Empire since 2008. CSLB #1108879. Free in-home design consultation.",
   alternates: { canonical: "/services/kitchen-remodeling" },
 };
 

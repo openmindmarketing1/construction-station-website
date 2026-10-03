@@ -344,6 +344,26 @@ export default async function ADUCityPage({
         </div>
       </section>
 
+      {/* 1.5 BUILDER INTRO — optional, city.builderIntro (2026-10-02): a page
+          ranking well on buyer-intent searches but titled "ADU Regulations"
+          reads as information-only before any regulations appear. This puts
+          "we build these" above the fold. */}
+      {city.builderIntro && (
+        <section className="bg-cream border-b border-navy/10 py-12 lg:py-14">
+          <div className="max-w-4xl mx-auto px-5 lg:px-10 text-center">
+            <p className="text-navy/80 text-base md:text-lg leading-relaxed mb-6">
+              {city.builderIntro}
+            </p>
+            <a
+              href={CS.phoneHref}
+              className="inline-flex items-center justify-center gap-3 bg-navy text-white font-body font-semibold px-8 py-4 text-sm hover:bg-navy/90 transition-colors tracking-wide uppercase"
+            >
+              Call {CS.phone}
+            </a>
+          </div>
+        </section>
+      )}
+
       {/* 2. QUICK STATS BAR */}
       <section className="bg-gold">
         <div className="max-w-7xl mx-auto px-5 lg:px-10 py-8 lg:py-10">
