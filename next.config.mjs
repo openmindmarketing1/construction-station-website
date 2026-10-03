@@ -174,6 +174,10 @@ const nextConfig = {
       { source: "/services/general-contractor/cathedral-city", destination: "/about", permanent: true },
       { source: "/services/flooring/palm-desert", destination: "/services/flooring-installation-yucaipa-ca", permanent: true },
       { source: "/services/kitchen-remodeling/palm-springs", destination: "/services/kitchen-remodeling", permanent: true },
+      // Bare service-hub paths with no page of their own (2026-10-02 audit):
+      // nothing links to either, they only 404 for typed/external URLs.
+      { source: "/services/flooring", destination: "/services/flooring-installation-yucaipa-ca", permanent: true },
+      { source: "/services/kitchen-remodeling/yucaipa", destination: "/kitchen-remodeler-yucaipa-ca", permanent: true },
       { source: "/flooring", destination: "https://www.carpet-station.com", permanent: true },
     ];
 
