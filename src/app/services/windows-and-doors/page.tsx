@@ -10,7 +10,7 @@ import { CS } from "@/lib/constants";
 export const metadata: Metadata = {
   title: "Window & Door Replacement | Construction Station",
   description:
-    "Energy-efficient window replacement and door installation across San Bernardino County — dual-pane windows, sliding glass doors, French doors, and entry doors. Serving San Bernardino County since 2008. CSLB #1108879. Call 909-797-6333.",
+    "Energy-efficient window replacement and door installation across San Bernardino County — dual-pane windows, sliding glass doors, French doors, and entry doors. In business since 2008. CSLB #1108879. Call 909-797-6333.",
   alternates: { canonical: "/services/windows-and-doors" },
 };
 
@@ -85,7 +85,7 @@ const serviceSchema = {
   },
   areaServed: { "@type": "Place", name: "San Bernardino County, California" },
   description:
-    "Energy-efficient window replacement, door installation, sliding glass doors, French doors, and entry doors. Serving San Bernardino County since 2008. CSLB #1108879.",
+    "Energy-efficient window replacement, door installation, sliding glass doors, French doors, and entry doors. In business since 2008. CSLB #1108879.",
 };
 
 const localBusinessSchema = {
@@ -137,7 +137,7 @@ export default function WindowsAndDoorsPage() {
         eyebrow="Service · Windows & Doors"
         title="Window & Door Installation Experts in the Inland Empire"
         italicWord="Inland Empire"
-        subtitle="Energy-efficient dual-pane windows, sliding glass doors, French doors, and entry doors installed correctly the first time. Serving San Bernardino County since 2008. CSLB #1108879."
+        subtitle="Energy-efficient dual-pane windows, sliding glass doors, French doors, and entry doors installed correctly the first time. In business since 2008. CSLB #1108879."
       />
 
       <article className="bg-white py-20 lg:py-24">

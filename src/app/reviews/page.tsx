@@ -7,7 +7,7 @@ import { CS } from "@/lib/constants";
 export const metadata: Metadata = {
   title: "Customer Reviews",
   description:
-    "See what Inland Empire homeowners say about Construction Station. 5.0 stars on Google. Serving Redlands, Yucaipa, Riverside, and surrounding cities since 2008. CSLB #1108879.",
+    "See what Inland Empire homeowners say about Construction Station. 5.0 stars on Google. Serving Redlands, Yucaipa, Riverside, and surrounding cities. In business since 2008. CSLB #1108879.",
   alternates: { canonical: "/reviews" },
 };
 
