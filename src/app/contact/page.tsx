@@ -6,7 +6,7 @@ import dynamic from "next/dynamic";
 import Reveal from "@/components/Reveal";
 import { CS, HOURS, SERVICES } from "@/lib/constants";
 import { vibeLead } from "@/lib/vibe";
-import { CONTACT_CHECKBOX_V2, CONTACT_MARKETING_V1, consentFields } from "@/lib/sms-consent";
+import { CONTACT_TRANSACTIONAL_V1, CONTACT_MARKETING_V1, CALLS_V3, consentFieldsV3 } from "@/lib/sms-consent";
 
 const ImageUpload = dynamic(() => import("@/components/ImageUpload"), {
   ssr: false,
@@ -49,7 +49,7 @@ export default function ContactPage() {
     notes: "",
     honeypot: "",
   });
-  const [callsTextsConsent, setCallsTextsConsent] = useState(false);
+  const [smsTransactionalConsent, setSmsTransactionalConsent] = useState(false);
   const [smsMarketingConsent, setSmsMarketingConsent] = useState(false);
 
   function update<K extends keyof typeof form>(k: K, v: string) {
@@ -83,11 +83,11 @@ export default function ContactPage() {
           source: "website",
           images: imageUrls,
           // The exact disclosures the visitor read, rendered from these same
-          // constants below. Box 1 is consent to calls and texts about the
-          // request; box 2 (promotional texts) is a separate permission.
-          ...consentFields(callsTextsConsent, CONTACT_CHECKBOX_V2),
+          // constants below. Each box is its own permission with its own text;
+          // the call sentence by the button is the call consent.
+          ...consentFieldsV3(smsTransactionalConsent, CONTACT_TRANSACTIONAL_V1),
           sms_marketing_consent: smsMarketingConsent,
-          ...(smsMarketingConsent ? { marketing_consent_text: CONTACT_MARKETING_V1 } : {}),
+          marketing_consent_text: CONTACT_MARKETING_V1,
         }),
       });
       if (!res.ok) throw new Error(`Request failed: ${res.status}`);
@@ -243,12 +243,12 @@ export default function ContactPage() {
                       <label className="flex items-start gap-3 cursor-pointer">
                         <input
                           type="checkbox"
-                          checked={callsTextsConsent}
-                          onChange={(e) => setCallsTextsConsent(e.target.checked)}
+                          checked={smsTransactionalConsent}
+                          onChange={(e) => setSmsTransactionalConsent(e.target.checked)}
                           className="mt-0.5 h-4 w-4 shrink-0 accent-navy"
                         />
                         <span className="text-sm text-gray-700 leading-relaxed">
-                          {CONTACT_CHECKBOX_V2}{" "}
+                          {CONTACT_TRANSACTIONAL_V1}{" "}
                           <a
                             href="https://constructionstation.com/privacy"
                             target="_blank"
@@ -294,6 +294,7 @@ export default function ContactPage() {
                     >
                       {submitting ? "Sending…" : "Book My Free Consultation"}
                     </button>
+                    <p className="text-xs text-navy/75 leading-snug">{CALLS_V3}</p>
                   </form>
                 </div>
               ) : (

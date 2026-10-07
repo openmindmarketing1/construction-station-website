@@ -5,7 +5,8 @@ import { useState } from "react";
 import Reveal from "@/components/Reveal";
 import { CS } from "@/lib/constants";
 import { vibeLead } from "@/lib/vibe";
-import { CALLS_TEXTS_V2, consentFields } from "@/lib/sms-consent";
+import { CALLS_V3, consentFieldsV3, TEXTS_CHECKBOX_V3 } from "@/lib/sms-consent";
+import TextsConsentBox from "@/components/TextsConsentBox";
 
 type Props = {
   heading: string;
@@ -20,6 +21,7 @@ export default function CtaSection({
 }: Props) {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
+  const [textsConsent, setTextsConsent] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -38,9 +40,9 @@ export default function CtaSection({
           full_name: name,
           phone,
           source: "homepage_cta",
-          // The disclosure rendered below the submit button comes from this
-          // same constant, so the stored evidence is exactly what was read.
-          ...consentFields(true, CALLS_TEXTS_V2),
+          // The texts box and the call sentence rendered below come from these
+          // same constants, so the stored evidence is exactly what was read.
+          ...consentFieldsV3(textsConsent, TEXTS_CHECKBOX_V3),
         }),
       });
       if (!res.ok) throw new Error(`Request failed: ${res.status}`);
@@ -146,6 +148,7 @@ export default function CtaSection({
                     {error && (
                       <div className="text-red-700 text-sm">{error}</div>
                     )}
+                    <TextsConsentBox id="cta-texts" checked={textsConsent} onChange={setTextsConsent} />
                     <button
                       disabled={submitting}
                       className="w-full bg-navy text-white font-body uppercase tracking-[0.2em] text-sm py-4 hover:bg-gold hover:text-navy transition-colors disabled:opacity-60"
@@ -153,7 +156,7 @@ export default function CtaSection({
                       {submitting ? "Sending..." : "Book My Consultation"}
                     </button>
                     <div className="text-xs text-navy/75 leading-snug">
-                      {CALLS_TEXTS_V2}
+                      {CALLS_V3}
                     </div>
                     <div className="text-xs text-navy/50 leading-snug">
                       {CALLBACK_PROMISE_SHORT} No obligation.

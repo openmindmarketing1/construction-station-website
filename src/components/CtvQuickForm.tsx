@@ -4,7 +4,8 @@ import { callbackConfirmation } from "@/lib/callback-promise";
 import { useState } from "react";
 import { CS } from "@/lib/constants";
 import { vibeLead } from "@/lib/vibe";
-import { CALLS_TEXTS_V2, consentFields } from "@/lib/sms-consent";
+import { CALLS_V3, consentFieldsV3, TEXTS_CHECKBOX_V3 } from "@/lib/sms-consent";
+import TextsConsentBox from "@/components/TextsConsentBox";
 
 declare global {
   interface Window {
@@ -33,6 +34,7 @@ const BEST_TIMES = [
 
 export default function CtvQuickForm() {
   const [form, setForm] = useState({ name: "", phone: "", bestTime: "", honeypot: "" });
+  const [textsConsent, setTextsConsent] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -64,9 +66,9 @@ export default function CtvQuickForm() {
           source: "ctv_landing",
           service_requested: "general_remodel",
           campaign_name: "CS CTV - General Remodeling",
-          // Disclosure below the submit button renders from this same
-          // constant, so the evidence matches what the visitor read.
-          ...consentFields(true, CALLS_TEXTS_V2),
+          // The texts box and call sentence render from these same
+          // constants, so the evidence matches what the visitor read.
+          ...consentFieldsV3(textsConsent, TEXTS_CHECKBOX_V3),
         }),
       });
       // Only a confirmed 2xx counts as submitted. Never show "got it" for a
@@ -179,6 +181,7 @@ export default function CtvQuickForm() {
             {error}
           </p>
         )}
+        <TextsConsentBox id="ctv-texts" checked={textsConsent} onChange={setTextsConsent} />
         <button
           type="submit"
           disabled={submitting}
@@ -187,7 +190,7 @@ export default function CtvQuickForm() {
           {submitting ? "Sending…" : "Request a Callback"}
         </button>
         <p className="text-xs text-navy/75 text-center leading-snug">
-          {CALLS_TEXTS_V2}
+          {CALLS_V3}
         </p>
       </form>
     </div>

@@ -4,7 +4,8 @@ import { CALLBACK_PROMISE, callbackConfirmation, HUMAN_FOLLOW_UP } from "@/lib/c
 import { useState } from "react";
 import { CS } from "@/lib/constants";
 import { vibeLead } from "@/lib/vibe";
-import { CALLS_TEXTS_V2, consentFields } from "@/lib/sms-consent";
+import { CALLS_V3, consentFieldsV3, TEXTS_CHECKBOX_V3 } from "@/lib/sms-consent";
+import TextsConsentBox from "@/components/TextsConsentBox";
 
 declare global {
   interface Window {
@@ -14,6 +15,7 @@ declare global {
 
 export default function FlooringQuickForm() {
   const [form, setForm] = useState({ name: "", email: "", phone: "", honeypot: "" });
+  const [textsConsent, setTextsConsent] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -45,9 +47,9 @@ export default function FlooringQuickForm() {
           email: form.email || undefined,
           source: "flooring_form",
           service_requested: "flooring_installation",
-          // The disclosure rendered below the submit button comes from this
-          // same constant, so the stored evidence is exactly what was read.
-          ...consentFields(true, CALLS_TEXTS_V2),
+          // The texts box and the call sentence rendered below come from these
+          // same constants, so the stored evidence is exactly what was read.
+          ...consentFieldsV3(textsConsent, TEXTS_CHECKBOX_V3),
         }),
       });
       if (!res.ok) throw new Error(`Request failed: ${res.status}`);
@@ -165,6 +167,7 @@ export default function FlooringQuickForm() {
             {error}
           </p>
         )}
+        <TextsConsentBox id="flooring-texts" checked={textsConsent} onChange={setTextsConsent} />
         <button
           type="submit"
           disabled={submitting}
@@ -173,7 +176,7 @@ export default function FlooringQuickForm() {
           {submitting ? "Sending…" : "Get My Free Quote"}
         </button>
         <p className="text-xs text-navy/75 text-center leading-snug">
-          {CALLS_TEXTS_V2}
+          {CALLS_V3}
         </p>
       </form>
     </div>

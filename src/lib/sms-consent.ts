@@ -25,29 +25,34 @@ export const CONTACT_TRANSACTIONAL_V1 =
 export const CONTACT_MARKETING_V1 =
   "I also agree to receive promotional offers, review requests, and follow-up messages via SMS from Construction Station Flooring and Design. Message frequency varies. Msg & data rates may apply. Reply STOP to opt out. Reply HELP for help. Consent is not a condition of purchase.";
 
-// ── V2 (2026-10-07): calls AND texts, including automated / AI-assisted ──────
-// Greg's wording. Transactional scope only ("about your request").
+// ── V3 (2026-10-07): calls and texts consented to separately ─────────────────
+// Texts: the 10DLC-registered checkbox 1 (campaign CFKS11Y), word for word —
+// optional, never pre-ticked. Calls: a sentence by the submit button.
 
-/** The sentence beside the submit button on every quick form. */
-export const CALLS_TEXTS_V2 =
-  "By submitting, you agree that Construction Station may call or text you at this number about your request, including with automated or AI-assisted calls and messages. Consent is not a condition of purchase. Message and data rates may apply. Reply STOP to opt out.";
+/** Optional texts box on every quick form (not /contact, which keeps its V1 boxes). */
+export const TEXTS_CHECKBOX_V3 =
+  "I agree to receive appointment confirmations, project updates, and scheduling messages via SMS from Construction Station Flooring and Design.";
 
-/** The same consent, worded for the /contact tick box (consent is the tick, not the submit). */
-export const CONTACT_CHECKBOX_V2 =
-  "I agree that Construction Station may call or text me at this number about my request, including with automated or AI-assisted calls and messages. Consent is not a condition of purchase. Message and data rates may apply. Reply STOP to opt out.";
+/** Registered message-flow lines shown under the texts box. */
+export const TEXTS_FINE_PRINT_V3 =
+  "Consent is not a condition of purchase. Msg & data rates may apply. Reply STOP to opt out. Reply HELP for help.";
+
+/** The sentence by the submit button on every form, /contact included. */
+export const CALLS_V3 =
+  "By submitting, you agree that Construction Station may call you at this number about your request, including with automated or AI-assisted calls. Consent is not a condition of purchase.";
 
 /**
- * The consent fields every form sends with a lead (OMM field contract:
- * consent, consent_text, consent_at, consent_url), plus the legacy sms_*
- * fields so an endpoint that predates the contract still saves the lead.
+ * The consent fields every V3 form sends with a lead. Texts and calls are
+ * separate: an unticked texts box is an explicit false (the person saw it and
+ * said no), while submitting a phone number is the call consent.
  */
-export function consentFields(consent: boolean, text: string) {
+export function consentFieldsV3(textsConsent: boolean, textsLabel: string) {
   return {
-    consent,
-    consent_text: text,
+    sms_transactional_consent: textsConsent,
+    sms_consent_text: textsLabel,
+    call_consent: true,
+    call_consent_text: CALLS_V3,
     consent_at: new Date().toISOString(),
     consent_url: typeof window !== "undefined" ? window.location.href : undefined,
-    sms_transactional_consent: consent,
-    sms_consent_text: text,
   };
 }
