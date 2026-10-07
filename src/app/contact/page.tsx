@@ -6,7 +6,8 @@ import dynamic from "next/dynamic";
 import Reveal from "@/components/Reveal";
 import { CS, HOURS, SERVICES } from "@/lib/constants";
 import { vibeLead } from "@/lib/vibe";
-import { CONTACT_TRANSACTIONAL_V1, CONTACT_MARKETING_V1, CALLS_V3, consentFieldsV3 } from "@/lib/sms-consent";
+import { TEXTS_CHECKBOX_V3, MARKETING_CHECKBOX_V3, CALLS_V3, consentFieldsV3 } from "@/lib/sms-consent";
+import { ConsentBox, TextsFinePrint } from "@/components/TextsConsentBox";
 
 const ImageUpload = dynamic(() => import("@/components/ImageUpload"), {
   ssr: false,
@@ -85,9 +86,9 @@ export default function ContactPage() {
           // The exact disclosures the visitor read, rendered from these same
           // constants below. Each box is its own permission with its own text;
           // the call sentence by the button is the call consent.
-          ...consentFieldsV3(smsTransactionalConsent, CONTACT_TRANSACTIONAL_V1),
+          ...consentFieldsV3(smsTransactionalConsent, TEXTS_CHECKBOX_V3),
           sms_marketing_consent: smsMarketingConsent,
-          marketing_consent_text: CONTACT_MARKETING_V1,
+          marketing_consent_text: MARKETING_CHECKBOX_V3,
         }),
       });
       if (!res.ok) throw new Error(`Request failed: ${res.status}`);
@@ -240,46 +241,21 @@ export default function ContactPage() {
                     />
 
                     <div className="space-y-4">
-                      <label className="flex items-start gap-3 cursor-pointer">
-                        <input
-                          type="checkbox"
-                          checked={smsTransactionalConsent}
-                          onChange={(e) => setSmsTransactionalConsent(e.target.checked)}
-                          className="mt-0.5 h-4 w-4 shrink-0 accent-navy"
-                        />
-                        <span className="text-sm text-gray-700 leading-relaxed">
-                          {CONTACT_TRANSACTIONAL_V1}{" "}
-                          <a
-                            href="https://constructionstation.com/privacy"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="underline hover:text-gray-800"
-                          >
-                            Privacy Policy
-                          </a>
-                          {" | "}
-                          <a
-                            href="https://constructionstation.com/terms"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="underline hover:text-gray-800"
-                          >
-                            Terms
-                          </a>
-                        </span>
-                      </label>
-
-                      <label className="flex items-start gap-3 cursor-pointer">
-                        <input
-                          type="checkbox"
+                      <ConsentBox
+                        id="contact-texts"
+                        label={TEXTS_CHECKBOX_V3}
+                        checked={smsTransactionalConsent}
+                        onChange={setSmsTransactionalConsent}
+                      />
+                      <div>
+                        <ConsentBox
+                          id="contact-marketing"
+                          label={MARKETING_CHECKBOX_V3}
                           checked={smsMarketingConsent}
-                          onChange={(e) => setSmsMarketingConsent(e.target.checked)}
-                          className="mt-0.5 h-4 w-4 shrink-0 accent-navy"
+                          onChange={setSmsMarketingConsent}
                         />
-                        <span className="text-sm text-gray-700 leading-relaxed">
-                          {CONTACT_MARKETING_V1}
-                        </span>
-                      </label>
+                        <TextsFinePrint />
+                      </div>
                     </div>
 
                     {error && (

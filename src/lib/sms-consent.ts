@@ -29,9 +29,13 @@ export const CONTACT_MARKETING_V1 =
 // Texts: the 10DLC-registered checkbox 1 (campaign CFKS11Y), word for word —
 // optional, never pre-ticked. Calls: a sentence by the submit button.
 
-/** Optional texts box on every quick form (not /contact, which keeps its V1 boxes). */
+/** Optional texts box on every form (/contact box 1 included). */
 export const TEXTS_CHECKBOX_V3 =
   "I agree to receive appointment confirmations, project updates, and scheduling messages via SMS from Construction Station Flooring and Design.";
+
+/** /contact box 2: the 10DLC-registered checkbox 2, word for word. Marketing scope. */
+export const MARKETING_CHECKBOX_V3 =
+  "I would also like to receive promotional offers, seasonal specials, and review requests via SMS from Construction Station Flooring and Design.";
 
 /** Registered message-flow lines shown under the texts box. */
 export const TEXTS_FINE_PRINT_V3 =
