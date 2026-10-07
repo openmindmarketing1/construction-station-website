@@ -4,7 +4,7 @@ import { callbackConfirmation } from "@/lib/callback-promise";
 import { useState } from "react";
 import { CS } from "@/lib/constants";
 import { vibeLead } from "@/lib/vibe";
-import { QUICKFORM_TRANSACTIONAL_V1 } from "@/lib/sms-consent";
+import { CALLS_TEXTS_V2, consentFields } from "@/lib/sms-consent";
 
 declare global {
   interface Window {
@@ -66,8 +66,7 @@ export default function CtvQuickForm() {
           campaign_name: "CS CTV - General Remodeling",
           // Disclosure below the submit button renders from this same
           // constant, so the evidence matches what the visitor read.
-          sms_transactional_consent: true,
-          sms_consent_text: QUICKFORM_TRANSACTIONAL_V1,
+          ...consentFields(true, CALLS_TEXTS_V2),
         }),
       });
       // Only a confirmed 2xx counts as submitted. Never show "got it" for a
@@ -187,8 +186,8 @@ export default function CtvQuickForm() {
         >
           {submitting ? "Sending…" : "Request a Callback"}
         </button>
-        <p className="text-xs text-navy/45 text-center leading-snug">
-          {QUICKFORM_TRANSACTIONAL_V1}
+        <p className="text-xs text-navy/75 text-center leading-snug">
+          {CALLS_TEXTS_V2}
         </p>
       </form>
     </div>

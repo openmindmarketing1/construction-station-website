@@ -6,7 +6,7 @@ import dynamic from "next/dynamic";
 import Reveal from "@/components/Reveal";
 import { CS, HOURS, SERVICES } from "@/lib/constants";
 import { vibeLead } from "@/lib/vibe";
-import { CONTACT_TRANSACTIONAL_V1, CONTACT_MARKETING_V1 } from "@/lib/sms-consent";
+import { CONTACT_CHECKBOX_V2, CONTACT_MARKETING_V1, consentFields } from "@/lib/sms-consent";
 
 const ImageUpload = dynamic(() => import("@/components/ImageUpload"), {
   ssr: false,
@@ -49,7 +49,7 @@ export default function ContactPage() {
     notes: "",
     honeypot: "",
   });
-  const [smsTransactionalConsent, setSmsTransactionalConsent] = useState(false);
+  const [callsTextsConsent, setCallsTextsConsent] = useState(false);
   const [smsMarketingConsent, setSmsMarketingConsent] = useState(false);
 
   function update<K extends keyof typeof form>(k: K, v: string) {
@@ -82,14 +82,12 @@ export default function ContactPage() {
           notes: form.notes || undefined,
           source: "website",
           images: imageUrls,
-          sms_transactional_consent: smsTransactionalConsent,
+          // The exact disclosures the visitor read, rendered from these same
+          // constants below. Box 1 is consent to calls and texts about the
+          // request; box 2 (promotional texts) is a separate permission.
+          ...consentFields(callsTextsConsent, CONTACT_CHECKBOX_V2),
           sms_marketing_consent: smsMarketingConsent,
-          // The exact disclosure the visitor read, rendered from these same
-          // constants below. Marketing consent is the broader permission, so
-          // when it is granted that is the text on record.
-          sms_consent_text: smsMarketingConsent
-            ? CONTACT_MARKETING_V1
-            : CONTACT_TRANSACTIONAL_V1,
+          ...(smsMarketingConsent ? { marketing_consent_text: CONTACT_MARKETING_V1 } : {}),
         }),
       });
       if (!res.ok) throw new Error(`Request failed: ${res.status}`);
@@ -245,12 +243,12 @@ export default function ContactPage() {
                       <label className="flex items-start gap-3 cursor-pointer">
                         <input
                           type="checkbox"
-                          checked={smsTransactionalConsent}
-                          onChange={(e) => setSmsTransactionalConsent(e.target.checked)}
+                          checked={callsTextsConsent}
+                          onChange={(e) => setCallsTextsConsent(e.target.checked)}
                           className="mt-0.5 h-4 w-4 shrink-0 accent-navy"
                         />
                         <span className="text-sm text-gray-700 leading-relaxed">
-                          {CONTACT_TRANSACTIONAL_V1}{" "}
+                          {CONTACT_CHECKBOX_V2}{" "}
                           <a
                             href="https://constructionstation.com/privacy"
                             target="_blank"

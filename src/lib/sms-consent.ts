@@ -24,3 +24,30 @@ export const CONTACT_TRANSACTIONAL_V1 =
 
 export const CONTACT_MARKETING_V1 =
   "I also agree to receive promotional offers, review requests, and follow-up messages via SMS from Construction Station Flooring and Design. Message frequency varies. Msg & data rates may apply. Reply STOP to opt out. Reply HELP for help. Consent is not a condition of purchase.";
+
+// ── V2 (2026-10-07): calls AND texts, including automated / AI-assisted ──────
+// Greg's wording. Transactional scope only ("about your request").
+
+/** The sentence beside the submit button on every quick form. */
+export const CALLS_TEXTS_V2 =
+  "By submitting, you agree that Construction Station may call or text you at this number about your request, including with automated or AI-assisted calls and messages. Consent is not a condition of purchase. Message and data rates may apply. Reply STOP to opt out.";
+
+/** The same consent, worded for the /contact tick box (consent is the tick, not the submit). */
+export const CONTACT_CHECKBOX_V2 =
+  "I agree that Construction Station may call or text me at this number about my request, including with automated or AI-assisted calls and messages. Consent is not a condition of purchase. Message and data rates may apply. Reply STOP to opt out.";
+
+/**
+ * The consent fields every form sends with a lead (OMM field contract:
+ * consent, consent_text, consent_at, consent_url), plus the legacy sms_*
+ * fields so an endpoint that predates the contract still saves the lead.
+ */
+export function consentFields(consent: boolean, text: string) {
+  return {
+    consent,
+    consent_text: text,
+    consent_at: new Date().toISOString(),
+    consent_url: typeof window !== "undefined" ? window.location.href : undefined,
+    sms_transactional_consent: consent,
+    sms_consent_text: text,
+  };
+}

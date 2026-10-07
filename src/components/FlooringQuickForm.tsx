@@ -4,7 +4,7 @@ import { CALLBACK_PROMISE, callbackConfirmation, HUMAN_FOLLOW_UP } from "@/lib/c
 import { useState } from "react";
 import { CS } from "@/lib/constants";
 import { vibeLead } from "@/lib/vibe";
-import { QUICKFORM_TRANSACTIONAL_V1 } from "@/lib/sms-consent";
+import { CALLS_TEXTS_V2, consentFields } from "@/lib/sms-consent";
 
 declare global {
   interface Window {
@@ -47,8 +47,7 @@ export default function FlooringQuickForm() {
           service_requested: "flooring_installation",
           // The disclosure rendered below the submit button comes from this
           // same constant, so the stored evidence is exactly what was read.
-          sms_transactional_consent: true,
-          sms_consent_text: QUICKFORM_TRANSACTIONAL_V1,
+          ...consentFields(true, CALLS_TEXTS_V2),
         }),
       });
       if (!res.ok) throw new Error(`Request failed: ${res.status}`);
@@ -173,8 +172,8 @@ export default function FlooringQuickForm() {
         >
           {submitting ? "Sending…" : "Get My Free Quote"}
         </button>
-        <p className="text-xs text-navy/45 text-center leading-snug">
-          {QUICKFORM_TRANSACTIONAL_V1}
+        <p className="text-xs text-navy/75 text-center leading-snug">
+          {CALLS_TEXTS_V2}
         </p>
       </form>
     </div>
