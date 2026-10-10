@@ -4,6 +4,7 @@ import { CALLBACK_PROMISE, callbackConfirmation, HUMAN_FOLLOW_UP } from "@/lib/c
 import { useState } from "react";
 import { CS } from "@/lib/constants";
 import { vibeLead } from "@/lib/vibe";
+import { readFirstTouch } from "@/lib/first-touch";
 import { CALLS_V3, consentFieldsV3, TEXTS_CHECKBOX_V3 } from "@/lib/sms-consent";
 import TextsConsentBox from "@/components/TextsConsentBox";
 
@@ -41,6 +42,7 @@ export default function KitchenQuickForm() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
+          first_touch: readFirstTouch(),
           business_id: CS.businessId,
           full_name: form.name,
           phone: form.phone,

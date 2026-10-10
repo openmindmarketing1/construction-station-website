@@ -6,6 +6,7 @@ import dynamic from "next/dynamic";
 import Reveal from "@/components/Reveal";
 import { CS, HOURS, SERVICES } from "@/lib/constants";
 import { vibeLead } from "@/lib/vibe";
+import { readFirstTouch } from "@/lib/first-touch";
 import { TEXTS_CHECKBOX_V3, MARKETING_CHECKBOX_V3, CALLS_V3, consentFieldsV3 } from "@/lib/sms-consent";
 import { ConsentBox, TextsFinePrint } from "@/components/TextsConsentBox";
 
@@ -74,6 +75,7 @@ export default function ContactPage() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
+          first_touch: readFirstTouch(),
           business_id: CS.businessId,
           full_name: form.full_name,
           phone: form.phone,

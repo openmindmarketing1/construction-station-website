@@ -10,6 +10,7 @@ import FloatingCTA from "@/components/FloatingCTA";
 import SmoothScrollInit from "@/components/SmoothScrollInit";
 import JsonLd from "@/components/JsonLd";
 import VibeRouteTracker from "@/components/VibeRouteTracker";
+import FirstTouchCapture from "@/components/FirstTouchCapture";
 import BareRouteGate from "@/components/BareRouteGate";
 import VibePixelFallback from "@/components/VibePixelFallback";
 import { CS } from "@/lib/constants";
@@ -203,6 +204,7 @@ export default function RootLayout({
       <body className="font-body bg-cream text-navy antialiased">
         <JsonLd data={organizationSchema} />
         <VibeRouteTracker />
+        <FirstTouchCapture />
         {/* Sends page_view/lead as image beacons when Vibe's script host fails.
             Mutually exclusive with the script — see the component. */}
         <VibePixelFallback />

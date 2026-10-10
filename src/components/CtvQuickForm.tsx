@@ -4,6 +4,7 @@ import { callbackConfirmation } from "@/lib/callback-promise";
 import { useState } from "react";
 import { CS } from "@/lib/constants";
 import { vibeLead } from "@/lib/vibe";
+import { readFirstTouch } from "@/lib/first-touch";
 import { CALLS_V3, consentFieldsV3, TEXTS_CHECKBOX_V3 } from "@/lib/sms-consent";
 import TextsConsentBox from "@/components/TextsConsentBox";
 
@@ -60,6 +61,7 @@ export default function CtvQuickForm() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
+          first_touch: readFirstTouch(),
           first_name: form.name.trim(),
           phone: form.phone.trim(),
           best_time: form.bestTime || undefined,

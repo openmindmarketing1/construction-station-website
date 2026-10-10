@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { CS } from "@/lib/constants";
+import { readFirstTouch } from "@/lib/first-touch";
 
 declare global {
   interface Window {
@@ -36,6 +37,7 @@ export default function LeadMagnetCard() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
+          first_touch: readFirstTouch(),
           business_id: CS.businessId,
           full_name: name || undefined,
           email,
