@@ -241,7 +241,7 @@ export const SERVICE_CITY_SERVICES: ServiceCityService[] = [
     shortDescription:
       "Licensed general contracting — whole-home remodels, kitchens, baths, additions, and ADUs under one roof.",
     intro: [
-      "A good general contractor is the difference between a remodel you tell friends about and one you warn them about. Construction Station is a licensed California general contractor, bonded and fully insured, family-run since 2008. CSLB #1108879. Our crews are employees, not a rotating cast of subcontractors sourced job by job.",
+      "A good general contractor is the difference between a remodel you tell friends about and one you warn them about. Construction Station is a licensed California general contractor, bonded and fully insured. CSLB #1108879. Founded in 2008 as Carpet Station; now Construction Station Flooring and Design. Our flooring side still operates as Carpet Station. Our crews are employees, not a rotating cast of subcontractors sourced job by job.",
       "That structure matters on multi-trade projects. When the same company handles demolition, framing, electrical, plumbing, drywall, tile, and finish carpentry, nothing falls in the gaps between trades — and you get one schedule, one fixed-price contract, and one warranty that covers the whole job.",
     ],
     included: [

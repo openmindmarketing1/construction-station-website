@@ -102,7 +102,7 @@ const WHY_CS = [
   },
   {
     title: "Inland Empire Local",
-    blurb: "Family-run in the Inland Empire since 2008. We know which corrections each city flags before we even submit.",
+    blurb: "Serving the Inland Empire since 2008. We know which corrections each city flags before we even submit.",
   },
   {
     title: "Fixed-Price Contracts",

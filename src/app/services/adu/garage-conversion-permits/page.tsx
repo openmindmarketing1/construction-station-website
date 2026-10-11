@@ -491,7 +491,7 @@ export default function GarageConversionPermitsPage() {
               },
               {
                 title: "We Know the Corrections",
-                blurb: `Family-run in the Inland Empire since 2008. We know which details Yucaipa, Redlands, and San Bernardino County flag before we submit — our first-submittal correction rate is very low. CSLB ${CS.license}.`,
+                blurb: `Serving the Inland Empire since 2008. We know which details Yucaipa, Redlands, and San Bernardino County flag before we submit — our first-submittal correction rate is very low. CSLB ${CS.license}.`,
               },
               {
                 title: "No Work Before Inspection",

@@ -206,7 +206,7 @@ export const CITIES: City[] = [
       },
       {
         q: "Are you licensed and insured for work in Norco?",
-        a: "Yes — Construction Station is a licensed California general contractor (CSLB #1108879), bonded and fully insured, with an A+ BBB rating. You can verify the license anytime at cslb.ca.gov. We've been family-run since 2008.",
+        a: "Yes — Construction Station is a licensed California general contractor (CSLB #1108879), bonded and fully insured, with an A+ BBB rating. You can verify the license anytime at cslb.ca.gov. Founded in 2008 as Carpet Station; now Construction Station Flooring and Design. Our flooring side still operates as Carpet Station.",
       },
     ],
   },
@@ -248,7 +248,7 @@ export const CITIES: City[] = [
       },
       {
         q: "Are you licensed and insured for work in Eastvale?",
-        a: "Yes — Construction Station is a licensed California general contractor, bonded and fully insured, family-run since 2008 with an A+ BBB rating. CSLB #1108879. Verify the license anytime at cslb.ca.gov.",
+        a: "Yes — Construction Station is a licensed California general contractor, bonded and fully insured, with an A+ BBB rating. CSLB #1108879. Verify the license anytime at cslb.ca.gov. Founded in 2008 as Carpet Station; now Construction Station Flooring and Design. Our flooring side still operates as Carpet Station.",
       },
     ],
   },
@@ -290,7 +290,7 @@ export const CITIES: City[] = [
       },
       {
         q: "Are you licensed and insured for work in Perris?",
-        a: "Yes — Construction Station is a licensed California general contractor, bonded and fully insured, with an A+ BBB rating, family-run since 2008. CSLB #1108879. Verify the license anytime at cslb.ca.gov.",
+        a: "Yes — Construction Station is a licensed California general contractor, bonded and fully insured, with an A+ BBB rating. CSLB #1108879. Verify the license anytime at cslb.ca.gov. Founded in 2008 as Carpet Station; now Construction Station Flooring and Design. Our flooring side still operates as Carpet Station.",
       },
     ],
   },

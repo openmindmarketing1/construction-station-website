@@ -20,7 +20,7 @@ const TIMELINE = [
     year: "2008",
     event: "Carpet Station Tile and Wood opens",
     detail:
-      "A family-run flooring shop opens in the Inland Empire, building a reputation for quality hardwood, tile, and LVP installations across the region over the next 15 years.",
+      "A flooring shop opens in the Inland Empire, building a reputation for quality hardwood, tile, and LVP installations across the region over the next 15 years.",
   },
   {
     year: "2018",
@@ -204,7 +204,7 @@ export default function AboutPage() {
           <p className="text-white/70 text-lg md:text-xl max-w-2xl leading-relaxed">
             Construction Station brings together 15+ years of Inland Empire
             flooring expertise and 6+ years of general contracting under one
-            licensed roof — family-run, permit-ready, and community first.
+            licensed roof — permit-ready and community first.
           </p>
         </div>
       </section>
