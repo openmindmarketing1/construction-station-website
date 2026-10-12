@@ -383,8 +383,8 @@ export default function ContactPage() {
               <div className="bg-white border border-navy/10 overflow-hidden">
                 <div className="aspect-[4/3] w-full">
                   <iframe
-                    title="Service Area Map — Inland Empire"
-                    src="https://www.google.com/maps?q=Redlands,CA&output=embed"
+                    title="Construction Station — 33145 Yucaipa Blvd, Yucaipa, CA"
+                    src="https://www.google.com/maps?q=Construction+Station,+33145+Yucaipa+Blvd,+Yucaipa,+CA+92399&output=embed"
                     width="100%"
                     height="100%"
                     style={{ border: 0 }}

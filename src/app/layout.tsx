@@ -14,6 +14,7 @@ import FirstTouchCapture from "@/components/FirstTouchCapture";
 import BareRouteGate from "@/components/BareRouteGate";
 import VibePixelFallback from "@/components/VibePixelFallback";
 import { CS } from "@/lib/constants";
+import { businessEntity } from "@/lib/business-schema";
 
 const displayFont = DM_Serif_Display({
   weight: ["400"],
@@ -79,25 +80,7 @@ export const metadata: Metadata = {
 // establishes the single canonical Organization across every route.
 const organizationSchema = {
   "@context": "https://schema.org",
-  "@type": "Organization",
-  "@id": `${SITE_URL}/#organization`,
-  name: CS.name,
-  url: SITE_URL,
-  logo: `${SITE_URL}/images/logo/cs-logo.png`,
-  image: `${SITE_URL}/og.jpg`,
-  telephone: CS.phone,
-  email: CS.email,
-  foundingDate: String(CS.founded),
-  identifier: CS.license,
-  address: {
-    "@type": "PostalAddress",
-    streetAddress: "33145 Yucaipa Blvd",
-    addressLocality: "Yucaipa",
-    addressRegion: "CA",
-    postalCode: "92399",
-    addressCountry: "US",
-  },
-  sameAs: ["https://www.google.com/maps?cid=8346061725681242502"],
+  ...businessEntity(),
 };
 
 export default function RootLayout({

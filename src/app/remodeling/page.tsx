@@ -102,7 +102,7 @@ const STEPS: Array<[string, string, string]> = [
   ["01", "Call or scan", "Tell us what you're thinking. Two minutes on the phone."],
   ["02", "Free in-home visit", "We measure, look at what's there, and talk budget honestly."],
   ["03", "Written line-item quote", "Within 5 business days. No surprise upcharges."],
-  ["04", "We build it", "Our own W-2 crew. Two-year workmanship warranty."],
+  ["04", "We build it", "Our own W-2 crew. 12-month workmanship warranty."],
 ];
 
 // LocalBusiness schema carries the CTV number deliberately — this page's
@@ -444,9 +444,9 @@ export default function CtvRemodelingPage() {
               {CS.ctvPhone}
             </a>
             <div className="text-white/40 text-[11px] leading-relaxed mt-8">
-              {CS.name} · CSLB {CS.license}
+              {CS.name} · CSLB {CS.license}{" "}
               <br />
-              33145 Yucaipa Blvd, Yucaipa, CA 92399
+              33145 Yucaipa Blvd, Yucaipa, CA 92399{" "}
               <br />
               Licensed, bonded and insured. Serving San Bernardino and Riverside
               Counties.

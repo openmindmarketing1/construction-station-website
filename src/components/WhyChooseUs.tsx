@@ -45,7 +45,7 @@ export default function WhyChooseUs() {
             </span>
           </div>
           <h2 className="font-display text-navy text-5xl md:text-6xl lg:text-7xl leading-[1]">
-            Four reasons clients
+            Four reasons clients{" "}
             <br />
             <span className="italic">stay</span> with us.
           </h2>

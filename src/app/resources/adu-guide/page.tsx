@@ -3,6 +3,7 @@ import Link from "next/link";
 import JsonLd from "@/components/JsonLd";
 import FAQAccordion from "@/components/FAQAccordion";
 import { CS } from "@/lib/constants";
+import { BUSINESS_REF } from "@/lib/business-schema";
 
 export const metadata: Metadata = {
   title: {
@@ -62,16 +63,8 @@ const pageSchema = {
   headline: "Complete ADU Guide for Inland Empire Homeowners",
   description:
     "Comprehensive guide covering ADU types, California laws, construction costs, financing options, and rental income in the Inland Empire.",
-  author: {
-    "@type": "Organization",
-    name: CS.name,
-    url: SITE_URL,
-  },
-  publisher: {
-    "@type": "Organization",
-    name: CS.name,
-    url: SITE_URL,
-  },
+  author: BUSINESS_REF,
+  publisher: BUSINESS_REF,
   mainEntityOfPage: `${SITE_URL}/resources/adu-guide`,
 };
 
@@ -387,7 +380,7 @@ export default function ADUGuidePage() {
                   {
                     number: "05",
                     title: "Final Inspection & Move-In",
-                    body: "The city inspector conducts a final inspection — checking structural, MEP, insulation, and finish work against the approved plans. A certificate of occupancy is issued where applicable. Construction Station provides a two-year workmanship warranty on all ADU projects.",
+                    body: "The city inspector conducts a final inspection — checking structural, MEP, insulation, and finish work against the approved plans. A certificate of occupancy is issued where applicable. Construction Station provides a 12-month workmanship warranty on all ADU projects.",
                   },
                 ].map((step) => (
                   <div key={step.number} className="flex gap-6">

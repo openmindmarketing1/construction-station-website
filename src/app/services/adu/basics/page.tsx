@@ -3,6 +3,7 @@ import Link from "next/link";
 import FAQAccordion from "@/components/FAQAccordion";
 import JsonLd from "@/components/JsonLd";
 import { CS } from "@/lib/constants";
+import { businessEntity } from "@/lib/business-schema";
 
 export const metadata: Metadata = {
   title: "ADU Basics — What Is an ADU? | Construction Station",
@@ -13,9 +14,6 @@ export const metadata: Metadata = {
 
 const CALENDLY_URL =
   "https://calendly.com/constructionstation-sales/free-adu-remodeling-consult";
-
-const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://constructionstation.com";
 
 const ADU_TYPES = [
   {
@@ -101,21 +99,9 @@ const FAQS = [
 
 const localBusinessSchema = {
   "@context": "https://schema.org",
-  "@type": "GeneralContractor",
-  name: CS.name,
-  telephone: CS.phone,
-  email: CS.email,
-  url: `${SITE_URL}/services/adu/basics`,
-  image: `${SITE_URL}/images/services/adu/adu-01.jpg`,
+  ...businessEntity(),
   priceRange: "$$$",
-  address: {
-    "@type": "PostalAddress",
-    addressRegion: "CA",
-    addressCountry: "US",
-    addressLocality: "Inland Empire",
-  },
   areaServed: "Inland Empire, California",
-  identifier: CS.license,
 };
 
 const faqSchema = {

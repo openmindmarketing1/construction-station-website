@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import JsonLd from "@/components/JsonLd";
 import { CS } from "@/lib/constants";
+import { BUSINESS_REF, businessEntity } from "@/lib/business-schema";
 
 export const metadata: Metadata = {
   title: "ADU Investment & ROI | Construction Station",
@@ -12,9 +13,6 @@ export const metadata: Metadata = {
 
 const CALENDLY_URL =
   "https://calendly.com/constructionstation-sales/free-adu-remodeling-consult";
-
-const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://constructionstation.com";
 
 type RentRow = {
   region: string;
@@ -52,13 +50,7 @@ const serviceSchema = {
   "@context": "https://schema.org",
   "@type": "Service",
   serviceType: "ADU Investment & ROI Consulting",
-  provider: {
-    "@type": "GeneralContractor",
-    name: CS.name,
-    telephone: CS.phone,
-    url: SITE_URL,
-    identifier: CS.license,
-  },
+  provider: BUSINESS_REF,
   areaServed: { "@type": "Place", name: "Inland Empire, California" },
   description:
     "ADU investment and ROI guidance for Inland Empire homeowners — regional rental income estimates, payback period, and property value impact for detached and attached ADUs.",
@@ -66,21 +58,9 @@ const serviceSchema = {
 
 const localBusinessSchema = {
   "@context": "https://schema.org",
-  "@type": "GeneralContractor",
-  name: CS.name,
-  telephone: CS.phone,
-  email: CS.email,
-  url: `${SITE_URL}/services/adu/investment`,
-  image: `${SITE_URL}/images/services/adu/adu-01.jpg`,
+  ...businessEntity(),
   priceRange: "$$$",
-  address: {
-    "@type": "PostalAddress",
-    addressRegion: "CA",
-    addressCountry: "US",
-    addressLocality: "Inland Empire",
-  },
   areaServed: "Inland Empire, California",
-  identifier: CS.license,
 };
 
 function PrimaryCta() {

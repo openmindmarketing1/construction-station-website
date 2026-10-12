@@ -3,7 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import ServiceHero from "@/components/ServiceHero";
 import JsonLd from "@/components/JsonLd";
-import { CS } from "@/lib/constants";
+import { BUSINESS_REF } from "@/lib/business-schema";
 
 export const metadata: Metadata = {
   title: "ADU Floor Plans Inland Empire | Construction Station",
@@ -46,20 +46,11 @@ const PLANS: FloorPlan[] = [
   { name: "The Inland",         size: "1,194 sq ft", beds: "3bd / 2ba",    type: "Detached",     price: "$432K", image: "1779910719101-3d-3br2ba1194.jpeg", pdf: "1779901302440-3br2ba1194.pdf" },
 ];
 
-const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://constructionstation.com";
-
 const serviceSchema = {
   "@context": "https://schema.org",
   "@type": "Service",
   serviceType: "ADU Floor Plans",
-  provider: {
-    "@type": "GeneralContractor",
-    name: CS.name,
-    telephone: CS.phone,
-    url: SITE_URL,
-    identifier: CS.license,
-  },
+  provider: BUSINESS_REF,
   areaServed: { "@type": "Place", name: "Inland Empire, California" },
   description:
     "Sample ADU floor plans — 13 layouts from 400 to 1,200 sq ft. 1-bedroom, 2-bedroom, and 3-bedroom configurations. Detached, attached, and garage-conversion ADUs.",

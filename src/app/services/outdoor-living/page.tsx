@@ -6,6 +6,7 @@ import ProcessSteps from "@/components/ProcessSteps";
 import FAQAccordion from "@/components/FAQAccordion";
 import JsonLd from "@/components/JsonLd";
 import { CS } from "@/lib/constants";
+import { BUSINESS_REF, businessEntity } from "@/lib/business-schema";
 
 export const metadata: Metadata = {
   // `absolute` bypasses the root layout's "%s | Construction Station" template
@@ -47,7 +48,7 @@ const STEPS = [
   {
     number: "05",
     title: "Final Walkthrough & Warranty",
-    description: "Final inspection, lighting and outlet test, and two-year workmanship warranty on every component.",
+    description: "Final inspection, lighting and outlet test, and 12-month workmanship warranty on every component.",
   },
 ];
 
@@ -74,20 +75,11 @@ const FAQS = [
   },
 ];
 
-const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://constructionstation.com";
-
 const serviceSchema = {
   "@context": "https://schema.org",
   "@type": "Service",
   serviceType: "Outdoor Living and Patio Covers",
-  provider: {
-    "@type": "GeneralContractor",
-    name: CS.name,
-    telephone: CS.phone,
-    url: SITE_URL,
-    identifier: CS.license,
-  },
+  provider: BUSINESS_REF,
   areaServed: { "@type": "Place", name: "Inland Empire, California" },
   description:
     "Custom patio covers, alumawood patio covers, outdoor kitchens, concrete patios, pergolas, and outdoor living spaces. Serving the Inland Empire since 2008. CSLB #1108879.",
@@ -95,19 +87,8 @@ const serviceSchema = {
 
 const localBusinessSchema = {
   "@context": "https://schema.org",
-  "@type": "GeneralContractor",
-  name: CS.name,
-  telephone: CS.phone,
-  email: CS.email,
-  url: `${SITE_URL}/services/outdoor-living`,
-  image: `${SITE_URL}/images/services/outdoor-living/outdoor-01.jpg`,
+  ...businessEntity(),
   priceRange: "$$$",
-  address: {
-    "@type": "PostalAddress",
-    addressRegion: "CA",
-    addressCountry: "US",
-    addressLocality: "Inland Empire",
-  },
   areaServed: [
     "Yucaipa, CA",
     "Redlands, CA",
@@ -118,7 +99,6 @@ const localBusinessSchema = {
     "Rancho Cucamonga, CA",
     "Beaumont, CA",
   ],
-  identifier: CS.license,
 };
 
 const faqSchema = {

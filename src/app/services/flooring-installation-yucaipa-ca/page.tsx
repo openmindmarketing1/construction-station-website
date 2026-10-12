@@ -10,6 +10,7 @@ import ServiceCityLinksStrip from "@/components/ServiceCityLinksStrip";
 import JsonLd from "@/components/JsonLd";
 import { CS } from "@/lib/constants";
 import { CALLBACK_PROMISE_SHORT, MISSED_CALL_LINE } from "@/lib/callback-promise";
+import { BUSINESS_REF, businessEntity } from "@/lib/business-schema";
 
 export const metadata: Metadata = {
   title: {
@@ -103,24 +104,9 @@ const FAQS = [
   },
 ];
 
-const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://constructionstation.com";
-
 const localBusinessSchema = {
   "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  "@id": `${SITE_URL}/services/flooring-installation-yucaipa-ca`,
-  name: CS.name,
-  description:
-    "Professional flooring installation company serving Yucaipa and the Inland Empire. Hardwood, luxury vinyl plank, laminate, carpet, and tile installation. Licensed CSLB #1108879.",
-  telephone: CS.phone,
-  url: SITE_URL,
-  address: {
-    "@type": "PostalAddress",
-    addressLocality: "Yucaipa",
-    addressRegion: "CA",
-    addressCountry: "US",
-  },
+  ...businessEntity(),
   areaServed: [
     "Yucaipa, CA",
     "Redlands, CA",
@@ -164,13 +150,7 @@ const serviceSchema = {
   "@type": "Service",
   serviceType: "Flooring Installation",
   name: "Flooring Installation Yucaipa CA",
-  provider: {
-    "@type": "GeneralContractor",
-    name: CS.name,
-    telephone: CS.phone,
-    url: SITE_URL,
-    identifier: CS.license,
-  },
+  provider: BUSINESS_REF,
   areaServed: { "@type": "Place", name: "Inland Empire, California" },
   description:
     "Full-service flooring installation — hardwood, LVP, laminate, carpet, and tile. Includes subfloor prep, old flooring removal, and trim installation.",

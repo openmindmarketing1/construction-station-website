@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import JsonLd from "@/components/JsonLd";
 import TrustBar from "@/components/TrustBar";
 import CtaSection from "@/components/CtaSection";
-import { CS } from "@/lib/constants";
+import { businessEntity } from "@/lib/business-schema";
 
 export const metadata: Metadata = {
   title: "Customer Reviews",
@@ -10,8 +10,6 @@ export const metadata: Metadata = {
     "See what Inland Empire homeowners say about Construction Station. 5.0 stars on Google. Serving Redlands, Yucaipa, Riverside, and surrounding cities. In business since 2008. CSLB #1108879.",
   alternates: { canonical: "/reviews" },
 };
-
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://constructionstation.com";
 
 // Google Business Profile CID: 8346061725681242502
 // Write-review URL: replace placeid with the value from GBP → Get more reviews → Share review form
@@ -33,19 +31,7 @@ function Stars({ count = 5 }: { count?: number }) {
 export default function ReviewsPage() {
   const schema = {
     "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    name: CS.name,
-    url: SITE_URL,
-    telephone: CS.phone,
-    email: CS.email,
-    address: {
-      "@type": "PostalAddress",
-      addressLocality: "Inland Empire",
-      addressRegion: "CA",
-      addressCountry: "US",
-    },
-    foundingDate: String(CS.founded),
-    identifier: CS.license,
+    ...businessEntity(),
     aggregateRating: {
       "@type": "AggregateRating",
       ratingValue: "5.0",
@@ -136,7 +122,7 @@ export default function ReviewsPage() {
                 <span className="text-gold text-xs uppercase tracking-[0.4em]">Your Voice Matters</span>
               </div>
               <h2 className="font-display text-navy text-4xl md:text-5xl leading-[1.05] mb-6">
-                Honest feedback
+                Honest feedback{" "}
                 <br />
                 <span className="italic text-gold">builds trust.</span>
               </h2>

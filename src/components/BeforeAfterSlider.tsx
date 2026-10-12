@@ -150,7 +150,7 @@ export default function BeforeAfterSlider() {
             <span className="w-10 h-px bg-gold" />
           </div>
           <h2 className="font-display text-navy text-5xl md:text-6xl lg:text-7xl leading-[1] max-w-3xl mx-auto">
-            Before. <span className="italic text-gold-dark">After.</span>
+            Before. <span className="italic text-gold-dark">After.</span>{" "}
             <br />
             Always intentional.
           </h2>

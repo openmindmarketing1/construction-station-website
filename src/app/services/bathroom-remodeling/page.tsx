@@ -7,7 +7,7 @@ import FAQAccordion from "@/components/FAQAccordion";
 import CtaSection from "@/components/CtaSection";
 import ServiceCityLinksStrip from "@/components/ServiceCityLinksStrip";
 import JsonLd from "@/components/JsonLd";
-import { CS } from "@/lib/constants";
+import { BUSINESS_REF } from "@/lib/business-schema";
 
 export const metadata: Metadata = {
   title: "Bathroom Remodeling in the Inland Empire",
@@ -48,7 +48,7 @@ const STEPS = [
   {
     number: "05",
     title: "Final Walkthrough",
-    description: "Two-year workmanship warranty + lifetime tile warranty.",
+    description: "12-month workmanship warranty + lifetime tile warranty.",
   },
 ];
 
@@ -125,21 +125,12 @@ const faqSchema = {
   })),
 };
 
-const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://constructionstation.com";
-
 export default function BathroomRemodelingPage() {
   const serviceSchema = {
     "@context": "https://schema.org",
     "@type": "Service",
     serviceType: "Bathroom Remodeling",
-    provider: {
-      "@type": "GeneralContractor",
-      name: CS.name,
-      telephone: CS.phone,
-      url: SITE_URL,
-      identifier: CS.license,
-    },
+    provider: BUSINESS_REF,
     areaServed: { "@type": "Place", name: "Inland Empire, California" },
     description:
       "Full-service bathroom remodeling — walk-in showers, soaking tubs, tile work, and master suites. Serving the Inland Empire since 2008. CSLB #1108879.",

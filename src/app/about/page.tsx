@@ -4,6 +4,7 @@ import Link from "next/link";
 import JsonLd from "@/components/JsonLd";
 import FAQAccordion from "@/components/FAQAccordion";
 import { CS } from "@/lib/constants";
+import { businessEntity } from "@/lib/business-schema";
 
 export const metadata: Metadata = {
   title: "About Us",
@@ -152,12 +153,9 @@ const aboutPageSchema = {
   url: `${SITE_URL}/about`,
   name: "About Construction Station",
   description:
-    "Meet the team behind Construction Station — licensed GC serving the Inland Empire since 2023, with flooring roots to 2008.",
+    "Meet the team behind Construction Station — licensed GC serving the Inland Empire since 2008.",
   mainEntity: {
-    "@type": "Organization",
-    "@id": `${SITE_URL}/#organization`,
-    name: CS.name,
-    foundingDate: "2023",
+    ...businessEntity(),
     founders: [
       { "@type": "Person", name: "Gregory Pilon", jobTitle: "Co-Owner / President" },
       { "@type": "Person", name: "Gustavo Mancilla", jobTitle: "Co-Owner / VP Operations" },
@@ -166,8 +164,6 @@ const aboutPageSchema = {
       { "@type": "Person", name: "Cameron Kemock", jobTitle: "Lead Project Manager" },
       { "@type": "Person", name: "Lisa Elias", jobTitle: "Office Manager" },
     ],
-    identifier: CS.license,
-    telephone: CS.phone,
     areaServed: "Inland Empire, California",
   },
 };

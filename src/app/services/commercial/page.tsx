@@ -8,6 +8,7 @@ import FAQAccordion from "@/components/FAQAccordion";
 import CtaSection from "@/components/CtaSection";
 import JsonLd from "@/components/JsonLd";
 import { CS } from "@/lib/constants";
+import { BUSINESS_REF } from "@/lib/business-schema";
 
 export const metadata: Metadata = {
   title: "Commercial Construction in the Inland Empire | Construction Station",
@@ -108,21 +109,12 @@ const COMMERCIAL_PHOTOS = [
   "/images/services/commercial/commercial-05.jpg",
 ];
 
-const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://constructionstation.com";
-
 export default function CommercialPage() {
   const serviceSchema = {
     "@context": "https://schema.org",
     "@type": "Service",
     serviceType: "Commercial Construction",
-    provider: {
-      "@type": "GeneralContractor",
-      name: CS.name,
-      telephone: CS.phone,
-      url: SITE_URL,
-      identifier: CS.license,
-    },
+    provider: BUSINESS_REF,
     areaServed: { "@type": "Place", name: "Inland Empire, California" },
     description:
       "Full-service commercial construction — tenant improvements, restaurant & retail buildouts, commercial flooring, office renovations, and ADA compliance. Serving the Inland Empire since 2008. CSLB #1108879.",
@@ -537,7 +529,7 @@ export default function CommercialPage() {
               <span className="w-10 h-px bg-gold" />
             </div>
             <h2 className="font-display text-navy text-4xl md:text-5xl leading-tight">
-              Licensed. Bonded. Insured.
+              Licensed. Bonded. Insured.{" "}
               <br />
               <span className="italic text-gold">Accountable.</span>
             </h2>

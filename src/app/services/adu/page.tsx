@@ -7,6 +7,7 @@ import FAQAccordion from "@/components/FAQAccordion";
 import JsonLd from "@/components/JsonLd";
 import { CS } from "@/lib/constants";
 import { ADU_CITIES } from "@/lib/adu-cities";
+import { BUSINESS_REF, businessEntity } from "@/lib/business-schema";
 
 export const metadata: Metadata = {
   title: "ADU Contractors Inland Empire | Construction Station",
@@ -91,7 +92,7 @@ const STEPS = [
   {
     number: "05",
     title: "Final Inspection & Move-In Ready",
-    description: "Final city inspection, certificate of occupancy where applicable, and two-year workmanship warranty.",
+    description: "Final city inspection, certificate of occupancy where applicable, and 12-month workmanship warranty.",
   },
 ];
 
@@ -187,7 +188,7 @@ const FAQS = [
   },
   {
     q: "What is the ADU construction process from start to finish?",
-    a: "Our ADU process has five phases: (1) Free Feasibility Consultation — we walk your lot, review setbacks, utilities, and zoning to confirm what your city will approve; (2) Design and Engineering — floor plans, elevations, structural calculations, Title 24 energy compliance; (3) Permit Submission — we prepare and submit to your city, respond to plan-check corrections, pay permit fees; (4) Construction — foundation, framing, MEP (mechanical, electrical, plumbing), insulation, drywall, tile, finishes, and punch list; (5) Final Inspection — city sign-off, certificate of occupancy where applicable, and our two-year workmanship warranty. One project manager, one point of contact, permits to keys.",
+    a: "Our ADU process has five phases: (1) Free Feasibility Consultation — we walk your lot, review setbacks, utilities, and zoning to confirm what your city will approve; (2) Design and Engineering — floor plans, elevations, structural calculations, Title 24 energy compliance; (3) Permit Submission — we prepare and submit to your city, respond to plan-check corrections, pay permit fees; (4) Construction — foundation, framing, MEP (mechanical, electrical, plumbing), insulation, drywall, tile, finishes, and punch list; (5) Final Inspection — city sign-off, certificate of occupancy where applicable, and our 12-month workmanship warranty. One project manager, one point of contact, permits to keys.",
   },
   {
     q: "What size ADU can I build on my lot?",
@@ -224,20 +225,11 @@ const FAQS = [
   },
 ];
 
-const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://constructionstation.com";
-
 const serviceSchema = {
   "@context": "https://schema.org",
   "@type": "Service",
   serviceType: "ADU Construction",
-  provider: {
-    "@type": "GeneralContractor",
-    name: CS.name,
-    telephone: CS.phone,
-    url: SITE_URL,
-    identifier: CS.license,
-  },
+  provider: BUSINESS_REF,
   areaServed: { "@type": "Place", name: "Inland Empire, Temecula Valley, and Desert Communities, California" },
   description:
     "Licensed ADU general contractor — detached ADUs, JADUs, garage conversions, and room-addition ADUs up to 1,200 sq ft. Permits to move-in.",
@@ -245,21 +237,9 @@ const serviceSchema = {
 
 const localBusinessSchema = {
   "@context": "https://schema.org",
-  "@type": "GeneralContractor",
-  name: CS.name,
-  telephone: CS.phone,
-  email: CS.email,
-  url: `${SITE_URL}/services/adu`,
-  image: `${SITE_URL}/images/services/adu/adu-01.jpg`,
+  ...businessEntity(),
   priceRange: "$$$",
-  address: {
-    "@type": "PostalAddress",
-    addressRegion: "CA",
-    addressCountry: "US",
-    addressLocality: "Inland Empire",
-  },
   areaServed: CITIES.map((city) => `${city.name}, CA`),
-  identifier: CS.license,
 };
 
 const faqSchema = {

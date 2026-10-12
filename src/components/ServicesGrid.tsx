@@ -29,7 +29,7 @@ export default function ServicesGrid() {
               </span>
             </div>
             <h2 className="font-display text-navy text-5xl md:text-6xl lg:text-7xl leading-[1] max-w-2xl">
-              Residential. Commercial.
+              Residential. Commercial.{" "}
               <br />
               <span className="italic">One</span> standard.
             </h2>

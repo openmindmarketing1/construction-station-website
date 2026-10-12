@@ -7,6 +7,7 @@ import FAQAccordion from "@/components/FAQAccordion";
 import ServiceCityLinksStrip from "@/components/ServiceCityLinksStrip";
 import JsonLd from "@/components/JsonLd";
 import { CS } from "@/lib/constants";
+import { BUSINESS_REF, businessEntity } from "@/lib/business-schema";
 
 export const metadata: Metadata = {
   title: "Room Additions & Home Expansions | Construction Station",
@@ -46,7 +47,7 @@ const STEPS = [
   {
     number: "05",
     title: "Final Inspection & Warranty",
-    description: "Final city inspection, certificate of occupancy where applicable, and two-year workmanship warranty.",
+    description: "Final city inspection, certificate of occupancy where applicable, and 12-month workmanship warranty.",
   },
 ];
 
@@ -73,20 +74,11 @@ const FAQS = [
   },
 ];
 
-const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://constructionstation.com";
-
 const serviceSchema = {
   "@context": "https://schema.org",
   "@type": "Service",
   serviceType: "Room Additions and Home Expansions",
-  provider: {
-    "@type": "GeneralContractor",
-    name: CS.name,
-    telephone: CS.phone,
-    url: SITE_URL,
-    identifier: CS.license,
-  },
+  provider: BUSINESS_REF,
   areaServed: { "@type": "Place", name: "Inland Empire, California" },
   description:
     "Custom room additions — master suites, second-story builds, family room expansions, and garage conversions. Serving the Inland Empire since 2008. CSLB #1108879.",
@@ -94,19 +86,8 @@ const serviceSchema = {
 
 const localBusinessSchema = {
   "@context": "https://schema.org",
-  "@type": "GeneralContractor",
-  name: CS.name,
-  telephone: CS.phone,
-  email: CS.email,
-  url: `${SITE_URL}/services/room-additions`,
-  image: `${SITE_URL}/images/services/room-additions/room-addition-01.jpg`,
+  ...businessEntity(),
   priceRange: "$$$",
-  address: {
-    "@type": "PostalAddress",
-    addressRegion: "CA",
-    addressCountry: "US",
-    addressLocality: "Inland Empire",
-  },
   areaServed: [
     "Yucaipa, CA",
     "Redlands, CA",
@@ -115,7 +96,6 @@ const localBusinessSchema = {
     "Highland, CA",
     "San Bernardino, CA",
   ],
-  identifier: CS.license,
 };
 
 const faqSchema = {

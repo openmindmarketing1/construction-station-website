@@ -6,6 +6,7 @@ import ProcessSteps from "@/components/ProcessSteps";
 import FAQAccordion from "@/components/FAQAccordion";
 import JsonLd from "@/components/JsonLd";
 import { CS } from "@/lib/constants";
+import { BUSINESS_REF, businessEntity } from "@/lib/business-schema";
 
 export const metadata: Metadata = {
   title: "Window & Door Replacement | Construction Station",
@@ -69,20 +70,11 @@ const FAQS = [
   },
 ];
 
-const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://constructionstation.com";
-
 const serviceSchema = {
   "@context": "https://schema.org",
   "@type": "Service",
   serviceType: "Window and Door Replacement",
-  provider: {
-    "@type": "GeneralContractor",
-    name: CS.name,
-    telephone: CS.phone,
-    url: SITE_URL,
-    identifier: CS.license,
-  },
+  provider: BUSINESS_REF,
   areaServed: { "@type": "Place", name: "San Bernardino County, California" },
   description:
     "Energy-efficient window replacement, door installation, sliding glass doors, French doors, and entry doors. In business since 2008. CSLB #1108879.",
@@ -90,19 +82,8 @@ const serviceSchema = {
 
 const localBusinessSchema = {
   "@context": "https://schema.org",
-  "@type": "GeneralContractor",
-  name: CS.name,
-  telephone: CS.phone,
-  email: CS.email,
-  url: `${SITE_URL}/services/windows-and-doors`,
-  image: `${SITE_URL}/images/services/windows-doors/windows-01.jpg`,
+  ...businessEntity(),
   priceRange: "$$",
-  address: {
-    "@type": "PostalAddress",
-    addressRegion: "CA",
-    addressCountry: "US",
-    addressLocality: "Inland Empire",
-  },
   areaServed: [
     "San Bernardino, CA",
     "Redlands, CA",
@@ -113,7 +94,6 @@ const localBusinessSchema = {
     "Rancho Cucamonga, CA",
     "Riverside, CA",
   ],
-  identifier: CS.license,
 };
 
 const faqSchema = {

@@ -12,6 +12,7 @@ import ServiceCityLinksStrip from "@/components/ServiceCityLinksStrip";
 import JsonLd from "@/components/JsonLd";
 import { CS } from "@/lib/constants";
 import { CALLBACK_PROMISE_SHORT, MISSED_CALL_LINE } from "@/lib/callback-promise";
+import { BUSINESS_REF } from "@/lib/business-schema";
 
 export const metadata: Metadata = {
   // `absolute` bypasses the root layout's "%s | Construction Station" template
@@ -62,7 +63,7 @@ const STEPS = [
   {
     number: "05",
     title: "Walkthrough & Touch-Ups",
-    description: "Punch list completed before final invoice. Two-year workmanship warranty.",
+    description: "Punch list completed before final invoice. 12-month workmanship warranty.",
   },
 ];
 
@@ -129,9 +130,6 @@ const FAQS = [
   },
 ];
 
-const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://constructionstation.com";
-
 const faqSchema = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -147,13 +145,7 @@ export default function KitchenRemodelingPage() {
     "@context": "https://schema.org",
     "@type": "Service",
     serviceType: "Kitchen Remodeling",
-    provider: {
-      "@type": "GeneralContractor",
-      name: CS.name,
-      telephone: CS.phone,
-      url: SITE_URL,
-      identifier: CS.license,
-    },
+    provider: BUSINESS_REF,
     areaServed: { "@type": "Place", name: "Inland Empire, California" },
     description:
       "Full-service kitchen remodeling — design, cabinetry, countertops, appliances, and installation. Licensed contractor since 2008.",

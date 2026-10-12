@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import JsonLd from "@/components/JsonLd";
 import { CS } from "@/lib/constants";
+import { BUSINESS_REF } from "@/lib/business-schema";
 
 export const metadata: Metadata = {
   title: "Junior ADU in Redlands — Making Room for Family",
@@ -31,17 +32,8 @@ const articleSchema = {
   url: `${SITE_URL}/projects/redlands-jr-adu`,
   datePublished: "2026-06-15",
   dateModified: "2026-06-15",
-  author: {
-    "@type": "Organization",
-    "@id": `${SITE_URL}/#organization`,
-    name: CS.name,
-  },
-  publisher: {
-    "@type": "Organization",
-    "@id": `${SITE_URL}/#organization`,
-    name: CS.name,
-    logo: { "@type": "ImageObject", url: `${SITE_URL}/images/logo/cs-logo.png` },
-  },
+  author: BUSINESS_REF,
+  publisher: BUSINESS_REF,
   about: {
     "@type": "Service",
     serviceType: "Junior ADU Construction",

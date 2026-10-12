@@ -3,6 +3,7 @@ import Link from "next/link";
 import FAQAccordion from "@/components/FAQAccordion";
 import JsonLd from "@/components/JsonLd";
 import { CS } from "@/lib/constants";
+import { BUSINESS_REF, businessEntity } from "@/lib/business-schema";
 
 export const metadata: Metadata = {
   title: "ADU Cost in the Inland Empire | Construction Station",
@@ -13,9 +14,6 @@ export const metadata: Metadata = {
 
 const CALENDLY_URL =
   "https://calendly.com/constructionstation-sales/free-adu-remodeling-consult";
-
-const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://constructionstation.com";
 
 type CostRow = {
   type: string;
@@ -127,13 +125,7 @@ const serviceSchema = {
   "@context": "https://schema.org",
   "@type": "Service",
   serviceType: "ADU Construction Cost Estimating",
-  provider: {
-    "@type": "GeneralContractor",
-    name: CS.name,
-    telephone: CS.phone,
-    url: SITE_URL,
-    identifier: CS.license,
-  },
+  provider: BUSINESS_REF,
   areaServed: { "@type": "Place", name: "Inland Empire, California" },
   description:
     "Transparent ADU pricing from a licensed Inland Empire general contractor. Detached ADU all-in costs from $200,000 to $435,000 covering design, engineering, permits, sitework, utilities, and construction.",
@@ -141,21 +133,9 @@ const serviceSchema = {
 
 const localBusinessSchema = {
   "@context": "https://schema.org",
-  "@type": "GeneralContractor",
-  name: CS.name,
-  telephone: CS.phone,
-  email: CS.email,
-  url: `${SITE_URL}/services/adu/costs`,
-  image: `${SITE_URL}/images/services/adu/adu-01.jpg`,
+  ...businessEntity(),
   priceRange: "$$$",
-  address: {
-    "@type": "PostalAddress",
-    addressRegion: "CA",
-    addressCountry: "US",
-    addressLocality: "Inland Empire",
-  },
   areaServed: "Inland Empire, California",
-  identifier: CS.license,
 };
 
 const faqSchema = {

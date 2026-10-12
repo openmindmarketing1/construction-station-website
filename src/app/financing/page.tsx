@@ -3,6 +3,7 @@ import Script from "next/script";
 import { CS } from "@/lib/constants";
 import JsonLd from "@/components/JsonLd";
 import TrustBar from "@/components/TrustBar";
+import { businessEntity } from "@/lib/business-schema";
 
 export const metadata: Metadata = {
   title: "Home Improvement Financing | HELOC, RenoFi & More",
@@ -94,19 +95,7 @@ export default function FinancingPage() {
     "@context": "https://schema.org",
     "@graph": [
       {
-        "@type": "LocalBusiness",
-        name: CS.name,
-        url: SITE_URL,
-        telephone: CS.phone,
-        email: CS.email,
-        address: {
-          "@type": "PostalAddress",
-          addressLocality: "Inland Empire",
-          addressRegion: "CA",
-          addressCountry: "US",
-        },
-        foundingDate: String(CS.founded),
-        identifier: CS.license,
+        ...businessEntity(),
       },
       {
         "@type": "FinancialService",

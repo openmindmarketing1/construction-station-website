@@ -114,3 +114,24 @@ export async function fetchOmmPostByIdOrSlug(param: string): Promise<{
 
   return null;
 }
+
+/**
+ * Repair two markdown leftovers in OMM-generated post HTML:
+ *  - `<p>!<a href="…">Summary Infographic</a></p>`: a markdown image that was
+ *    converted as a link. Dropped when the page already shows the infographic
+ *    at the bottom; otherwise rendered as the image it was meant to be.
+ *  - `<p># Heading</p>`: a markdown heading left as text. Dropped when it
+ *    repeats the post title (the page's H1); otherwise made an H2.
+ */
+export function cleanOmmPostHtml(html: string, title: string, hasInfographic: boolean): string {
+  const norm = (s: string) => s.replace(/<[^>]+>/g, "").replace(/\s+/g, " ").trim().toLowerCase();
+  return html
+    .replace(/<p>\s*!\s*<a [^>]*href="([^"]+)"[^>]*>([^<]*)<\/a>\s*<\/p>/g, (_m, src: string, alt: string) =>
+      hasInfographic
+        ? ""
+        : `<p><img src="${src}" alt="${alt.replace(/"/g, "&quot;")}" loading="lazy" /></p>`
+    )
+    .replace(/<p>\s*#{1,6}\s+([\s\S]*?)<\/p>/g, (_m, text: string) =>
+      norm(text) === norm(title) ? "" : `<h2>${text.trim()}</h2>`
+    );
+}

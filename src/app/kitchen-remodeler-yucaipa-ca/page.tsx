@@ -10,6 +10,7 @@ import KitchenQuickForm from "@/components/KitchenQuickForm";
 import JsonLd from "@/components/JsonLd";
 import { CS } from "@/lib/constants";
 import { CALLBACK_PROMISE_SHORT, MISSED_CALL_LINE } from "@/lib/callback-promise";
+import { BUSINESS_REF, businessEntity } from "@/lib/business-schema";
 
 export const metadata: Metadata = {
   title: {
@@ -68,7 +69,7 @@ const STEPS = [
     number: "05",
     title: "Final Walkthrough & Warranty",
     description:
-      "Punch list completed before the final invoice. Two-year workmanship warranty on every kitchen we complete.",
+      "Punch list completed before the final invoice. 12-month workmanship warranty on every kitchen we complete.",
   },
 ];
 
@@ -106,7 +107,7 @@ const FAQS = [
   },
   {
     q: "Who is the best kitchen remodeler in Yucaipa?",
-    a: "Construction Station has been the Inland Empire's trusted kitchen remodeler since 2008 and is headquartered locally in Yucaipa. We hold California Contractor's License #1108879, carry full liability and workers' compensation insurance, and have completed over 250 kitchens across the Inland Empire — dozens of them right here in Yucaipa neighborhoods including Chapman Heights, Yucaipa Village, and Sand Creek. Unlike national chains or big-box install crews, our team is local, our project managers are reachable, and the crew you meet on day one is the same crew that finishes your kitchen. We're rated 5 stars across Google and Houzz, and we back every kitchen with a two-year workmanship warranty.",
+    a: "Construction Station has been the Inland Empire's trusted kitchen remodeler since 2008 and is headquartered locally in Yucaipa. We hold California Contractor's License #1108879, carry full liability and workers' compensation insurance, and have completed over 250 kitchens across the Inland Empire — dozens of them right here in Yucaipa neighborhoods including Chapman Heights, Yucaipa Village, and Sand Creek. Unlike national chains or big-box install crews, our team is local, our project managers are reachable, and the crew you meet on day one is the same crew that finishes your kitchen. We're rated 5 stars across Google and Houzz, and we back every kitchen with a 12-month workmanship warranty.",
   },
   {
     q: "How long does a kitchen remodel take in Yucaipa?",
@@ -132,20 +133,7 @@ const FAQS = [
 
 const localBusinessSchema = {
   "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  "@id": `${SITE_URL}/kitchen-remodeler-yucaipa-ca`,
-  name: CS.name,
-  description:
-    "Yucaipa's kitchen remodeler — custom cabinets, quartz countertops, open-concept transformations. Licensed CSLB #1108879.",
-  telephone: CS.phone,
-  url: SITE_URL,
-  address: {
-    "@type": "PostalAddress",
-    addressLocality: "Yucaipa",
-    addressRegion: "CA",
-    postalCode: "92399",
-    addressCountry: "US",
-  },
+  ...businessEntity(),
   areaServed: [
     "Yucaipa, CA",
     "Redlands, CA",
@@ -188,13 +176,7 @@ const serviceSchema = {
   "@type": "Service",
   serviceType: "Kitchen Remodeling",
   name: "Kitchen Remodel Yucaipa CA",
-  provider: {
-    "@type": "GeneralContractor",
-    name: CS.name,
-    telephone: CS.phone,
-    url: SITE_URL,
-    identifier: CS.license,
-  },
+  provider: BUSINESS_REF,
   areaServed: { "@type": "City", name: "Yucaipa, CA" },
   description:
     "Full-service kitchen remodeling in Yucaipa CA — custom cabinetry, quartz countertops, tile backsplash, open-concept conversions, and appliance integration. Licensed CSLB #1108879.",
@@ -532,7 +514,7 @@ export default function KitchenRemodelerYucaipaPage() {
               },
               {
                 title: "One Crew, One Warranty",
-                blurb: "The same team handles design, permits, framing, electrical, plumbing, tile, cabinetry, and final touch-ups. No revolving subcontractors. Two-year workmanship warranty.",
+                blurb: "The same team handles design, permits, framing, electrical, plumbing, tile, cabinetry, and final touch-ups. No revolving subcontractors. 12-month workmanship warranty.",
               },
               {
                 title: "Fixed-Price Contracts",

@@ -20,6 +20,7 @@ import {
   getServiceCityProfile,
   serviceCityLinks,
 } from "@/lib/service-city-pages";
+import { businessEntity } from "@/lib/business-schema";
 
 const CALENDLY_URL =
   "https://calendly.com/constructionstation-sales/free-adu-remodeling-consult";
@@ -147,7 +148,7 @@ const STEPS = [
     number: "05",
     title: "Final Inspection & Move-In Ready",
     description:
-      "Final city inspection, certificate of occupancy where applicable, and two-year workmanship warranty.",
+      "Final city inspection, certificate of occupancy where applicable, and 12-month workmanship warranty.",
   },
 ];
 
@@ -223,22 +224,9 @@ export default async function ADUCityPage({
 
   const localBusinessSchema = {
     "@context": "https://schema.org",
-    "@type": "GeneralContractor",
-    name: CS.name,
-    telephone: CS.phone,
-    email: CS.email,
-    url: `${SITE_URL}/services/adu/${city.slug}`,
-    image: `${SITE_URL}/images/services/adu/adu-01.jpg`,
+    ...businessEntity(),
     priceRange: "$$$",
-    address: {
-      "@type": "PostalAddress",
-      addressLocality: city.name,
-      addressRegion: "CA",
-      addressCountry: "US",
-    },
     areaServed: { "@type": "City", name: `${city.name}, CA` },
-    identifier: CS.license,
-    description: `Licensed ADU general contractor serving ${city.name}, ${city.county} — detached ADUs, JADUs, garage conversions, and room-addition ADUs up to 1,200 sq ft.`,
   };
 
   const faqSchema = {

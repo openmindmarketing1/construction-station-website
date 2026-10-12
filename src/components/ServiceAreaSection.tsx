@@ -19,7 +19,7 @@ export default function ServiceAreaSection() {
             <span className="w-10 h-px bg-gold" />
           </div>
           <h2 className="font-display text-navy text-5xl md:text-6xl lg:text-7xl leading-[1] mb-5">
-            Proudly serving the
+            Proudly serving the{" "}
             <br />
             <span className="italic text-gold-dark">Inland Empire</span>.
           </h2>

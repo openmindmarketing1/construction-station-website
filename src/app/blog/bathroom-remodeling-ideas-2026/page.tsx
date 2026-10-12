@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import BlogPostLayout from "@/components/BlogPostLayout";
 import JsonLd from "@/components/JsonLd";
 import { POSTS } from "@/lib/blog";
+import { BUSINESS_REF } from "@/lib/business-schema";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://constructionstation.com";
 
@@ -26,13 +27,8 @@ const blogSchema = {
   dateModified: post.date,
   image: `${SITE_URL}${post.image}`,
   url: `${SITE_URL}/blog/${post.slug}`,
-  author: { "@type": "Organization", name: "Construction Station", url: SITE_URL },
-  publisher: {
-    "@type": "Organization",
-    name: "Construction Station",
-    url: SITE_URL,
-    logo: { "@type": "ImageObject", url: `${SITE_URL}/images/logo/cs-logo.png` },
-  },
+  author: BUSINESS_REF,
+  publisher: BUSINESS_REF,
 };
 
 const faqSchema = {

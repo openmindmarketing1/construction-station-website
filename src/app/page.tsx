@@ -12,10 +12,10 @@ import CtaSection from "@/components/CtaSection";
 // after the hero's LCP window instead of inside it (2026-08-21).
 const BeforeAfterSlider = dynamic(() => import("@/components/BeforeAfterSlider"));
 import JsonLd from "@/components/JsonLd";
-import { CS } from "@/lib/constants";
 import { CITIES } from "@/config/cities";
 
 import type { Metadata } from "next";
+import { businessEntity } from "@/lib/business-schema";
 
 // Self-canonical — the root layout deliberately sets none (see layout.tsx).
 export const metadata: Metadata = {
@@ -28,32 +28,11 @@ export const metadata: Metadata = {
     "Southern California contractor serving the Inland Empire since 2008. CSLB #1108879. Kitchen and bathroom remodeling, ADUs, room additions. Free design session worth $299. Call 909-797-6333.",
 };
 
-const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://constructionstation.com";
-
 export default function Home() {
   const localBusiness = {
     "@context": "https://schema.org",
-    "@type": "GeneralContractor",
-    name: CS.name,
-    image: `${SITE_URL}/og.jpg`,
-    url: SITE_URL,
-    telephone: CS.phone,
-    email: CS.email,
+    ...businessEntity(),
     priceRange: "$$$",
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: "33145 Yucaipa Blvd",
-      addressLocality: "Yucaipa",
-      addressRegion: "CA",
-      postalCode: "92399",
-      addressCountry: "US",
-    },
-    geo: {
-      "@type": "GeoCoordinates",
-      latitude: 34.0556,
-      longitude: -117.1825,
-    },
     areaServed: CITIES.map((c) => ({
       "@type": "City",
       name: `${c.name}, ${c.state}`,
@@ -83,11 +62,6 @@ export default function Home() {
       ratingValue: "5.0",
       reviewCount: "17",
     },
-    sameAs: [
-      "https://www.google.com/maps?cid=8346061725681242502",
-    ],
-    foundingDate: String(CS.founded),
-    identifier: CS.license,
   };
 
   return (

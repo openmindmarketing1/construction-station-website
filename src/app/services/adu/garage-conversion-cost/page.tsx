@@ -3,6 +3,7 @@ import Link from "next/link";
 import FAQAccordion from "@/components/FAQAccordion";
 import JsonLd from "@/components/JsonLd";
 import { CS } from "@/lib/constants";
+import { BUSINESS_REF, businessEntity } from "@/lib/business-schema";
 
 export const metadata: Metadata = {
   title: {
@@ -16,9 +17,6 @@ export const metadata: Metadata = {
 
 const CALENDLY_URL =
   "https://calendly.com/constructionstation-sales/free-adu-remodeling-consult";
-
-const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://constructionstation.com";
 
 const SERVICE_CITIES = [
   "Yucaipa",
@@ -134,13 +132,7 @@ const serviceSchema = {
   "@context": "https://schema.org",
   "@type": "Service",
   serviceType: "Garage Conversion Cost Estimating",
-  provider: {
-    "@type": "GeneralContractor",
-    name: CS.name,
-    telephone: CS.phone,
-    url: SITE_URL,
-    identifier: CS.license,
-  },
+  provider: BUSINESS_REF,
   areaServed: SERVICE_CITIES.map((c) => ({ "@type": "Place", name: `${c}, CA` })),
   description:
     "Transparent garage conversion pricing from a licensed Inland Empire contractor. All-in costs $85,000–$175,000. CSLB #1108879.",
@@ -148,20 +140,9 @@ const serviceSchema = {
 
 const localBusinessSchema = {
   "@context": "https://schema.org",
-  "@type": "GeneralContractor",
-  name: CS.name,
-  telephone: CS.phone,
-  email: CS.email,
-  url: `${SITE_URL}/services/adu/garage-conversion-cost`,
+  ...businessEntity(),
   priceRange: "$$$",
-  address: {
-    "@type": "PostalAddress",
-    addressRegion: "CA",
-    addressCountry: "US",
-    addressLocality: "Yucaipa",
-  },
   areaServed: SERVICE_CITIES.map((c) => `${c}, CA`),
-  identifier: CS.license,
 };
 
 const faqSchema = {

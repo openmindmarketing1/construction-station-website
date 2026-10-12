@@ -13,6 +13,7 @@ import {
   type ServiceCityProfile,
   type ServiceKey,
 } from "@/lib/service-city-pages";
+import { BUSINESS_REF } from "@/lib/business-schema";
 
 const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL ?? "https://constructionstation.com";
@@ -55,20 +56,7 @@ export default function ServiceCityPage({
     serviceType: service.schemaServiceType,
     name: `${service.keyword} ${city.name} CA`,
     url: pageUrl,
-    provider: {
-      "@type": "GeneralContractor",
-      name: CS.name,
-      telephone: CS.phone,
-      email: CS.email,
-      url: SITE_URL,
-      identifier: CS.license,
-      priceRange: "$$$",
-      address: {
-        "@type": "PostalAddress",
-        addressRegion: "CA",
-        addressCountry: "US",
-      },
-    },
+    provider: BUSINESS_REF,
     areaServed: {
       "@type": "City",
       name: `${city.name}, CA`,

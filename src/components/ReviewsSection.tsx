@@ -39,7 +39,7 @@ export default function ReviewsSection() {
               </span>
             </div>
             <h2 className="font-display text-white text-5xl md:text-6xl lg:text-7xl leading-[1]">
-              Words that <span className="italic text-gold">stick</span>
+              Words that <span className="italic text-gold">stick</span>{" "}
               <br />
               with us.
             </h2>

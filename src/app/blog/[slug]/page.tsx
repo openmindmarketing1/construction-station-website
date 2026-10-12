@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound, permanentRedirect } from "next/navigation";
-import { fetchOmmPostByIdOrSlug, fetchOmmPosts } from "@/lib/omm-blog";
+import { cleanOmmPostHtml, fetchOmmPostByIdOrSlug, fetchOmmPosts } from "@/lib/omm-blog";
 import JsonLd from "@/components/JsonLd";
 import { CS } from "@/lib/constants";
+import { BUSINESS_REF } from "@/lib/business-schema";
 
 // Next.js routes static segments before dynamic ones, so this [slug] page only
 // fires for slugs that DON'T match one of the hand-built static blog post
@@ -95,13 +96,8 @@ export default async function OmmBlogPostPage({
     image: post.featured_image_url ?? undefined,
     url: postUrl,
     mainEntityOfPage: { "@type": "WebPage", "@id": postUrl },
-    author: { "@type": "Organization", name: CS.name, url: SITE_URL },
-    publisher: {
-      "@type": "Organization",
-      name: CS.name,
-      url: SITE_URL,
-      logo: { "@type": "ImageObject", url: `${SITE_URL}/images/logo/cs-logo.png` },
-    },
+    author: BUSINESS_REF,
+    publisher: BUSINESS_REF,
   };
 
   const breadcrumbSchema = {
@@ -170,7 +166,7 @@ export default async function OmmBlogPostPage({
         <div className="max-w-4xl mx-auto px-5 lg:px-10">
           <div
             className="blog-prose"
-            dangerouslySetInnerHTML={{ __html: post.html_content }}
+            dangerouslySetInnerHTML={{ __html: cleanOmmPostHtml(post.html_content, post.title, !!post.infographic_url) }}
           />
         </div>
       </section>
