@@ -116,22 +116,36 @@ export async function fetchOmmPostByIdOrSlug(param: string): Promise<{
 }
 
 /**
- * Repair two markdown leftovers in OMM-generated post HTML:
+ * Repair leftovers in OMM-generated post HTML until OMM's blog writer stops
+ * producing them (omm-seo, fix/blog-writer-clean-html):
  *  - `<p>!<a href="…">Summary Infographic</a></p>`: a markdown image that was
- *    converted as a link. Dropped when the page already shows the infographic
- *    at the bottom; otherwise rendered as the image it was meant to be.
+ *    converted as a link, to an expiring signed URL. Always dropped — the page
+ *    renders the post's infographic_url itself.
  *  - `<p># Heading</p>`: a markdown heading left as text. Dropped when it
  *    repeats the post title (the page's H1); otherwise made an H2.
+ *  - An embedded JSON-LD Article whose author/publisher is a second, unlinked
+ *    business entity. Dropped (the page emits its own BlogPosting that points
+ *    at the one business @id); FAQPage and anything else in the block stays.
  */
-export function cleanOmmPostHtml(html: string, title: string, hasInfographic: boolean): string {
+export function cleanOmmPostHtml(html: string, title: string): string {
   const norm = (s: string) => s.replace(/<[^>]+>/g, "").replace(/\s+/g, " ").trim().toLowerCase();
   return html
-    .replace(/<p>\s*!\s*<a [^>]*href="([^"]+)"[^>]*>([^<]*)<\/a>\s*<\/p>/g, (_m, src: string, alt: string) =>
-      hasInfographic
-        ? ""
-        : `<p><img src="${src}" alt="${alt.replace(/"/g, "&quot;")}" loading="lazy" /></p>`
-    )
+    .replace(/<p>\s*!\s*<a [^>]*href="[^"]+"[^>]*>[^<]*<\/a>\s*<\/p>/g, "")
     .replace(/<p>\s*#{1,6}\s+([\s\S]*?)<\/p>/g, (_m, text: string) =>
       norm(text) === norm(title) ? "" : `<h2>${text.trim()}</h2>`
-    );
+    )
+    .replace(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g, (whole, json: string) => {
+      let data: unknown;
+      try {
+        data = JSON.parse(json);
+      } catch {
+        return whole;
+      }
+      const isArticle = (n: unknown) =>
+        !!n && typeof n === "object" && ["Article", "BlogPosting"].includes(String((n as { "@type"?: unknown })["@type"]));
+      const kept = Array.isArray(data) ? data.filter((n) => !isArticle(n)) : isArticle(data) ? [] : [data];
+      if (kept.length === 0) return "";
+      const out = JSON.stringify(kept.length === 1 ? kept[0] : kept).replace(/</g, "\\u003c");
+      return `<script type="application/ld+json">${out}</script>`;
+    });
 }

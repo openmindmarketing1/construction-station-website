@@ -13,12 +13,11 @@ export const metadata: Metadata = {
 };
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://constructionstation.com";
-const SB = "https://ihvgrybmtngekmfjpxnz.supabase.co/storage/v1/object/public/user-assets/";
-
-const ADU_PHOTOS = [
-  `${SB}1/Jr%20ADU%20Redlands/1781284267634-IMG_4468.jpeg`,
-  `${SB}1/Jr%20ADU%20Redlands/1781284265236-IMG_4469.jpeg`,
-];
+// Both photos were deleted from storage (2026-10-12) and are hidden until the
+// team re-uploads them. To restore, put the new URLs back here — they lived at
+//   https://ihvgrybmtngekmfjpxnz.supabase.co/storage/v1/object/public/user-assets/1/Jr%20ADU%20Redlands/<id>-IMG_4468.jpeg
+//   (and the same folder for IMG_4469).
+const ADU_PHOTOS: string[] = [];
 
 const CALENDLY_URL =
   "https://calendly.com/constructionstation-sales/free-adu-remodeling-consult";
@@ -180,6 +179,7 @@ export default function RedlandsJrADUPage() {
             Construction underway since March 2026. Scheduled completion June 2026.
           </p>
 
+          {ADU_PHOTOS.length > 0 && (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-3xl mx-auto">
             {ADU_PHOTOS.map((src, i) => (
               <div key={i} className="relative aspect-[4/3] overflow-hidden bg-navy/5">
@@ -193,6 +193,7 @@ export default function RedlandsJrADUPage() {
               </div>
             ))}
           </div>
+          )}
         </div>
       </section>
 

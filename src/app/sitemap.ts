@@ -7,38 +7,48 @@ import {
   SERVICE_CITY_SLUGS,
 } from "@/lib/service-city-pages";
 import { fetchOmmPosts } from "@/lib/omm-blog";
+import PAGE_LASTMOD from "@/data/page-lastmod.json";
 
 const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL ?? "https://constructionstation.com";
+
+// lastModified = when the page's content last changed (git history, written by
+// scripts/page-lastmod.mjs), not the build time — a sitemap where every URL
+// "changed" at every deploy teaches Google to ignore lastmod.
+const LASTMOD = PAGE_LASTMOD as Record<string, string>;
+function lastMod(route: string): Date {
+  const d = LASTMOD[route];
+  return d ? new Date(d) : new Date();
+}
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const now = new Date();
 
   const staticRoutes: MetadataRoute.Sitemap = [
-    { url: `${SITE_URL}/`, lastModified: now, changeFrequency: "weekly", priority: 1.0 },
-    { url: `${SITE_URL}/about`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
-    { url: `${SITE_URL}/contact`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
-    { url: `${SITE_URL}/reviews`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
-    { url: `${SITE_URL}/financing`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
-    { url: `${SITE_URL}/blog`, lastModified: now, changeFrequency: "weekly", priority: 0.7 },
+    { url: `${SITE_URL}/`, lastModified: lastMod("/"), changeFrequency: "weekly", priority: 1.0 },
+    { url: `${SITE_URL}/about`, lastModified: lastMod("/about"), changeFrequency: "monthly", priority: 0.8 },
+    { url: `${SITE_URL}/contact`, lastModified: lastMod("/contact"), changeFrequency: "monthly", priority: 0.8 },
+    { url: `${SITE_URL}/reviews`, lastModified: lastMod("/reviews"), changeFrequency: "monthly", priority: 0.7 },
+    { url: `${SITE_URL}/financing`, lastModified: lastMod("/financing"), changeFrequency: "monthly", priority: 0.7 },
+    { url: `${SITE_URL}/blog`, lastModified: lastMod("/blog"), changeFrequency: "weekly", priority: 0.7 },
     // Added 2026-08-18 (SEO audit): live pages the sitemap never listed —
     // five of the six read "URL is unknown to Google" in URL Inspection, and
     // the Yucaipa kitchen lander earns ~1,780 impressions/90d.
-    { url: `${SITE_URL}/faq`, lastModified: now, changeFrequency: "monthly", priority: 0.6 },
-    { url: `${SITE_URL}/projects`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
-    { url: `${SITE_URL}/kitchen-remodeler-yucaipa-ca`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
-    { url: `${SITE_URL}/services/flooring-installation-yucaipa-ca`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
-    { url: `${SITE_URL}/projects/redlands-jr-adu`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
-    { url: `${SITE_URL}/resources/adu-guide`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
-    { url: `${SITE_URL}/privacy`, lastModified: now, changeFrequency: "yearly", priority: 0.3 },
-    { url: `${SITE_URL}/terms`, lastModified: now, changeFrequency: "yearly", priority: 0.3 },
+    { url: `${SITE_URL}/faq`, lastModified: lastMod("/faq"), changeFrequency: "monthly", priority: 0.6 },
+    { url: `${SITE_URL}/projects`, lastModified: lastMod("/projects"), changeFrequency: "monthly", priority: 0.7 },
+    { url: `${SITE_URL}/kitchen-remodeler-yucaipa-ca`, lastModified: lastMod("/kitchen-remodeler-yucaipa-ca"), changeFrequency: "monthly", priority: 0.9 },
+    { url: `${SITE_URL}/services/flooring-installation-yucaipa-ca`, lastModified: lastMod("/services/flooring-installation-yucaipa-ca"), changeFrequency: "monthly", priority: 0.8 },
+    { url: `${SITE_URL}/projects/redlands-jr-adu`, lastModified: lastMod("/projects/redlands-jr-adu"), changeFrequency: "monthly", priority: 0.7 },
+    { url: `${SITE_URL}/resources/adu-guide`, lastModified: lastMod("/resources/adu-guide"), changeFrequency: "monthly", priority: 0.8 },
+    { url: `${SITE_URL}/privacy`, lastModified: lastMod("/privacy"), changeFrequency: "yearly", priority: 0.3 },
+    { url: `${SITE_URL}/terms`, lastModified: lastMod("/terms"), changeFrequency: "yearly", priority: 0.3 },
   ];
 
   const serviceRoutes: MetadataRoute.Sitemap = SERVICES.filter(
     (s) => s.hasPage
   ).map((s) => ({
     url: `${SITE_URL}/services/${s.slug}`,
-    lastModified: now,
+    lastModified: lastMod(`/services/${s.slug}`),
     changeFrequency: "monthly" as const,
     priority: 0.9,
   }));
@@ -66,7 +76,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const areasHubRoute: MetadataRoute.Sitemap = [
     {
       url: `${SITE_URL}/areas`,
-      lastModified: now,
+      lastModified: lastMod("/areas"),
       changeFrequency: "monthly",
       priority: 0.7,
     },
@@ -74,7 +84,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   const aduCityRoutes: MetadataRoute.Sitemap = ADU_CITIES.map((c) => ({
     url: `${SITE_URL}/services/adu/${c.slug}`,
-    lastModified: now,
+    lastModified: lastMod("/services/adu/[city]"),
     changeFrequency: "monthly" as const,
     priority: 0.8,
   }));
@@ -83,7 +93,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     SERVICE_CITY_SERVICES.flatMap((s) =>
       SERVICE_CITY_SLUGS.map((slug) => ({
         url: `${SITE_URL}/services/${s.routeSegment}/${slug}`,
-        lastModified: now,
+        lastModified: lastMod(`/services/${s.routeSegment}/[city]`),
         changeFrequency: "monthly" as const,
         priority: 0.8,
       }))
@@ -102,7 +112,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "garage-conversion-permits",
   ].map((slug) => ({
     url: `${SITE_URL}/services/adu/${slug}`,
-    lastModified: now,
+    lastModified: lastMod(`/services/adu/${slug}`),
     changeFrequency: "monthly" as const,
     priority: 0.7,
   }));

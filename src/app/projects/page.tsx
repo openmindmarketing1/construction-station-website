@@ -9,8 +9,6 @@ export const metadata: Metadata = {
   alternates: { canonical: "/projects" },
 };
 
-const SB = "https://ihvgrybmtngekmfjpxnz.supabase.co/storage/v1/object/public/user-assets/";
-
 const PROJECTS = [
   {
     slug: "redlands-jr-adu",
@@ -18,7 +16,9 @@ const PROJECTS = [
     heading: "Making Room for Family",
     chips: ["465 sq ft", "1 BD / 1 BA", "~$200K all-in", "In Progress"],
     body: "New-construction Junior ADU sharing two walls with the main home. Design to CO in under a year. Fixed-price contract — no surprises.",
-    image: `${SB}1/Jr%20ADU%20Redlands/1781284267634-IMG_4468.jpeg`,
+    // IMG_4468 was deleted from storage (2026-10-12); restore the re-uploaded
+    // URL here (same Supabase user-assets folder: 1/Jr%20ADU%20Redlands/).
+    image: null as string | null,
     cta: "Read the Case Study",
     status: "In Progress",
   },
@@ -67,6 +67,7 @@ export default function ProjectsPage() {
                 className="group block bg-white border border-navy/10 hover:border-gold transition-colors overflow-hidden"
               >
                 <div className="relative aspect-[16/9] overflow-hidden bg-navy/5">
+                  {project.image && (
                   <Image
                     src={project.image}
                     alt={`${project.label} — ${project.heading}`}
@@ -74,6 +75,7 @@ export default function ProjectsPage() {
                     className="object-cover group-hover:scale-105 transition-transform duration-700"
                     sizes="(max-width: 768px) 100vw, 50vw"
                   />
+                  )}
                   <div className="absolute top-4 right-4 inline-flex px-3 py-1 border border-amber-200 bg-amber-100 text-amber-900 text-xs uppercase tracking-wider font-semibold">
                     {project.status}
                   </div>

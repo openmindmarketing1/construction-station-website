@@ -166,13 +166,14 @@ export default async function OmmBlogPostPage({
         <div className="max-w-4xl mx-auto px-5 lg:px-10">
           <div
             className="blog-prose"
-            dangerouslySetInnerHTML={{ __html: cleanOmmPostHtml(post.html_content, post.title, !!post.infographic_url) }}
+            dangerouslySetInnerHTML={{ __html: cleanOmmPostHtml(post.html_content, post.title) }}
           />
         </div>
       </section>
 
-      {/* Infographic — shown at the bottom when one was generated */}
-      {post.infographic_url && (
+      {/* Infographic — shown at the bottom when one was generated, unless it
+          is already the hero image at the top (OMM's infographic-as-hero). */}
+      {post.infographic_url && post.infographic_url !== post.featured_image_url && (
         <section className="bg-cream py-12 lg:py-16">
           <div className="max-w-4xl mx-auto px-5 lg:px-10">
             <div className="flex items-center gap-3 mb-6">
