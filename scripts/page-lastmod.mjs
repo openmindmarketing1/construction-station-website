@@ -66,6 +66,18 @@ const pages = [];
   }
 })("src/app");
 
+// A page edited in the commit that also carries this file was stamped "now"
+// before the commit existed; once committed, git reports the commit time a
+// few seconds later. Keep the stored date when the two are that close, so a
+// build after every commit doesn't rewrite the file.
+let previous = {};
+try {
+  previous = JSON.parse(fs.readFileSync(OUT, "utf8"));
+} catch {
+  // first run
+}
+const SAME_CHANGE_MS = 15 * 60 * 1000;
+
 const out = {};
 for (const page of pages.sort()) {
   const route = page.slice("src/app".length, -"/page.tsx".length) || "/";
@@ -75,9 +87,15 @@ for (const page of pages.sort()) {
     const f = resolveImport(m[1]);
     if (f && !IGNORE.has(f)) deps.push(f);
   }
-  out[route] = deps.map(lastChange).sort().pop();
+  const latest = deps.map(lastChange).reduce((a, b) => (Date.parse(a) >= Date.parse(b) ? a : b));
+  const prev = previous[route];
+  out[route] = prev && Math.abs(Date.parse(latest) - Date.parse(prev)) < SAME_CHANGE_MS ? prev : latest;
 }
 
-fs.mkdirSync(path.dirname(OUT), { recursive: true });
-fs.writeFileSync(OUT, JSON.stringify(out, null, 2) + "\n");
-console.log(`page-lastmod: wrote ${Object.keys(out).length} routes`);
+if (JSON.stringify(out) === JSON.stringify(previous)) {
+  console.log(`page-lastmod: ${Object.keys(out).length} routes, unchanged`);
+} else {
+  fs.mkdirSync(path.dirname(OUT), { recursive: true });
+  fs.writeFileSync(OUT, JSON.stringify(out, null, 2) + "\n");
+  console.log(`page-lastmod: wrote ${Object.keys(out).length} routes`);
+}
