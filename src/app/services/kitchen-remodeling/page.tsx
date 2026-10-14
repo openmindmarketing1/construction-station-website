@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   // "Since 2008" and the license number are two separate facts, never tied
   // together in one clause (2026-10-02, Greg).
   description:
-    "Kitchen remodels across the Inland Empire — design, cabinetry, countertops, and installation by one crew, start to finish. Serving the Inland Empire since 2008. CSLB #1108879. Free in-home design consultation.",
+    "Kitchen remodels across the Inland Empire — design, cabinetry, countertops, and installation managed by one team, start to finish. Serving the Inland Empire since 2008. CSLB #1108879. Free in-home design consultation.",
   alternates: { canonical: "/services/kitchen-remodeling" },
 };
 
@@ -58,7 +58,7 @@ const STEPS = [
   {
     number: "04",
     title: "Expert Installation",
-    description: "Our W-2 crew. No revolving subs. Site protected daily.",
+    description: "Mostly our own W-2 crew, plus licensed specialty trades we manage. Site protected daily.",
   },
   {
     number: "05",
@@ -78,7 +78,7 @@ const FAQS = [
   },
   {
     q: "What is the kitchen remodel process?",
-    a: "Our process: (1) Free design consultation — in-home walkthrough to measure, discuss layout, and review your wish list; (2) 3D photorealistic rendering of the finished kitchen before any orders are placed; (3) Material selection — cabinet, countertop, tile, and flooring samples; (4) Permitting — we pull any required permits; (5) Demolition — existing cabinets, countertops, flooring, and fixtures removed; (6) Rough work — plumbing, electrical, or structural modifications; (7) Cabinet installation; (8) Countertop templating and installation; (9) Tile and backsplash; (10) Flooring; (11) Appliance installation; (12) Final walkthrough and punch list. One crew, one warranty, one point of contact from design through keys.",
+    a: "Our process: (1) Free design consultation — in-home walkthrough to measure, discuss layout, and review your wish list; (2) 3D photorealistic rendering of the finished kitchen before any orders are placed; (3) Material selection — cabinet, countertop, tile, and flooring samples; (4) Permitting — we pull any required permits; (5) Demolition — existing cabinets, countertops, flooring, and fixtures removed; (6) Rough work — plumbing, electrical, or structural modifications; (7) Cabinet installation; (8) Countertop templating and installation; (9) Tile and backsplash; (10) Flooring; (11) Appliance installation; (12) Final walkthrough and punch list. One team, one warranty, one point of contact from design through keys.",
   },
   {
     q: "Do I need permits for a kitchen remodel?",
@@ -167,7 +167,7 @@ export default function KitchenRemodelingPage() {
         eyebrow="Service · Kitchens"
         title="Kitchen Remodeling in the Inland Empire"
         italicWord="Inland Empire"
-        subtitle="Custom cabinetry, stone countertops, and tile work delivered by the same Construction Station crew you meet on day one. No subs. No surprises. No shortcuts."
+        subtitle="Custom cabinetry, stone countertops, and tile work managed by the same Construction Station team you meet on day one. No surprises. No shortcuts."
       />
 
       {/* 2. Trust bar */}

@@ -43,7 +43,7 @@ const STEPS = [
   {
     number: "04",
     title: "Expert Installation",
-    description: "Waterproofing, tile, plumbing, fixtures — same crew, every step.",
+    description: "Waterproofing, tile, plumbing, fixtures — one team manages every step.",
   },
   {
     number: "05",

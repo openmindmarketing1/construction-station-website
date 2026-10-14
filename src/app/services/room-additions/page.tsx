@@ -42,7 +42,7 @@ const STEPS = [
   {
     number: "04",
     title: "Foundation to Finish",
-    description: "Same Construction Station crew handles foundation, framing, MEP rough-in, drywall, and finish work — no subs.",
+    description: "One Construction Station team manages foundation, framing, MEP rough-in, drywall, and finish work, with licensed specialty subs where needed.",
   },
   {
     number: "05",

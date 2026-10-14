@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 const FAQS = [
   {
     q: "Who is the best general contractor in Yucaipa, CA?",
-    a: "Construction Station is Yucaipa's top-rated general contractor, serving the Inland Empire since 2008. We hold CSLB License #1108879, carry full general liability and workers' compensation insurance, and maintain an A+ BBB rating. Our team specializes in kitchen and bathroom remodeling, ADU construction, room additions, flooring installation, and commercial services — delivered with our own W-2 crew, not revolving subcontractors. Call (909) 797-6333 for a free estimate.",
+    a: "Construction Station is Yucaipa's top-rated general contractor, serving the Inland Empire since 2008. We hold CSLB License #1108879, carry full general liability and workers' compensation insurance, and maintain an A+ BBB rating. Our team specializes in kitchen and bathroom remodeling, ADU construction, room additions, flooring installation, and commercial services. Most of our work is done by our own W-2 crew. When a project needs a specialty trade, we bring in licensed subcontractors we trust and manage them ourselves. Call (909) 797-6333 for a free estimate.",
   },
   {
     q: "How much does kitchen remodeling cost in the Inland Empire?",

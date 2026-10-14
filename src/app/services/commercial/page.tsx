@@ -46,7 +46,7 @@ const STEPS = [
     number: "04",
     title: "Construction",
     description:
-      "Our W-2 crew executes framing, electrical, plumbing, HVAC rough-in, drywall, finishes, and flooring on a published schedule.",
+      "Framing, electrical, plumbing, HVAC rough-in, drywall, finishes, and flooring run on a published schedule. Most of our work is done by our own W-2 crew. When a project needs a specialty trade, we bring in licensed subcontractors we trust and manage them ourselves.",
   },
   {
     number: "05",
@@ -176,11 +176,11 @@ export default function CommercialPage() {
             <div className="col-span-12 md:col-span-9 prose prose-lg max-w-none">
               <p className="text-navy/85 text-lg leading-[1.7] mb-6">
                 Construction Station has been serving commercial clients across
-                the Inland Empire since 2008. The same licensed crew, the same
-                permitting discipline, and the no-subcontractor-revolving-door
+                the Inland Empire since 2008. The same licensed team, the same
+                permitting discipline, and the same accountability
                 approach we apply to residential work comes standard on every
                 commercial project — from a 500 sq ft suite refresh in Redlands
-                to a 12,000 sq ft restaurant buildout in Rancho Cucamonga.
+                to a 12,000 sq ft restaurant buildout in Rancho Cucamonga. Most of our work is done by our own W-2 crew. When a project needs a specialty trade, we bring in licensed subcontractors we trust and manage them ourselves.
               </p>
               <p className="text-navy/75 leading-[1.8] mb-5">
                 Commercial construction demands a different discipline than
@@ -554,7 +554,7 @@ export default function CommercialPage() {
               },
               {
                 title: "No Rotating Subcontractors",
-                body: "Our W-2 crew handles the majority of scope in-house. When specialty subs are needed, we use vetted relationships — not random low-bidders.",
+                body: "Most of our work is done by our own W-2 crew. When a project needs a specialty trade, we bring in licensed subcontractors we trust and manage them ourselves.",
               },
               {
                 title: "Occupied-Space Experience",

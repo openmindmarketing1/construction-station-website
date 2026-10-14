@@ -205,7 +205,7 @@ const FAQS = [
   // Our ADU Experience
   {
     q: "Does Construction Station build all types of ADUs?",
-    a: "Yes. We build the full range: detached new-construction ADUs, attached ADUs, garage conversions (attached and detached), and Junior ADUs. Active and completed projects include a Redlands garage conversion (complete), a Redlands Jr. ADU currently under construction targeting June 2026 completion, and a Lake Elsinore dual-garage ADU in the permitted stage. CSLB License #1108879 covers all ADU construction in California. We use our own W-2 crew for framing, MEP, tile, and finishes — no revolving subcontractors on core trades.",
+    a: "Yes. We build the full range: detached new-construction ADUs, attached ADUs, garage conversions (attached and detached), and Junior ADUs. Active and completed projects include a Redlands garage conversion (complete), a Redlands Jr. ADU currently under construction targeting June 2026 completion, and a Lake Elsinore dual-garage ADU in the permitted stage. CSLB License #1108879 covers all ADU construction in California. Most of our work is done by our own W-2 crew. When a project needs a specialty trade, we bring in licensed subcontractors we trust and manage them ourselves.",
   },
   {
     q: "What Inland Empire cities do you serve for ADU construction?",

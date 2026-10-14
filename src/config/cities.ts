@@ -190,7 +190,7 @@ export const CITIES: City[] = [
       },
       {
         q: "What remodeling services do you offer in Norco?",
-        a: "Everything under one license: kitchen remodeling, bathroom remodeling, flooring installation, room additions, ADUs and garage conversions, windows and doors, outdoor living, and full general-contracting projects. Because our trades are in-house, multi-room Norco projects run on one schedule with one warranty.",
+        a: "Everything under one license: kitchen remodeling, bathroom remodeling, flooring installation, room additions, ADUs and garage conversions, windows and doors, outdoor living, and full general-contracting projects. Because we schedule and manage every trade ourselves, multi-room Norco projects run on one schedule with one warranty.",
       },
       {
         q: "How much does a home remodel cost in Norco?",
@@ -228,7 +228,7 @@ export const CITIES: City[] = [
     faqs: [
       {
         q: "Does Construction Station serve Eastvale?",
-        a: "Yes — Eastvale sits at the western edge of our core Inland Empire service area, about 45 minutes from our Yucaipa headquarters via the 60. Our own in-house crew handles every project, and consultations are free and in-home.",
+        a: "Yes — Eastvale sits at the western edge of our core Inland Empire service area, about 45 minutes from our Yucaipa headquarters via the 60. Most of our work is done by our own W-2 crew. When a project needs a specialty trade, we bring in licensed subcontractors we trust and manage them ourselves. Consultations are free and in-home.",
       },
       {
         q: "What remodeling services do you offer in Eastvale?",

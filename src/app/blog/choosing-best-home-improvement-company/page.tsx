@@ -84,7 +84,7 @@ export default function Page() {
         Look for a company with years of experience in the services you need. A general handyman might
         not be the best choice for specialized work like flooring installation or bathroom remodeling.
         Construction Station provides kitchen remodeling, bathroom remodeling, flooring, room
-        additions, ADUs, outdoor renovations, and windows and doors — all with the same in-house crew.
+        additions, ADUs, outdoor renovations, and windows and doors — most of it by our own W-2 crew, with licensed specialty subcontractors we trust and manage ourselves.
       </p>
 
       <h3 className="font-display text-navy text-xl mt-8 mb-3">4. Transparency in Pricing &amp; Estimates</h3>
@@ -137,7 +137,7 @@ export default function Page() {
         <li>Shop-at-home service — we bring samples to you</li>
         <li>Financing options available</li>
         <li>Complete satisfaction guarantee</li>
-        <li>In-house installation team — no third-party subcontractors</li>
+        <li>Our own W-2 installation crew, plus licensed specialty subcontractors we manage</li>
         <li>Furniture moving &amp; removal included</li>
         <li>Post-installation follow-ups</li>
       </ul>

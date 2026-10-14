@@ -36,8 +36,8 @@ export default function ServicesGrid() {
           </div>
           <p className="text-navy/70 max-w-md text-base leading-relaxed">
             From a single bathroom refresh to a full commercial buildout,
-            every project is delivered by the same Construction Station crew —
-            no rotating subcontractors, no shortcuts.
+            every project is run by the same Construction Station team.
+            Most of our work is done by our own W-2 crew. When a project needs a specialty trade, we bring in licensed subcontractors we trust and manage them ourselves.
           </p>
         </Reveal>
 

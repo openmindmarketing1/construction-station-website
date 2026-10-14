@@ -29,7 +29,7 @@ export default function Footer() {
             <p className="text-white/70 text-sm leading-relaxed mb-6">
               Full-service residential and commercial construction across the
               Inland Empire since {CS.founded}. Licensed {CS.license} ·
-              No subcontracted shortcuts.
+              Our own W-2 crew, plus licensed specialty trades we manage.
             </p>
             <div className="flex gap-3">
               <a

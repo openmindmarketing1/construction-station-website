@@ -43,7 +43,7 @@ const STEPS = [
   {
     number: "04",
     title: "Foundation to Finish",
-    description: "Same crew handles concrete, framing, roofing, electrical, plumbing, and finish — start to keys.",
+    description: "One team manages concrete, framing, roofing, electrical, plumbing, and finish — start to keys.",
   },
   {
     number: "05",

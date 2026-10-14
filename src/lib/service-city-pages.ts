@@ -60,7 +60,7 @@ export type ServiceCityService = {
 };
 
 const serves = (city: ServiceCityProfile) =>
-  `Yes. Construction Station is a licensed California general contractor (CSLB ${CS.license}) and has served Southern California homeowners since ${CS.founded}. ${city.proximity} Every project gets the same in-house crew — no rotating subcontractors — and starts with a free in-home consultation.`;
+  `Yes. Construction Station is a licensed California general contractor (CSLB ${CS.license}) and has served Southern California homeowners since ${CS.founded}. ${city.proximity} Every project starts with a free in-home consultation. Most of our work is done by our own W-2 crew. When a project needs a specialty trade, we bring in licensed subcontractors we trust and manage them ourselves.`;
 
 const permits = (city: ServiceCityProfile, scope: string) =>
   `Most ${scope} require permits when electrical, plumbing, or structural work is involved — and doing it without one creates problems at resale and with insurance. We prepare the plans, submit to ${city.permitNote}, manage plan-check corrections, and schedule every inspection. Permit costs and timelines are built into your fixed-price contract up front.`;
@@ -95,7 +95,7 @@ export const SERVICE_CITY_SERVICES: ServiceCityService[] = [
       },
       {
         q: `How long does a kitchen remodel take in ${city.name}?`,
-        a: `Once materials are on site and permits are issued, most ${city.name} kitchen remodels take 4–8 weeks of construction. Add 3–6 weeks before that for design, material ordering, and permitting. We give you a written schedule before demo day and keep one crew on your project from start to finish, which is how we avoid the stop-start delays that plague subcontracted jobs.`,
+        a: `Once materials are on site and permits are issued, most ${city.name} kitchen remodels take 4–8 weeks of construction. Add 3–6 weeks before that for design, material ordering, and permitting. We give you a written schedule before demo day and keep one project team on your job from start to finish, which is how we avoid stop-start delays.`,
       },
       {
         q: `Do I need a permit to remodel a kitchen in ${city.name}?`,
@@ -136,7 +136,7 @@ export const SERVICE_CITY_SERVICES: ServiceCityService[] = [
       },
       {
         q: `How long does a bathroom remodel take in ${city.name}?`,
-        a: `A typical ${city.name} bathroom remodel takes 2–4 weeks of construction once permits and materials are in hand. Primary-suite expansions that move walls or plumbing can run 5–8 weeks. Because our crew is in-house, the tile setter shows up the day after the waterproofing passes inspection — not two weeks later.`,
+        a: `A typical ${city.name} bathroom remodel takes 2–4 weeks of construction once permits and materials are in hand. Primary-suite expansions that move walls or plumbing can run 5–8 weeks. Because we schedule every trade ourselves, the tile setter shows up the day after the waterproofing passes inspection — not two weeks later.`,
       },
       {
         q: `Do I need a permit for a bathroom remodel in ${city.name}?`,
@@ -241,12 +241,12 @@ export const SERVICE_CITY_SERVICES: ServiceCityService[] = [
     shortDescription:
       "Licensed general contracting — whole-home remodels, kitchens, baths, additions, and ADUs under one roof.",
     intro: [
-      "A good general contractor is the difference between a remodel you tell friends about and one you warn them about. Construction Station is a licensed California general contractor, bonded and fully insured. CSLB #1108879. Founded in 2008 as Carpet Station; now Construction Station Flooring and Design. Our flooring side still operates as Carpet Station. Our crews are employees, not a rotating cast of subcontractors sourced job by job.",
+      "A good general contractor is the difference between a remodel you tell friends about and one you warn them about. Construction Station is a licensed California general contractor, bonded and fully insured. CSLB #1108879. Founded in 2008 as Carpet Station; now Construction Station Flooring and Design. Our flooring side still operates as Carpet Station. Most of our work is done by our own W-2 crew. When a project needs a specialty trade, we bring in licensed subcontractors we trust and manage them ourselves.",
       "That structure matters on multi-trade projects. When the same company handles demolition, framing, electrical, plumbing, drywall, tile, and finish carpentry, nothing falls in the gaps between trades — and you get one schedule, one fixed-price contract, and one warranty that covers the whole job.",
     ],
     included: [
       { title: "Whole-Home Remodels", blurb: "Multi-room renovations sequenced so your household can keep functioning during construction." },
-      { title: "Kitchens & Bathrooms", blurb: "The two highest-ROI rooms in the house, built by our own in-house trades." },
+      { title: "Kitchens & Bathrooms", blurb: "The two highest-ROI rooms in the house, built and managed by our own team." },
       { title: "Room Additions & ADUs", blurb: "New square footage from design and engineering through final inspection." },
       { title: "Structural Work", blurb: "Wall removals, beam installations, foundation repairs — engineered and permitted properly." },
       { title: "Flooring, Windows & Doors", blurb: "Whole-home flooring, energy-efficient window replacement, and exterior doors." },
@@ -539,7 +539,7 @@ export const SERVICE_CITY_PROFILES: ServiceCityProfile[] = [
       "room-additions":
         "Additions in Palm Desert range from casitas and guest suites on single-family lots to great-room expansions that open golf-course homes to their patios with multi-slide glass. Nearly every project in a country-club community adds an HOA architectural layer to city permitting — massing, roof tile, and exterior color all get reviewed — and we manage both tracks in parallel as standard practice. Everything is engineered to climate-zone-15 Title 24 requirements, with cooling capacity sized for real desert summers rather than the code minimum.",
       "general-contractor":
-        "General contracting in Palm Desert is a logistics discipline: HOA gate access and work-hour rules, seasonal owners managing projects from out of state, and finish expectations set by El Paseo rather than the big-box aisle. Construction Station runs it accordingly — weekly photo-documented progress reports for remote owners, summer construction windows planned around your seasonal calendar, and one in-house crew accountable for every trade. Licensed CSLB #1108879, serving the Coachella Valley alongside our Inland Empire home base.",
+        "General contracting in Palm Desert is a logistics discipline: HOA gate access and work-hour rules, seasonal owners managing projects from out of state, and finish expectations set by El Paseo rather than the big-box aisle. Construction Station runs it accordingly — weekly photo-documented progress reports for remote owners, summer construction windows planned around your seasonal calendar, and one team accountable for every trade. Licensed CSLB #1108879, serving the Coachella Valley alongside our Inland Empire home base.",
     },
     serviceFaq: {
       "kitchen-remodeling": {

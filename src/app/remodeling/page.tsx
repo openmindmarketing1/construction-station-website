@@ -102,7 +102,7 @@ const STEPS: Array<[string, string, string]> = [
   ["01", "Call or scan", "Tell us what you're thinking. Two minutes on the phone."],
   ["02", "Free in-home visit", "We measure, look at what's there, and talk budget honestly."],
   ["03", "Written line-item quote", "Within 5 business days. No surprise upcharges."],
-  ["04", "We build it", "Our own W-2 crew. 12-month workmanship warranty."],
+  ["04", "We build it", "Mostly our own W-2 crew, plus licensed specialty trades we manage. 12-month workmanship warranty."],
 ];
 
 // LocalBusiness schema carries the CTV number deliberately — this page's

@@ -49,7 +49,7 @@ const GUIDE_FAQS = [
   },
   {
     q: "What should I ask when interviewing ADU contractors?",
-    a: "The essential questions: (1) Are you a licensed general contractor with CSLB in good standing? Ask for their license number and verify at cslb.ca.gov. (2) Do you handle permits and inspections, or do I manage that? (3) Is your crew in-house or subcontracted? (4) What does all-in mean — does your price include design, permits, utility connections, and finishes? (5) Can I see permits or photos from completed ADU projects in this city? (6) What is your warranty, and how are warranty claims handled? Construction Station's CSLB License #1108879 is in good standing, our crew is W-2, and we handle every step from permits to keys.",
+    a: "The essential questions: (1) Are you a licensed general contractor with CSLB in good standing? Ask for their license number and verify at cslb.ca.gov. (2) Do you handle permits and inspections, or do I manage that? (3) Is your crew in-house or subcontracted? (4) What does all-in mean — does your price include design, permits, utility connections, and finishes? (5) Can I see permits or photos from completed ADU projects in this city? (6) What is your warranty, and how are warranty claims handled? Construction Station's CSLB License #1108879 is in good standing, and we handle every step from permits to keys. Most of our work is done by our own W-2 crew. When a project needs a specialty trade, we bring in licensed subcontractors we trust and manage them ourselves.",
   },
   {
     q: "How do I get started with an ADU project?",

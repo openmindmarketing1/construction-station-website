@@ -63,7 +63,7 @@ const STEPS = [
     number: "04",
     title: "Expert Installation",
     description:
-      "Our own licensed crew — no revolving subcontractors. The same team handles framing, electrical, plumbing, tile, and cabinetry.",
+      "Most of our work is done by our own W-2 crew. When a project needs a specialty trade, we bring in licensed subcontractors we trust and manage them ourselves. One team manages framing, electrical, plumbing, tile, and cabinetry.",
   },
   {
     number: "05",
@@ -260,7 +260,7 @@ export default function KitchenRemodelerYucaipaPage() {
               <p className="text-navy/75 leading-[1.8] mb-5">
                 California Contractor&rsquo;s License{" "}
                 <strong className="text-navy">{CS.license}</strong>. Bonded and
-                insured. Our crew are W-2 employees — not day-labor subs. The
+                insured. Most of our work is done by our own W-2 crew. When a project needs a specialty trade, we bring in licensed subcontractors we trust and manage them ourselves. The
                 same people you meet at the design consultation are the people
                 installing your cabinets.
               </p>
@@ -513,8 +513,8 @@ export default function KitchenRemodelerYucaipaPage() {
                 blurb: `We're based in Yucaipa, CSLB ${CS.license}, bonded and insured. When you call, a local person answers — not a scheduling bot routing to whoever is cheapest.`,
               },
               {
-                title: "One Crew, One Warranty",
-                blurb: "The same team handles design, permits, framing, electrical, plumbing, tile, cabinetry, and final touch-ups. No revolving subcontractors. 12-month workmanship warranty.",
+                title: "One Team, One Warranty",
+                blurb: "One team manages design, permits, framing, electrical, plumbing, tile, cabinetry, and final touch-ups, with licensed specialty subs we trust where needed. 12-month workmanship warranty.",
               },
               {
                 title: "Fixed-Price Contracts",
