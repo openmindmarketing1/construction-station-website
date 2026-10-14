@@ -553,7 +553,7 @@ export default function CommercialPage() {
                 body: "Every commercial project gets a written milestone schedule before groundbreak. We track it daily and report deviations before they become delays.",
               },
               {
-                title: "No Rotating Subcontractors",
+                title: "Our Own Crew, Licensed Specialists",
                 body: "Most of our work is done by our own W-2 crew. When a project needs a specialty trade, we bring in licensed subcontractors we trust and manage them ourselves.",
               },
               {
