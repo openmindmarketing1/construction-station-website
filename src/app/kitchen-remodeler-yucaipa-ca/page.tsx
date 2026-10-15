@@ -221,7 +221,7 @@ export default function KitchenRemodelerYucaipaPage() {
         eyebrow="Kitchen Remodeling · Yucaipa CA"
         title="Kitchen Remodel Yucaipa CA"
         italicWord="Yucaipa CA"
-        subtitle={`Yucaipa's local kitchen remodeler — custom cabinetry, quartz countertops, open-concept transformations, and tile work by our own licensed crew. Free in-home consultation. CSLB ${CS.license}.`}
+        subtitle={`Yucaipa's local kitchen remodeler — custom cabinetry, quartz countertops, open-concept transformations, and tile work. Our own W-2 crew, plus trusted licensed subs when a specialty trade is needed. Free in-home consultation. CSLB ${CS.license}.`}
       />
 
       {/* 2. Trust bar */}

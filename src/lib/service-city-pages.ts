@@ -125,7 +125,7 @@ export const SERVICE_CITY_SERVICES: ServiceCityService[] = [
       { title: "Walk-In Showers", blurb: "Curbless and low-curb showers with frameless glass, bench seating, and full waterproof membrane systems." },
       { title: "Tubs & Tub-to-Shower", blurb: "Freestanding soaking tubs, tub replacements, and tub-to-shower conversions done to code." },
       { title: "Vanities & Storage", blurb: "Custom and semi-custom vanities, quartz tops, framed and backlit mirrors, medicine cabinets." },
-      { title: "Tile Work", blurb: "Floor-to-ceiling porcelain, natural stone, and pattern layouts installed by our own tile setters." },
+      { title: "Tile Work", blurb: "Floor-to-ceiling porcelain, natural stone, and pattern layouts. Our own W-2 crew, plus trusted licensed subs when a specialty trade is needed." },
       { title: "Plumbing & Fixtures", blurb: "New valves, drains, and supply lines — including repipes of aging galvanized lines while walls are open." },
       { title: "Heated Floors & Ventilation", blurb: "Electric radiant floor heat and properly sized exhaust ventilation to protect the new finishes." },
     ],
