@@ -236,8 +236,8 @@ export default function ServicesGrid() {
                   </h3>
                   <p className="text-white/75 text-sm max-w-xl leading-relaxed mb-4">
                     Hardwood, luxury vinyl plank, laminate, carpet, and tile —
-                    installed by our own crew across Yucaipa, Redlands, Loma
-                    Linda &amp; the Inland Empire.
+                    installed across Yucaipa, Redlands, Loma
+                    Linda &amp; the Inland Empire. Our own W-2 crew, plus trusted licensed subs when a specialty trade is needed.
                   </p>
                   <div className="flex flex-wrap gap-x-3 gap-y-1 text-white/55 text-[11px] uppercase tracking-wider">
                     <span>Hardwood</span>

@@ -157,10 +157,10 @@ export const SERVICE_CITY_SERVICES: ServiceCityService[] = [
     mainLabel: "Flooring Installation Overview",
     schemaServiceType: "Flooring Installation",
     shortDescription:
-      "Hardwood, LVP, laminate, carpet, and tile — installed by our own licensed crew.",
+      "Hardwood, LVP, laminate, carpet, and tile. Our own W-2 crew, plus trusted licensed subs when a specialty trade is needed.",
     intro: [
       "The right flooring transforms a house; the wrong installation ruins it. Construction Station is a full-service flooring contractor — not a big-box install crew. We remove your existing floors, diagnose and level the subfloor, install moisture barriers where they're needed, lay your chosen material to manufacturer spec, and finish with baseboards, thresholds, and transitions that look like they were always there.",
-      "We install hardwood and engineered wood, luxury vinyl plank (LVP), laminate, carpet, and porcelain or natural stone tile — and we'll tell you honestly which material belongs in which room, because we're the same crew that builds kitchens and bathrooms around those floors.",
+      "We install hardwood and engineered wood, luxury vinyl plank (LVP), laminate, carpet, and porcelain or natural stone tile — and we'll tell you honestly which material belongs in which room, because we're the same team that builds kitchens and bathrooms around those floors.",
     ],
     included: [
       { title: "Luxury Vinyl Plank (LVP)", blurb: "100% waterproof planks from COREtec, Shaw, Pergo, and Karndean — the region's most popular floor." },

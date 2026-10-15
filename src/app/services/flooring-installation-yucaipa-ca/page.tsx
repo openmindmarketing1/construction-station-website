@@ -51,7 +51,7 @@ const STEPS = [
     number: "04",
     title: "Expert Installation",
     description:
-      "Our own crew installs to manufacturer spec — no revolving subs, no shortcuts, no excuses.",
+      "Installed to manufacturer spec — no shortcuts, no excuses. Our own W-2 crew, plus trusted licensed subs when a specialty trade is needed.",
   },
   {
     number: "05",
@@ -331,9 +331,9 @@ export default function FlooringInstallationPage() {
                 project that we bring to a full home remodel.
               </p>
               <p className="text-navy/75 leading-[1.8] mb-4">
-                Our flooring crews are our employees — not day-labor subs
-                sourced from a staffing agency. They&rsquo;re the same people
-                who floor our kitchen and bathroom remodels, which means they
+                Our own W-2 crew, plus trusted licensed subs when a specialty trade is needed.
+                It&rsquo;s the same team that floors our kitchen and bathroom
+                remodels, which means we
                 know how to work around cabinetry, plumbing stub-outs,
                 transitions between rooms, and other real-world challenges that
                 trip up single-trade flooring shops.
