@@ -285,7 +285,7 @@ export const SERVICE_CITY_PROFILES: ServiceCityProfile[] = [
     cityIntro:
       "Norco is unlike anywhere else in the Inland Empire. \"Horsetown USA\" mandates animal-keeping lots across most of the city, so half-acre-plus parcels, horse trails in place of sidewalks, and a working western character define neighborhoods from Old Norco to the newer hillside homes of Norco Hills. The housing stock leans heavily on 1960s–1980s single-story ranch homes — solid bones, big footprints, and original kitchens and baths that are overdue for the quality of finish these properties deserve. Landmarks like Pumpkin Rock, Ingalls Park, the SilverLakes Sports Complex, and Norco College anchor a community that takes pride in doing things its own way.",
     proximity:
-      "Norco sits about 40 minutes west of our Yucaipa headquarters via the 60 and I-15, squarely inside our core Inland Empire service area — the same crew that builds in Redlands and Riverside builds in Norco.",
+      "Norco sits about 40 minutes west of our Yucaipa headquarters via the 60 and I-15, squarely inside our core Inland Empire service area, and the same team that builds in Redlands and Riverside builds in Norco: our own W-2 crew, plus trusted licensed subs when a specialty trade is needed.",
     permitNote: "the City of Norco Planning and Building Department",
     angles: {
       "kitchen-remodeling":
@@ -490,7 +490,7 @@ export const SERVICE_CITY_PROFILES: ServiceCityProfile[] = [
       "room-additions":
         "Cathedral City additions punch above their weight because land and neighborhood pricing leave room to build value. Primary-suite additions on Cove homes — many of which were built with modest bedroom wings — are the signature project, followed by casita additions that serve as guest quarters or rental space. Hillside lots in the Cove need real structural attention to slope and drainage, which our in-house engineering handles, and everything is built to climate-zone-15 Title 24 energy requirements.",
       "general-contractor":
-        "Cathedral City is where Coachella Valley investors and homeowners get the most renovation for the money, and our general-contracting work here reflects it: whole-home updates of Cove properties, pre-sale renovations, and phased remodels that take a dated house to desert-modern over a season or two. One in-house crew, desert-rated materials as standard practice, and permits handled through Cathedral City Building and Safety from submittal to final.",
+        "Cathedral City is where Coachella Valley investors and homeowners get the most renovation for the money, and our general-contracting work here reflects it: whole-home updates of Cove properties, pre-sale renovations, and phased remodels that take a dated house to desert-modern over a season or two. Desert-rated materials as standard practice, and permits handled through Cathedral City Building and Safety from submittal to final. Our own W-2 crew, plus trusted licensed subs when a specialty trade is needed.",
     },
     serviceFaq: {
       "kitchen-remodeling": {

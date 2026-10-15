@@ -186,7 +186,7 @@ export const CITIES: City[] = [
     faqs: [
       {
         q: "Does Construction Station serve Norco?",
-        a: "Yes — Norco is squarely inside our core Inland Empire service area, about 40 minutes from our Yucaipa headquarters via the 60 and I-15. The same in-house crew that builds in Redlands and Riverside builds in Norco, and every project starts with a free in-home consultation.",
+        a: "Yes — Norco is squarely inside our core Inland Empire service area, about 40 minutes from our Yucaipa headquarters via the 60 and I-15. The same team that builds in Redlands and Riverside builds in Norco: our own W-2 crew, plus trusted licensed subs when a specialty trade is needed. Every project starts with a free in-home consultation.",
       },
       {
         q: "What remodeling services do you offer in Norco?",
@@ -265,7 +265,7 @@ export const CITIES: City[] = [
     localContext: [
       "Perris spans more housing eras than almost any city in Riverside County. Historic bungalows and mid-century homes surround the old downtown along D Street — home of the Southern California Railway Museum — while master-planned subdivisions like May Ranch, Villages of Avalon, and Green Valley have added thousands of newer homes on the city's edges. Lake Perris, Skydive Perris, the Perris Auto Speedway, and the Metrolink 91/Perris Valley Line round out one of the county's fastest-growing communities.",
       "That range means remodeling needs run the full spectrum, and we work both ends of it weekly: repiping and re-wiring older downtown homes while their kitchens and bathrooms are rebuilt, and taking builder-grade 2015-plus tract homes to custom with new cabinetry, quartz, and whole-home LVP. Perris's strong price-to-value market means quality renovation moves the appraisal needle further here than in most of the region.",
-      "We're about 40 minutes from Perris via the 60 and I-215 from our Yucaipa headquarters, pulling permits through the City of Perris Building and Safety Division. One in-house crew, one fixed-price contract, one warranty.",
+      "We're about 40 minutes from Perris via the 60 and I-215 from our Yucaipa headquarters, pulling permits through the City of Perris Building and Safety Division. One fixed-price contract and one warranty. Our own W-2 crew, plus trusted licensed subs when a specialty trade is needed.",
     ],
     faqs: [
       {
