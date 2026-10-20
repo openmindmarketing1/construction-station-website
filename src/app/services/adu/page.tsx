@@ -10,7 +10,7 @@ import { ADU_CITIES } from "@/lib/adu-cities";
 import { BUSINESS_REF, businessEntity } from "@/lib/business-schema";
 
 export const metadata: Metadata = {
-  title: "ADU Contractors Inland Empire | Construction Station",
+  title: "ADU Contractors Inland Empire",
   description:
     "Licensed ADU general contractor serving the Inland Empire, Temecula Valley, and Desert communities. Detached ADUs, JADUs, garage conversions, and room-addition ADUs up to 1,200 sq ft. Permits to move-in. Call 909-797-6333.",
   alternates: { canonical: "/services/adu" },

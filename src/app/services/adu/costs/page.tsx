@@ -6,7 +6,7 @@ import { CS } from "@/lib/constants";
 import { BUSINESS_REF, businessEntity } from "@/lib/business-schema";
 
 export const metadata: Metadata = {
-  title: "ADU Cost in the Inland Empire | Construction Station",
+  title: "ADU Cost in the Inland Empire",
   description:
     "Transparent ADU pricing from a licensed Inland Empire general contractor. Most IE ADU projects run $200,000 to $435,000 all-in. See the full cost breakdown — vertical build, design, permits, sitework, and utilities. No surprises.",
   alternates: { canonical: "/services/adu/costs" },

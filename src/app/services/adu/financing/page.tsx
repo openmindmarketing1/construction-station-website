@@ -5,7 +5,7 @@ import { CS } from "@/lib/constants";
 import { BUSINESS_REF, businessEntity } from "@/lib/business-schema";
 
 export const metadata: Metadata = {
-  title: "ADU Financing Options | Construction Station",
+  title: "ADU Financing Options",
   description:
     "How to finance your ADU in the Inland Empire — HELOCs, cash-out refinance, construction loans, ADU-specific loans, and the CalHFA ADU Grant Program. Flexible financing through Enhancify. Licensed IE contractor.",
   alternates: { canonical: "/services/adu/financing" },

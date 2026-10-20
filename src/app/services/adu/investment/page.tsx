@@ -5,7 +5,7 @@ import { CS } from "@/lib/constants";
 import { BUSINESS_REF, businessEntity } from "@/lib/business-schema";
 
 export const metadata: Metadata = {
-  title: "ADU Investment & ROI | Construction Station",
+  title: "ADU Investment & ROI",
   description:
     "Is an ADU a good investment in the Inland Empire? See regional rent estimates, a real ROI example, payback period, and property-value impact for IE homeowners. Serving the Inland Empire since 2008. CSLB #1108879.",
   alternates: { canonical: "/services/adu/investment" },

@@ -9,7 +9,7 @@ import { CS } from "@/lib/constants";
 import { BUSINESS_REF, businessEntity } from "@/lib/business-schema";
 
 export const metadata: Metadata = {
-  title: "Window & Door Replacement | Construction Station",
+  title: "Window & Door Replacement",
   description:
     "Energy-efficient window replacement and door installation across San Bernardino County — dual-pane windows, sliding glass doors, French doors, and entry doors. In business since 2008. CSLB #1108879. Call 909-797-6333.",
   alternates: { canonical: "/services/windows-and-doors" },

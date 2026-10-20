@@ -10,7 +10,7 @@ import { CS } from "@/lib/constants";
 import { BUSINESS_REF, businessEntity } from "@/lib/business-schema";
 
 export const metadata: Metadata = {
-  title: "Room Additions & Home Expansions | Construction Station",
+  title: "Room Additions & Home Expansions",
   description:
     "Custom room additions across the Inland Empire — master suites, second-story builds, family room expansions, and garage conversions. Serving the Inland Empire since 2008. CSLB #1108879. Call 909-797-6333.",
   alternates: { canonical: "/services/room-additions" },

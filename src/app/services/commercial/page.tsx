@@ -11,7 +11,7 @@ import { CS } from "@/lib/constants";
 import { BUSINESS_REF } from "@/lib/business-schema";
 
 export const metadata: Metadata = {
-  title: "Commercial Construction in the Inland Empire | Construction Station",
+  title: "Commercial Construction in the Inland Empire",
   description:
     "Tenant improvements, restaurant & retail buildouts, commercial flooring, and office renovations for Inland Empire businesses. Licensed CA #1108879. Call 909-797-6333.",
   alternates: { canonical: "/services/commercial" },

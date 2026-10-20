@@ -6,7 +6,7 @@ import JsonLd from "@/components/JsonLd";
 import { BUSINESS_REF } from "@/lib/business-schema";
 
 export const metadata: Metadata = {
-  title: "ADU Floor Plans Inland Empire | Construction Station",
+  title: "ADU Floor Plans Inland Empire",
   description:
     "13 sample ADU floor plans from 400 to 1,200 sq ft — studios, 1-bedrooms, 2-bedrooms, and 3-bedrooms. Detached, attached, and garage-conversion layouts customized to your lot. Inland Empire ADU contractor since 2008.",
   alternates: { canonical: "/services/adu/floor-plans" },

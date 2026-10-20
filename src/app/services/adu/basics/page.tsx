@@ -6,7 +6,7 @@ import { CS } from "@/lib/constants";
 import { businessEntity } from "@/lib/business-schema";
 
 export const metadata: Metadata = {
-  title: "ADU Basics — What Is an ADU? | Construction Station",
+  title: "ADU Basics — What Is an ADU?",
   description:
     "New to ADUs? Learn what an Accessory Dwelling Unit is, the four types you can build, how many ADUs are allowed on your lot, and the key California ADU laws — explained by a licensed Inland Empire contractor.",
   alternates: { canonical: "/services/adu/basics" },
