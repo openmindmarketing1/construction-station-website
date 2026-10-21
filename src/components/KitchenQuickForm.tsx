@@ -2,6 +2,7 @@
 import { CALLBACK_PROMISE, callbackConfirmation, HUMAN_FOLLOW_UP } from "@/lib/callback-promise";
 
 import { useState } from "react";
+import { useBotGuard } from "@/lib/bot-guard";
 import { CS } from "@/lib/constants";
 import { vibeLead } from "@/lib/vibe";
 import { readFirstTouch } from "@/lib/first-touch";
@@ -20,6 +21,7 @@ export default function KitchenQuickForm() {
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const guard = useBotGuard({ honeypot: false });
 
   function update<K extends keyof typeof form>(k: K, v: string) {
     setForm((f) => ({ ...f, [k]: v }));
@@ -31,17 +33,16 @@ export default function KitchenQuickForm() {
       setError("Name and phone are required.");
       return;
     }
-    if (form.honeypot) {
-      setSubmitted(true);
-      return;
-    }
     setSubmitting(true);
     setError(null);
     try {
+      const guardFields = await guard.payload();
       const res = await fetch(CS.leadsApiUrl, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
+          ...guardFields,
+          hp: form.honeypot,
           first_touch: readFirstTouch(),
           business_id: CS.businessId,
           full_name: form.name,
@@ -55,12 +56,16 @@ export default function KitchenQuickForm() {
         }),
       });
       if (!res.ok) throw new Error(`Request failed: ${res.status}`);
-      if (typeof window !== "undefined" && window.fbq) {
+      // A blocked bot or a test contact gets report_conversion: false — no ad pixel.
+      const reportConversion =
+        ((await res.json().catch(() => ({}))) as { report_conversion?: boolean }).report_conversion !== false;
+      if (reportConversion && typeof window !== "undefined" && window.fbq) {
         window.fbq("track", "Lead", { content_name: "kitchen_contact" });
       }
-      vibeLead();
+      if (reportConversion) vibeLead();
       setSubmitted(true);
     } catch {
+      guard.reset();
       setError(`Something went wrong. Please call us at ${CS.phone}.`);
     } finally {
       setSubmitting(false);
@@ -161,6 +166,7 @@ export default function KitchenQuickForm() {
         <p className="text-xs text-navy/75 text-center leading-snug">
           {CALLS_V3}
         </p>
+        {guard.node}
       </form>
     </div>
   );

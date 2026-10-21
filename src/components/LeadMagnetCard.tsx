@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useBotGuard } from "@/lib/bot-guard";
 import { CS } from "@/lib/constants";
 import { readFirstTouch } from "@/lib/first-touch";
 
@@ -26,6 +27,7 @@ export default function LeadMagnetCard() {
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const guard = useBotGuard();
 
   async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -33,10 +35,12 @@ export default function LeadMagnetCard() {
     setSubmitting(true);
     setError(null);
     try {
+      const guardFields = await guard.payload();
       const res = await fetch(CS.leadsApiUrl, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
+          ...guardFields,
           first_touch: readFirstTouch(),
           business_id: CS.businessId,
           full_name: name || undefined,
@@ -46,7 +50,10 @@ export default function LeadMagnetCard() {
         }),
       });
       if (!res.ok) throw new Error(`Request failed: ${res.status}`);
-      if (typeof window !== "undefined" && window.fbq) {
+      // A blocked bot or a test contact gets report_conversion: false — no ad pixel.
+      const reportConversion =
+        ((await res.json().catch(() => ({}))) as { report_conversion?: boolean }).report_conversion !== false;
+      if (reportConversion && typeof window !== "undefined" && window.fbq) {
         window.fbq("track", "Lead", { content_name: "kitchen_cost_guide" });
       }
       // No Vibe lead here on purpose: a cost-guide download is far lower
@@ -56,6 +63,7 @@ export default function LeadMagnetCard() {
       // excluded from Vibe rather than diluting the signal. Meta/GA4 keep it.
       setSubmitted(true);
     } catch {
+      guard.reset();
       setError("Something went wrong. Please try again.");
     } finally {
       setSubmitting(false);
@@ -136,6 +144,7 @@ export default function LeadMagnetCard() {
         <p className="text-xs text-navy/40 text-center">
           We&rsquo;ll email you the guide instantly. No spam, unsubscribe anytime.
         </p>
+        {guard.node}
       </form>
     </div>
   );

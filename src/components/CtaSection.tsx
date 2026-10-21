@@ -2,6 +2,7 @@
 import { CALLBACK_PROMISE_SHORT, callbackConfirmation, HUMAN_FOLLOW_UP } from "@/lib/callback-promise";
 
 import { useState } from "react";
+import { useBotGuard } from "@/lib/bot-guard";
 import Reveal from "@/components/Reveal";
 import { CS } from "@/lib/constants";
 import { vibeLead } from "@/lib/vibe";
@@ -26,6 +27,7 @@ export default function CtaSection({
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const guard = useBotGuard();
 
   async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -33,10 +35,12 @@ export default function CtaSection({
     setSubmitting(true);
     setError(null);
     try {
+      const guardFields = await guard.payload();
       const res = await fetch(CS.leadsApiUrl, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
+          ...guardFields,
           first_touch: readFirstTouch(),
           business_id: CS.businessId,
           full_name: name,
@@ -48,9 +52,13 @@ export default function CtaSection({
         }),
       });
       if (!res.ok) throw new Error(`Request failed: ${res.status}`);
-      vibeLead();
+      // A blocked bot or a test contact gets report_conversion: false — no ad pixel.
+      const reportConversion =
+        ((await res.json().catch(() => ({}))) as { report_conversion?: boolean }).report_conversion !== false;
+      if (reportConversion) vibeLead();
       setSubmitted(true);
     } catch {
+      guard.reset();
       setError("Something went wrong. Please call us at " + CS.phone);
     } finally {
       setSubmitting(false);
@@ -163,6 +171,7 @@ export default function CtaSection({
                     <div className="text-xs text-navy/50 leading-snug">
                       {CALLBACK_PROMISE_SHORT} No obligation.
                     </div>
+                    {guard.node}
                   </form>
                 ) : (
                   <div className="py-6 text-center">
