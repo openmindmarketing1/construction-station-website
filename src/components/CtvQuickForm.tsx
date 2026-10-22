@@ -2,6 +2,7 @@
 import { callbackConfirmation } from "@/lib/callback-promise";
 
 import { useState } from "react";
+import { useBotGuard } from "@/lib/bot-guard";
 import { CS } from "@/lib/constants";
 import { vibeLead } from "@/lib/vibe";
 import { readFirstTouch } from "@/lib/first-touch";
@@ -39,6 +40,7 @@ export default function CtvQuickForm() {
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const guard = useBotGuard({ honeypot: false });
 
   function update<K extends keyof typeof form>(k: K, v: string) {
     setForm((f) => ({ ...f, [k]: v }));
@@ -50,17 +52,16 @@ export default function CtvQuickForm() {
       setError("Name and phone are required.");
       return;
     }
-    if (form.honeypot) {
-      setSubmitted(true);
-      return;
-    }
     setSubmitting(true);
     setError(null);
     try {
+      const guardFields = await guard.payload();
       const res = await fetch(CS.callbackApiUrl, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
+          ...guardFields,
+          hp: form.honeypot,
           first_touch: readFirstTouch(),
           first_name: form.name.trim(),
           phone: form.phone.trim(),
@@ -76,12 +77,16 @@ export default function CtvQuickForm() {
       // Only a confirmed 2xx counts as submitted. Never show "got it" for a
       // lead the server did not save.
       if (!res.ok) throw new Error(`Request failed: ${res.status}`);
-      if (typeof window !== "undefined" && window.fbq) {
+      // A blocked bot or a test contact gets report_conversion: false — no ad pixel.
+      const reportConversion =
+        ((await res.json().catch(() => ({}))) as { report_conversion?: boolean }).report_conversion !== false;
+      if (reportConversion && typeof window !== "undefined" && window.fbq) {
         window.fbq("track", "Lead", { content_name: "ctv_landing" });
       }
-      vibeLead();
+      if (reportConversion) vibeLead();
       setSubmitted(true);
     } catch {
+      guard.reset();
       setError(`Something went wrong. Please call us at ${CS.ctvPhone}.`);
     } finally {
       setSubmitting(false);
@@ -194,6 +199,7 @@ export default function CtvQuickForm() {
         <p className="text-xs text-navy/75 text-center leading-snug">
           {CALLS_V3}
         </p>
+        {guard.node}
       </form>
     </div>
   );

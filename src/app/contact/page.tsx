@@ -2,6 +2,7 @@
 import { CALLBACK_PROMISE_SHORT, callbackConfirmation, HUMAN_FOLLOW_UP } from "@/lib/callback-promise";
 
 import { useState } from "react";
+import { useBotGuard } from "@/lib/bot-guard";
 import dynamic from "next/dynamic";
 import Reveal from "@/components/Reveal";
 import { CS, HOURS, SERVICES } from "@/lib/constants";
@@ -40,6 +41,7 @@ export default function ContactPage() {
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const guard = useBotGuard({ honeypot: false });
   const [imageUrls, setImageUrls] = useState<string[]>([]);
 
   const [form, setForm] = useState({
@@ -64,17 +66,16 @@ export default function ContactPage() {
       setError("Name and phone are required.");
       return;
     }
-    if (form.honeypot) {
-      setSubmitted(true);
-      return;
-    }
     setSubmitting(true);
     setError(null);
     try {
+      const guardFields = await guard.payload();
       const res = await fetch(CS.leadsApiUrl, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
+          ...guardFields,
+          hp: form.honeypot,
           first_touch: readFirstTouch(),
           business_id: CS.businessId,
           full_name: form.full_name,
@@ -94,9 +95,13 @@ export default function ContactPage() {
         }),
       });
       if (!res.ok) throw new Error(`Request failed: ${res.status}`);
-      vibeLead();
+      // A blocked bot or a test contact gets report_conversion: false — no ad pixel.
+      const reportConversion =
+        ((await res.json().catch(() => ({}))) as { report_conversion?: boolean }).report_conversion !== false;
+      if (reportConversion) vibeLead();
       setSubmitted(true);
     } catch {
+      guard.reset();
       setError(
         `Something went wrong. Please call us at ${CS.phone}.`
       );
@@ -273,6 +278,7 @@ export default function ContactPage() {
                       {submitting ? "Sending…" : "Book My Free Consultation"}
                     </button>
                     <p className="text-xs text-navy/75 leading-snug">{CALLS_V3}</p>
+                    {guard.node}
                   </form>
                 </div>
               ) : (
