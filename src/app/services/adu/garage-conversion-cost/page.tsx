@@ -4,6 +4,7 @@ import FAQAccordion from "@/components/FAQAccordion";
 import JsonLd from "@/components/JsonLd";
 import { CS } from "@/lib/constants";
 import { BUSINESS_REF, businessEntity } from "@/lib/business-schema";
+import { PER_SQ_FT_DRIVERS, PRICES, PRICE_NOTE } from "@/lib/prices";
 
 export const metadata: Metadata = {
   title: {
@@ -11,7 +12,7 @@ export const metadata: Metadata = {
       "Garage Conversion Cost in Yucaipa CA — 2026 Pricing Guide | Construction Station",
   },
   description:
-    "Transparent garage conversion cost guide for Yucaipa and the Inland Empire. Most garage conversions run $85,000–$160,000 all-in. See the full cost breakdown — permits, labor, materials, and what drives the price. CSLB #1108879.",
+    `Garage conversion cost guide for Yucaipa and the Inland Empire: typically ${PRICES.perSqFt} all-in, depending on the build and your selections. See what drives the price — permits, labor, and materials. CSLB #1108879.`,
   alternates: { canonical: "/services/adu/garage-conversion-cost" },
 };
 
@@ -33,17 +34,15 @@ type CostRow = {
   type: string;
   size: string;
   scope: string;
-  low: string;
-  high: string;
 };
 
 const COST_ROWS: CostRow[] = [
-  { type: "Studio / JADU", size: "240–300 sq ft", scope: "Efficiency kitchen, 3/4 bath, separate entrance", low: "$60,000", high: "$90,000" },
-  { type: "Studio ADU", size: "400 sq ft", scope: "Full kitchen, full bath, laundry hookups", low: "$85,000", high: "$120,000" },
-  { type: "1 Bedroom ADU", size: "480–500 sq ft", scope: "Full kitchen, full bath, bedroom + living area", low: "$100,000", high: "$145,000" },
-  { type: "2-Car Garage Studio", size: "480–550 sq ft", scope: "Larger open plan, full kitchen and bath", low: "$110,000", high: "$155,000" },
-  { type: "2-Car Garage 1BR", size: "550–650 sq ft", scope: "Bedroom, full kitchen, 1–2 baths, laundry", low: "$130,000", high: "$175,000" },
-  { type: "High-End / Premium Finish", size: "Any size", scope: "Upgraded cabinetry, countertops, flooring, fixtures", low: "+$15,000", high: "+$40,000" },
+  { type: "Studio / JADU", size: "240–300 sq ft", scope: "Efficiency kitchen, 3/4 bath, separate entrance" },
+  { type: "Studio ADU", size: "400 sq ft", scope: "Full kitchen, full bath, laundry hookups" },
+  { type: "1 Bedroom ADU", size: "480–500 sq ft", scope: "Full kitchen, full bath, bedroom + living area" },
+  { type: "2-Car Garage Studio", size: "480–550 sq ft", scope: "Larger open plan, full kitchen and bath" },
+  { type: "2-Car Garage 1BR", size: "550–650 sq ft", scope: "Bedroom, full kitchen, 1–2 baths, laundry" },
+  { type: "High-End / Premium Finish", size: "Any size", scope: "Upgraded cabinetry, countertops, flooring, fixtures" },
 ];
 
 type LineItem = { icon: string; category: string; range: string; notes: string };
@@ -51,22 +50,22 @@ type LineItem = { icon: string; category: string; range: string; notes: string }
 const LINE_ITEMS: LineItem[] = [
   { icon: "🏛️", category: "Permits & Fees", range: "$3,000 – $6,500", notes: "Building permit, plan check, Title 24 compliance. ADUs ≤ 750 sq ft are exempt from school impact fees." },
   { icon: "📐", category: "Design & Engineering", range: "$4,000 – $8,000", notes: "Architectural plans, structural engineering. Included in CS fixed-price contract." },
-  { icon: "🔨", category: "Demolition & Prep", range: "$2,000 – $5,000", notes: "Garage door removal, slab prep, demo of non-structural elements." },
-  { icon: "🏗️", category: "Framing & Structural", range: "$8,000 – $20,000", notes: "New interior walls, exterior wall upgrades, headers, shear panels if needed." },
-  { icon: "⚡", category: "Electrical", range: "$6,000 – $14,000", notes: "Panel upgrade (typically 100A to 200A), new circuits, outlets, lighting, EV-ready." },
-  { icon: "🚿", category: "Plumbing", range: "$8,000 – $18,000", notes: "New supply lines, drain lines, vent stack, fixtures. Cost rises with distance from main house." },
-  { icon: "❄️", category: "HVAC & Insulation", range: "$5,000 – $12,000", notes: "Mini-split system typical for ADUs. Wall insulation R-13, ceiling R-30 per Title 24." },
-  { icon: "🪟", category: "Windows & Doors", range: "$4,000 – $9,000", notes: "Egress windows required by code, new exterior door, dual-pane glass per Title 24." },
-  { icon: "🎨", category: "Drywall, Paint & Finishes", range: "$6,000 – $12,000", notes: "Drywall, tape, texture, primer, and interior paint." },
-  { icon: "🪵", category: "Flooring", range: "$3,000 – $8,000", notes: "LVP or tile standard. Concrete stain or hardwood available as upgrades." },
-  { icon: "🍳", category: "Kitchen", range: "$8,000 – $22,000", notes: "Cabinets, countertops, sink, range, range hood, refrigerator space. Wide variation by finish level." },
-  { icon: "🚽", category: "Bathroom", range: "$5,000 – $12,000", notes: "Shower, vanity, toilet, tile. Walk-in shower vs tub affects cost." },
+  { icon: "🔨", category: "Demolition & Prep", range: "In your line-item estimate", notes: "Garage door removal, slab prep, demo of non-structural elements." },
+  { icon: "🏗️", category: "Framing & Structural", range: "In your line-item estimate", notes: "New interior walls, exterior wall upgrades, headers, shear panels if needed." },
+  { icon: "⚡", category: "Electrical", range: "In your line-item estimate", notes: "Panel upgrade (typically 100A to 200A), new circuits, outlets, lighting, EV-ready." },
+  { icon: "🚿", category: "Plumbing", range: "In your line-item estimate", notes: "New supply lines, drain lines, vent stack, fixtures. Cost rises with distance from main house." },
+  { icon: "❄️", category: "HVAC & Insulation", range: "In your line-item estimate", notes: "Mini-split system typical for ADUs. Wall insulation R-13, ceiling R-30 per Title 24." },
+  { icon: "🪟", category: "Windows & Doors", range: "In your line-item estimate", notes: "Egress windows required by code, new exterior door, dual-pane glass per Title 24." },
+  { icon: "🎨", category: "Drywall, Paint & Finishes", range: "In your line-item estimate", notes: "Drywall, tape, texture, primer, and interior paint." },
+  { icon: "🪵", category: "Flooring", range: "In your line-item estimate", notes: "LVP or tile standard. Concrete stain or hardwood available as upgrades." },
+  { icon: "🍳", category: "Kitchen", range: "In your line-item estimate", notes: "Cabinets, countertops, sink, range, range hood, refrigerator space. Wide variation by finish level." },
+  { icon: "🚽", category: "Bathroom", range: "In your line-item estimate", notes: "Shower, vanity, toilet, tile. Walk-in shower vs tub affects cost." },
 ];
 
 type CompareRow = { label: string; conversion: string; detachedAdu: string };
 
 const COMPARE_ROWS: CompareRow[] = [
-  { label: "Typical all-in cost", conversion: "$85,000 – $160,000", detachedAdu: "$200,000 – $435,000" },
+  { label: "Where it lands", conversion: `Toward the low end of ${PRICES.perSqFt}`, detachedAdu: `Middle to top of ${PRICES.perSqFt}` },
   { label: "Permit timeline", conversion: "9–16 weeks", detachedAdu: "14–22 weeks" },
   { label: "Construction time", conversion: "8–12 weeks", detachedAdu: "16–28 weeks" },
   { label: "Total project time", conversion: "4–6 months", detachedAdu: "7–12 months" },
@@ -104,19 +103,19 @@ const FINANCING_OPTIONS: FinancingOption[] = [
 const COST_FACTORS = [
   {
     q: "What is the cost for garage conversion in Yucaipa CA?",
-    a: "The cost for garage conversion in Yucaipa ranges from $60,000 for a basic JADU (Junior ADU, 240–300 sq ft, efficiency kitchen, shared bath) to $175,000 for a fully finished 2-bedroom conversion from a large two-car garage. The most common Yucaipa garage conversion — a single-car garage converted to a studio or 1-bedroom ADU with a full kitchen and bath — runs $85,000–$130,000 all-in, including permits, design, and construction. Yucaipa permits itself are on par with other San Bernardino County cities and add $3,000–$6,500 to the total project cost.",
+    a: `Garage conversions in Yucaipa typically run ${PRICES.perSqFt} all-in, ${PER_SQ_FT_DRIVERS}. A basic JADU (Junior ADU, 240–300 sq ft, efficiency kitchen, shared bath) is the simplest scope; a fully finished 2-bedroom conversion of a large two-car garage is the most involved. Yucaipa permits are on par with other San Bernardino County cities and add $3,000–$6,500 to the total project cost. ${PRICE_NOTE}`,
   },
   {
     q: "What is the cost of converting a garage to living space in the Inland Empire?",
-    a: "The cost of converting a garage to a legal, permitted living space in the Inland Empire typically runs $85,000–$160,000 all-in. This covers design and engineering ($4,000–$8,000), permits ($3,000–$6,500), demolition and prep ($2,000–$5,000), framing ($8,000–$20,000), electrical including panel upgrade ($6,000–$14,000), plumbing ($8,000–$18,000), HVAC ($5,000–$12,000), windows and doors ($4,000–$9,000), drywall and finishes ($6,000–$12,000), flooring ($3,000–$8,000), kitchen ($8,000–$22,000), and bathroom ($5,000–$12,000). The largest variables are kitchen finish level, plumbing distance from the main house, and whether an electrical panel upgrade is required.",
+    a: `Converting a garage to legal, permitted living space in the Inland Empire typically runs ${PRICES.perSqFt} all-in. That covers design and engineering ($4,000–$8,000), permits ($3,000–$6,500), demolition and prep, framing, electrical including any panel upgrade, plumbing, HVAC, windows and doors, drywall and finishes, flooring, kitchen, and bathroom. ${PRICE_NOTE} The largest variables are kitchen finish level, plumbing distance from the main house, and whether an electrical panel upgrade is required.`,
   },
   {
     q: "What are current garage conversion prices in San Bernardino County?",
-    a: "Current garage conversion prices in San Bernardino County as of 2026 run $200–$300 per square foot all-in for a standard finish level, or $85,000–$175,000 for most single and two-car garages. San Bernardino County and its cities (Yucaipa, Redlands, Loma Linda, Beaumont, Highland, etc.) have similar permit fee structures — typically $3,000–$6,500 in permit costs — and similar construction labor rates. Labor rates in the Inland Empire are generally 10–20% lower than in LA County, which is why Inland Empire garage conversion prices are more competitive despite similar material costs.",
+    a: `Garage conversions in San Bernardino County typically run ${PRICES.perSqFt} all-in in 2026, ${PER_SQ_FT_DRIVERS}. San Bernardino County and its cities (Yucaipa, Redlands, Loma Linda, Beaumont, Highland, etc.) have similar permit fee structures — typically $3,000–$6,500 in permit costs — and similar construction labor rates. Labor rates in the Inland Empire are generally 10–20% lower than in LA County, which is why Inland Empire garage conversion prices are more competitive despite similar material costs. ${PRICE_NOTE}`,
   },
   {
     q: "How much do garage conversions cost in 2026?",
-    a: "Garage conversions cost $85,000–$175,000 in the Inland Empire in 2026 for a fully permitted, turnkey conversion including a kitchen and bath. This is an increase of approximately 8–12% from 2024 due to continued material cost inflation and labor rate increases. The biggest cost drivers in 2026 are electrical panel upgrades (which many older homes require to support a new unit's load) and plumbing rough-in (particularly the connection distance from the main house). A basic garage conversion without a full kitchen — just a room with a bath — can still be done for $50,000–$80,000 in some cases, though this scope typically does not qualify as a rentable ADU.",
+    a: `Garage conversions in the Inland Empire typically run ${PRICES.perSqFt} in 2026 for a fully permitted, turnkey conversion including a kitchen and bath. ${PRICE_NOTE} The biggest cost drivers in 2026 are electrical panel upgrades (which many older homes require to support a new unit's load) and plumbing rough-in (particularly the connection distance from the main house). A basic conversion without a full kitchen — just a room with a bath — is a smaller scope, though it typically does not qualify as a rentable ADU.`,
   },
   {
     q: "Does a garage conversion add value to the home?",
@@ -124,7 +123,7 @@ const COST_FACTORS = [
   },
   {
     q: "Is a garage conversion cheaper than building a new ADU?",
-    a: "Yes — a garage conversion is the most cost-effective path to a permitted ADU on your property. A garage conversion to ADU in the Inland Empire runs $85,000–$160,000 all-in. A new detached ADU starts at approximately $200,000 for a 400 sq ft studio and runs up to $435,000 for a 1,200 sq ft 2-bedroom unit. The garage conversion is cheaper because the structure, foundation, and roof already exist — you are converting and upgrading rather than building from scratch. The tradeoff is size: you are limited to the existing garage footprint, typically 240–550 sq ft.",
+    a: `Yes — a garage conversion is the most cost-effective path to a permitted ADU on your property. Every ADU typically runs ${PRICES.perSqFt}, and a garage conversion sits toward the low end, while a new detached ADU sits higher. The garage conversion is cheaper because the structure, foundation, and roof already exist — you are converting and upgrading rather than building from scratch. The tradeoff is size: you are limited to the existing garage footprint, typically 240–550 sq ft. ${PRICE_NOTE}`,
   },
 ];
 
@@ -135,7 +134,7 @@ const serviceSchema = {
   provider: BUSINESS_REF,
   areaServed: SERVICE_CITIES.map((c) => ({ "@type": "Place", name: `${c}, CA` })),
   description:
-    "Transparent garage conversion pricing from a licensed Inland Empire contractor. All-in costs $85,000–$175,000. CSLB #1108879.",
+    `Garage conversion pricing from a licensed Inland Empire contractor: typically ${PRICES.perSqFt} all-in. CSLB #1108879.`,
 };
 
 const localBusinessSchema = {
@@ -238,14 +237,13 @@ export default function GarageConversionCostPage() {
             Typical Range
           </div>
           <div className="font-display text-navy text-5xl md:text-7xl leading-[1] mb-6">
-            $85,000{" "}
-            <span className="text-navy/40">–</span>{" "}
-            <span className="italic text-gold">$160,000</span>
+            {PRICES.perSqFt}
           </div>
           <p className="text-navy/75 text-lg leading-relaxed max-w-2xl mx-auto">
-            Most garage-to-ADU conversions in Yucaipa and the Inland Empire
-            land in this range — all-in, including permits, design,
-            and construction with a full kitchen and bath.
+            Garage-to-ADU conversions in Yucaipa and the Inland Empire
+            typically run in this range, {PER_SQ_FT_DRIVERS} — all-in,
+            including permits, design, and construction with a full kitchen
+            and bath. {PRICE_NOTE}
           </p>
         </div>
       </section>
@@ -254,23 +252,21 @@ export default function GarageConversionCostPage() {
       <section className="bg-cream py-20 lg:py-24">
         <div className="max-w-6xl mx-auto px-5 lg:px-10">
           <div className="text-center mb-12">
-            <SectionEyebrow label="Cost by Project" />
+            <SectionEyebrow label="By Project" />
             <h2 className="font-display text-navy text-3xl md:text-4xl lg:text-5xl leading-[1.05]">
-              Garage conversion prices by project type
+              Garage conversion project types
             </h2>
             <p className="text-navy/60 mt-3 uppercase tracking-[0.2em] text-xs">
               Yucaipa &amp; Inland Empire, California — 2026
             </p>
           </div>
           <div className="overflow-x-auto bg-white border border-navy/10 shadow-sm">
-            <table className="w-full text-sm text-left border-collapse min-w-[640px]">
+            <table className="w-full text-sm text-left border-collapse min-w-[560px]">
               <thead>
                 <tr className="bg-navy text-white">
                   <th className="px-4 py-4 font-body font-semibold uppercase tracking-wider text-xs">Project Type</th>
                   <th className="px-4 py-4 font-body font-semibold uppercase tracking-wider text-xs">Size</th>
                   <th className="px-4 py-4 font-body font-semibold uppercase tracking-wider text-xs">Scope</th>
-                  <th className="px-4 py-4 font-body font-semibold uppercase tracking-wider text-xs">Low</th>
-                  <th className="px-4 py-4 font-body font-semibold uppercase tracking-wider text-xs">High</th>
                 </tr>
               </thead>
               <tbody>
@@ -282,19 +278,16 @@ export default function GarageConversionCostPage() {
                     <td className="px-4 py-4 font-semibold text-navy whitespace-nowrap">{row.type}</td>
                     <td className="px-4 py-4 text-navy/80 whitespace-nowrap">{row.size}</td>
                     <td className="px-4 py-4 text-navy/70">{row.scope}</td>
-                    <td className="px-4 py-4 text-navy/80 whitespace-nowrap">{row.low}</td>
-                    <td className="px-4 py-4 font-semibold text-gold whitespace-nowrap">{row.high}</td>
                   </tr>
                 ))}
               </tbody>
             </table>
           </div>
           <p className="mt-6 text-navy/60 text-sm leading-relaxed max-w-4xl">
-            All-in pricing includes design, engineering, permits, construction,
-            and standard finish package. Premium finishes are available as an
-            upgrade. Prices reflect current 2026 Inland Empire market conditions.
-            Every project ends with a signed fixed-price contract — no
-            surprise upcharges.
+            Every type typically runs {PRICES.perSqFt} all-in, including design,
+            engineering, permits, construction, and the standard finish package;
+            premium finishes move it up. {PRICE_NOTE} Every project ends with a
+            signed fixed-price contract — no surprise upcharges.
           </p>
         </div>
       </section>
@@ -309,8 +302,8 @@ export default function GarageConversionCostPage() {
               <span className="italic text-gold">actually goes</span>.
             </h2>
             <p className="text-navy/60 mt-4 max-w-2xl mx-auto leading-relaxed">
-              Every line item in a garage-to-ADU conversion, with real ranges
-              from projects completed in Yucaipa and the Inland Empire.
+              Every line item in a garage-to-ADU conversion. Each one shows up
+              on your line-item estimate.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -345,7 +338,7 @@ export default function GarageConversionCostPage() {
             <SectionEyebrow label="Before & After" />
             <h2 className="font-display text-navy text-4xl md:text-5xl leading-[1]">
               Garage conversions{" "}
-              <span className="italic text-gold">we&apos;ve priced and built</span>.
+              <span className="italic text-gold">we&apos;ve built</span>.
             </h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -354,14 +347,12 @@ export default function GarageConversionCostPage() {
                 project: "Redlands, CA — Single-Car Garage to Studio ADU",
                 before: "480 sq ft detached garage, concrete floor, no plumbing",
                 after: "480 sq ft studio ADU — full kitchen, 3/4 bath, mini-split, egress windows, LVP flooring",
-                cost: "$112,000 all-in",
                 timeline: "11 weeks construction · 10 weeks permit",
               },
               {
                 project: "Yucaipa, CA — Two-Car Garage to 1BR ADU",
                 before: "520 sq ft attached two-car garage with existing electrical",
                 after: "520 sq ft 1-bedroom ADU — full kitchen, full bath, laundry hookup, separate entrance",
-                cost: "$138,000 all-in",
                 timeline: "13 weeks construction · 9 weeks permit",
               },
             ].map((project) => (
@@ -391,10 +382,6 @@ export default function GarageConversionCostPage() {
                     <span className="text-navy/80">{project.after}</span>
                   </div>
                   <div className="flex gap-2 mt-2">
-                    <span className="text-navy/50 shrink-0">Total cost:</span>
-                    <span className="font-semibold text-gold">{project.cost}</span>
-                  </div>
-                  <div className="flex gap-2">
                     <span className="text-navy/50 shrink-0">Timeline:</span>
                     <span className="text-navy/80">{project.timeline}</span>
                   </div>
@@ -480,19 +467,19 @@ export default function GarageConversionCostPage() {
               },
               {
                 title: "Plumbing Distance from Main House",
-                blurb: "The further the ADU sits from the main house's sewer and water lines, the more trenching, piping, and labor is required. Attached garages typically have the shortest runs; detached garages on larger lots can add $3,000–$8,000 in plumbing alone.",
+                blurb: "The further the ADU sits from the main house's sewer and water lines, the more trenching, piping, and labor is required. Attached garages typically have the shortest runs; detached garages on larger lots add the most plumbing work.",
               },
               {
                 title: "Electrical Panel Upgrade",
-                blurb: "Most homes built before 1990 have a 100A panel. Adding an ADU's electrical load almost always requires an upgrade to 200A, which adds $4,000–$7,000 to the project. Newer homes with already-upgraded panels avoid this cost.",
+                blurb: "Most homes built before 1990 have a 100A panel. Adding an ADU's electrical load almost always requires an upgrade to 200A, which adds to the project. Newer homes with already-upgraded panels avoid this cost.",
               },
               {
                 title: "Bathroom Count",
-                blurb: "A second bathroom adds $5,000–$10,000. A 3/4 bath (shower, no tub) is the least expensive; a full bath with soaking tub is the most. Most 1-bedroom conversions need only one bathroom — adding a second makes sense for larger two-car garage conversions.",
+                blurb: "A second bathroom adds cost. A 3/4 bath (shower, no tub) is the least expensive; a full bath with soaking tub is the most. Most 1-bedroom conversions need only one bathroom — adding a second makes sense for larger two-car garage conversions.",
               },
               {
                 title: "Finish Level (Standard vs Premium)",
-                blurb: "Construction Station's standard finish package includes quality LVP flooring, painted cabinets, quartz-look countertops, and ceramic tile. Premium upgrades — custom cabinets, stone counters, hardwood, luxury fixtures — add $15,000–$40,000.",
+                blurb: "Construction Station's standard finish package includes quality LVP flooring, painted cabinets, quartz-look countertops, and ceramic tile. Premium upgrades — custom cabinets, stone counters, hardwood, luxury fixtures — move the price up within the range.",
               },
               {
                 title: "Permit Fees by City",

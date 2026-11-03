@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound, permanentRedirect } from "next/navigation";
-import { cleanOmmPostHtml, fetchOmmPostByIdOrSlug, fetchOmmPosts } from "@/lib/omm-blog";
+import { cleanOmmPostHtml, fetchOmmPostByIdOrSlug, fetchOmmPosts, type OmmBlogAuthor } from "@/lib/omm-blog";
 import JsonLd from "@/components/JsonLd";
 import { CS } from "@/lib/constants";
 import { BUSINESS_REF } from "@/lib/business-schema";
@@ -30,6 +30,22 @@ function formatPublishedDate(iso: string | null): string {
   } catch {
     return "";
   }
+}
+
+// The author's employer as Google should read it. Kept apart from the one
+// business node (BUSINESS_REF), whose name is "Construction Station".
+const AUTHOR_EMPLOYER = "Construction Station Flooring and Design";
+
+/** BlogPosting author: the named person OMM sends, else the business. */
+function authorSchema(author: OmmBlogAuthor | null | undefined) {
+  if (!author?.name) return BUSINESS_REF;
+  return {
+    "@type": "Person",
+    name: author.name,
+    jobTitle: author.title ?? undefined,
+    description: author.bio ?? undefined,
+    worksFor: { "@type": "Organization", name: AUTHOR_EMPLOYER, url: SITE_URL },
+  };
 }
 
 export async function generateMetadata({
@@ -96,7 +112,7 @@ export default async function OmmBlogPostPage({
     image: post.featured_image_url ?? undefined,
     url: postUrl,
     mainEntityOfPage: { "@type": "WebPage", "@id": postUrl },
-    author: BUSINESS_REF,
+    author: authorSchema(post.author),
     publisher: BUSINESS_REF,
   };
 

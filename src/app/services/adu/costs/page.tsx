@@ -4,34 +4,27 @@ import FAQAccordion from "@/components/FAQAccordion";
 import JsonLd from "@/components/JsonLd";
 import { CS } from "@/lib/constants";
 import { BUSINESS_REF, businessEntity } from "@/lib/business-schema";
+import { PRICES, PRICE_NOTE } from "@/lib/prices";
 
 export const metadata: Metadata = {
   title: "ADU Cost in the Inland Empire",
   description:
-    "Transparent ADU pricing from a licensed Inland Empire general contractor. Most IE ADU projects run $200,000 to $435,000 all-in. See the full cost breakdown — vertical build, design, permits, sitework, and utilities. No surprises.",
+    `ADU pricing from a licensed Inland Empire general contractor: typically ${PRICES.perSqFt}, depending on the build and your selections. See what drives the cost — design, permits, sitework, and utilities.`,
   alternates: { canonical: "/services/adu/costs" },
 };
 
 const CALENDLY_URL =
   "https://calendly.com/constructionstation-sales/free-adu-remodeling-consult";
 
-type CostRow = {
-  type: string;
-  size: string;
-  vertical: string;
-  verticalSqft: string;
-  allIn: string;
-  allInSqft: string;
-};
+type BuildRow = { type: string; what: string; lands: string };
 
-const COST_ROWS: CostRow[] = [
-  { type: "Studio / 1BA", size: "400 sq ft", vertical: "$150K", verticalSqft: "$375", allIn: "$200K", allInSqft: "$500" },
-  { type: "1BR / 1BA", size: "500 sq ft", vertical: "$175K", verticalSqft: "$350", allIn: "$235K", allInSqft: "$470" },
-  { type: "1BR / 1BA", size: "650 sq ft", vertical: "$210K", verticalSqft: "$323", allIn: "$275K", allInSqft: "$423" },
-  { type: "2BR / 1BA", size: "750 sq ft", vertical: "$233K", verticalSqft: "$310", allIn: "$300K", allInSqft: "$400" },
-  { type: "2BR / 2BA", size: "900 sq ft", vertical: "$270K", verticalSqft: "$300", allIn: "$345K", allInSqft: "$383" },
-  { type: "2BR / 2BA", size: "1,000 sq ft", vertical: "$295K", verticalSqft: "$295", allIn: "$375K", allInSqft: "$375" },
-  { type: "2BR / 2BA", size: "1,200 sq ft", vertical: "$348K", verticalSqft: "$290", allIn: "$435K", allInSqft: "$363" },
+// Where each build type usually sits in PRICES.perSqFt (owner, 2026-11-02:
+// attached or simpler projects at the low end). No dollar totals here.
+const BUILD_ROWS: BuildRow[] = [
+  { type: "Garage conversion", what: "Reuses the existing garage structure and slab", lands: "Toward the low end" },
+  { type: "Junior ADU", what: "Inside the home's footprint, sharing its walls", lands: "Toward the low end" },
+  { type: "Attached ADU", what: "New space that shares a wall with the home", lands: "Toward the low end" },
+  { type: "Detached new build", what: "New foundation, roof, and utility runs", lands: "Middle to top" },
 ];
 
 type CostCard = {
@@ -45,7 +38,7 @@ const COST_CARDS: CostCard[] = [
   {
     icon: "📐",
     title: "Design & Engineering",
-    price: "$8,000 – $12,000",
+    price: "Part of your all-in price",
     blurb: "Architectural plans, structural engineering, and Title 24 energy compliance.",
   },
   {
@@ -57,19 +50,19 @@ const COST_CARDS: CostCard[] = [
   {
     icon: "🚜",
     title: "Sitework & Grading",
-    price: "$15,000 – $40,000",
+    price: "Depends on your lot",
     blurb: "Foundation prep, grading, and drainage. Flat lots cost less. Sloped lots cost more.",
   },
   {
     icon: "🔌",
     title: "Utility Connections",
-    price: "$5,000 – $25,000",
+    price: "Depends on distance",
     blurb: "Water, sewer, and electrical connections to existing services. Long runs cost more.",
   },
   {
     icon: "🏗️",
     title: "Vertical Construction",
-    price: "$290 – $375/sq ft",
+    price: "Most of the per-sq-ft price",
     blurb: "Full stick-built construction including all systems and standard finishes.",
   },
   {
@@ -83,7 +76,7 @@ const COST_CARDS: CostCard[] = [
 type CompareRow = { label: string; conversion: string; newBuild: string };
 
 const COMPARE_ROWS: CompareRow[] = [
-  { label: "Cost range", conversion: "$80,000 – $150,000", newBuild: "$200,000 – $435,000" },
+  { label: "Where it lands", conversion: `Toward the low end of ${PRICES.perSqFt}`, newBuild: `Middle to top of ${PRICES.perSqFt}` },
   { label: "Timeline", conversion: "3–5 months", newBuild: "6–10 months" },
   { label: "Permits", conversion: "Simpler", newBuild: "Full permit set" },
   { label: "Size limit", conversion: "Existing garage size", newBuild: "Up to 1,200 sq ft" },
@@ -128,7 +121,7 @@ const serviceSchema = {
   provider: BUSINESS_REF,
   areaServed: { "@type": "Place", name: "Inland Empire, California" },
   description:
-    "Transparent ADU pricing from a licensed Inland Empire general contractor. Detached ADU all-in costs from $200,000 to $435,000 covering design, engineering, permits, sitework, utilities, and construction.",
+    `ADU pricing from a licensed Inland Empire general contractor: typically ${PRICES.perSqFt} all-in, covering design, engineering, permits, sitework, utilities, and construction.`,
 };
 
 const localBusinessSchema = {
@@ -224,15 +217,15 @@ export default function ADUCostsPage() {
       <section className="bg-white py-20 lg:py-24">
         <div className="max-w-4xl mx-auto px-5 lg:px-10 text-center">
           <div className="text-gold text-xs tracking-[0.4em] uppercase mb-5">
-            Starting From
+            Typical Range
           </div>
           <div className="font-display text-navy text-5xl md:text-7xl leading-[1] mb-6">
-            $200,000 <span className="italic text-gold">— All-In</span>
+            {PRICES.perSqFt}
           </div>
           <p className="text-navy/75 text-lg leading-relaxed max-w-2xl mx-auto">
-            Most Inland Empire ADU projects range from{" "}
-            <span className="font-semibold text-navy">$200,000 to $435,000</span>{" "}
-            depending on size, site conditions, and finish level.
+            Where your ADU lands depends on the build (attached or simpler
+            projects sit at the low end), your interior selections, and your
+            site. {PRICE_NOTE}
           </p>
         </div>
       </section>
@@ -241,9 +234,9 @@ export default function ADUCostsPage() {
       <section className="bg-cream py-20 lg:py-24">
         <div className="max-w-6xl mx-auto px-5 lg:px-10">
           <div className="text-center mb-12">
-            <SectionEyebrow label="Cost Breakdown" />
+            <SectionEyebrow label="By Build Type" />
             <h2 className="font-display text-navy text-3xl md:text-4xl lg:text-5xl leading-[1.05]">
-              Cost To Build a New Detached ADU
+              Where Your ADU Lands in the Range
             </h2>
             <p className="text-navy/60 mt-3 uppercase tracking-[0.2em] text-xs">
               Inland Empire, California
@@ -251,29 +244,23 @@ export default function ADUCostsPage() {
           </div>
 
           <div className="overflow-x-auto bg-white border border-navy/10 shadow-sm">
-            <table className="w-full text-sm text-left border-collapse min-w-[640px]">
+            <table className="w-full text-sm text-left border-collapse min-w-[560px]">
               <thead>
                 <tr className="bg-navy text-white">
-                  <th className="px-4 py-4 font-body font-semibold uppercase tracking-wider text-xs">Type</th>
-                  <th className="px-4 py-4 font-body font-semibold uppercase tracking-wider text-xs">Size</th>
-                  <th className="px-4 py-4 font-body font-semibold uppercase tracking-wider text-xs">Vertical Build Cost</th>
-                  <th className="px-4 py-4 font-body font-semibold uppercase tracking-wider text-xs">Build Cost/sqft</th>
-                  <th className="px-4 py-4 font-body font-semibold uppercase tracking-wider text-xs">Typical All-In Cost</th>
-                  <th className="px-4 py-4 font-body font-semibold uppercase tracking-wider text-xs">All-In/sqft</th>
+                  <th className="px-4 py-4 font-body font-semibold uppercase tracking-wider text-xs">Build Type</th>
+                  <th className="px-4 py-4 font-body font-semibold uppercase tracking-wider text-xs">What It Involves</th>
+                  <th className="px-4 py-4 font-body font-semibold uppercase tracking-wider text-xs">Where It Usually Lands</th>
                 </tr>
               </thead>
               <tbody>
-                {COST_ROWS.map((row, i) => (
+                {BUILD_ROWS.map((row, i) => (
                   <tr
-                    key={`${row.type}-${row.size}`}
+                    key={row.type}
                     className={`border-t border-navy/10 ${i % 2 === 1 ? "bg-cream/40" : "bg-white"}`}
                   >
                     <td className="px-4 py-4 font-semibold text-navy whitespace-nowrap">{row.type}</td>
-                    <td className="px-4 py-4 text-navy/80 whitespace-nowrap">{row.size}</td>
-                    <td className="px-4 py-4 text-navy/80 whitespace-nowrap">{row.vertical}</td>
-                    <td className="px-4 py-4 text-navy/80 whitespace-nowrap">{row.verticalSqft}</td>
-                    <td className="px-4 py-4 font-semibold text-gold whitespace-nowrap">{row.allIn}</td>
-                    <td className="px-4 py-4 text-navy/80 whitespace-nowrap">{row.allInSqft}</td>
+                    <td className="px-4 py-4 text-navy/80">{row.what}</td>
+                    <td className="px-4 py-4 font-semibold text-gold-deep whitespace-nowrap">{row.lands}</td>
                   </tr>
                 ))}
               </tbody>
@@ -281,10 +268,9 @@ export default function ADUCostsPage() {
           </div>
 
           <p className="mt-6 text-navy/60 text-sm leading-relaxed max-w-4xl">
-            *Vertical build cost covers framing, roofing, insulation, drywall,
-            windows, doors, electrical, plumbing, HVAC, and standard finishes.
-            All-in cost adds design, engineering, permits, sitework, and utility
-            connections.
+            *Within {PRICES.perSqFt}, your interior selections move any build
+            up or down. All-in pricing covers design, engineering, permits,
+            sitework, utility connections, and construction.
           </p>
         </div>
       </section>

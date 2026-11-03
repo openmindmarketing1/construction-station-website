@@ -5,6 +5,7 @@
 // src/lib/adu-cities.ts and cover these cities too.
 
 import { CS } from "@/lib/constants";
+import { PER_SQ_FT_DRIVERS, PRICES, PRICE_NOTE } from "@/lib/prices";
 
 export const CALENDLY_URL =
   "https://calendly.com/constructionstation-sales/free-kitchen-design-consultation";
@@ -91,7 +92,7 @@ export const SERVICE_CITY_SERVICES: ServiceCityService[] = [
     baseFaqs: (city) => [
       {
         q: `How much does a kitchen remodel cost in ${city.name}?`,
-        a: `Most full kitchen remodels in ${city.name} land between $45,000 and $95,000 depending on size, layout changes, and finish level. A cabinet-countertop-backsplash refresh can come in under that range, while a full-gut remodel with wall removals and high-end appliances can exceed $120,000. Your free design consultation ends with a written, line-item fixed price — not an estimate that grows.`,
+        a: `Kitchen remodels in ${city.name} typically run ${PRICES.kitchen}, depending on size, layout changes, and finish level. A cabinet-countertop-backsplash refresh sits toward the low end; a full-gut remodel with wall removals and high-end appliances sits toward the top. ${PRICE_NOTE} Your free design consultation ends with a written, line-item fixed price — not an estimate that grows.`,
       },
       {
         q: `How long does a kitchen remodel take in ${city.name}?`,
@@ -132,7 +133,7 @@ export const SERVICE_CITY_SERVICES: ServiceCityService[] = [
     baseFaqs: (city) => [
       {
         q: `How much does a bathroom remodel cost in ${city.name}?`,
-        a: `Most full bathroom remodels in ${city.name} run $20,000–$45,000. A hall bath refresh with a new tub or shower, vanity, tile, and fixtures typically sits at the lower end; a primary-suite renovation with a walk-in shower, freestanding tub, and heated floors can reach $50,000–$70,000. Every project is quoted as a fixed price after a free in-home consultation.`,
+        a: `Bathroom remodels in ${city.name} typically run ${PRICES.bathroom}. A hall bath refresh with a new tub or shower, vanity, tile, and fixtures typically sits at the lower end; a primary-suite renovation with a walk-in shower, freestanding tub, and heated floors sits at the top of the range or above it. ${PRICE_NOTE}`,
       },
       {
         q: `How long does a bathroom remodel take in ${city.name}?`,
@@ -173,7 +174,7 @@ export const SERVICE_CITY_SERVICES: ServiceCityService[] = [
     baseFaqs: (city) => [
       {
         q: `How much does flooring installation cost in ${city.name}?`,
-        a: `Installed pricing in ${city.name} typically runs $6–$9 per sq ft for quality LVP or laminate, $9–$15 for engineered hardwood, and $10–$18 for large-format porcelain tile, including materials, subfloor prep, and trim. Whole-home projects get better per-foot pricing than single rooms. We recommend budgeting an extra 10% for potential subfloor repairs — often it isn't needed, but planning for it means no surprises.`,
+        a: `In ${city.name}, hard-surface floors (LVP, tile, and hardwood) typically run ${PRICES.hardSurface}, and carpet ${PRICES.carpet}. ${PRICE_NOTE} We recommend budgeting an extra 10% for potential subfloor repairs — often it isn't needed, but planning for it means no surprises.`,
       },
       {
         q: `How long does flooring installation take in ${city.name}?`,
@@ -214,7 +215,7 @@ export const SERVICE_CITY_SERVICES: ServiceCityService[] = [
     baseFaqs: (city) => [
       {
         q: `How much does a room addition cost in ${city.name}?`,
-        a: `Room additions in ${city.name} typically run $350–$550 per sq ft depending on complexity — a straightforward bedroom addition sits near the lower end, while a primary suite with a full bath, or any second-story work, prices higher. A 400 sq ft bedroom addition generally lands between $140,000 and $220,000 all-in, including design, engineering, permits, and finish work.`,
+        a: `Room additions in ${city.name} typically run ${PRICES.perSqFt}, ${PER_SQ_FT_DRIVERS}. A straightforward bedroom addition sits near the lower end, while a primary suite with a full bath, or any second-story work, prices higher. ${PRICE_NOTE}`,
       },
       {
         q: `How long does a room addition take in ${city.name}?`,
@@ -259,7 +260,7 @@ export const SERVICE_CITY_SERVICES: ServiceCityService[] = [
       },
       {
         q: `What does a general contractor cost in ${city.name}?`,
-        a: `It depends entirely on scope, which is why we quote fixed prices rather than hourly rates. As reference points for ${city.name} projects: full kitchen remodels typically run $45,000–$95,000, bathrooms $20,000–$45,000, room additions $350–$550 per sq ft, and ADUs $250–$550 per sq ft depending on type. Your free consultation ends with a written line-item price, not a vague allowance-filled estimate.`,
+        a: `It depends entirely on scope, which is why we quote fixed prices rather than hourly rates. As typical ranges for ${city.name} projects: kitchen remodels ${PRICES.kitchen}, bathrooms ${PRICES.bathroom}, and room additions and ADUs ${PRICES.perSqFt}. ${PRICE_NOTE} Your free consultation ends with a written line-item price, not a vague allowance-filled estimate.`,
       },
       {
         q: `Do you handle permits and inspections in ${city.name}?`,
@@ -499,7 +500,7 @@ export const SERVICE_CITY_PROFILES: ServiceCityProfile[] = [
       },
       "bathroom-remodeling": {
         q: "Our Cove home has original 1970s bathrooms — what should we budget?",
-        a: "Most Cove bathroom remodels run $20,000–$40,000 per bath for a full transformation: demo to studs, new waterproofing, walk-in porcelain shower, floating vanity, and fixtures. Because these homes are on slab and the plumbing is 50 years old, we include a camera inspection of the drains during design — if anything needs correcting, you'll know before demo, not during.",
+        a: `A full Cove bathroom transformation typically runs ${PRICES.bathroom} per bath: demo to studs, new waterproofing, walk-in porcelain shower, floating vanity, and fixtures. Because these homes are on slab and the plumbing is 50 years old, we include a camera inspection of the drains during design — if anything needs correcting, you'll know before demo, not during.`,
       },
       flooring: {
         q: "What's the best flooring for a Cathedral City home?",

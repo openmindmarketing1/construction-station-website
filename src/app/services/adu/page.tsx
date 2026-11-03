@@ -8,6 +8,7 @@ import JsonLd from "@/components/JsonLd";
 import { CS } from "@/lib/constants";
 import { ADU_CITIES } from "@/lib/adu-cities";
 import { BUSINESS_REF, businessEntity } from "@/lib/business-schema";
+import { PER_SQ_FT_DRIVERS, PRICES, PRICE_NOTE } from "@/lib/prices";
 
 export const metadata: Metadata = {
   title: "ADU Contractors Inland Empire",
@@ -163,7 +164,7 @@ const FAQS = [
   // Costs & Financing
   {
     q: "How much does an ADU cost in the Inland Empire?",
-    a: "ADU costs in the Inland Empire range by type: garage conversions run $85,000–$150,000 all-in (permits, plans, construction, and utility connections); Junior ADUs range from $100,000–$175,000; detached ADUs with new construction run $175,000–$350,000 for a standard 600–1,000 sq ft unit, and up to $400,000+ for larger or more complex builds. Our Redlands Jr. ADU project came in at approximately $200,000 for 465 sq ft — a realistic benchmark for a quality Jr. ADU in the current market. These are all-in figures: design, permits, construction, MEP, finishes, and utility connections included. We provide transparent, line-item written estimates after your free feasibility consultation.",
+    a: `ADUs in the Inland Empire typically run ${PRICES.perSqFt}, ${PER_SQ_FT_DRIVERS}. Garage conversions and Junior ADUs reuse existing structure, so they usually cost less overall than a detached new build. Our Redlands Jr. ADU project came in at approximately $200,000 for 465 sq ft. ${PRICE_NOTE} Your written estimate is line-item and all-in: design, permits, construction, MEP, finishes, and utility connections.`,
   },
   {
     q: "What financing options are available for ADU construction?",
@@ -200,7 +201,7 @@ const FAQS = [
   },
   {
     q: "Can I convert my garage into an ADU?",
-    a: "Yes — garage conversions are one of the most cost-effective ADU paths. Both attached and detached garages can be converted. California prohibits cities from requiring replacement parking, so you don't need to build a new carport when you convert. The process involves: closing or modifying the garage door opening, framing an exterior wall, adding insulation, running new MEP (mechanical, electrical, plumbing), installing drywall, flooring, a kitchen, and bathroom. Attached garages typically convert for $85,000–$130,000 all-in; detached garages run $95,000–$150,000+ depending on size and finish level. See our Garage Conversion Cost guide for a full 2026 pricing breakdown.",
+    a: `Yes — garage conversions are one of the most cost-effective ADU paths. Both attached and detached garages can be converted. California prohibits cities from requiring replacement parking, so you don't need to build a new carport when you convert. The process involves: closing or modifying the garage door opening, framing an exterior wall, adding insulation, running new MEP (mechanical, electrical, plumbing), installing drywall, flooring, a kitchen, and bathroom. Like every ADU, a garage conversion typically runs ${PRICES.perSqFt}, ${PER_SQ_FT_DRIVERS}. ${PRICE_NOTE} See our Garage Conversion Cost guide for what drives the price.`,
   },
   // Our ADU Experience
   {
@@ -641,7 +642,7 @@ export default function ADUPage() {
               { icon: "📈", title: "ADU Investment", blurb: "Rental income, ROI, and property value impact.", href: "/services/adu/investment" },
               { icon: "📐", title: "Floor Plans", blurb: "12 sample layouts from 400 to 1,200 sq ft.", href: "/services/adu/floor-plans" },
               { icon: "🏛️", title: "Regulations by City", blurb: "ADU rules across 29 Inland Empire cities.", href: "/services/adu/yucaipa" },
-              { icon: "🚗", title: "Garage Conversion Cost", blurb: "2026 pricing guide — $85K–$160K all-in breakdown.", href: "/services/adu/garage-conversion-cost" },
+              { icon: "🚗", title: "Garage Conversion Cost", blurb: "2026 pricing guide — what drives the cost.", href: "/services/adu/garage-conversion-cost" },
               { icon: "📋", title: "Garage Conversion Permits", blurb: "Complete permit guide for Yucaipa & San Bernardino County.", href: "/services/adu/garage-conversion-permits" },
             ].map((r) => (
               <Link

@@ -8,6 +8,7 @@ import CtaSection from "@/components/CtaSection";
 import ServiceCityLinksStrip from "@/components/ServiceCityLinksStrip";
 import JsonLd from "@/components/JsonLd";
 import { BUSINESS_REF } from "@/lib/business-schema";
+import { PRICES, PRICE_NOTE } from "@/lib/prices";
 
 export const metadata: Metadata = {
   title: "Bathroom Remodeling in the Inland Empire",
@@ -55,7 +56,7 @@ const STEPS = [
 const FAQS = [
   {
     q: "How much does a bathroom remodel cost?",
-    a: "Bathroom remodel costs in the Inland Empire range from $12,000–$20,000 for a cosmetic update (new vanity, fixtures, tile surround, and flooring), $20,000–$45,000 for a full remodel of a standard 5×8 or 6×9 bathroom (gut to studs, new tile, plumbing, and fixtures), and $45,000–$80,000+ for a master suite with a custom walk-in shower, freestanding tub, heated floors, and custom tile work. The biggest cost drivers are tile complexity, fixture tier, shower size, and whether you're relocating plumbing. We provide transparent, itemized written estimates after the free design consultation. Licensed CSLB #1108879.",
+    a: `Bathroom remodels in the Inland Empire typically run ${PRICES.bathroom}. A cosmetic update (new vanity, fixtures, tile surround, and flooring) sits toward the low end; a master suite with a custom walk-in shower, freestanding tub, heated floors, and custom tile work sits at the top of the range or above it. The biggest cost drivers are tile complexity, fixture tier, shower size, and whether you're relocating plumbing. ${PRICE_NOTE} Your written estimate is itemized. Licensed CSLB #1108879.`,
   },
   {
     q: "How long does a bathroom remodel take?",
@@ -67,7 +68,7 @@ const FAQS = [
   },
   {
     q: "Can you convert a bathtub to a walk-in shower?",
-    a: "Yes — this is one of our most common bathroom upgrades. Converting a 60-inch tub alcove to a walk-in shower involves removing the tub and surround, lowering the drain, waterproofing with a membrane system, and installing tile, pan, glass enclosure, and fixtures. We offer curbless (zero-threshold) walk-in showers for accessibility and contemporary aesthetics. A standard tub-to-shower conversion in an existing 60-inch alcove runs $8,000–$18,000 depending on tile selection, glass type, and fixture tier. Full custom walk-in showers in master baths with bench, body sprays, niche, and frameless glass run $22,000–$40,000+. Walk-in showers are the #1 most-requested bathroom upgrade in IE real estate.",
+    a: "Yes — this is one of our most common bathroom upgrades. Converting a 60-inch tub alcove to a walk-in shower involves removing the tub and surround, lowering the drain, waterproofing with a membrane system, and installing tile, pan, glass enclosure, and fixtures. We offer curbless (zero-threshold) walk-in showers for accessibility and contemporary aesthetics. We price a tub-to-shower conversion or a full custom walk-in shower at your free consultation; tile selection, glass type, and fixture tier drive the cost. Walk-in showers are the #1 most-requested bathroom upgrade in IE real estate.",
   },
   {
     q: "What are aging-in-place bathroom modifications?",
@@ -83,15 +84,15 @@ const FAQS = [
   },
   {
     q: "How do I choose a shower system?",
-    a: "Start with basic configuration: single showerhead vs. rain head vs. combination. Then select valve brand — Kohler, Moen, Delta, Grohe, and Hansgrohe represent different price-to-quality tiers. Consider add-ons: body spray jets (require a high-capacity water heater), handheld, thermostatic valve (precise temperature control, ideal for families). For most full bathroom remodels, we recommend a thermostatic system with rain head and handheld — approximately $800–$2,500 in fixtures depending on brand. Body sprays and steam generators are luxury upgrades adding $3,000–$8,000+ to scope. We guide you based on your budget and existing water heater capacity.",
+    a: "Start with basic configuration: single showerhead vs. rain head vs. combination. Then select valve brand — Kohler, Moen, Delta, Grohe, and Hansgrohe represent different price-to-quality tiers. Consider add-ons: body spray jets (require a high-capacity water heater), handheld, thermostatic valve (precise temperature control, ideal for families). For most full bathroom remodels, we recommend a thermostatic system with rain head and handheld — approximately $800–$2,500 in fixtures depending on brand. Body sprays and steam generators are luxury upgrades that add to scope. We guide you based on your budget and existing water heater capacity.",
   },
   {
     q: "Can you add a bathroom to my home?",
-    a: "Yes — adding a bathroom is a full general contractor project and Construction Station handles it under one contract. It involves selecting a location (proximity to an existing plumbing stack significantly affects cost), running drain, supply, and vent lines, waterproofing, tile, fixtures, and drywall. Adding a bathroom within the existing footprint typically runs $25,000–$50,000 depending on plumbing complexity. Adding a bathroom as part of a room addition runs $50,000–$100,000+ for the addition and bathroom combined. Permits are always required. We assess your home's layout and plumbing and give you an honest cost range during the free consultation.",
+    a: `Yes — adding a bathroom is a full general contractor project and Construction Station handles it under one contract. It involves selecting a location (proximity to an existing plumbing stack significantly affects cost), running drain, supply, and vent lines, waterproofing, tile, fixtures, and drywall. Adding a bathroom within the existing footprint is priced at your consultation, mostly by plumbing complexity. Adding one as part of a room addition is priced like the addition itself, typically ${PRICES.perSqFt}. Permits are always required. We assess your home's layout and plumbing and give you an honest cost range during the free consultation.`,
   },
   {
     q: "What bathroom features add the most resale value?",
-    a: "In Inland Empire real estate, the bathroom features that return the most: (1) Walk-in shower in the master bath — especially with frameless glass; (2) Double vanity in the master — a major differentiator in the $500K–$800K price range; (3) Updated tile throughout — outdated tile immediately dates a bathroom; (4) Modern lighting with dimmer control; (5) Undermount sink with quartz or stone countertop. A mid-grade full master bath remodel ($30,000–$50,000) typically returns 60–75% of cost at resale. The return is higher in competitive markets and for homes where the bathroom is clearly the weakest room relative to the asking price.",
+    a: "In Inland Empire real estate, the bathroom features that return the most: (1) Walk-in shower in the master bath — especially with frameless glass; (2) Double vanity in the master — a major differentiator in the $500K–$800K price range; (3) Updated tile throughout — outdated tile immediately dates a bathroom; (4) Modern lighting with dimmer control; (5) Undermount sink with quartz or stone countertop. A mid-grade full master bath remodel typically returns 60–75% of cost at resale. The return is higher in competitive markets and for homes where the bathroom is clearly the weakest room relative to the asking price.",
   },
   {
     q: "How do I prevent mold in a remodeled bathroom?",
@@ -111,7 +112,7 @@ const FAQS = [
   },
   {
     q: "How much does a walk-in shower installation cost?",
-    a: "Walk-in shower costs range widely by size and finish level. A standard tub-to-shower conversion in a 60-inch alcove with ceramic tile, basic glass, and mid-grade fixtures runs $8,000–$14,000. A mid-grade standalone walk-in shower (36×48 or 48×48 inches) with porcelain tile, frameless glass, and Kohler or Moen fixtures runs $12,000–$22,000. A large luxury walk-in shower (60 inches or wider, with bench, niche, large-format tile, rain head, and frameless glass) runs $22,000–$40,000+. Natural stone, steam generator, and body sprays add cost. Construction Station provides itemized estimates so you can see exactly where the money goes before any work begins. Licensed CSLB #1108879.",
+    a: "Walk-in shower costs vary widely by size and finish level. A tub-to-shower conversion in a 60-inch alcove with ceramic tile and basic glass is the simplest; a 60-inch-plus luxury shower with bench, niche, large-format tile, rain head, and frameless glass is the most involved. Natural stone, steam generator, and body sprays add cost. We price yours at the free consultation, with an itemized estimate so you can see exactly where the money goes before any work begins. Licensed CSLB #1108879.",
   },
 ];
 
@@ -209,8 +210,8 @@ export default function BathroomRemodelingPage() {
                 <strong className="text-navy">Flooring</strong> uses
                 large-format porcelain tile, natural stone, or premium
                 LVP. Heated floors (Schluter Ditra-Heat or WarmlyYours)
-                are an affordable upgrade — about $1,500–$3,500 depending
-                on bathroom size, with lifetime element warranties.
+                are an affordable upgrade, with lifetime element
+                warranties.
               </p>
               <p className="text-navy/75 leading-[1.8] mb-5">
                 <strong className="text-navy">Accessibility upgrades</strong>{" "}

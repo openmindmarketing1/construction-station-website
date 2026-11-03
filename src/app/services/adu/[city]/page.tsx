@@ -21,6 +21,7 @@ import {
   serviceCityLinks,
 } from "@/lib/service-city-pages";
 import { businessEntity } from "@/lib/business-schema";
+import { PER_SQ_FT_DRIVERS, PRICES, PRICE_NOTE } from "@/lib/prices";
 
 const CALENDLY_URL =
   "https://calendly.com/constructionstation-sales/free-adu-remodeling-consult";
@@ -173,7 +174,7 @@ function buildFaqs(city: ADUCity) {
   return [
     {
       q: `How much does an ADU cost in ${city.name}?`,
-      a: `${city.name} ADUs typically run $250–$400 per sq ft for garage conversions, $300–$450 per sq ft for attached room-addition ADUs, and $350–$550 per sq ft for new detached ADUs. A 400 sq ft garage conversion typically lands between $100,000 and $160,000; a 1,200 sq ft detached ADU between $420,000 and $660,000 depending on finish level and site conditions. Your free ${city.name} feasibility consultation ends with a transparent line-item estimate.`,
+      a: `${city.name} ADUs typically run ${PRICES.perSqFt}, ${PER_SQ_FT_DRIVERS}. Site conditions such as utility runs and lot slope also play in. ${PRICE_NOTE} Your free ${city.name} feasibility consultation ends with a transparent line-item estimate.`,
     },
     {
       q: `How long does it take to get an ADU permit in ${city.name}?`,

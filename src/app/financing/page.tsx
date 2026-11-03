@@ -4,6 +4,7 @@ import { CS } from "@/lib/constants";
 import JsonLd from "@/components/JsonLd";
 import TrustBar from "@/components/TrustBar";
 import { businessEntity } from "@/lib/business-schema";
+import { PRICES, PRICE_NOTE } from "@/lib/prices";
 
 export const metadata: Metadata = {
   title: "Home Improvement Financing | HELOC, RenoFi & More",
@@ -343,26 +344,26 @@ export default function FinancingPage() {
             {[
               {
                 service: "Kitchen Remodel",
-                range: "$30K–$80K",
-                typical: "Most Inland Empire kitchen remodels fall in the $40K–$70K range. Semi-custom cabinetry, quartz countertops, and appliance upgrades. Full custom remodels with structural changes run $80K–$150K.",
+                range: PRICES.kitchen,
+                typical: `A refresh that keeps the layout sits toward the low end; semi-custom or custom cabinetry, quartz countertops, appliance upgrades, and structural changes move it up. ${PRICE_NOTE}`,
                 href: "/services/kitchen-remodeling",
               },
               {
                 service: "Bathroom Remodel",
-                range: "$15K–$50K",
-                typical: "Standard full bathroom remodels run $20K–$35K. Master suites with custom walk-in showers and heated floors reach $45K–$80K. Walk-in shower conversion from a tub alcove: $8K–$18K.",
+                range: PRICES.bathroom,
+                typical: `A cosmetic update sits toward the low end; master suites with custom walk-in showers and heated floors sit at the top of the range or above it. ${PRICE_NOTE}`,
                 href: "/services/bathroom-remodeling",
               },
               {
                 service: "ADU Construction",
-                range: "$85K–$400K+",
-                typical: "Garage conversions: $85K–$160K. Junior ADUs: $100K–$175K. Detached 1-bedroom ADUs: $175K–$280K. Detached 2-bedroom ADUs: $240K–$400K. All-in pricing including permits, design, and finishes.",
+                range: PRICES.perSqFt,
+                typical: `Where yours lands depends on the build (attached or simpler projects sit at the low end) and your interior selections. All-in pricing including permits, design, and finishes. ${PRICE_NOTE}`,
                 href: "/services/adu",
               },
               {
                 service: "Flooring Installation",
-                range: "$5K–$25K",
-                typical: "Whole-home LVP or laminate installation (1,200–2,000 sq ft): $8K–$18K. Hardwood: $12K–$28K. Tile in kitchen and bathrooms: $5K–$15K. Includes subfloor prep, removal, and trim.",
+                range: PRICES.hardSurface,
+                typical: `Hard-surface floors (LVP, tile, and hardwood) run ${PRICES.hardSurface}; carpet runs ${PRICES.carpet}. ${PRICE_NOTE}`,
                 href: "/services/flooring-installation-yucaipa-ca",
               },
             ].map((svc) => (

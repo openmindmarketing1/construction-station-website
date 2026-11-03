@@ -13,6 +13,7 @@ import JsonLd from "@/components/JsonLd";
 import { CS } from "@/lib/constants";
 import { CALLBACK_PROMISE_SHORT, MISSED_CALL_LINE } from "@/lib/callback-promise";
 import { BUSINESS_REF } from "@/lib/business-schema";
+import { PRICES, PRICE_NOTE } from "@/lib/prices";
 
 export const metadata: Metadata = {
   // `absolute` bypasses the root layout's "%s | Construction Station" template
@@ -70,7 +71,7 @@ const STEPS = [
 const FAQS = [
   {
     q: "How much does a kitchen remodel cost in the Inland Empire?",
-    a: "Kitchen remodel costs in the Inland Empire range from $35,000–$60,000 for a mid-grade refresh (new cabinets, countertops, flooring, and appliances without structural changes), $60,000–$100,000 for a full remodel with semi-custom cabinetry and stone countertops, and $100,000–$150,000+ for a luxury remodel with custom-built cabinetry, high-end appliances, and structural changes such as opening walls. The biggest cost drivers are cabinet quality (stock vs. semi-custom vs. fully custom), whether you're moving plumbing or gas lines, countertop material, and appliance tier. Construction Station provides a transparent, line-item written estimate after your free in-home design consultation — no vague 'starting at' pricing.",
+    a: `Kitchen remodels in the Inland Empire typically run ${PRICES.kitchen}. A refresh that keeps the layout sits toward the low end; custom cabinetry, high-end appliances, and structural changes such as opening walls push it toward the top. The biggest cost drivers are cabinet quality (stock vs. semi-custom vs. fully custom), whether you're moving plumbing or gas lines, countertop material, and appliance tier. ${PRICE_NOTE} Construction Station's written estimate is line-item — no vague 'starting at' pricing.`,
   },
   {
     q: "How long does a kitchen remodel take?",
@@ -86,7 +87,7 @@ const FAQS = [
   },
   {
     q: "Should I remodel my kitchen or just replace the cabinets?",
-    a: "If your cabinet boxes are solid and the layout works, cabinet refacing or door replacement can refresh the look for 40–60% of the cost of new cabinets. If the layout is inefficient, the boxes are failing, or you want to change the footprint, a full remodel is the better investment. Cabinet refacing typically runs $8,000–$20,000; a full kitchen remodel with new cabinets starts around $35,000. The right answer depends on cabinet condition, how long you plan to stay, and what's actually bothering you about the kitchen. We give you an honest assessment during the free consultation — no pressure to sell more than you need.",
+    a: `If your cabinet boxes are solid and the layout works, cabinet refacing or door replacement can refresh the look for 40–60% of the cost of new cabinets. If the layout is inefficient, the boxes are failing, or you want to change the footprint, a full remodel is the better investment. Refacing is priced at your consultation; a full kitchen remodel with new cabinets typically runs ${PRICES.kitchen}. The right answer depends on cabinet condition, how long you plan to stay, and what's actually bothering you about the kitchen. We give you an honest assessment during the free consultation — no pressure to sell more than you need.`,
   },
   {
     q: "What are the most popular kitchen layouts?",
@@ -106,7 +107,7 @@ const FAQS = [
   },
   {
     q: "What's the difference between stock, semi-custom, and custom cabinets?",
-    a: "Stock cabinets are pre-manufactured in standard 3-inch width increments, available off the shelf — fastest and least expensive, but limited configuration. Semi-custom cabinets are manufactured to order in more size increments with more door styles, finish options, and interior accessories — 3–8 week lead times, 30–60% more than stock. Custom cabinets are built to your exact dimensions by a cabinet maker — maximum flexibility and quality, but 8–16 week lead times and the highest cost. For most $50,000–$100,000 kitchen remodels, semi-custom delivers the best balance of quality, customization, and price. Full custom makes sense for unique spaces, luxury builds, or exact-fit requirements.",
+    a: "Stock cabinets are pre-manufactured in standard 3-inch width increments, available off the shelf — fastest and least expensive, but limited configuration. Semi-custom cabinets are manufactured to order in more size increments with more door styles, finish options, and interior accessories — 3–8 week lead times, 30–60% more than stock. Custom cabinets are built to your exact dimensions by a cabinet maker — maximum flexibility and quality, but 8–16 week lead times and the highest cost. For most kitchen remodels, semi-custom delivers the best balance of quality, customization, and price. Full custom makes sense for unique spaces, luxury builds, or exact-fit requirements.",
   },
   {
     q: "Do you handle kitchen plumbing and electrical?",

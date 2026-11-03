@@ -216,7 +216,7 @@ export default function FlooringInstallationPage() {
                 The right flooring transforms a house. The wrong installation
                 ruins it. Construction Station has been installing floors across
                 Yucaipa and the Inland Empire since 2008 — and we treat every
-                square foot with the same care we bring to a $150,000 kitchen
+                square foot with the same care we bring to a full kitchen
                 remodel.
               </p>
               <p className="text-navy/75 leading-[1.8] mb-5">

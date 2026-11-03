@@ -4,6 +4,7 @@ import Image from "next/image";
 import ServiceHero from "@/components/ServiceHero";
 import JsonLd from "@/components/JsonLd";
 import { BUSINESS_REF } from "@/lib/business-schema";
+import { PRICES } from "@/lib/prices";
 
 export const metadata: Metadata = {
   title: "ADU Floor Plans Inland Empire",
@@ -24,26 +25,25 @@ type FloorPlan = {
   size: string;
   beds: string;
   type: string;
-  price: string; // dollar amount only; rendered as "Est. {price} All-In"
   image?: string; // filename in PLAN_ASSET_BASE; omit when coming soon
   pdf?: string; // filename in PLAN_ASSET_BASE; omit when coming soon
   comingSoon?: boolean;
 };
 
 const PLANS: FloorPlan[] = [
-  { name: "The Yucaipa",        size: "400 sq ft",   beds: "1bd / 1ba",    type: "Garage Conversion", price: "$200K", image: "1780419820952-1br1ba_400sqft_garage_converstion.png", pdf: "1780419819936-3d-1bd1ba400sqft_garage_converstion.pdf" },
-  { name: "The Redlands",       size: "499 sq ft",   beds: "1bd / 1ba",    type: "Detached",     price: "$235K", image: "1779910725950-3d-1br1ba499.png",  pdf: "1779901312791-1br1ba499.pdf" },
-  { name: "The Highland",       size: "550 sq ft",   beds: "1bd / 1ba",    type: "Detached",     price: "$258K", image: "1779910725016-3d-1br1ba550.png",  pdf: "1779901313749-1br1ba550.pdf" },
-  { name: "The Loma Linda",     size: "749 sq ft",   beds: "1bd / 1ba",    type: "Detached",     price: "$300K", image: "1779910726961-3d-1br1ba749.png",  pdf: "1779901314421-1br1ba749.pdf" },
-  { name: "The San Bernardino", size: "756 sq ft",   beds: "1bd / 1ba",    type: "Detached",     price: "$302K", image: "1779910720690-3d-1br1ba756.png",  pdf: "1779901315194-1br1ba756.pdf" },
-  { name: "The Beaumont",       size: "999 sq ft",   beds: "1bd / 1ba",    type: "Detached",     price: "$375K", image: "1779910723947-3d-1br1ba999.png",  pdf: "1779901316446-1br1ba999.pdf" },
-  { name: "The Fontana",        size: "749 sq ft",   beds: "2bd / 2ba",    type: "Detached",     price: "$300K", image: "1779910719762-3d-2br2ba749.png",  pdf: "1779901317217-2br2ba749.pdf" },
-  { name: "The Ontario",        size: "800 sq ft",   beds: "2bd / 2ba",    type: "Detached",     price: "$320K", image: "1779910718081-3d-2br2ba800.png",  pdf: "1779901317974-2br2ba800.pdf" },
-  { name: "The Riverside",      size: "900 sq ft",   beds: "2bd / 2ba",    type: "Detached",     price: "$355K", image: "1780419821930-2bd2ba900sqft.png", pdf: "1780419822999-3d-2bd2ba900sqft.pdf" },
-  { name: "The Rancho",         size: "999 sq ft",   beds: "2bd / 2ba",    type: "Detached",     price: "$375K", image: "1779910716807-3d-2br2ba999.png",  pdf: "1779901318793-2br2ba999.pdf" },
-  { name: "The Murrieta",       size: "1,200 sq ft", beds: "2bd / 2ba",    type: "With Garage",  price: "$435K", image: "1779910721755-3d-2br2ba1200.jpeg", pdf: "1779901319495-2br2ba1200.pdf" },
-  { name: "The Palm Desert",    size: "1,155 sq ft", beds: "3bd / 2ba",    type: "2-Story",      price: "$423K", image: "1779910722713-3d-3br2ba1155.png",  pdf: "1779901320177-3br2ba1155.pdf" },
-  { name: "The Inland",         size: "1,194 sq ft", beds: "3bd / 2ba",    type: "Detached",     price: "$432K", image: "1779910719101-3d-3br2ba1194.jpeg", pdf: "1779901302440-3br2ba1194.pdf" },
+  { name: "The Yucaipa",        size: "400 sq ft",   beds: "1bd / 1ba",    type: "Garage Conversion", image: "1780419820952-1br1ba_400sqft_garage_converstion.png", pdf: "1780419819936-3d-1bd1ba400sqft_garage_converstion.pdf" },
+  { name: "The Redlands",       size: "499 sq ft",   beds: "1bd / 1ba",    type: "Detached", image: "1779910725950-3d-1br1ba499.png",  pdf: "1779901312791-1br1ba499.pdf" },
+  { name: "The Highland",       size: "550 sq ft",   beds: "1bd / 1ba",    type: "Detached", image: "1779910725016-3d-1br1ba550.png",  pdf: "1779901313749-1br1ba550.pdf" },
+  { name: "The Loma Linda",     size: "749 sq ft",   beds: "1bd / 1ba",    type: "Detached", image: "1779910726961-3d-1br1ba749.png",  pdf: "1779901314421-1br1ba749.pdf" },
+  { name: "The San Bernardino", size: "756 sq ft",   beds: "1bd / 1ba",    type: "Detached", image: "1779910720690-3d-1br1ba756.png",  pdf: "1779901315194-1br1ba756.pdf" },
+  { name: "The Beaumont",       size: "999 sq ft",   beds: "1bd / 1ba",    type: "Detached", image: "1779910723947-3d-1br1ba999.png",  pdf: "1779901316446-1br1ba999.pdf" },
+  { name: "The Fontana",        size: "749 sq ft",   beds: "2bd / 2ba",    type: "Detached", image: "1779910719762-3d-2br2ba749.png",  pdf: "1779901317217-2br2ba749.pdf" },
+  { name: "The Ontario",        size: "800 sq ft",   beds: "2bd / 2ba",    type: "Detached", image: "1779910718081-3d-2br2ba800.png",  pdf: "1779901317974-2br2ba800.pdf" },
+  { name: "The Riverside",      size: "900 sq ft",   beds: "2bd / 2ba",    type: "Detached", image: "1780419821930-2bd2ba900sqft.png", pdf: "1780419822999-3d-2bd2ba900sqft.pdf" },
+  { name: "The Rancho",         size: "999 sq ft",   beds: "2bd / 2ba",    type: "Detached", image: "1779910716807-3d-2br2ba999.png",  pdf: "1779901318793-2br2ba999.pdf" },
+  { name: "The Murrieta",       size: "1,200 sq ft", beds: "2bd / 2ba",    type: "With Garage", image: "1779910721755-3d-2br2ba1200.jpeg", pdf: "1779901319495-2br2ba1200.pdf" },
+  { name: "The Palm Desert",    size: "1,155 sq ft", beds: "3bd / 2ba",    type: "2-Story", image: "1779910722713-3d-3br2ba1155.png",  pdf: "1779901320177-3br2ba1155.pdf" },
+  { name: "The Inland",         size: "1,194 sq ft", beds: "3bd / 2ba",    type: "Detached", image: "1779910719101-3d-3br2ba1194.jpeg", pdf: "1779901302440-3br2ba1194.pdf" },
 ];
 
 const serviceSchema = {
@@ -132,8 +132,13 @@ export default function ADUFloorPlansPage() {
                     </span>
                   </div>
 
-                  <div className="text-gold font-semibold mb-5">
-                    Est. {p.price} All-In
+                  <div className="mb-5">
+                    <div className="text-gold-deep font-semibold">
+                      Typical range: {PRICES.perSqFt}
+                    </div>
+                    <div className="text-navy/60 text-xs mt-1">
+                      Final price after a free consultation.
+                    </div>
                   </div>
 
                   {/* Buttons */}

@@ -15,6 +15,7 @@
 import { useRef } from "react";
 import Link from "next/link";
 import { useGSAP, gsap } from "@/lib/design-system";
+import { PER_SQ_FT_FROM } from "@/lib/prices";
 
 // Gold accent for the redesign (slightly warmer than the global token).
 const GOLD = "#C9A84C";
@@ -24,7 +25,7 @@ const STATS: { value: string; label: string }[] = [
   { value: "A+", label: "BBB Rated" },
   { value: "CSLB #1108879", label: "Licensed" },
   { value: "29", label: "Cities Served" },
-  { value: "$200K", label: "ADUs From" },
+  { value: PER_SQ_FT_FROM, label: "ADUs From" },
 ];
 
 export default function HeroVideo() {

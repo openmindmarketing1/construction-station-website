@@ -11,6 +11,7 @@ import JsonLd from "@/components/JsonLd";
 import { CS } from "@/lib/constants";
 import { CALLBACK_PROMISE_SHORT, MISSED_CALL_LINE } from "@/lib/callback-promise";
 import { BUSINESS_REF, businessEntity } from "@/lib/business-schema";
+import { PRICES, PRICE_NOTE } from "@/lib/prices";
 
 export const metadata: Metadata = {
   title: {
@@ -103,7 +104,7 @@ const PROJECTS = [
 const FAQS = [
   {
     q: "How much does a kitchen remodel cost in Yucaipa CA?",
-    a: "A kitchen remodel in Yucaipa CA typically ranges from $35,000 for a mid-grade refresh (new cabinets, countertops, and appliances while keeping the existing layout) up to $120,000 or more for a full luxury build with custom cabinetry, stone counters, high-end appliances, and a layout change. Most Yucaipa homeowners who do a complete transformation — new cabinets, quartz countertops, tile backsplash, flooring, and appliances — land between $50,000 and $85,000. Construction Station provides a transparent line-item quote after your free in-home consultation. No surprise upcharges, ever.",
+    a: `A kitchen remodel in Yucaipa CA typically runs ${PRICES.kitchen}. A refresh that keeps the existing layout (new cabinets, countertops, and appliances) sits toward the low end; a full luxury build with custom cabinetry, stone counters, high-end appliances, and a layout change sits toward the top. ${PRICE_NOTE} Your line-item quote has no surprise upcharges, ever.`,
   },
   {
     q: "Who is the best kitchen remodeler in Yucaipa?",
@@ -441,7 +442,7 @@ export default function KitchenRemodelerYucaipaPage() {
                 <tr className="bg-navy text-white">
                   <th className="px-5 py-4 font-body font-semibold uppercase tracking-wider text-xs">Project Type</th>
                   <th className="px-5 py-4 font-body font-semibold uppercase tracking-wider text-xs">What&rsquo;s Included</th>
-                  <th className="px-5 py-4 font-body font-semibold uppercase tracking-wider text-xs">Typical Range</th>
+                  <th className="px-5 py-4 font-body font-semibold uppercase tracking-wider text-xs">Where It Lands</th>
                 </tr>
               </thead>
               <tbody>
@@ -449,22 +450,22 @@ export default function KitchenRemodelerYucaipaPage() {
                   {
                     type: "Cosmetic Refresh",
                     includes: "Cabinet refinishing or refacing, new countertops, backsplash, fixtures",
-                    range: "$20,000 – $40,000",
+                    range: "Low end",
                   },
                   {
                     type: "Mid-Range Remodel",
                     includes: "Semi-custom cabinets, quartz countertops, new appliances, tile, flooring",
-                    range: "$40,000 – $75,000",
+                    range: "Middle",
                   },
                   {
                     type: "Full Remodel",
                     includes: "New cabinets, countertops, appliances, flooring, lighting, plumbing",
-                    range: "$75,000 – $100,000",
+                    range: "Upper middle",
                   },
                   {
                     type: "Luxury / Open-Concept",
                     includes: "Custom cabinets, load-bearing wall removal, island, premium appliances, full design",
-                    range: "$100,000 – $150,000+",
+                    range: "Top end",
                   },
                 ].map((row, i) => (
                   <tr
@@ -480,9 +481,9 @@ export default function KitchenRemodelerYucaipaPage() {
             </table>
           </div>
           <p className="mt-5 text-navy/60 text-sm leading-relaxed max-w-4xl">
-            Ranges reflect 2026 Yucaipa / Inland Empire market conditions. Actual cost depends on kitchen
-            size, layout changes, finish level, and appliance selections. Your free in-home consultation
-            ends with a line-item estimate — no vague ranges, no bait-and-switch.
+            Yucaipa kitchen remodels typically run {PRICES.kitchen}. Where yours lands depends on
+            kitchen size, layout changes, finish level, and appliance selections. {PRICE_NOTE} Your
+            free in-home consultation ends with a line-item estimate — no bait-and-switch.
           </p>
         </div>
       </section>

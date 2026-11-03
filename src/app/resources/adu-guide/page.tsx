@@ -4,6 +4,7 @@ import JsonLd from "@/components/JsonLd";
 import FAQAccordion from "@/components/FAQAccordion";
 import { CS } from "@/lib/constants";
 import { BUSINESS_REF } from "@/lib/business-schema";
+import { PER_SQ_FT_DRIVERS, PRICES, PRICE_NOTE } from "@/lib/prices";
 
 export const metadata: Metadata = {
   title: {
@@ -21,7 +22,7 @@ const SITE_URL =
 const GUIDE_FAQS = [
   {
     q: "What is the difference between an ADU and a JADU?",
-    a: "A full ADU can be detached, attached, or a garage conversion — up to 1,200 sq ft — and is a completely independent dwelling. A Junior ADU (JADU) is limited to 500 sq ft, must be created within the existing home's footprint, and must share a wall with the main residence. JADUs have their own entrance and efficiency kitchen but typically cost less because they use existing structure. For comparison: our Redlands Jr. ADU (465 sq ft) came in at approximately $200K all-in, while a similar-size detached ADU would run $200K–$275K.",
+    a: "A full ADU can be detached, attached, or a garage conversion — up to 1,200 sq ft — and is a completely independent dwelling. A Junior ADU (JADU) is limited to 500 sq ft, must be created within the existing home's footprint, and must share a wall with the main residence. JADUs have their own entrance and efficiency kitchen but typically cost less because they use existing structure. For comparison: our Redlands Jr. ADU (465 sq ft) came in at approximately $200K all-in, while a similar-size detached ADU would typically cost more.",
   },
   {
     q: "How has California law changed to make ADUs easier to build?",
@@ -234,28 +235,28 @@ export default function ADUGuidePage() {
                 {[
                   {
                     title: "Detached ADU",
-                    range: "$175K–$400K+",
+                    range: `${PRICES.perSqFt}, middle to top`,
                     size: "Up to 1,200 sq ft",
                     detail:
                       "A standalone structure built in the backyard — completely separate from the main home with its own foundation, utilities, address, and entrance. Maximum design flexibility and privacy. The most expensive ADU type but also the most rentable and the most valuable at resale.",
                   },
                   {
                     title: "Attached ADU",
-                    range: "$120K–$280K",
+                    range: `${PRICES.perSqFt}, toward the low end`,
                     size: "Up to 50% of main home or 1,200 sq ft",
                     detail:
                       "An addition to the main home that shares at least one wall. Can be added to the side or rear of the home. Shares the main home's foundation system where possible, reducing cost. Requires its own separate entrance.",
                   },
                   {
                     title: "Garage Conversion ADU",
-                    range: "$85K–$160K",
+                    range: `${PRICES.perSqFt}, toward the low end`,
                     size: "Existing garage footprint",
                     detail:
                       "Converting an existing attached or detached garage into a fully permitted living space. The fastest and most affordable ADU path. California prohibits cities from requiring replacement parking. Construction Station has completed multiple garage conversions in Redlands and the broader Inland Empire.",
                   },
                   {
                     title: "Junior ADU (JADU)",
-                    range: "$100K–$175K",
+                    range: `${PRICES.perSqFt}, toward the low end`,
                     size: "Up to 500 sq ft",
                     detail:
                       "Carved from within the existing home footprint — typically a bedroom, garage, or interior space. Must share a wall with the main residence. Requires its own exterior entrance and efficiency kitchen. Our Redlands Jr. ADU project (465 sq ft, 1BD/1BA) came in at approximately $200K all-in.",
@@ -407,10 +408,10 @@ export default function ADUGuidePage() {
               </h2>
               <div className="prose max-w-none text-navy/75 leading-[1.8] space-y-4 mb-8">
                 <p>
-                  ADU costs vary significantly by type, size, site conditions,
-                  and finish level. The figures below are 2026 all-in estimates
-                  for the Inland Empire — including design, permits, construction,
-                  MEP, finishes, and utility connections.
+                  Inland Empire ADUs typically run {PRICES.perSqFt} all-in —
+                  including design, permits, construction, MEP, finishes, and
+                  utility connections — {PER_SQ_FT_DRIVERS}. The table shows
+                  where each type usually lands. {PRICE_NOTE}
                 </p>
               </div>
               <div className="overflow-x-auto">
@@ -419,18 +420,18 @@ export default function ADUGuidePage() {
                     <tr className="bg-navy text-white">
                       <th className="text-left p-4 font-body font-semibold">ADU Type</th>
                       <th className="text-left p-4 font-body font-semibold">Size Range</th>
-                      <th className="text-left p-4 font-body font-semibold">All-In Cost Range</th>
+                      <th className="text-left p-4 font-body font-semibold">Where It Usually Lands</th>
                     </tr>
                   </thead>
                   <tbody>
                     {[
-                      { type: "Garage Conversion (Attached)", size: "Existing footprint", cost: "$85,000–$130,000" },
-                      { type: "Garage Conversion (Detached)", size: "Existing footprint", cost: "$95,000–$160,000" },
-                      { type: "Junior ADU (JADU)", size: "Up to 500 sq ft", cost: "$100,000–$175,000" },
-                      { type: "Detached ADU — Studio", size: "400–500 sq ft", cost: "$150,000–$210,000" },
-                      { type: "Detached ADU — 1 Bedroom", size: "550–700 sq ft", cost: "$185,000–$270,000" },
-                      { type: "Detached ADU — 2 Bedroom", size: "750–1,000 sq ft", cost: "$240,000–$350,000" },
-                      { type: "Detached ADU — Max Size", size: "1,000–1,200 sq ft", cost: "$300,000–$420,000+" },
+                      { type: "Garage Conversion (Attached)", size: "Existing footprint", cost: "Toward the low end" },
+                      { type: "Garage Conversion (Detached)", size: "Existing footprint", cost: "Toward the low end" },
+                      { type: "Junior ADU (JADU)", size: "Up to 500 sq ft", cost: "Toward the low end" },
+                      { type: "Detached ADU — Studio", size: "400–500 sq ft", cost: "Middle to top" },
+                      { type: "Detached ADU — 1 Bedroom", size: "550–700 sq ft", cost: "Middle to top" },
+                      { type: "Detached ADU — 2 Bedroom", size: "750–1,000 sq ft", cost: "Middle to top" },
+                      { type: "Detached ADU — Max Size", size: "1,000–1,200 sq ft", cost: "Middle to top" },
                     ].map((row, i) => (
                       <tr
                         key={row.type}
@@ -473,8 +474,7 @@ export default function ADUGuidePage() {
               </h2>
               <div className="prose max-w-none text-navy/75 leading-[1.8] space-y-4 mb-8">
                 <p>
-                  ADU projects are large investments — $100,000–$400,000 for
-                  most types. Most homeowners use some form of financing rather
+                  ADU projects are large investments. Most homeowners use some form of financing rather
                   than cash. The right product depends on your current equity,
                   existing mortgage, credit profile, and long-term goals.
                 </p>
@@ -744,8 +744,7 @@ export default function ADUGuidePage() {
                   { label: "Owner occupancy required?", value: "No" },
                   { label: "Parking required (garage conv.)?", value: "No" },
                   { label: "HOA ban allowed?", value: "No" },
-                  { label: "Garage conversion cost (IE)", value: "$85K–$160K" },
-                  { label: "Detached ADU cost (IE)", value: "$150K–$420K" },
+                  { label: "Typical ADU cost (IE)", value: PRICES.perSqFt },
                   { label: "Typical rental income", value: "$1,200–$2,400/mo" },
                   { label: "Construction Station license", value: "CSLB #1108879" },
                 ].map((f) => (

@@ -8,6 +8,7 @@ import ServiceCityLinksStrip from "@/components/ServiceCityLinksStrip";
 import JsonLd from "@/components/JsonLd";
 import { CS } from "@/lib/constants";
 import { BUSINESS_REF, businessEntity } from "@/lib/business-schema";
+import { PER_SQ_FT_DRIVERS, PRICES, PRICE_NOTE } from "@/lib/prices";
 
 export const metadata: Metadata = {
   title: "Room Additions & Home Expansions",
@@ -66,7 +67,7 @@ const FAQS = [
   },
   {
     q: "What's the average cost of a room addition?",
-    a: "Inland Empire room additions typically run $350–$550 per square foot for standard ground-floor work, and $450–$700 per square foot for second-story additions because of structural reinforcement and roof modification. Master suites with high-end finishes can push higher. Your free consultation ends with a transparent line-item estimate — no surprise upcharges.",
+    a: `Inland Empire room additions typically run ${PRICES.perSqFt}, ${PER_SQ_FT_DRIVERS}. Second-story additions sit higher because of structural reinforcement and roof modification. ${PRICE_NOTE} Your estimate is line-item — no surprise upcharges.`,
   },
   {
     q: "Can you do a garage conversion or ADU instead?",

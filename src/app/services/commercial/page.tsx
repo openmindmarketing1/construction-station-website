@@ -59,7 +59,7 @@ const STEPS = [
 const FAQS = [
   {
     q: "What types of commercial projects do you handle?",
-    a: "We handle the full range of commercial interior construction: tenant improvements (TIs), restaurant and retail buildouts, office renovations, commercial flooring installations, and ADA compliance upgrades. We work for tenants, landlords, property managers, franchisees, and owner-operators across San Bernardino and Riverside counties. Project sizes range from a $30,000 suite refresh to $500,000+ full buildouts.",
+    a: "We handle the full range of commercial interior construction: tenant improvements (TIs), restaurant and retail buildouts, office renovations, commercial flooring installations, and ADA compliance upgrades. We work for tenants, landlords, property managers, franchisees, and owner-operators across San Bernardino and Riverside counties. Every tenant improvement is quoted after a site visit.",
   },
   {
     q: "Do you do tenant improvements?",

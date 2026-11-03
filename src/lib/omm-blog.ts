@@ -19,6 +19,14 @@ export interface OmmBlogPost {
   html_content: string;
   published_at: string | null;
   generated_at: string | null;
+  /** The post's named author (2026-11-02), or null when OMM has none. */
+  author?: OmmBlogAuthor | null;
+}
+
+export interface OmmBlogAuthor {
+  name: string;
+  title: string | null;
+  bio: string | null;
 }
 
 interface OmmBlogResponse {

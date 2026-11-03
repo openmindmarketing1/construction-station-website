@@ -7,6 +7,7 @@ import FAQAccordion from "@/components/FAQAccordion";
 import JsonLd from "@/components/JsonLd";
 import { CS } from "@/lib/constants";
 import { BUSINESS_REF, businessEntity } from "@/lib/business-schema";
+import { PRICES, PRICE_NOTE } from "@/lib/prices";
 
 export const metadata: Metadata = {
   title: "Window & Door Replacement",
@@ -50,7 +51,7 @@ const STEPS = [
 const FAQS = [
   {
     q: "How much do replacement windows cost in the Inland Empire?",
-    a: "Vinyl dual-pane replacement windows typically run $650–$1,400 per opening installed, depending on size, glass package, and grids. Fiberglass and clad-wood units run $1,200–$2,800. Sliding glass patio doors run $2,400–$5,500 installed. Your free measure ends with a written, line-item quote — no high-pressure sales presentation, no fake discounts.",
+    a: `Replacement windows typically run ${PRICES.windows}, depending on size, frame material (vinyl, fiberglass, or clad wood), glass package, and grids. Sliding glass patio doors are priced at your free measure. ${PRICE_NOTE} You get a written, line-item quote — no high-pressure sales presentation, no fake discounts.`,
   },
   {
     q: "Do new windows really lower energy bills?",

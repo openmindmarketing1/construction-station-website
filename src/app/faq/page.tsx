@@ -4,6 +4,7 @@ import FAQAccordion from "@/components/FAQAccordion";
 import JsonLd from "@/components/JsonLd";
 import { CS } from "@/lib/constants";
 import { MISSED_CALL_LINE } from "@/lib/callback-promise";
+import { PER_SQ_FT_DRIVERS, PRICES, PRICE_NOTE } from "@/lib/prices";
 
 export const metadata: Metadata = {
   title: {
@@ -22,7 +23,7 @@ const FAQS = [
   },
   {
     q: "How much does kitchen remodeling cost in the Inland Empire?",
-    a: "Kitchen remodeling in the Inland Empire typically ranges from $35,000 for a mid-grade refresh (new cabinets, countertops, appliances) to $120,000+ for a full luxury build with custom cabinetry, stone countertops, and premium appliances. Cost depends on square footage, layout changes, finish level, and whether plumbing or electrical relocation is required. We provide a transparent, line-item written estimate after your free in-home consultation — no surprise upcharges.",
+    a: `Kitchen remodeling in the Inland Empire typically runs ${PRICES.kitchen}. Cost depends on square footage, layout changes, finish level, and whether plumbing or electrical relocation is required. ${PRICE_NOTE} Your written estimate is line-item, with no surprise upcharges.`,
   },
   {
     q: "What flooring options do you offer?",
@@ -54,7 +55,7 @@ const FAQS = [
   },
   {
     q: "How much does ADU construction cost in Yucaipa?",
-    a: "ADU construction costs in Yucaipa generally range from $150,000 to $350,000+ depending on size, design complexity, site conditions, and finish level. A modest detached studio (400–500 sq ft) starts around $150,000–$200,000 all-in including permits and utility connections. A two-bedroom, one-bath unit (700–900 sq ft) typically runs $250,000–$350,000. Costs vary with foundation type, lot slope, setback requirements, and interior finishes. We offer a free ADU feasibility consultation to give you an accurate range for your property.",
+    a: `ADU construction in Yucaipa typically runs ${PRICES.perSqFt}, ${PER_SQ_FT_DRIVERS}. Foundation type, lot slope, setback requirements, and utility connections also affect it. ${PRICE_NOTE} We offer a free ADU feasibility consultation to give you an accurate range for your property.`,
   },
   {
     q: "Do you offer financing for remodeling projects?",

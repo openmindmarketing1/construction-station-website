@@ -1,3 +1,5 @@
+import { PRICES, PRICE_NOTE } from "@/lib/prices";
+
 export type CityFaq = { q: string; a: string };
 
 export type City = {
@@ -194,7 +196,7 @@ export const CITIES: City[] = [
       },
       {
         q: "How much does a home remodel cost in Norco?",
-        a: "As reference points: full kitchen remodels typically run $45,000–$95,000, bathroom remodels $20,000–$45,000, room additions $350–$550 per sq ft, and ADUs $250–$550 per sq ft depending on type. Norco's larger ranch floor plans sometimes mean more square footage than a typical suburb, so we quote every project as a fixed line-item price after a free consultation.",
+        a: `Typical ranges: kitchen remodels ${PRICES.kitchen}, bathrooms ${PRICES.bathroom}, and room additions and ADUs ${PRICES.perSqFt}. Norco's larger ranch floor plans sometimes mean more square footage than a typical suburb. ${PRICE_NOTE}`,
       },
       {
         q: "Do you understand Norco's animal-keeping zoning?",
@@ -244,7 +246,7 @@ export const CITIES: City[] = [
       },
       {
         q: "How much does remodeling cost in Eastvale?",
-        a: "Typical ranges: full kitchen remodels $45,000–$95,000, bathrooms $20,000–$45,000, whole-home LVP flooring $6–$9 per sq ft installed, room additions $350–$550 per sq ft, and ADUs $250–$550 per sq ft. Every quote is a fixed line-item price — no allowances that balloon mid-project.",
+        a: `Typical ranges: kitchen remodels ${PRICES.kitchen}, bathrooms ${PRICES.bathroom}, hard-surface flooring ${PRICES.hardSurface}, carpet ${PRICES.carpet}, and room additions and ADUs ${PRICES.perSqFt}. ${PRICE_NOTE} Every quote is a fixed line-item price — no allowances that balloon mid-project.`,
       },
       {
         q: "Are you licensed and insured for work in Eastvale?",
@@ -278,7 +280,7 @@ export const CITIES: City[] = [
       },
       {
         q: "How much does a remodel cost in Perris?",
-        a: "Typical ranges: kitchens $45,000–$95,000, bathrooms $20,000–$45,000, flooring $6–$9 per sq ft installed for quality LVP, room additions $350–$550 per sq ft, ADUs $250–$550 per sq ft. Perris's affordability means these projects often return more at appraisal, proportionally, than the same work elsewhere in the region.",
+        a: `Typical ranges: kitchen remodels ${PRICES.kitchen}, bathrooms ${PRICES.bathroom}, hard-surface flooring ${PRICES.hardSurface}, carpet ${PRICES.carpet}, and room additions and ADUs ${PRICES.perSqFt}. ${PRICE_NOTE} Perris's affordability means these projects often return more at appraisal, proportionally, than the same work elsewhere in the region.`,
       },
       {
         q: "Can you handle older Perris homes with outdated plumbing or electrical?",
@@ -332,7 +334,7 @@ export const CITIES: City[] = [
       },
       {
         q: "How much does remodeling cost in Palm Springs?",
-        a: "Typical ranges: full kitchen remodels $45,000–$95,000 (design-forward mid-century projects can run higher), bathrooms $20,000–$45,000, room additions and casitas $350–$550 per sq ft, ADUs $250–$550 per sq ft. Every project is quoted as a fixed line-item price after a free consultation.",
+        a: `Typical ranges: kitchen remodels ${PRICES.kitchen}, bathrooms ${PRICES.bathroom}, and room additions, casitas and ADUs ${PRICES.perSqFt}. ${PRICE_NOTE}`,
       },
     ],
   },
@@ -374,7 +376,7 @@ export const CITIES: City[] = [
       },
       {
         q: "How much does remodeling cost in Cathedral City?",
-        a: "Typical ranges: kitchens $45,000–$95,000, bathrooms $20,000–$40,000, flooring $6–$18 per sq ft installed depending on material, additions $350–$550 per sq ft, ADUs $250–$550 per sq ft. Every project gets a written fixed price after a free consultation.",
+        a: `Typical ranges: kitchen remodels ${PRICES.kitchen}, bathrooms ${PRICES.bathroom}, hard-surface flooring ${PRICES.hardSurface}, carpet ${PRICES.carpet}, and room additions and ADUs ${PRICES.perSqFt}. ${PRICE_NOTE}`,
       },
     ],
   },
@@ -416,7 +418,7 @@ export const CITIES: City[] = [
       },
       {
         q: "How much does remodeling cost in Palm Desert?",
-        a: "Typical ranges: full kitchen remodels $45,000–$95,000 (higher for the custom, panel-ready-appliance projects common here), bathrooms $20,000–$50,000, additions and casitas $350–$550 per sq ft, ADUs $250–$550 per sq ft. Every project is quoted as a written fixed line-item price after a free consultation.",
+        a: `Typical ranges: kitchen remodels ${PRICES.kitchen}, bathrooms ${PRICES.bathroom}, and additions, casitas and ADUs ${PRICES.perSqFt}. ${PRICE_NOTE}`,
       },
     ],
   },
