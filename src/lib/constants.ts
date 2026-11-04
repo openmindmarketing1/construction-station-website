@@ -83,6 +83,15 @@ export const SERVICES = [
     long: "Detached and attached ADUs from permits to keys — turnkey backyard homes built to California code.",
   },
   {
+    name: "Interior & Exterior Painting",
+    slug: "painting",
+    category: "residential" as const,
+    hasPage: true,
+    icon: "🎨",
+    description: "Interior and exterior painting, quoted after a free consultation.",
+    long: "Rooms, ceilings, trim, and doors inside; the outside of your home too. On its own or as part of your remodel.",
+  },
+  {
     name: "Commercial Services",
     slug: "commercial",
     category: "commercial" as const,
@@ -165,7 +174,7 @@ export const CITIES_SERVED = [
 export const HOURS = [
   { day: "Monday – Thursday", time: "7:00 AM – 5:00 PM" },
   { day: "Friday", time: "7:00 AM – 4:00 PM" },
-  { day: "Saturday", time: "10:00 AM – 3:00 PM" },
+  { day: "Saturday", time: "10:00 AM – 2:00 PM" },
   { day: "Sunday", time: "Closed" },
 ];
 

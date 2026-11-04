@@ -35,7 +35,7 @@ const FAQS = [
   },
   {
     q: "How long does a bathroom remodel take?",
-    a: "A standard bathroom remodel runs 4–8 weeks from demo to final walkthrough. A cosmetic refresh — new vanity, fixtures, and paint — can finish in 1–2 weeks. Full gut remodels with custom tile work, layout changes, and new plumbing typically run 6–10 weeks. We provide a written project schedule before signing so you know exactly when each phase starts and finishes. Most clients remain in their homes throughout.",
+    a: "A bathroom remodel typically takes 2–4 weeks from demo to final walkthrough. A cosmetic refresh — new vanity, fixtures, and paint — can go faster, and a full gut with custom tile work, layout changes, and new plumbing can take longer. We provide a written project schedule before signing so you know exactly when each phase starts and finishes. Most clients remain in their homes throughout.",
   },
   {
     q: "Are you licensed and insured?",

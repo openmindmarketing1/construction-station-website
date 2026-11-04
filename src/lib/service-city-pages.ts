@@ -137,7 +137,7 @@ export const SERVICE_CITY_SERVICES: ServiceCityService[] = [
       },
       {
         q: `How long does a bathroom remodel take in ${city.name}?`,
-        a: `A typical ${city.name} bathroom remodel takes 2–4 weeks of construction once permits and materials are in hand. Primary-suite expansions that move walls or plumbing can run 5–8 weeks. Because we schedule every trade ourselves, the tile setter shows up the day after the waterproofing passes inspection — not two weeks later.`,
+        a: `A typical ${city.name} bathroom remodel takes 2–4 weeks of construction once permits and materials are in hand. Primary-suite expansions that move walls or plumbing can take longer. Because we schedule every trade ourselves, the tile setter shows up the day after the waterproofing passes inspection — not two weeks later.`,
       },
       {
         q: `Do I need a permit for a bathroom remodel in ${city.name}?`,

@@ -13,7 +13,9 @@ const SERVICE_IMAGES: Record<string, string> = {
 };
 
 export default function ServicesGrid() {
-  const residential = SERVICES.filter((s) => s.category === "residential");
+  const residential = SERVICES.filter(
+    (s) => s.category === "residential" && SERVICE_IMAGES[s.slug]
+  );
   const [featured, ...rest] = residential;
 
   return (

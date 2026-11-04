@@ -9,7 +9,7 @@ import { businessEntity } from "@/lib/business-schema";
 export const metadata: Metadata = {
   title: "About Us",
   description:
-    "Meet Gregory Pilon and Gustavo Mancilla — the owners behind Construction Station. Flooring roots since 2008, general contracting since 2018, merged 2023. Licensed GC CSLB #1108879, BBB A+.",
+    "Meet Gregory Pilon and Gustavo Mancilla — the owners behind Construction Station. Founded in 2008 as Carpet Station; now Construction Station Flooring and Design. Licensed GC CSLB #1108879, BBB A+.",
   alternates: { canonical: "/about" },
 };
 
@@ -19,21 +19,9 @@ const SB = "https://ihvgrybmtngekmfjpxnz.supabase.co/storage/v1/object/public/us
 const TIMELINE = [
   {
     year: "2008",
-    event: "Carpet Station Tile and Wood opens",
+    event: "Founded as Carpet Station",
     detail:
-      "A flooring shop opens in the Inland Empire, building a reputation for quality hardwood, tile, and LVP installations across the region over the next 15 years.",
-  },
-  {
-    year: "2018",
-    event: "Gerold Construction established",
-    detail:
-      "General contracting capabilities are added — kitchens, bathrooms, ADUs, and room additions — expanding what the team can deliver to Inland Empire homeowners.",
-  },
-  {
-    year: "April 2023",
-    event: "Construction Station is born",
-    detail:
-      "Gregory Pilon and Gustavo Mancilla acquire both companies and merge them into Construction Station Flooring and Design — one licensed GC firm with flooring roots reaching back to 2008.",
+      "Founded in 2008 as Carpet Station; now Construction Station Flooring and Design.",
   },
   {
     year: "Today",
@@ -103,7 +91,7 @@ const WHY_US = [
 ];
 
 const TRUST_STATS = [
-  { value: "2008", label: "Flooring roots since" },
+  { value: "2008", label: "Founded in" },
   { value: "17", label: "Five-star Google reviews" },
   { value: "16+", label: "Inland Empire cities served" },
   { value: "#1108879", label: "CSLB License" },
@@ -194,13 +182,13 @@ export default function AboutPage() {
             </span>
           </div>
           <h1 className="font-display text-white text-5xl md:text-7xl lg:text-8xl leading-[1] mb-8 max-w-4xl">
-            Two Trusted Local Companies,{" "}
-            <span className="italic text-gold">One Team</span>
+            Serving the Inland Empire{" "}
+            <span className="italic text-gold">Since 2008</span>
           </h1>
           <p className="text-white/70 text-lg md:text-xl max-w-2xl leading-relaxed">
-            Construction Station brings together 15+ years of Inland Empire
-            flooring expertise and 6+ years of general contracting under one
-            licensed roof — permit-ready and community first.
+            Founded in 2008 as Carpet Station; now Construction Station
+            Flooring and Design. One licensed team — permit-ready and
+            community first.
           </p>
         </div>
       </section>
@@ -215,8 +203,8 @@ export default function AboutPage() {
             </span>
           </div>
           <h2 className="font-display text-navy text-4xl md:text-5xl lg:text-6xl mb-20 leading-[1.1]">
-            Built on two companies,{" "}
-            <span className="italic">one mission.</span>
+            Rooted here{" "}
+            <span className="italic">since 2008.</span>
           </h2>
 
           <div className="relative">

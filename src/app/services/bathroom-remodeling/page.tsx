@@ -60,7 +60,7 @@ const FAQS = [
   },
   {
     q: "How long does a bathroom remodel take?",
-    a: "Timeline depends on scope: a cosmetic refresh (new vanity, toilet, mirror, and paint) takes 1–2 weeks; a standard full remodel (gut, new tile, plumbing) takes 3–6 weeks; a master bath gut with custom tile and structural changes runs 6–10 weeks. Custom tile work — especially large-format, mosaic, or natural stone — takes longer due to layout, cutting, and curing requirements. We provide a written project schedule before signing so you know when each phase starts and finishes.",
+    a: "A bathroom remodel typically takes 2–4 weeks. A cosmetic refresh (new vanity, toilet, mirror, and paint) can go faster; a master bath gut with custom tile and structural changes can take longer. Custom tile work — especially large-format, mosaic, or natural stone — takes longer due to layout, cutting, and curing requirements. We provide a written project schedule before signing so you know when each phase starts and finishes.",
   },
   {
     q: "What does the bathroom remodel process look like?",

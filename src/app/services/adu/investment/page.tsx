@@ -7,7 +7,7 @@ import { BUSINESS_REF, businessEntity } from "@/lib/business-schema";
 export const metadata: Metadata = {
   title: "ADU Investment & ROI",
   description:
-    "Is an ADU a good investment in the Inland Empire? See regional rent estimates, a real ROI example, payback period, and property-value impact for IE homeowners. Serving the Inland Empire since 2008. CSLB #1108879.",
+    "Is an ADU a good investment in the Inland Empire? See regional rent estimates, an example of rental income, and property-value impact for IE homeowners. Serving the Inland Empire since 2008. CSLB #1108879.",
   alternates: { canonical: "/services/adu/investment" },
 };
 
@@ -30,12 +30,9 @@ const RENT_ROWS: RentRow[] = [
 ];
 
 const ROI_LINES = [
-  { label: "All-in build cost", value: "$300,000" },
   { label: "Monthly rent", value: "$1,800/mo" },
   { label: "Annual rental income", value: "$21,600" },
-  { label: "Simple payback period", value: "~14 years" },
   { label: "Property value increase", value: "~$180,000 – $216,000" },
-  { label: "Net equity gain after build cost", value: "Break even to positive" },
 ];
 
 const BEYOND_RENTAL = [
@@ -53,7 +50,7 @@ const serviceSchema = {
   provider: BUSINESS_REF,
   areaServed: { "@type": "Place", name: "Inland Empire, California" },
   description:
-    "ADU investment and ROI guidance for Inland Empire homeowners — regional rental income estimates, payback period, and property value impact for detached and attached ADUs.",
+    "ADU investment and ROI guidance for Inland Empire homeowners — regional rental income estimates and property value impact for detached and attached ADUs.",
 };
 
 const localBusinessSchema = {
@@ -209,7 +206,8 @@ export default function ADUInvestmentPage() {
           <p className="mt-6 text-navy/60 text-sm leading-relaxed">
             Property value increase estimates are based on the 100x monthly rent
             rule of thumb commonly used in real estate. Actual values vary by
-            market conditions.
+            market conditions. Your build cost, and so your payback, comes
+            from your free consultation.
           </p>
         </div>
       </section>

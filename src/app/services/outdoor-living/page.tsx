@@ -55,7 +55,7 @@ const STEPS = [
 const FAQS = [
   {
     q: "How much does a patio cover cost in the Inland Empire?",
-    a: "Alumawood patio covers typically run $25–$45 per square foot installed, depending on attached vs freestanding, post style, and ceiling fan/lighting integration. Solid wood and steel covers run $45–$90 per square foot. A full outdoor living build with patio cover, concrete pad, built-in BBQ, and lighting typically lands between $35,000 and $120,000. Free consultation ends with a transparent line-item quote.",
+    a: "Every patio cover and outdoor living build is quoted after a free consultation. The price depends on the material (Alumawood, solid wood, or steel), attached vs freestanding, post style, and ceiling fan/lighting integration — plus any concrete pad, built-in BBQ, or lighting. The consultation ends with a transparent line-item quote.",
   },
   {
     q: "Alumawood vs wood vs solid roof — which is best for the Inland Empire?",

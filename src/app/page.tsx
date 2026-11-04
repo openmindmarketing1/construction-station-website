@@ -54,7 +54,7 @@ export default function Home() {
         "@type": "OpeningHoursSpecification",
         dayOfWeek: "Saturday",
         opens: "10:00",
-        closes: "15:00",
+        closes: "14:00",
       },
     ],
     aggregateRating: {

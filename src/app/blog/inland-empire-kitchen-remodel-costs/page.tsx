@@ -4,13 +4,14 @@ import BlogPostLayout from "@/components/BlogPostLayout";
 import JsonLd from "@/components/JsonLd";
 import { POSTS } from "@/lib/blog";
 import { BUSINESS_REF } from "@/lib/business-schema";
+import { PRICES, PRICE_NOTE } from "@/lib/prices";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://constructionstation.com";
 
 export const metadata: Metadata = {
   title: { absolute: "Inland Empire Kitchen Remodel Costs | Construction Station" },
   description:
-    "Kitchen remodels in the Inland Empire range from $20,000 to $120,000+. Learn what drives costs, what adds the most value, and where to save without sacrificing quality.",
+    `Kitchen remodels in the Inland Empire typically run ${PRICES.kitchen}. Learn what drives costs, what adds the most value, and where to save without sacrificing quality.`,
   alternates: { canonical: "/blog/inland-empire-kitchen-remodel-costs" },
 };
 
@@ -49,27 +50,23 @@ export default function Page() {
         What Does a Kitchen Remodel Cost in the Inland Empire?
       </h2>
       <p className="text-navy/80 leading-[1.8] mb-5">
-        Most kitchen remodels in our area fall somewhere between <strong className="text-navy">$20,000
-        and $120,000 or more</strong>, depending on how extensive the updates are.
+        Most kitchen remodels in our area typically run <strong className="text-navy">{PRICES.kitchen}</strong>,
+        depending on how extensive the updates are. {PRICE_NOTE}
       </p>
       <ul className="list-disc list-outside pl-6 space-y-3 text-navy/80 mb-6">
         <li>
           <strong className="text-navy">Minor remodels</strong> — cosmetic updates like fresh paint,
-          new cabinet hardware, lighting, or a few new countertops: <strong className="text-navy">$20,000–$40,000</strong>
+          new cabinet hardware, lighting, or a few new countertops: <strong className="text-navy">the low end</strong>
         </li>
         <li>
           <strong className="text-navy">Mid-range remodels</strong> — cabinets, countertops,
-          appliances, and flooring updated: <strong className="text-navy">$40,000–$75,000</strong>
+          appliances, and flooring updated: <strong className="text-navy">the middle</strong>
         </li>
         <li>
           <strong className="text-navy">High-end remodels</strong> — custom cabinets, designer
-          finishes, and layout changes: <strong className="text-navy">$120,000+</strong>
+          finishes, and layout changes: <strong className="text-navy">the upper end</strong>
         </li>
       </ul>
-      <p className="text-navy/80 leading-[1.8] mb-5">
-        On a per-square-foot basis, expect to pay between $75 and $250, depending on materials, labor,
-        and complexity.
-      </p>
 
       <h2 className="font-display text-navy text-3xl mt-12 mb-4">
         What Actually Adds Value to Your Home

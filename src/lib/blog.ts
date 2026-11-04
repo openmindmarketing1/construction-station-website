@@ -1,3 +1,4 @@
+import { PRICES } from "@/lib/prices";
 export type BlogPost = {
   slug: string;
   title: string;
@@ -13,7 +14,7 @@ export const POSTS: BlogPost[] = [
     slug: "inland-empire-kitchen-remodel-costs",
     title: "Inland Empire Kitchen Remodel: Costs, Value & Smart Saves",
     excerpt:
-      "Most kitchen remodels in the Inland Empire fall between $20,000 and $120,000. Here's how to plan your budget, maximize ROI, and know where to spend vs. save.",
+      `Most kitchen remodels in the Inland Empire typically run ${PRICES.kitchen}. Here's how to plan your budget, maximize ROI, and know where to spend vs. save.`,
     date: "2025-01-15",
     category: "Kitchen",
     image: "/images/blog/kitchen-remodel-costs.jpg",
