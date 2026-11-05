@@ -3,6 +3,7 @@ import BlogPostLayout from "@/components/BlogPostLayout";
 import JsonLd from "@/components/JsonLd";
 import { POSTS } from "@/lib/blog";
 import { BUSINESS_REF } from "@/lib/business-schema";
+import { PRICES, PRICE_NOTE } from "@/lib/prices";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://constructionstation.com";
 
@@ -31,10 +32,28 @@ const blogSchema = {
   publisher: BUSINESS_REF,
 };
 
+// One answer for the on-page FAQ and its FAQPage JSON-LD, so they can't drift.
+// Owner-confirmed range only (PRICES.bathroom).
+const COST_QUESTION = "How much does a small bathroom remodel cost in the Inland Empire?";
+const COST_ANSWER = `A bathroom remodel in the Inland Empire typically runs ${PRICES.bathroom}. A small bathroom done properly usually sits at the low end, depending on materials, layout changes, and plumbing work. ${PRICE_NOTE}`;
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: COST_QUESTION,
+      acceptedAnswer: { "@type": "Answer", text: COST_ANSWER },
+    },
+  ],
+};
+
 export default function Page() {
   return (
     <>
       <JsonLd data={blogSchema} />
+      <JsonLd data={faqSchema} />
       <BlogPostLayout post={post} related={related}>
       <p className="text-navy/80 text-lg leading-[1.8] mb-6">
         A small bathroom shouldn&rsquo;t mean small results — unless you make these common mistakes.
@@ -105,11 +124,11 @@ export default function Page() {
 
       <h2 className="font-display text-navy text-3xl mt-12 mb-4">Mistake 5: Underestimating Your Budget</h2>
       <p className="text-navy/80 leading-[1.8] mb-5">
-        Bathrooms involve multiple skilled trades — plumbing, electrical, tiling, carpentry. A modest
-        5&times;8 bathroom remodel typically costs between <strong className="text-navy">$15,000 and
-        $30,000</strong> when done properly. That&rsquo;s quality materials, professional installation,
-        proper waterproofing, updated plumbing and electrical, and bringing everything up to current
-        building codes.
+        Bathrooms involve multiple skilled trades — plumbing, electrical, tiling, carpentry. Bathroom
+        remodels in the Inland Empire typically run <strong className="text-navy">{PRICES.bathroom}</strong>,
+        and a modest 5&times;8 bathroom done properly usually sits at the low end. That&rsquo;s quality
+        materials, professional installation, proper waterproofing, updated plumbing and electrical, and
+        bringing everything up to current building codes. {PRICE_NOTE}
       </p>
       <h3 className="font-display text-navy text-xl mt-6 mb-3">How to Fix It</h3>
       <p className="text-navy/80 leading-[1.8] mb-5">
@@ -184,6 +203,14 @@ export default function Page() {
         <li>All necessary permits pulled and inspections coordinated</li>
         <li>One-year installation guarantee on all remodeling work</li>
       </ul>
+
+      <h2 className="font-display text-navy text-3xl mt-12 mb-4">FAQ</h2>
+      <div className="space-y-6 mb-8">
+        <div className="border-b border-navy/10 pb-6">
+          <h3 className="font-display text-navy text-lg mb-2">{COST_QUESTION}</h3>
+          <p className="text-navy/75 text-sm leading-relaxed">{COST_ANSWER}</p>
+        </div>
+      </div>
       </BlogPostLayout>
     </>
   );

@@ -11,7 +11,35 @@ const { chromium } = require(
 const HTML = path.join(__dirname, "og.html");
 const OUT = path.join(__dirname, "..", "..", "public", "og.jpg");
 
+// The rating badge reads the live Google rating from OMM's public
+// review-summary endpoint (the same one src/lib/omm-reviews.ts uses). If it
+// can't be read, the badge is removed; never a typed-in number. Business id 1
+// is CS.businessId in src/lib/constants.ts.
+const OMM_API = (process.env.NEXT_PUBLIC_OMM_API_URL || "https://www.openmindmarketing.ai").trim().replace(/\/+$/, "");
+
+async function liveRating() {
+  try {
+    const res = await fetch(`${OMM_API}/api/public/review-summary?business_id=1`);
+    if (!res.ok) {
+      console.warn(`review-summary returned ${res.status}; the rating badge is left off.`);
+      return null;
+    }
+    const { rating } = await res.json();
+    if (typeof rating !== "number" || !(rating >= 1 && rating <= 5)) {
+      console.warn("review-summary sent no usable rating; the rating badge is left off.");
+      return null;
+    }
+    // One decimal, never rounded up (matches formatRating in omm-reviews.ts).
+    return (Math.floor(rating * 10 + 1e-9) / 10).toFixed(1);
+  } catch (err) {
+    console.warn("review-summary could not be reached; the rating badge is left off.", err.message);
+    return null;
+  }
+}
+
 (async () => {
+  const rating = await liveRating();
+
   // og.html references the kitchen photo by relative path; copy it next to the
   // template so file:// resolution works without baking in an absolute path.
   fs.copyFileSync(
@@ -25,6 +53,11 @@ const OUT = path.join(__dirname, "..", "..", "public", "og.jpg");
     deviceScaleFactor: 1,
   });
   await page.goto("file:///" + HTML.replace(/\\/g, "/"), { waitUntil: "networkidle" });
+  await page.evaluate((r) => {
+    const badge = document.getElementById("rating-badge");
+    if (r) badge.querySelector(".value").textContent = `${r}★`;
+    else badge.remove();
+  }, rating);
   await page.evaluate(() => document.fonts.ready);
   await page.waitForTimeout(300);
   await page.screenshot({ path: OUT, type: "jpeg", quality: 88 });
@@ -32,5 +65,5 @@ const OUT = path.join(__dirname, "..", "..", "public", "og.jpg");
 
   fs.unlinkSync(path.join(__dirname, "kitchen-after.jpg"));
   const kb = Math.round(fs.statSync(OUT).size / 1024);
-  console.log(`Wrote ${OUT} (${kb} KB)`);
+  console.log(`Wrote ${OUT} (${kb} KB), rating badge: ${rating ? `${rating}★` : "left off"}`);
 })();
