@@ -144,11 +144,9 @@ const aboutPageSchema = {
     "Meet the team behind Construction Station — licensed GC serving the Inland Empire since 2008.",
   mainEntity: {
     ...businessEntity(),
-    founders: [
+    employees: [
       { "@type": "Person", name: "Gregory Pilon", jobTitle: "Co-Owner / President" },
       { "@type": "Person", name: "Gustavo Mancilla", jobTitle: "Co-Owner / VP Operations" },
-    ],
-    employees: [
       { "@type": "Person", name: "Cameron Kemock", jobTitle: "Lead Project Manager" },
       { "@type": "Person", name: "Lisa Elias", jobTitle: "Office Manager" },
     ],

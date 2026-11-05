@@ -4,7 +4,7 @@ const ITEMS = [
   {
     n: "01",
     title: "18 Years of Expertise",
-    body: "Founded in 2008, we've completed over 500 projects across the Inland Empire. The same hands that swung the hammer on day one still oversee every job today.",
+    body: "Founded in 2008, we've completed over 500 projects across the Inland Empire. Local, licensed, and hands-on. Our owners oversee every job.",
     pull: "Serving the Inland Empire since 2008",
   },
   {
