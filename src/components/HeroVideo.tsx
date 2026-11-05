@@ -16,19 +16,23 @@ import { useRef } from "react";
 import Link from "next/link";
 import { useGSAP, gsap } from "@/lib/design-system";
 import { PER_SQ_FT_FROM } from "@/lib/prices";
+import { formatRating, type ReviewSummary } from "@/lib/omm-reviews";
 
 // Gold accent for the redesign (slightly warmer than the global token).
 const GOLD = "#C9A84C";
 
 const STATS: { value: string; label: string }[] = [
-  { value: "17", label: "5★ Reviews" },
   { value: "A+", label: "BBB Rated" },
   { value: "CSLB #1108879", label: "Licensed" },
   { value: "29", label: "Cities Served" },
   { value: PER_SQ_FT_FROM, label: "ADUs From" },
 ];
 
-export default function HeroVideo() {
+export default function HeroVideo({ reviews }: { reviews: ReviewSummary | null }) {
+  // Live Google numbers lead the stats bar; with none, the tile is left out.
+  const stats = reviews
+    ? [{ value: String(reviews.count), label: `${formatRating(reviews.rating)}★ Google Reviews` }, ...STATS]
+    : STATS;
   const root = useRef<HTMLElement>(null);
   const bgRef = useRef<HTMLDivElement>(null);
 
@@ -232,7 +236,7 @@ export default function HeroVideo() {
       <div className="absolute bottom-[56px] left-0 right-0 z-20 border-t border-white/10 bg-navy-dark/40 backdrop-blur-sm md:bottom-0">
         <div className="mx-auto max-w-7xl px-6 lg:px-10">
           <div className="no-scrollbar flex items-stretch divide-x divide-white/10 overflow-x-auto">
-            {STATS.map((s) => (
+            {stats.map((s) => (
               <div
                 key={s.label}
                 className="hero-stat flex shrink-0 flex-col items-center justify-center gap-0.5 px-5 py-4 text-center sm:flex-1 sm:px-3"

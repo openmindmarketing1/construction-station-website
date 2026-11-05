@@ -6,6 +6,7 @@ import CtvQuickForm from "@/components/CtvQuickForm";
 import CtvCalendlyEmbed from "@/components/CtvCalendlyEmbed";
 import { CS, REVIEWS } from "@/lib/constants";
 import { MISSED_CALL_LINE } from "@/lib/callback-promise";
+import { formatRating, getReviewSummary } from "@/lib/omm-reviews";
 
 // Connected-TV landing page. Reached ONLY by scanning a QR code off a
 // television spot, so every assumption here is phone-first: one hand, a couch,
@@ -132,7 +133,9 @@ const localBusinessSchema = {
   priceRange: "$$$",
 };
 
-export default function CtvRemodelingPage() {
+export default async function CtvRemodelingPage() {
+  // Live Google rating, or no rating at all.
+  const reviews = await getReviewSummary();
   return (
     <>
       <JsonLd data={localBusinessSchema} />
@@ -261,8 +264,12 @@ export default function CtvRemodelingPage() {
               <span>BBB {CS.bbb}</span>
               <span className="text-gold">·</span>
               <span>Since {CS.founded}</span>
-              <span className="text-gold">·</span>
-              <span>5★ Rated</span>
+              {reviews && (
+                <>
+                  <span className="text-gold">·</span>
+                  <span>{formatRating(reviews.rating)}★ on Google</span>
+                </>
+              )}
             </div>
             </div>
           </div>

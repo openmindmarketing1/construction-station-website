@@ -3,11 +3,17 @@ import JsonLd from "@/components/JsonLd";
 import TrustBar from "@/components/TrustBar";
 import CtaSection from "@/components/CtaSection";
 import { businessEntity } from "@/lib/business-schema";
+import {
+  aggregateRatingSchema,
+  formatRating,
+  getReviewSummary,
+  reviewCountLabel,
+} from "@/lib/omm-reviews";
 
 export const metadata: Metadata = {
   title: "Customer Reviews",
   description:
-    "See what Inland Empire homeowners say about Construction Station. 5.0 stars on Google. Serving Redlands, Yucaipa, Riverside, and surrounding cities. In business since 2008. CSLB #1108879.",
+    "See what Inland Empire homeowners say about Construction Station on Google. Serving Redlands, Yucaipa, Riverside, and surrounding cities. In business since 2008. CSLB #1108879.",
   alternates: { canonical: "/reviews" },
 };
 
@@ -28,17 +34,13 @@ function Stars({ count = 5 }: { count?: number }) {
   );
 }
 
-export default function ReviewsPage() {
+export default async function ReviewsPage() {
+  // Live Google numbers; null hides the rating block and drops aggregateRating.
+  const reviews = await getReviewSummary();
   const schema = {
     "@context": "https://schema.org",
     ...businessEntity(),
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: "5.0",
-      reviewCount: "17",
-      bestRating: "5",
-      worstRating: "1",
-    },
+    ...aggregateRatingSchema(reviews),
   };
 
   return (
@@ -71,13 +73,15 @@ export default function ReviewsPage() {
 
           {/* Rating block */}
           <div className="flex flex-col sm:flex-row sm:items-center gap-6 mb-10">
-            <div className="flex items-center gap-4 bg-white/10 border border-white/20 px-6 py-4">
-              <div className="font-display text-5xl text-gold leading-none">5.0</div>
-              <div>
-                <Stars />
-                <div className="text-white/70 text-sm mt-1">17 Google Reviews</div>
+            {reviews && (
+              <div className="flex items-center gap-4 bg-white/10 border border-white/20 px-6 py-4">
+                <div className="font-display text-5xl text-gold leading-none">{formatRating(reviews.rating)}</div>
+                <div>
+                  <Stars />
+                  <div className="text-white/70 text-sm mt-1">{reviewCountLabel(reviews.count)}</div>
+                </div>
               </div>
-            </div>
+            )}
             <div className="flex items-center gap-2 text-white/60 text-sm">
               <svg viewBox="0 0 24 24" className="w-5 h-5 shrink-0" fill="none">
                 <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4" />

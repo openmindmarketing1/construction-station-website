@@ -5,6 +5,12 @@ import JsonLd from "@/components/JsonLd";
 import FAQAccordion from "@/components/FAQAccordion";
 import { CS } from "@/lib/constants";
 import { businessEntity } from "@/lib/business-schema";
+import {
+  formatRating,
+  getReviewSummary,
+  reviewCountLabel,
+  type ReviewSummary,
+} from "@/lib/omm-reviews";
 
 export const metadata: Metadata = {
   title: "About Us",
@@ -16,7 +22,8 @@ export const metadata: Metadata = {
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://constructionstation.com";
 const SB = "https://ihvgrybmtngekmfjpxnz.supabase.co/storage/v1/object/public/user-assets/";
 
-const TIMELINE = [
+// The "Today" entry leads with the live Google review count, or no number.
+const timeline = (reviews: ReviewSummary | null) => [
   {
     year: "2008",
     event: "Founded as Carpet Station",
@@ -25,7 +32,7 @@ const TIMELINE = [
   },
   {
     year: "Today",
-    event: "17 reviews. 16+ cities. One team.",
+    event: `${reviews ? `${reviewCountLabel(reviews.count)}. ` : ""}16+ cities. One team.`,
     detail:
       "Licensed General Contractor (CSLB #1108879), BBB A+ accredited, serving the Inland Empire from Redlands to Riverside, Yucaipa to Victorville.",
   },
@@ -90,9 +97,12 @@ const WHY_US = [
   },
 ];
 
-const TRUST_STATS = [
+// Live Google rating, or (no live numbers) the BBB rating in its place.
+const trustStats = (reviews: ReviewSummary | null) => [
   { value: "2008", label: "Founded in" },
-  { value: "17", label: "Five-star Google reviews" },
+  reviews
+    ? { value: `${formatRating(reviews.rating)}★`, label: `From ${reviewCountLabel(reviews.count)}` }
+    : { value: "A+", label: "BBB rated" },
   { value: "16+", label: "Inland Empire cities served" },
   { value: "#1108879", label: "CSLB License" },
 ];
@@ -100,7 +110,7 @@ const TRUST_STATS = [
 const FAQS = [
   {
     q: "Are you licensed and insured?",
-    a: "Yes. Construction Station is a licensed general contractor in California (CSLB #1108879), and we carry full insurance. We're also BBB A+ rated with a 5-star Google review record.",
+    a: "Yes. Construction Station is a licensed general contractor in California (CSLB #1108879), and we carry full insurance. We're also BBB A+ rated, and our customers' Google reviews are on our reviews page.",
   },
   {
     q: "Do you offer a warranty?",
@@ -128,7 +138,7 @@ const faqSchema = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
   mainEntity: [
-    { "@type": "Question", name: "Are you licensed and insured?", acceptedAnswer: { "@type": "Answer", text: "Yes. Construction Station is a licensed general contractor in California (CSLB #1108879), and we carry full insurance. We're also BBB A+ rated with a 5-star Google review record." } },
+    { "@type": "Question", name: "Are you licensed and insured?", acceptedAnswer: { "@type": "Answer", text: "Yes. Construction Station is a licensed general contractor in California (CSLB #1108879), and we carry full insurance. We're also BBB A+ rated, and our customers' Google reviews are on our reviews page." } },
     { "@type": "Question", name: "Do you offer a warranty?", acceptedAnswer: { "@type": "Answer", text: "Yes. We warranty all of our workmanship for 12 months from the date of installation, and many of the products we install carry their own, longer manufacturer warranties." } },
     { "@type": "Question", name: "Do you offer financing?", acceptedAnswer: { "@type": "Answer", text: "Yes — we offer financing options, and you can find the details in the financing section of our website." } },
     { "@type": "Question", name: "Do you handle permitting?", acceptedAnswer: { "@type": "Answer", text: "Yes. When a project calls for permits — or when a customer requests them — we manage the entire permitting process from application through final inspection." } },
@@ -154,7 +164,10 @@ const aboutPageSchema = {
   },
 };
 
-export default function AboutPage() {
+export default async function AboutPage() {
+  const reviews = await getReviewSummary();
+  const TIMELINE = timeline(reviews);
+  const TRUST_STATS = trustStats(reviews);
   return (
     <>
       <JsonLd data={aboutPageSchema} />

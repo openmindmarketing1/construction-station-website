@@ -3,13 +3,14 @@ import BlogPostLayout from "@/components/BlogPostLayout";
 import JsonLd from "@/components/JsonLd";
 import { POSTS } from "@/lib/blog";
 import { BUSINESS_REF } from "@/lib/business-schema";
+import { PRICES, PRICE_NOTE } from "@/lib/prices";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://constructionstation.com";
 
 export const metadata: Metadata = {
   title: { absolute: "Bathroom Remodel Ideas 2026 | Construction Station" },
   description:
-    "Walk-in showers, statement vanities, heated floors, and spa-inspired suites — the top bathroom trends Inland Empire homeowners are embracing in 2026, plus cost ranges and a full FAQ.",
+    "Walk-in showers, statement vanities, heated floors, and spa-inspired suites — the top bathroom trends Inland Empire homeowners are embracing in 2026, plus typical costs and a full FAQ.",
   alternates: { canonical: "/blog/bathroom-remodeling-ideas-2026" },
 };
 
@@ -31,6 +32,10 @@ const blogSchema = {
   publisher: BUSINESS_REF,
 };
 
+// One answer for the on-page FAQ and its FAQPage JSON-LD, so they can't drift.
+// Owner-confirmed range only (PRICES.bathroom); tiers carry no dollar figures.
+const COST_ANSWER = `A bathroom remodel in the Inland Empire typically runs ${PRICES.bathroom}. A small or guest bathroom refresh sits at the low end, a midrange primary bath in the middle, and a full luxury remodel at the upper end, depending on materials, layout changes, and plumbing work. ${PRICE_NOTE}`;
+
 const faqSchema = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -40,7 +45,7 @@ const faqSchema = {
       name: "How much does a bathroom remodel cost in the Inland Empire in 2026?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "You can expect to spend $8,000–$15,000 for a small or guest bathroom refresh, $15,000–$35,000 for a midrange primary bath, and $40,000–$75,000+ for a full luxury remodel. Final pricing depends on materials, layout changes, and plumbing work.",
+        text: COST_ANSWER,
       },
     },
     {
@@ -111,12 +116,16 @@ export default function Page() {
           get the bathroom you want without draining savings.
         </p>
         <div className="bg-navy/5 border-l-4 border-gold p-5 my-8">
-          <p className="text-navy text-sm font-body font-semibold mb-2">2026 Cost Ranges</p>
+          <p className="text-navy text-sm font-body font-semibold mb-2">2026 Cost Range</p>
+          <p className="text-navy/80 text-sm mb-2">
+            Most bathroom remodels typically run <strong className="text-navy">{PRICES.bathroom}</strong>.
+          </p>
           <ul className="text-navy/80 text-sm space-y-1">
-            <li>Small / guest bathroom refresh: <strong className="text-navy">$8,000 – $15,000</strong></li>
-            <li>Midrange primary bath: <strong className="text-navy">$15,000 – $35,000</strong></li>
-            <li>Full luxury remodel: <strong className="text-navy">$40,000 – $75,000+</strong></li>
+            <li>Small / guest bathroom refresh: <strong className="text-navy">the low end</strong></li>
+            <li>Midrange primary bath: <strong className="text-navy">the middle</strong></li>
+            <li>Full luxury remodel: <strong className="text-navy">the upper end</strong></li>
           </ul>
+          <p className="text-navy/60 text-xs mt-2">{PRICE_NOTE}</p>
         </div>
         <h3 className="font-display text-navy text-xl mt-6 mb-3">Think About How You Actually Use the Space</h3>
         <p className="text-navy/80 leading-[1.8] mb-5">
@@ -210,7 +219,7 @@ export default function Page() {
           {[
             {
               q: "How much does a bathroom remodel cost in the Inland Empire in 2026?",
-              a: "You can expect $8,000–$15,000 for a small or guest bathroom refresh, $15,000–$35,000 for a midrange primary bath, and $40,000–$75,000+ for a full luxury remodel. Reach out for a free estimate tailored to your project.",
+              a: COST_ANSWER,
             },
             {
               q: "What bathroom flooring holds up best against Inland Empire hard water?",

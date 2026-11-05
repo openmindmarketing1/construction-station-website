@@ -16,6 +16,7 @@ import { CITIES } from "@/config/cities";
 
 import type { Metadata } from "next";
 import { businessEntity } from "@/lib/business-schema";
+import { getReviewSummary, aggregateRatingSchema } from "@/lib/omm-reviews";
 
 // Self-canonical — the root layout deliberately sets none (see layout.tsx).
 export const metadata: Metadata = {
@@ -28,7 +29,9 @@ export const metadata: Metadata = {
     "Southern California contractor serving the Inland Empire since 2008. CSLB #1108879. Kitchen and bathroom remodeling, ADUs, room additions. Free design session worth $299. Call 909-797-6333.",
 };
 
-export default function Home() {
+export default async function Home() {
+  // Live Google numbers; null hides every number and drops aggregateRating.
+  const reviews = await getReviewSummary();
   const localBusiness = {
     "@context": "https://schema.org",
     ...businessEntity(),
@@ -57,22 +60,18 @@ export default function Home() {
         closes: "14:00",
       },
     ],
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: "5.0",
-      reviewCount: "17",
-    },
+    ...aggregateRatingSchema(reviews),
   };
 
   return (
     <>
       <JsonLd data={localBusiness} />
-      <ServiceCarousel />
+      <ServiceCarousel reviews={reviews} />
       <ServicesGrid />
       <BeforeAfterSlider />
       <WhyChooseUs />
       <ServiceAreaSection />
-      <ReviewsSection />
+      <ReviewsSection reviews={reviews} />
 
       {/* Featured Project */}
       <section className="bg-navy texture-navy py-20 lg:py-24">

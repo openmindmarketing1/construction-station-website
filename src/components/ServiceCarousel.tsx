@@ -4,6 +4,7 @@ import { useRef, useState, useEffect, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
+import { formatRating, reviewCountLabel, type ReviewSummary } from "@/lib/omm-reviews";
 
 const AMBER = "#F5A623";
 const NAVY = "#111b2f";
@@ -82,14 +83,20 @@ const CARD_H = 310;
 const RADIUS = 460;
 
 const TRUST_ITEMS = [
-  { icon: "★", label: "5.0 Google Rating", sub: "17 Reviews" },
   { icon: "✓", label: "BBB A+ Rated", sub: "Accredited" },
   { icon: "⚖", label: "Licensed & Insured", sub: "CSLB #1108879" },
   { icon: "🏠", label: "Since 2008", sub: "18 Years" },
   { icon: "📍", label: "29 Cities", sub: "Inland Empire" },
 ];
 
-export default function ServiceCarousel() {
+export default function ServiceCarousel({ reviews }: { reviews: ReviewSummary | null }) {
+  // Live Google numbers lead the trust strip; with none, the tile is left out.
+  const trustItems = reviews
+    ? [
+        { icon: "★", label: `${formatRating(reviews.rating)} Google Rating`, sub: reviewCountLabel(reviews.count) },
+        ...TRUST_ITEMS,
+      ]
+    : TRUST_ITEMS;
   const router = useRouter();
   const [active, setActive] = useState(0);
   const [lean, setLean] = useState(0);
@@ -371,7 +378,7 @@ export default function ServiceCarousel() {
       <div className="relative z-10 border-t border-white/8">
         <div className="mx-auto max-w-7xl px-5 lg:px-10">
           <div className="flex flex-wrap items-center justify-center divide-x divide-white/10 overflow-hidden">
-            {TRUST_ITEMS.map((t) => (
+            {trustItems.map((t) => (
               <div
                 key={t.label}
                 className="flex flex-col items-center justify-center px-5 sm:px-7 py-4 text-center"

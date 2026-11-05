@@ -1,7 +1,17 @@
 import Reveal from "@/components/Reveal";
 import { TRUST_STATS } from "@/lib/constants";
+import { formatRating, getReviewSummary } from "@/lib/omm-reviews";
 
-export default function TrustBar() {
+export default async function TrustBar() {
+  // Live Google rating as the third tile; with no live numbers it is left out.
+  const reviews = await getReviewSummary();
+  const stats = reviews
+    ? [
+        ...TRUST_STATS.slice(0, 2),
+        { value: `${formatRating(reviews.rating)}★`, label: "Google Rating" },
+        ...TRUST_STATS.slice(2),
+      ]
+    : TRUST_STATS;
   return (
     <Reveal
       as="section"
@@ -13,8 +23,8 @@ export default function TrustBar() {
         <div className="text-center mb-4 text-white/40 text-[10px] uppercase tracking-[0.35em]">
           Residential &amp; Commercial Construction · Inland Empire
         </div>
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 divide-y md:divide-y-0 md:divide-x divide-white/10">
-          {TRUST_STATS.map((s, i) => (
+        <div className={`grid grid-cols-2 md:grid-cols-3 ${stats.length === 6 ? "lg:grid-cols-6" : "lg:grid-cols-5"} divide-y md:divide-y-0 md:divide-x divide-white/10`}>
+          {stats.map((s, i) => (
             <Reveal
               key={s.label}
               delay={i * 60}

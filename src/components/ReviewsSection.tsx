@@ -1,5 +1,7 @@
+import Link from "next/link";
 import Reveal from "@/components/Reveal";
 import { REVIEWS } from "@/lib/constants";
+import { formatRating, reviewCountLabel, type ReviewSummary } from "@/lib/omm-reviews";
 
 function Stars({ count = 5 }: { count?: number }) {
   return (
@@ -18,7 +20,7 @@ function Stars({ count = 5 }: { count?: number }) {
   );
 }
 
-export default function ReviewsSection() {
+export default function ReviewsSection({ reviews }: { reviews: ReviewSummary | null }) {
   const [featured, ...rest] = REVIEWS;
 
   return (
@@ -47,11 +49,17 @@ export default function ReviewsSection() {
 
           <div className="flex items-center gap-4">
             <div className="flex flex-col">
-              <Stars />
-              <div className="text-white/70 text-sm mt-2">
-                <span className="text-gold font-display text-2xl">5.0</span>
-                <span className="ml-2">avg · 17 Google Reviews</span>
-              </div>
+              {reviews && <Stars />}
+              {reviews ? (
+                <div className="text-white/70 text-sm mt-2">
+                  <span className="text-gold font-display text-2xl">{formatRating(reviews.rating)}</span>
+                  <span className="ml-2">avg · {reviewCountLabel(reviews.count)}</span>
+                </div>
+              ) : (
+                <Link href="/reviews" className="text-white/70 text-sm mt-2 hover:text-gold transition-colors">
+                  Read our Google reviews →
+                </Link>
+              )}
             </div>
             <div className="hidden md:flex items-center gap-2 bg-white/5 border border-white/10 px-4 py-2">
               <svg
